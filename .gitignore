@@ -1,0 +1,7 @@
+__pycache__/ 
+chroma_db/ 
+hf_cache/ 
+legal_env/ 
+.env 
+data/ 
+.vscode/ 
