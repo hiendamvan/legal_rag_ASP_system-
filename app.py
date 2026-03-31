@@ -48,13 +48,25 @@ st.markdown(
 with st.sidebar:
     st.title("⚖️ Cài đặt")
     top_k = st.slider("Số điều luật tham khảo (top_k)", min_value=1, max_value=10, value=5)
+
+    default_provider = os.getenv("LLM_PROVIDER", "gemini").lower()
+    provider = st.selectbox(
+        "LLM Provider",
+        options=["gemini", "openai"],
+        index=0 if default_provider == "gemini" else 1,
+    )
+
     show_sources = st.checkbox("Hiển thị điều luật nguồn", value=True)
     st.divider()
+
+    _gemini_model = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
+    _openai_model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+    active_model = _gemini_model if provider == "gemini" else _openai_model
     st.markdown(
-        "**Tài liệu:** Nghị định 168/2024/NĐ-CP  \n"
-        "**Embedding:** AITeamVN/Vietnamese_Embedding  \n"
-        "**LLM:** Gemini 2.0 Flash  \n"
-        "**Vector DB:** ChromaDB"
+        f"**Tài liệu:** Nghị định 168/2024/NĐ-CP  \n"
+        f"**Embedding:** AITeamVN/Vietnamese_Embedding  \n"
+        f"**LLM:** {provider.capitalize()} — `{active_model}`  \n"
+        f"**Vector DB:** ChromaDB"
     )
 
     st.divider()
@@ -111,7 +123,7 @@ if prompt := st.chat_input("Nhập câu hỏi về luật giao thông..."):
             try:
                 from generate import generate
 
-                answer, sources = generate(prompt, top_k=top_k)
+                answer, sources = generate(prompt, top_k=top_k, provider=provider)
             except Exception as e:
                 answer = f"Lỗi: {e}"
                 sources = []
