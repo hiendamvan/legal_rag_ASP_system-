@@ -1,0 +1,46 @@
+1. Tiếng Việt cho phần input, instruction 
+2. Output rule dạng json không dấu 
+{
+  "instruction": "Sinh rule từ đoạn văn bản pháp luật sau",
+  "input": "Không chấp hành hiệu lệnh của đèn tín hiệu giao thông.",
+  "output": {
+    "p": "violation_khong_chap_hanh_den_tin_hieu",
+    "op": "ALL",
+    "conditions": ["khong_chap_hanh_den_tin_hieu"],
+    "exceptions": []
+  }
+}
+
+3. Số lượng sample phù hợp: khoảng 1500-2000 sample sạch (Sample sạch = đúng về format + ngữ nghĩa)
+
+#02/04: Xoá chương 1 (quy định chung) của nghị định 168 
+- Trong 1 điểm sẽ gồm các hành động con, các hành động này thường được ngăn cách bởi dấu ; hoặc chữ "hoặc" và ngoại lệ 
+- Với mỗi hành động con, thì sẽ gồm 2 phần: hành động, ngữ cảnh(không bắt buộc)
+
+-> Chia dữ liệu: 
+Với 1 điểm luật: 
+- Các action: mỗi action có thể đi kèm ngữ cảnh 
+- Exception 
+
+Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy tắc giao thông đường bộ
+1. Phạt tiền từ 400.000 đồng đến 600.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:
+a) Không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường, trừ các hành vi vi phạm quy định tại điểm a, điểm c, điểm d, điểm đ khoản 2; điểm a, điểm d, điểm đ, điểm e, điểm n, điểm o khoản 3; điểm a, điểm b, điểm đ, điểm e, điểm i, điểm k, điểm l khoản 4; điểm a, điểm b, điểm c, điểm d, điểm đ, điểm i, điểm k khoản 5; điểm a khoản 6; khoản 7; điểm b, điểm d khoản 9; điểm a khoản 10; điểm đ khoản 11 Điều này;
+b) Khi ra, vào vị trí dừng xe, đỗ xe không có tín hiệu báo cho người điều khiển phương tiện khác biết;
+
+1 điểm luật có thể được chia như sau: 
+{
+  "id": 0, 
+  "Chương": 2, 
+  "Mục": 1,
+  "Điều": 6, 
+  "Khoản": 1,
+  "Điểm": "b", 
+  "content": "Khi ra, vào vị trí dừng xe, đỗ xe không có tín hiệu báo cho người điều khiển phương tiện khác biết;"
+  "rule": {
+    "context": "khi ra, vào vị trí dừng xe, đỗ xe",
+    "action": "không có tín hiệu báo cho người điều khiển phương tiện khác biết", 
+    "exceptions": ""
+  }
+}
+
+
