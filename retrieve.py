@@ -67,7 +67,12 @@ if __name__ == "__main__":
 
     results = retrieve(args.query, args.top_k)
     for i, r in enumerate(results, 1):
-        preview = r["text"][:300] + ("..." if len(r["text"]) > 300 else "")
+        m = r["metadata"]
         print(f"\n--- Kết quả {i} | score={r['score']:.4f} ---")
-        print(f"Tiêu đề: {r['metadata']['title']}")
-        print(preview)
+        print(f"Vị trí : {m.get('breadcrumb', '')}")
+        print(f"Điều   : {m.get('dieu_title', '')[:80]}")
+        if m.get("khoan_intro"):
+            print(f"Khoản  : {m['khoan_intro'][:80]}...")
+        if m.get("diem"):
+            print(f"Điểm   : {m['diem']}) {m.get('diem_text', '')[:120]}...")
+        print()

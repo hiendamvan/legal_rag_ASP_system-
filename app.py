@@ -99,13 +99,21 @@ for msg in st.session_state.messages:
             with st.expander("Điều luật tham khảo"):
                 for s in msg["sources"]:
                     score_pct = f"{s['score'] * 100:.1f}%"
-                    title = s["metadata"]["title"]
-                    preview = s["text"][:400] + ("..." if len(s["text"]) > 400 else "")
+                    m = s["metadata"]
+                    breadcrumb = m.get("breadcrumb", m.get("dieu_title", ""))
+                    diem_text  = m.get("diem_text", s["text"])
+                    khoan_intro = m.get("khoan_intro", "")
+                    preview = diem_text[:400] + ("..." if len(diem_text) > 400 else "")
+                    context_line = (
+                        f"<em style='color:#666'>{khoan_intro[:120]}...</em><br>"
+                        if khoan_intro else ""
+                    )
                     st.markdown(
                         f'<div class="source-box">'
-                        f'<strong>{title}</strong>'
+                        f'<strong>{breadcrumb}</strong>'
                         f'<span class="score-badge">relevance {score_pct}</span>'
-                        f"<p style='margin-top:6px;white-space:pre-wrap'>{preview}</p>"
+                        f"<p style='margin-top:6px'>{context_line}"
+                        f"<span style='white-space:pre-wrap'>{preview}</span></p>"
                         f"</div>",
                         unsafe_allow_html=True,
                     )
@@ -134,13 +142,21 @@ if prompt := st.chat_input("Nhập câu hỏi về luật giao thông..."):
             with st.expander("Điều luật tham khảo"):
                 for s in sources:
                     score_pct = f"{s['score'] * 100:.1f}%"
-                    title = s["metadata"]["title"]
-                    preview = s["text"][:400] + ("..." if len(s["text"]) > 400 else "")
+                    m = s["metadata"]
+                    breadcrumb = m.get("breadcrumb", m.get("dieu_title", ""))
+                    diem_text  = m.get("diem_text", s["text"])
+                    khoan_intro = m.get("khoan_intro", "")
+                    preview = diem_text[:400] + ("..." if len(diem_text) > 400 else "")
+                    context_line = (
+                        f"<em style='color:#666'>{khoan_intro[:120]}...</em><br>"
+                        if khoan_intro else ""
+                    )
                     st.markdown(
                         f'<div class="source-box">'
-                        f'<strong>{title}</strong>'
+                        f'<strong>{breadcrumb}</strong>'
                         f'<span class="score-badge">relevance {score_pct}</span>'
-                        f"<p style='margin-top:6px;white-space:pre-wrap'>{preview}</p>"
+                        f"<p style='margin-top:6px'>{context_line}"
+                        f"<span style='white-space:pre-wrap'>{preview}</span></p>"
                         f"</div>",
                         unsafe_allow_html=True,
                     )
