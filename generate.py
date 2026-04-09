@@ -29,7 +29,16 @@ OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 def _build_prompt(query: str, chunks: list[dict]) -> str:
     context_parts = []
     for c in chunks:
-        context_parts.append(f"[{c['metadata']['title']}]\n{c['text']}")
+        m = c["metadata"]
+        label = m.get("breadcrumb") or m.get("dieu_title") or f"Điều {m.get('dieu_num', '')}"
+        # Prefer diem_text for the actual content; fall back to full stored document
+        body = m.get("diem_text") or c["text"]
+        ki = m.get("khoan_intro", "")
+        block = f"[{label}]"
+        if ki:
+            block += f"\nBối cảnh khoản: {ki}"
+        block += f"\n{body}"
+        context_parts.append(block)
     context = "\n\n---\n\n".join(context_parts)
 
     return f"""Bạn là trợ lý pháp lý chuyên về Nghị định 168/2024/NĐ-CP về xử phạt vi phạm giao thông đường bộ của Việt Nam.
@@ -114,4 +123,6 @@ if __name__ == "__main__":
     print("NGUỒN THAM KHẢO")
     print("=" * 60)
     for s in sources:
-        print(f"  - {s['metadata']['title']} (score={s['score']:.4f})")
+        m = s["metadata"]
+        label = m.get("breadcrumb") or m.get("dieu_title") or f"Điều {m.get('dieu_num', '')}"
+        print(f"  - {label} (score={s['score']:.4f})")

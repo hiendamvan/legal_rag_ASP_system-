@@ -4079,7 +4079,7 @@ rule_type(d12_k1,primary_violation).
 article(d12_k1,12).
 clause(d12_k1,1).
 subject(d12_k1,bicycle_passenger).
-action(d12_k1,1_phat_priority_tu_100_000_dong_light_200_000_dong_doi_voi_nguoi).
+action(d12_k1,v1_phat_priority_tu_100_000_dong_light_200_000_dong_doi_voi_nguoi).
 fine_min(d12_k1,100000).
 fine_max(d12_k1,200000).
 original_vi_text(d12_k1,"1. Phạt tiền từ 100.000 đồng đến 200.000 đồng đối với người được chở trên xe đạp, xe đạp máy sử dụng ô (dù)").
@@ -4400,7 +4400,7 @@ rule_type(d12_k8,primary_violation).
 article(d12_k8,12).
 clause(d12_k8,8).
 subject(d12_k8,individual_or_organization).
-action(d12_k8,8_phat_priority_tu_2_000_000_dong_light_4_000_000_dong_doi).
+action(d12_k8,v8_phat_priority_tu_2_000_000_dong_light_4_000_000_dong_doi).
 fine_min_person(d12_k8,2000000).
 fine_max_person(d12_k8,4000000).
 fine_min_org(d12_k8,4000000).
