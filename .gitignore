@@ -5,3 +5,4 @@ legal_env/
 .env 
 data/ 
 .vscode/ 
+.claude/

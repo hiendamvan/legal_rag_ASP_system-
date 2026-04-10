@@ -1,122 +1,182 @@
-# Legal RAG System for Vietnamese Law Documents
+# Legal RAG + ASP System — Nghị định 168/2024/NĐ-CP
 
-Hệ thống gồm 4 phần chính:
+Hệ thống hỏi đáp pháp luật giao thông đường bộ kết hợp hai pipeline độc lập:
 
-- `index.py`: đọc file `.docx`, chunk theo `Điều x`, embedding và lưu vào ChromaDB.
-- Hỗ trợ embedding trực tiếp từ Hugging Face bằng `sentence-transformers`, mặc định dùng `AITeamVN/Vietnamese_Embedding`.
-- `retrieve.py`: nhận câu hỏi, embedding query và truy xuất các điều luật liên quan.
-- `generate.py`: gọi `retrieve`, sau đó gửi câu hỏi + ngữ cảnh sang LLM để sinh câu trả lời.
-- `app.py`: giao diện Streamlit hiện đại, thân thiện.
+- **Pipeline RAG**: Retrieve → LLM (Gemini / OpenAI) sinh câu trả lời tự nhiên
+- **Pipeline ASP**: Retrieve → match rule → LLM trích xuất facts → clingo suy luận vi phạm & mức phạt
 
-## 1. Cài đặt
+---
+
+## Cấu trúc dự án
+
+```
+legal_rag_ASP_system-/
+├── data/
+│   └── nghidinh_168_2024.doc(x)     # Văn bản luật gốc
+│
+├── legal_knowlegde/
+│   ├── chuong2_full.lp              # Knowledge base ASP (Chương II)
+│   ├── reasoning.lp                 # Luật suy luận clingo
+│   ├── case_fact.lp                 # Ví dụ case fact thủ công
+│   ├── run_clingo.py                # Chạy clingo độc lập
+│   └── asp_rule_loader.py           # Parse .lp → dict; match chunk → rules
+│
+├── model/
+│   └── call_llm.py                  # Gọi LLM local (localhost:8000)
+│
+├── utils/
+│   └── docx_loader.py               # Đọc .doc/.docx, chunk phân cấp Điều→Khoản→Điểm
+│
+├── embedder.py                      # Wrapper AITeamVN/Vietnamese_Embedding
+├── index.py                         # Index văn bản vào ChromaDB
+├── retrieve.py                      # Truy vấn ChromaDB
+├── generate.py                      # Pipeline RAG (Gemini / OpenAI)
+├── asp_pipeline.py                  # Pipeline ASP (retrieve → rules → LLM → clingo)
+├── app.py                           # Giao diện Streamlit (2 tab)
+│
+├── llm_finetuning/                  # Script finetune Qwen3-1.7B
+├── requirements.txt
+├── .env.example
+└── .env                             # Cấu hình (tự tạo từ .env.example)
+```
+
+---
+
+## Cài đặt
 
 ```bash
 pip install -r requirements.txt
 cp .env.example .env
 ```
 
-## 2. Cấu hình
-
-### Cách A - dùng trực tiếp model trên Hugging Face
-
-Mặc định project đã cấu hình để dùng model `AITeamVN/Vietnamese_Embedding` từ Hugging Face qua `sentence-transformers`. Theo model card, model này được fine-tune từ BGE-M3, có `max sequence length = 2048`, `output dimensionality = 1024`, và được thiết kế cho retrieval tiếng Việt. citeturn0view0
+Chỉnh `.env`:
 
 ```env
-EMBEDDING_PROVIDER=sentence_transformers
+# LLM cho pipeline RAG
+LLM_PROVIDER=gemini          # hoặc openai
+GEMINI_API_KEY=...
+GEMINI_MODEL=gemini-2.0-flash
+
+OPENAI_API_KEY=...
+OPENAI_MODEL=gpt-4o-mini
+
+# Embedding
 EMBEDDING_MODEL=AITeamVN/Vietnamese_Embedding
-HF_HOME=./hf_cache
 EMBEDDING_MAX_SEQ_LENGTH=2048
 EMBEDDING_NORMALIZE=true
+HF_HOME=./hf_cache
+
+# ChromaDB
+CHROMA_DIR=./chroma_db
+COLLECTION_NAME=legal_docs
 ```
 
-Lần chạy đầu tiên, model sẽ tự tải từ Hugging Face về cache local. Bạn cũng có thể tải sẵn về một thư mục rồi cấu hình:
+> Pipeline ASP dùng model local `hdv2709/qwen_finetune` tại `localhost:8000` — không cần API key.
 
-```env
-EMBEDDING_LOCAL_PATH=./models/AITeamVN_Vietnamese_Embedding
-```
+Link model on Hugging face: https://huggingface.co/hdv2709/qwen_finetune
+---
 
-### Cách B - embedding server tự host
+## Sử dụng
 
-Nếu sau này bạn self-host model qua API kiểu OpenAI-compatible thì chỉ cần đổi lại:
-
-```env
-EMBEDDING_PROVIDER=openai_compatible
-EMBEDDING_MODEL=AITeamVN/Vietnamese_Embedding
-EMBEDDING_API_BASE=http://localhost:8000/v1
-EMBEDDING_API_KEY=dummy
-```
-
-### LLM
-
-LLM mặc định dùng Gemini qua `GEMINI_API_KEY`.
-
-## 3. Index dữ liệu
+### 1. Index văn bản (chạy 1 lần)
 
 ```bash
-python index.py --file /duong_dan/toi/van_ban_luat.docx
+python index.py --file data/nghidinh_168_2024.doc
 ```
 
-## 4. Retrieve thử
+File `.doc` sẽ tự động chuyển sang `.docx` qua LibreOffice hoặc Microsoft Word (pywin32). Nếu chưa cài, hãy tự convert thủ công sang `.docx` trước.
+
+### 2. Pipeline RAG (CLI)
 
 ```bash
-python retrieve.py --query "Chạy quá tốc độ từ 5 km/h đến dưới 10 km/h bị phạt thế nào?" --top_k 5
+# Retrieve thử
+python retrieve.py --query "Chạy quá tốc độ bị phạt thế nào?" --top_k 5
+
+# Sinh câu trả lời bằng Gemini
+python generate.py --query "Vượt đèn đỏ phạt bao nhiêu tiền?"
+
+# Dùng OpenAI thay thế
+python generate.py --query "Vượt đèn đỏ phạt bao nhiêu tiền?" --provider openai
 ```
 
-## 5. Generate câu trả lời
+### 3. Pipeline ASP (CLI)
 
 ```bash
-python generate.py --query "Chạy quá tốc độ từ 5 km/h đến dưới 10 km/h bị phạt thế nào?" --top_k 5
+# Chạy pipeline đầy đủ
+python asp_pipeline.py --query "Người đi bộ qua đường không bảo đảm an toàn?"
+
+# Xem chi tiết từng bước (matched rules, LLM prompt, facts, ASP code)
+python asp_pipeline.py --query "..." --verbose
 ```
 
-## 6. Chạy giao diện
+### 4. Giao diện Streamlit
 
 ```bash
 streamlit run app.py
 ```
 
-## 7. Mở rộng
+Giao diện có 2 tab:
+- **RAG Chat** — hỏi đáp tự nhiên, hiển thị điều luật nguồn
+- **ASP Reasoning** — phân tích vi phạm, trả về mức phạt từ clingo
 
-### Đổi embedding provider
-- Thêm client mới trong `embedding_clients/`
-- Sửa `embedding_factory.py`
+---
 
-### Đổi LLM provider
-- Thêm client mới trong `llm_clients/`
-- Sửa `llm_factory.py`
+## Kiến trúc hệ thống
 
-## 8. Lưu ý về chunking
+### Pipeline RAG
 
-Code hiện chunk theo regex `Điều <số>`. Nếu văn bản của bạn có cấu trúc đặc biệt hơn như:
-- `Điều 6.`
-- `Điều 6:`
-- `Điều 6a`
-- `Điều 6/1`
-
-thì regex hiện tại vẫn xử lý được phần lớn trường hợp. Với văn bản phức tạp hơn, bạn có thể mở rộng trong `utils/docx_loader.py`.
-
-## 9. Ghi chú riêng cho AITeamVN/Vietnamese_Embedding
-
-Model card của `AITeamVN/Vietnamese_Embedding` cho biết cách dùng chuẩn là nạp bằng `SentenceTransformer("AITeamVN/Vietnamese_Embedding")`. Model được gắn nhãn `sentence-transformers`, có kích thước đầu ra 1024 chiều và ví dụ sử dụng dùng phép nhân dot product giữa embedding query và document. citeturn0view0
-
-Ví dụ test nhanh độc lập:
-
-```python
-from sentence_transformers import SentenceTransformer
-
-model = SentenceTransformer("AITeamVN/Vietnamese_Embedding")
-model.max_seq_length = 2048
-
-emb_q = model.encode(["Chạy quá tốc độ bị phạt thế nào?"], normalize_embeddings=True)
-emb_d = model.encode(["Điều 6. Phạt tiền từ 800.000 đồng đến 1.000.000 đồng ..."], normalize_embeddings=True)
-print(emb_q.shape, emb_d.shape)
+```
+Câu hỏi
+  → embed (AITeamVN/Vietnamese_Embedding)
+  → ChromaDB query → top-k Điểm/Khoản
+  → prompt + context → Gemini / OpenAI
+  → Câu trả lời tự nhiên
 ```
 
+### Pipeline ASP
 
-## Chunking văn bản luật
+```
+Câu hỏi
+  → embed → ChromaDB → top-k chunks
+  → match chunk metadata → ASP rules (chuong2_full.lp)
+  → build prompt (câu hỏi + rules JSON)
+  → call_llm() → hdv2709/qwen_finetune (localhost:8000)
+  → parse JSON facts
+  → facts_to_asp() → driver_type / did_action / has_context
+  → clingo (chuong2_full.lp + facts + reasoning.lp)
+  → result(rule_id, fine_min, fine_max)
+```
 
-Hệ thống hiện chunk theo quy tắc:
-- Ưu tiên tách theo `Điều X.`
-- Nếu một điều ngắn hơn `CHUNK_MAX_CHARS` thì giữ nguyên cả điều
-- Nếu điều quá dài thì tách tiếp theo `Khoản 1., 2., 3., ...`
-- Nếu một khoản vẫn quá dài thì tiếp tục tách theo `điểm a), b), c)...`
-- Hỗ trợ cả file `.docx` và `.doc` (file `.doc` sẽ được tự chuyển sang `.docx` bằng LibreOffice headless)
+### Chunking phân cấp
+
+Văn bản được chunk tại cấp **Điểm** (nhỏ nhất), giữ nguyên context đầy đủ:
+
+```
+Mục 1. VI PHẠM QUY TẮC GIAO THÔNG...
+  Điều 6. Xử phạt người điều khiển xe ô tô...
+    Khoản 1. Phạt tiền từ 400.000đ đến 600.000đ...
+      → Chunk: Điểm a) Không chấp hành biển báo...
+      → Chunk: Điểm b) Không có tín hiệu khi ra/vào...
+      → Chunk: Điểm c) Không báo hiệu đèn khẩn cấp...
+```
+
+Mỗi chunk lưu đầy đủ metadata: `muc_num`, `dieu_num`, `khoan_num`, `diem`, `breadcrumb`, `diem_text`, `khoan_intro`.
+
+---
+
+## Mô hình sử dụng
+
+| Thành phần | Model | Nguồn |
+|---|---|---|
+| Embedding | `AITeamVN/Vietnamese_Embedding` | Hugging Face (tự tải) |
+| LLM RAG | `gemini-2.0-flash` hoặc `gpt-4o-mini` | Gemini / OpenAI API |
+| LLM ASP | `hdv2709/qwen_finetune` | Local server :8000 |
+| Reasoning | clingo (ASP solver) | `pip install clingo` |
+| Vector DB | ChromaDB | Local persistent |
+
+---
+
+## Yêu cầu bổ sung
+
+- **Chạy pipeline ASP**: cần server LLM local tại `localhost:8000` (OpenAI-compatible API), ví dụ chạy qua `vllm` hoặc `ollama`.
+- **Convert .doc**: cần LibreOffice (`libreoffice --headless`) hoặc Microsoft Word + `pywin32`.
