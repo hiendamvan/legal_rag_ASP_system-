@@ -32,7 +32,7 @@ _REASONING_LP = str(_KB_DIR / "reasoning.lp")
 
 # ── Step 1: Retrieve + match ────────────────────────────────────────────────
 
-def retrieve_and_match(query: str, top_k: int = 5) -> tuple[list[dict], list[dict]]:
+def retrieve_and_match(query: str, top_k: int = 10) -> tuple[list[dict], list[dict]]:
     """Return (retrieved_chunks, deduplicated_matched_asp_rules)."""
     chunks    = retrieve(query, top_k)
     all_rules = load_rules()
