@@ -1,7 +1,7 @@
 import json
 
-input_path = "case_fact_official_dataset_1500.jsonl"
-output_path = "case_fact_chat_format.jsonl"
+input_path = "./data_finetune/case_fact_train_dataset_ver2.json"
+output_path = "./data_finetune/case_fact_chat_format_ver2.jsonl"
 
 def build_user_prompt(sample):
     question = sample["input"]["question"]
@@ -36,11 +36,11 @@ def build_assistant_output(sample):
     return json.dumps(sample["output"], ensure_ascii=False)
 
 
-with open(input_path, "r", encoding="utf-8") as f_in, \
-     open(output_path, "w", encoding="utf-8") as f_out:
+with open(input_path, "r", encoding="utf-8") as f_in:
+    data = json.load(f_in)
 
-    for line in f_in:
-        sample = json.loads(line)
+with open(output_path, "w", encoding="utf-8") as f_out:
+    for sample in data:
 
         chat_sample = {
             "conversations": [
