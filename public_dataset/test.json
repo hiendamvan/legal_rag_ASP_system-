@@ -1,0 +1,2974 @@
+[
+  {
+    "id": 0,
+    "question_type": "quantitative_context",
+    "question": "Xe máy chạy vượt tốc độ 12 km/h so với quy định bị phạt bao nhiêu?",
+    "relevant_articles": [
+      "d7_k4_a"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Phạt 800.000–1.000.000 đồng theo Điều 7."
+  },
+  {
+    "id": 1,
+    "question_type": "exception_handling",
+    "question": "Xe kinh doanh vận tải không bảo đảm niên hạn sử dụng cho loại hình kinh doanh đã đăng ký nhưng chưa quá niên hạn sử dụng chung của xe thì có bị tịch thu phương tiện theo khoản 9 không?",
+    "relevant_articles": [
+      "d13_k5_c",
+      "d13_k9_a"
+    ],
+    "distractor_articles": [
+      "d13_k7_a",
+      "d13_k10_b",
+      "d13_k13_a"
+    ],
+    "expected_answer": "Không bị tịch thu phương tiện theo khoản 9 Điều 13. Trường hợp này bị xử phạt theo điểm c khoản 5 Điều 13, còn khoản 9 chỉ áp dụng với xe quá niên hạn sử dụng hoặc xe sản xuất, lắp ráp trái quy định."
+  },
+  {
+    "id": 2,
+    "question_type": "simple",
+    "question": "Trong tình huống #1, người điều khiển phương tiện vi phạm quy định kỹ thuật cơ bản thì bị xử phạt như thế nào?",
+    "relevant_articles": [
+      "d16_k2_b"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng xử phạt theo điều khoản tương ứng của Điều 14–17 tùy hành vi cụ thể."
+  },
+  {
+    "id": 3,
+    "question_type": "complex_multi_hop",
+    "question": "Trong tình huống #12, doanh nghiệp vừa không cấp giấy vận tải vừa không bố trí người áp tải khi vận chuyển hàng nguy hiểm thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d26_k2_dd",
+      "d26_k2_d"
+    ],
+    "distractor_articles": [
+      "d21_k2_a",
+      "d22_k3_a",
+      "d23_k3"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo khoản 2 Điều 26."
+  },
+  {
+    "id": 4,
+    "question_type": "exception_handling",
+    "question": "Trong tình huống #20, xe đã lắp thiết bị giám sát hành trình và hoạt động đúng quy định thì có bị phạt không?",
+    "relevant_articles": [
+      "d26_k7_c"
+    ],
+    "distractor_articles": [
+      "d21_k2_a",
+      "d22_k3_a",
+      "d23_k3"
+    ],
+    "expected_answer": "Không vi phạm."
+  },
+  {
+    "id": 5,
+    "question_type": "insufficient_info",
+    "question": "Một người vi phạm giao thông nhưng không rõ là xe đạp hay phương tiện khác trong tình huống #69 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d9_k1_a"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do không xác định loại phương tiện."
+  },
+  {
+    "id": 6,
+    "question_type": "simple",
+    "question": "Xe đăng ký tạm thời hoạt động quá thời hạn cho phép thì bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d13_k7_a"
+    ],
+    "distractor_articles": [
+      "d13_k4_a",
+      "d13_k6_b",
+      "d13_k13_a"
+    ],
+    "expected_answer": "Có vi phạm. Điều khiển xe đăng ký tạm thời quá thời hạn cho phép bị phạt từ 10.000.000 đồng đến 12.000.000 đồng theo điểm a khoản 7 Điều 13."
+  },
+  {
+    "id": 7,
+    "question_type": "exception_handling",
+    "question": "Một đơn vị sản xuất biển số xe theo đúng thẩm quyền hoặc được cơ quan nhà nước có thẩm quyền cho phép thì có bị xử phạt theo Điều 31 không?",
+    "relevant_articles": [
+      "d31_k1",
+      "d31_k2"
+    ],
+    "distractor_articles": [
+      "d14_k3_a",
+      "d16_k2_d",
+      "d28_k2"
+    ],
+    "expected_answer": "Không vi phạm. Điều 31 chỉ xử phạt khi việc mua, bán, sản xuất biển số hoặc sản xuất, lắp ráp phương tiện là trái phép hoặc không được cơ quan có thẩm quyền cho phép."
+  },
+  {
+    "id": 8,
+    "question_type": "simple",
+    "question": "Cơ sở đào tạo lái xe không bố trí giáo viên dạy thực hành ngồi bên cạnh để bảo trợ tay lái cho học viên thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d39_k3_a",
+      "d39_k9_a"
+    ],
+    "distractor_articles": [
+      "d39_k4_c",
+      "d39_k5_a",
+      "d39_k9_a"
+    ],
+    "expected_answer": "Có vi phạm. Cơ sở đào tạo lái xe không bố trí giáo viên dạy thực hành ngồi bên cạnh để bảo trợ tay lái cho học viên thực hành lái xe bị phạt tiền từ 5.000.000 đồng đến 10.000.000 đồng theo điểm a khoản 3 Điều 39; đồng thời còn bị đình chỉ tuyển sinh từ 01 tháng đến 03 tháng theo điểm a khoản 9 Điều 39."
+  },
+  {
+    "id": 9,
+    "question_type": "insufficient_info",
+    "question": "Một người vi phạm giao thông nhưng không rõ loại phương tiện #179 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d7_k2_h"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do thiếu thông tin loại phương tiện."
+  },
+  {
+    "id": 10,
+    "question_type": "simple",
+    "question": "Người điều khiển xe máy thực hiện hành vi vi phạm giao thông cơ bản #121 sẽ bị xử phạt như thế nào?",
+    "relevant_articles": [
+      "d7_k1_a"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Phạt tiền theo khoản 1 Điều 7 (200.000–400.000 đồng)."
+  },
+  {
+    "id": 11,
+    "question_type": "insufficient_info",
+    "question": "Tài xế xe ô tô bị đo nồng độ cồn vượt quá quy định. Áp dụng khoản nào và phạt bao nhiêu?",
+    "relevant_articles": [],
+    "distractor_articles": [
+      "d6_k6_c",
+      "d6_k9_a",
+      "d6_k11_a"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý để xác định khoản cụ thể vì câu hỏi không nêu rõ mức nồng độ cồn. Điều 6 có 3 mức phạt tùy nồng độ: chưa vượt 0,25 mg/lít khí thở (điểm c khoản 6, phạt 6-8 triệu); vượt 0,25-0,4 mg/lít (điểm a khoản 9, phạt 18-20 triệu); vượt quá 0,4 mg/lít (điểm a khoản 11, phạt 30-40 triệu)."
+  },
+  {
+    "id": 12,
+    "question_type": "quantitative_context",
+    "question": "Xe máy chạy vượt tốc độ 12 km/h so với quy định bị phạt bao nhiêu?",
+    "relevant_articles": [
+      "d7_k4_a"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Phạt 800.000–1.000.000 đồng theo Điều 7."
+  },
+  {
+    "id": 13,
+    "question_type": "complex_multi_hop",
+    "question": "Người điều khiển xe máy thực hiện đồng thời hai hành vi vi phạm #142 thì bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d7_k2_h",
+      "d7_k7_c"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo khoản 2 và khoản 7 Điều 7."
+  },
+  {
+    "id": 14,
+    "question_type": "exception_handling",
+    "question": "Trong tình huống #25, xe đã lắp thiết bị giám sát hành trình và hoạt động đúng quy định thì có bị phạt không?",
+    "relevant_articles": [
+      "d26_k7_c"
+    ],
+    "distractor_articles": [
+      "d21_k2_a",
+      "d22_k3_a",
+      "d23_k3"
+    ],
+    "expected_answer": "Không vi phạm."
+  },
+  {
+    "id": 15,
+    "question_type": "complex_multi_hop",
+    "question": "Một xe ô tô không gắn biển số, đồng thời sử dụng giấy kiểm định không do cơ quan có thẩm quyền cấp, thì bị phạt, trừ điểm và khắc phục hậu quả thế nào?",
+    "relevant_articles": [
+      "d13_k7_b",
+      "d13_k6_a",
+      "d13_k13_a",
+      "d13_k13_b",
+      "d13_k11_d",
+      "d13_k12"
+    ],
+    "distractor_articles": [
+      "d13_k8_a",
+      "d13_k8_b",
+      "d13_k10_b"
+    ],
+    "expected_answer": "Có vi phạm. Không gắn biển số thuộc điểm b khoản 7, bị phạt 10.000.000–12.000.000 đồng và trừ 06 điểm GPLX; sử dụng giấy kiểm định không do cơ quan có thẩm quyền cấp thuộc điểm a khoản 6, bị phạt 4.000.000–6.000.000 đồng, bị trừ 02 điểm GPLX, buộc nộp lại giấy tờ theo điểm d khoản 11 và bị thu hồi giấy kiểm định theo khoản 12 Điều 13."
+  },
+  {
+    "id": 16,
+    "question_type": "quantitative_context",
+    "question": "Người đi xe đạp có nồng độ cồn 60 mg/100ml máu bị phạt bao nhiêu?",
+    "relevant_articles": [
+      "d9_k3_d"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Có vi phạm. Phạt 300.000–400.000 đồng theo Điều 9."
+  },
+  {
+    "id": 17,
+    "question_type": "exception_handling",
+    "question": "Trong tình huống #95, hành vi có dấu hiệu vi phạm nhưng thuộc trường hợp ngoại lệ theo quy định thì có bị xử phạt không?",
+    "relevant_articles": [
+      "d17_k4"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Không vi phạm nếu thuộc trường hợp ngoại lệ theo điều luật tương ứng."
+  },
+  {
+    "id": 18,
+    "question_type": "complex_multi_hop",
+    "question": "Người điều khiển xe máy thực hiện đồng thời hai hành vi vi phạm #117 thì bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d7_k2_h",
+      "d7_k7_c"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo khoản 2 và khoản 7 Điều 7."
+  },
+  {
+    "id": 19,
+    "question_type": "exception_handling",
+    "question": "Hành khách mang theo hàng hóa thông thường, không phải hóa chất độc hại, chất dễ cháy nổ, hàng nguy hiểm hay hàng cấm lưu thông lên xe khách thì có bị xử phạt theo điểm a khoản 2 Điều 33 không?",
+    "relevant_articles": [
+      "d33_k2_a"
+    ],
+    "distractor_articles": [
+      "d23_k1",
+      "d24_k1",
+      "d36_k2_a"
+    ],
+    "expected_answer": "Không vi phạm theo điểm a khoản 2 Điều 33. Điều khoản này chỉ xử phạt khi hành khách mang hóa chất độc hại, chất dễ cháy, nổ, hàng nguy hiểm hoặc hàng cấm lưu thông trên xe chở khách."
+  },
+  {
+    "id": 20,
+    "question_type": "exception_handling",
+    "question": "Một người có hành vi vi phạm nhưng thuộc trường hợp ngoại lệ #185 thì có bị phạt không?",
+    "relevant_articles": [
+      "d7_k2_g"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Không vi phạm do thuộc trường hợp ngoại lệ theo Điều 7."
+  },
+  {
+    "id": 21,
+    "question_type": "simple",
+    "question": "Chủ xe giao phương tiện để thực hiện hành vi vi phạm khoản 2 Điều 22 về chở hàng siêu trường, siêu trọng vượt kích thước giấy phép lưu hành thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d32_k13_b",
+      "d32_k18_dd",
+      "d32_k21_c"
+    ],
+    "distractor_articles": [
+      "d32_k9_b",
+      "d32_k12_b",
+      "d32_k14_h"
+    ],
+    "expected_answer": "Có vi phạm. Bị phạt từ 20.000.000 đồng đến 26.000.000 đồng theo điểm b khoản 13 Điều 32; còn bị tước quyền sử dụng phù hiệu từ 01 đến 03 tháng nếu có theo điểm đ khoản 18, và bị trừ 04 điểm GPLX nếu chủ phương tiện là người trực tiếp điều khiển theo điểm c khoản 21."
+  },
+  {
+    "id": 22,
+    "question_type": "quantitative_context",
+    "question": "Xe chở khí đốt đi qua hầm dài 120 mét thì ngoài tiền phạt còn bị trừ bao nhiêu điểm giấy phép lái xe?",
+    "relevant_articles": [
+      "d23_k4",
+      "d23_k7_a"
+    ],
+    "distractor_articles": [
+      "d23_k5",
+      "d21_k9",
+      "d22_k6_b"
+    ],
+    "expected_answer": "Có vi phạm. Hành vi này bị phạt từ 6.000.000 đồng đến 8.000.000 đồng theo khoản 4 Điều 23 và bị trừ 02 điểm GPLX theo điểm a khoản 7 Điều 23."
+  },
+  {
+    "id": 23,
+    "question_type": "simple",
+    "question": "Để vật nuôi đi trên đường bộ không bảo đảm an toàn cho người và phương tiện khác thì bị phạt thế nào?",
+    "relevant_articles": [
+      "d11_k1_d"
+    ],
+    "distractor_articles": [
+      "d11_k1_c",
+      "d11_k2_c",
+      "d10_k1_a"
+    ],
+    "expected_answer": "Có vi phạm. Để vật nuôi đi trên đường bộ không bảo đảm an toàn cho người, phương tiện đang tham gia giao thông bị phạt tiền từ 150.000 đồng đến 250.000 đồng theo điểm d khoản 1 Điều 11."
+  },
+  {
+    "id": 24,
+    "question_type": "simple",
+    "question": "Xe chở động vật sống thuộc loại phải có giấy tờ kiểm dịch nhưng tài xế không mang theo thì bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d24_k1"
+    ],
+    "distractor_articles": [
+      "d23_k2",
+      "d25_k1",
+      "d21_k2_dd"
+    ],
+    "expected_answer": "Có vi phạm. Vận chuyển động vật sống không mang đủ giấy tờ theo quy định bị phạt từ 1.000.000 đồng đến 2.000.000 đồng theo khoản 1 Điều 24."
+  },
+  {
+    "id": 25,
+    "question_type": "insufficient_info",
+    "question": "Một người vi phạm giao thông nhưng không rõ loại phương tiện #139 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d7_k2_h"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do thiếu thông tin loại phương tiện."
+  },
+  {
+    "id": 26,
+    "question_type": "simple",
+    "question": "Tài xế xe ô tô không thắt dây đai an toàn khi đang điều khiển xe lưu thông trên đường. Mức phạt theo Điều 6 là bao nhiêu?",
+    "relevant_articles": [
+      "d6_k3_k"
+    ],
+    "distractor_articles": [
+      "d6_k3_l",
+      "d6_k3_m",
+      "d7_k3_k"
+    ],
+    "expected_answer": "Theo điểm k khoản 3 Điều 6, không thắt dây đai an toàn khi điều khiển xe chạy trên đường bị phạt từ 800.000 đồng đến 1.000.000 đồng."
+  },
+  {
+    "id": 27,
+    "question_type": "simple",
+    "question": "Trong tình huống #21, người điều khiển xe không mang theo giấy tờ bắt buộc thì bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d18_k2_a"
+    ],
+    "distractor_articles": [
+      "d18_k2_a",
+      "d18_k5_a",
+      "d19_k1"
+    ],
+    "expected_answer": "Có vi phạm. Phạt từ 200.000 đến 300.000 đồng theo khoản 2 Điều 18."
+  },
+  {
+    "id": 28,
+    "question_type": "quantitative_context",
+    "question": "Xe máy chạy vượt tốc độ 6 km/h so với quy định bị phạt bao nhiêu?",
+    "relevant_articles": [
+      "d7_k2_b"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Phạt 400.000–600.000 đồng theo Điều 7."
+  },
+  {
+    "id": 29,
+    "question_type": "quantitative_context",
+    "question": "Người điều khiển xe ô tô bị đo nồng độ cồn trong máu là 65 miligam/100 mililít máu. Áp dụng điểm, khoản nào và mức phạt là bao nhiêu?",
+    "relevant_articles": [
+      "d6_k9_a"
+    ],
+    "distractor_articles": [
+      "d6_k6_c",
+      "d6_k11_a",
+      "d8_k7_a"
+    ],
+    "expected_answer": "Nồng độ cồn 65 mg/100ml máu nằm trong khoảng vượt quá 50 mg đến 80 mg/100ml máu. Theo điểm a khoản 9 Điều 6, bị phạt từ 18.000.000 đồng đến 20.000.000 đồng và bị trừ 10 điểm giấy phép lái xe."
+  },
+  {
+    "id": 30,
+    "question_type": "complex_multi_hop",
+    "question": "Trong tình huống #27, doanh nghiệp vừa không cấp giấy vận tải vừa không bố trí người áp tải khi vận chuyển hàng nguy hiểm thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d26_k2_dd",
+      "d26_k2_d"
+    ],
+    "distractor_articles": [
+      "d21_k2_a",
+      "d22_k3_a",
+      "d23_k3"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo khoản 2 Điều 26."
+  },
+  {
+    "id": 31,
+    "question_type": "simple",
+    "question": "Gắn biển số không do cơ quan có thẩm quyền cấp thì ngoài phạt tiền còn bị xử lý bổ sung gì?",
+    "relevant_articles": [
+      "d13_k8_a",
+      "d13_k10_a"
+    ],
+    "distractor_articles": [
+      "d13_k8_b",
+      "d13_k13_c",
+      "d13_k11_a"
+    ],
+    "expected_answer": "Có vi phạm. Ngoài phạt tiền từ 20.000.000 đồng đến 26.000.000 đồng theo điểm a khoản 8, còn bị tịch thu biển số xe theo điểm a khoản 10 Điều 13."
+  },
+  {
+    "id": 32,
+    "question_type": "insufficient_info",
+    "question": "Một phương tiện vi phạm nhưng không rõ loại xe trong tình huống #39 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d15_k1"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do thiếu thông tin về loại phương tiện."
+  },
+  {
+    "id": 33,
+    "question_type": "insufficient_info",
+    "question": "Một người vi phạm giao thông nhưng không rõ loại phương tiện #169 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d7_k2_h"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do thiếu thông tin loại phương tiện."
+  },
+  {
+    "id": 34,
+    "question_type": "simple",
+    "question": "Trong tình huống #21, người điều khiển phương tiện vi phạm quy định kỹ thuật cơ bản thì bị xử phạt như thế nào?",
+    "relevant_articles": [
+      "d17_k1"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng xử phạt theo điều khoản tương ứng của Điều 14–17 tùy hành vi cụ thể."
+  },
+  {
+    "id": 35,
+    "question_type": "simple",
+    "question": "Trong tình huống #46, người điều khiển phương tiện vi phạm quy định kỹ thuật cơ bản thì bị xử phạt như thế nào?",
+    "relevant_articles": [
+      "d17_k2_a"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng xử phạt theo điều khoản tương ứng của Điều 14–17 tùy hành vi cụ thể."
+  },
+  {
+    "id": 36,
+    "question_type": "quantitative_context",
+    "question": "Mức phạt tối đa đối với hành vi điều khiển ô tô không có đủ đèn chiếu sáng là bao nhiêu?",
+    "relevant_articles": [
+      "d13_k2_a"
+    ],
+    "distractor_articles": [
+      "d13_k1",
+      "d13_k3_a",
+      "d13_k5_d"
+    ],
+    "expected_answer": "Có vi phạm. Mức phạt tối đa là 600.000 đồng theo điểm a khoản 2 Điều 13."
+  },
+  {
+    "id": 37,
+    "question_type": "insufficient_info",
+    "question": "Một người vi phạm giao thông nhưng không rõ là xe đạp hay phương tiện khác trong tình huống #79 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d9_k1_a"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do không xác định loại phương tiện."
+  },
+  {
+    "id": 38,
+    "question_type": "complex_multi_hop",
+    "question": "Người điều khiển xe máy thực hiện đồng thời hai hành vi vi phạm #172 thì bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d7_k2_h",
+      "d7_k7_c"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo khoản 2 và khoản 7 Điều 7."
+  },
+  {
+    "id": 39,
+    "question_type": "simple",
+    "question": "Xe ô tô có tem kiểm định hết hạn 20 ngày thì bị phạt bao nhiêu?",
+    "relevant_articles": [
+      "d13_k5_a"
+    ],
+    "distractor_articles": [
+      "d13_k6_b",
+      "d13_k4_a",
+      "d13_k13_a"
+    ],
+    "expected_answer": "Có vi phạm. Giấy chứng nhận hoặc tem kiểm định hết hiệu lực dưới 01 tháng bị phạt từ 3.000.000 đồng đến 4.000.000 đồng theo điểm a khoản 5 Điều 13."
+  },
+  {
+    "id": 40,
+    "question_type": "quantitative_context",
+    "question": "Trong tình huống #43, xe chở hàng vượt 60% trọng tải thì bị phạt bao nhiêu?",
+    "relevant_articles": [
+      "d26_k3"
+    ],
+    "distractor_articles": [
+      "d21_k2_a",
+      "d22_k3_a",
+      "d23_k3"
+    ],
+    "expected_answer": "Có vi phạm. Phạt từ 2.000.000 đến 3.000.000 đồng đối với cá nhân theo khoản 3 Điều 26."
+  },
+  {
+    "id": 41,
+    "question_type": "complex_multi_hop",
+    "question": "Trong tình huống #32, người điều khiển phương tiện vừa vi phạm thiết bị xe vừa gây ô nhiễm môi trường thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d14_k1_a",
+      "d17_k2_a"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo Điều 14 và Điều 17."
+  },
+  {
+    "id": 42,
+    "question_type": "simple",
+    "question": "Người điều khiển xe máy thực hiện hành vi vi phạm giao thông cơ bản #161 sẽ bị xử phạt như thế nào?",
+    "relevant_articles": [
+      "d7_k1_a"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Phạt tiền theo khoản 1 Điều 7 (200.000–400.000 đồng)."
+  },
+  {
+    "id": 43,
+    "question_type": "quantitative_context",
+    "question": "Một người sử dụng trái phép lòng đường để kinh doanh dịch vụ ăn uống thì mức phạt tối đa là bao nhiêu trong tình huống #8?",
+    "relevant_articles": [
+      "d12_k7"
+    ],
+    "distractor_articles": [
+      "d12_k2_a",
+      "d12_k5_b",
+      "d12_k7"
+    ],
+    "expected_answer": "Có vi phạm. Mức phạt tối đa 3.000.000 đồng đối với cá nhân theo khoản 7 Điều 12."
+  },
+  {
+    "id": 44,
+    "question_type": "quantitative_context",
+    "question": "Mức phạt tối đa đối với hành vi vận chuyển hàng hóa nguy hiểm không có giấy phép vận chuyển là bao nhiêu?",
+    "relevant_articles": [
+      "d23_k5"
+    ],
+    "distractor_articles": [
+      "d21_k6_dd",
+      "d22_k3_a",
+      "d24_k2"
+    ],
+    "expected_answer": "Có vi phạm. Mức phạt tối đa là 14.000.000 đồng theo khoản 5 Điều 23."
+  },
+  {
+    "id": 45,
+    "question_type": "simple",
+    "question": "Một đăng kiểm viên không tuân thủ đúng quy trình, quy chuẩn kỹ thuật khi kiểm định xe cơ giới thì bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d40_k1_a",
+      "d40_k6_a"
+    ],
+    "distractor_articles": [
+      "d39_k1_a",
+      "d39_k3_b",
+      "d40_k2_a"
+    ],
+    "expected_answer": "Có vi phạm. Cá nhân không tuân thủ đúng quy định tại các quy trình, quy chuẩn kỹ thuật có liên quan trong chứng nhận, kiểm định xe cơ giới, xe máy chuyên dùng, phụ tùng xe cơ giới bị phạt từ 8.000.000 đồng đến 10.000.000 đồng theo điểm a khoản 1 Điều 40; đồng thời bị tước quyền sử dụng chứng chỉ đăng kiểm viên từ 01 tháng đến 03 tháng theo điểm a khoản 6 Điều 40."
+  },
+  {
+    "id": 46,
+    "question_type": "simple",
+    "question": "Cơ sở đào tạo lái xe bố trí học viên tập lái trên xe tập lái vượt quá số lượng quy định thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d39_k4_d",
+      "d39_k9_a"
+    ],
+    "distractor_articles": [
+      "d39_k3_d",
+      "d39_k5_b",
+      "d39_k9_b"
+    ],
+    "expected_answer": "Có vi phạm. Bố trí học viên tập lái trên xe tập lái vượt quá số lượng quy định bị phạt tiền từ 10.000.000 đồng đến 20.000.000 đồng theo điểm d khoản 4 Điều 39; đồng thời còn bị đình chỉ tuyển sinh từ 01 tháng đến 03 tháng theo điểm a khoản 9 Điều 39."
+  },
+  {
+    "id": 47,
+    "question_type": "complex_multi_hop",
+    "question": "Chủ xe là cá nhân trực tiếp lái xe khách chạy tuyến trên 300 km chở vượt trên 100% số người được phép chở trong trường hợp thuộc khoản 4 Điều 20 thì bị xử lý thế nào?",
+    "relevant_articles": [
+      "d32_k6",
+      "d32_k17_dd",
+      "d32_k18_dd",
+      "d32_k21_h"
+    ],
+    "distractor_articles": [
+      "d32_k18_b",
+      "d32_k19_g",
+      "d32_k21_a"
+    ],
+    "expected_answer": "Có vi phạm. Chủ xe bị phạt theo khoản 6 Điều 32; nếu chở vượt trên 100% số người quy định được phép chở của phương tiện còn bị tước quyền sử dụng phù hiệu từ 01 tháng đến 03 tháng theo điểm đ khoản 18, bị trừ 10 điểm GPLX theo điểm h khoản 21 nếu trực tiếp điều khiển, và tái phạm còn có thể bị tịch thu phương tiện theo điểm đ khoản 17 Điều 32."
+  },
+  {
+    "id": 48,
+    "question_type": "exception_handling",
+    "question": "Người chở quá số người trên xe đạp nhưng đang chở người đi cấp cứu trong tình huống #5 có bị phạt không?",
+    "relevant_articles": [
+      "d9_k1_o"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Không vi phạm do thuộc ngoại lệ chở người bệnh đi cấp cứu theo điểm o khoản 1 Điều 9."
+  },
+  {
+    "id": 49,
+    "question_type": "insufficient_info",
+    "question": "Một xe chở khách có dấu hiệu vi phạm trong tình huống #39 nhưng không rõ loại xe và số người thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d20_k2"
+    ],
+    "distractor_articles": [
+      "d20_k3_a",
+      "d20_k5_c",
+      "d20_k6_b"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do thiếu thông tin cụ thể về hành vi và loại phương tiện."
+  },
+  {
+    "id": 50,
+    "question_type": "complex_multi_hop",
+    "question": "Người điều khiển xe máy thực hiện đồng thời hai hành vi vi phạm #112 thì bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d7_k2_h",
+      "d7_k7_c"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo khoản 2 và khoản 7 Điều 7."
+  },
+  {
+    "id": 51,
+    "question_type": "insufficient_info",
+    "question": "Một người vi phạm giao thông nhưng không rõ loại phương tiện #134 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d7_k2_h"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do thiếu thông tin loại phương tiện."
+  },
+  {
+    "id": 52,
+    "question_type": "exception_handling",
+    "question": "Phương tiện biển số nước ngoài có đầy đủ giấy phép liên vận còn hiệu lực, gắn ký hiệu quốc gia đúng quy định và hoạt động đúng phạm vi cho phép thì có bị xử phạt theo Điều 37 không?",
+    "relevant_articles": [
+      "d37_k3_b",
+      "d37_k3_c",
+      "d37_k5"
+    ],
+    "distractor_articles": [
+      "d38_k2_b",
+      "d34_k1",
+      "d33_k2_a"
+    ],
+    "expected_answer": "Không vi phạm. Điều 37 chỉ xử phạt khi người điều khiển phương tiện gắn biển số nước ngoài vi phạm các điều kiện về giấy tờ, phạm vi hoạt động, biển số tạm thời, ký hiệu quốc gia hoặc thời hạn lưu hành."
+  },
+  {
+    "id": 53,
+    "question_type": "simple",
+    "question": "Người đi xe đạp không đi đúng phần đường quy định trong tình huống #81 bị phạt thế nào?",
+    "relevant_articles": [
+      "d9_k1_a"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Có vi phạm. Phạt 100.000–200.000 đồng theo điểm a khoản 1 Điều 9."
+  },
+  {
+    "id": 54,
+    "question_type": "insufficient_info",
+    "question": "Một người vi phạm giao thông nhưng không rõ loại phương tiện #39 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d7_k2_h"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do thiếu thông tin loại phương tiện."
+  },
+  {
+    "id": 55,
+    "question_type": "insufficient_info",
+    "question": "Một người không chấp hành biển báo hiệu khi tham gia giao thông cùng vật nuôi thì bị phạt thế nào?",
+    "relevant_articles": [
+      "d11_k1_b"
+    ],
+    "distractor_articles": [
+      "d11_k2_a",
+      "d10_k1_b",
+      "d9_k1_c"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý. Chưa xác định rõ người đó là người điều khiển, dẫn dắt vật nuôi hay điều khiển xe vật nuôi kéo, nên chưa thể áp dụng chính xác Điều 11."
+  },
+  {
+    "id": 56,
+    "question_type": "simple",
+    "question": "Xe chở thực phẩm tươi sống không chấp hành quy định về an toàn thực phẩm và vệ sinh dịch tễ thì tài xế bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d24_k2",
+      "d24_k3"
+    ],
+    "distractor_articles": [
+      "d23_k2",
+      "d25_k1",
+      "d21_k2_dd"
+    ],
+    "expected_answer": "Có vi phạm. Vận chuyển thực phẩm tươi sống không chấp hành quy định về an toàn thực phẩm, vệ sinh dịch tễ, phòng dịch và bảo đảm vệ sinh môi trường bị phạt từ 3.000.000 đồng đến 5.000.000 đồng theo khoản 2 Điều 24 và bị trừ 02 điểm GPLX theo khoản 3 Điều 24."
+  },
+  {
+    "id": 57,
+    "question_type": "simple",
+    "question": "Xe chở hàng nguy hiểm có giấy phép vận chuyển đã hết hiệu lực thì bị xử lý ra sao?",
+    "relevant_articles": [
+      "d23_k5",
+      "d23_k7_b"
+    ],
+    "distractor_articles": [
+      "d21_k6_dd",
+      "d22_k3_a",
+      "d24_k2"
+    ],
+    "expected_answer": "Có vi phạm. Vận chuyển hàng hóa nguy hiểm có giấy phép nhưng đã hết hiệu lực bị phạt từ 12.000.000 đồng đến 14.000.000 đồng theo khoản 5 Điều 23 và bị trừ 04 điểm GPLX theo điểm b khoản 7 Điều 23."
+  },
+  {
+    "id": 58,
+    "question_type": "complex_multi_hop",
+    "question": "Trong tình huống #42, người điều khiển phương tiện vừa vi phạm thiết bị xe vừa gây ô nhiễm môi trường thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d14_k1_a",
+      "d17_k2_a"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo Điều 14 và Điều 17."
+  },
+  {
+    "id": 59,
+    "question_type": "simple",
+    "question": "Hành khách ngồi trên ghế sau xe ô tô (ghế có trang bị dây đai) không thắt dây đai an toàn khi xe đang chạy. Người điều khiển có bị xử phạt không và mức phạt là bao nhiêu?",
+    "relevant_articles": [
+      "d6_k3_l"
+    ],
+    "distractor_articles": [
+      "d6_k3_k",
+      "d6_k3_m",
+      "d6_k5_p"
+    ],
+    "expected_answer": "Có. Theo điểm l khoản 3 Điều 6, người điều khiển xe ô tô bị phạt từ 800.000 đồng đến 1.000.000 đồng khi chở người trên xe không thắt dây đai an toàn (tại vị trí có trang bị dây đai) khi xe đang chạy."
+  },
+  {
+    "id": 60,
+    "question_type": "simple",
+    "question": "Trong tình huống #76, người điều khiển phương tiện vi phạm quy định kỹ thuật cơ bản thì bị xử phạt như thế nào?",
+    "relevant_articles": [
+      "d14_k2_a"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng xử phạt theo điều khoản tương ứng của Điều 14–17 tùy hành vi cụ thể."
+  },
+  {
+    "id": 61,
+    "question_type": "simple",
+    "question": "Người đi xe đạp không đi đúng phần đường quy định trong tình huống #56 bị phạt thế nào?",
+    "relevant_articles": [
+      "d9_k1_a"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Có vi phạm. Phạt 100.000–200.000 đồng theo điểm a khoản 1 Điều 9."
+  },
+  {
+    "id": 62,
+    "question_type": "insufficient_info",
+    "question": "Một người vi phạm giao thông nhưng không rõ loại phương tiện #194 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d7_k2_h"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do thiếu thông tin loại phương tiện."
+  },
+  {
+    "id": 63,
+    "question_type": "insufficient_info",
+    "question": "Một phương tiện vi phạm nhưng không rõ loại xe trong tình huống #19 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d17_k1"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do thiếu thông tin về loại phương tiện."
+  },
+  {
+    "id": 64,
+    "question_type": "simple",
+    "question": "Người điều khiển xe máy thực hiện hành vi vi phạm giao thông cơ bản #191 sẽ bị xử phạt như thế nào?",
+    "relevant_articles": [
+      "d7_k1_a"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Phạt tiền theo khoản 1 Điều 7 (200.000–400.000 đồng)."
+  },
+  {
+    "id": 65,
+    "question_type": "exception_handling",
+    "question": "Tài xế để người ở lại trên xe khi xe lên phà nhưng là người già yếu trong tình huống #30 thì có bị phạt không?",
+    "relevant_articles": [
+      "d20_k3_b"
+    ],
+    "distractor_articles": [
+      "d20_k3_a",
+      "d20_k5_c",
+      "d20_k6_b"
+    ],
+    "expected_answer": "Không vi phạm vì thuộc trường hợp ngoại lệ (người già yếu) theo điểm b khoản 3 Điều 20."
+  },
+  {
+    "id": 66,
+    "question_type": "simple",
+    "question": "Một tổ chức sản xuất, lắp ráp trái phép phương tiện giao thông cơ giới đường bộ thì bị phạt ra sao?",
+    "relevant_articles": [
+      "d31_k2",
+      "d31_k3",
+      "d31_k4"
+    ],
+    "distractor_articles": [
+      "d14_k3_a",
+      "d16_k2_d",
+      "d28_k2"
+    ],
+    "expected_answer": "Có vi phạm. Tổ chức sản xuất, lắp ráp trái phép phương tiện giao thông cơ giới đường bộ bị phạt từ 80.000.000 đồng đến 100.000.000 đồng theo khoản 2 Điều 31, bị tịch thu phương tiện sản xuất, lắp ráp trái phép theo khoản 3 và buộc nộp lại số lợi bất hợp pháp theo khoản 4."
+  },
+  {
+    "id": 67,
+    "question_type": "exception_handling",
+    "question": "Xe chở hàng siêu trường có giấy phép lưu hành còn hiệu lực và thực hiện đúng toàn bộ điều kiện trong giấy phép thì có bị xử phạt theo Điều 22 không?",
+    "relevant_articles": [
+      "d22_k1_b",
+      "d22_k2",
+      "d22_k3_a"
+    ],
+    "distractor_articles": [
+      "d21_k2_dd",
+      "d23_k2",
+      "d24_k1"
+    ],
+    "expected_answer": "Không vi phạm. Điều 22 chỉ xử phạt khi không có giấy phép, giấy phép hết hiệu lực, giấy phép không hợp pháp hoặc thực hiện không đúng quy định trong giấy phép."
+  },
+  {
+    "id": 68,
+    "question_type": "simple",
+    "question": "Xe khách tháo bớt giường nằm so với thông số kỹ thuật trong giấy kiểm định bị phạt bao nhiêu?",
+    "relevant_articles": [
+      "d13_k3_d"
+    ],
+    "distractor_articles": [
+      "d13_k4_b",
+      "d13_k5_c",
+      "d13_k11_b"
+    ],
+    "expected_answer": "Có vi phạm. Bị phạt từ 1.000.000 đồng đến 2.000.000 đồng theo điểm d khoản 3 Điều 13."
+  },
+  {
+    "id": 69,
+    "question_type": "simple",
+    "question": "Xe ô tô không gắn thẻ đầu cuối điện tử tự động nhưng cố tình đi vào làn thu phí tự động không dừng. Mức phạt theo Điều 6 là bao nhiêu?",
+    "relevant_articles": [
+      "d6_k4_a"
+    ],
+    "distractor_articles": [
+      "d6_k1_a",
+      "d6_k5_i",
+      "d6_k3_a"
+    ],
+    "expected_answer": "Theo điểm a khoản 4 Điều 6, điều khiển xe không đủ điều kiện thu phí điện tử tự động không dừng mà đi vào làn thu phí dành riêng bị phạt từ 2.000.000 đồng đến 3.000.000 đồng."
+  },
+  {
+    "id": 70,
+    "question_type": "insufficient_info",
+    "question": "Một xe vi phạm nhưng không rõ là cá nhân hay tổ chức trong tình huống #14 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d26_k1_a"
+    ],
+    "distractor_articles": [
+      "d21_k2_a",
+      "d22_k3_a",
+      "d23_k3"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý."
+  },
+  {
+    "id": 71,
+    "question_type": "insufficient_info",
+    "question": "Một xe tham gia giao thông có kính chắn gió bị vỡ thì bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d13_k1"
+    ],
+    "distractor_articles": [
+      "d13_k2_a",
+      "d13_k3_a",
+      "d13_k5_b"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý. Chưa xác định đây có phải xe ô tô hoặc loại xe thuộc phạm vi Điều 13 hay không, và cũng chưa rõ xe có thiết kế bắt buộc lắp kính chắn gió hay không."
+  },
+  {
+    "id": 72,
+    "question_type": "simple",
+    "question": "Người điều khiển xe máy thực hiện hành vi vi phạm giao thông cơ bản #31 sẽ bị xử phạt như thế nào?",
+    "relevant_articles": [
+      "d7_k1_a"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Phạt tiền theo khoản 1 Điều 7 (200.000–400.000 đồng)."
+  },
+  {
+    "id": 73,
+    "question_type": "simple",
+    "question": "Chủ xe ô tô tẩy xóa hồ sơ đăng ký xe nhưng chưa đến mức truy cứu trách nhiệm hình sự thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d32_k7_a",
+      "d32_k20"
+    ],
+    "distractor_articles": [
+      "d32_k9_b",
+      "d32_k12_b",
+      "d32_k14_h"
+    ],
+    "expected_answer": "Có vi phạm. Bị phạt từ 4.000.000 đồng đến 6.000.000 đồng đối với cá nhân theo điểm a khoản 7 Điều 32; đồng thời bị thu hồi hồ sơ đăng ký xe bị tẩy xóa, sửa chữa hoặc giả mạo theo khoản 20 Điều 32."
+  },
+  {
+    "id": 74,
+    "question_type": "simple",
+    "question": "Người điều khiển xe máy chuyên dùng lùi xe trên đường cao tốc. Mức phạt theo Điều 8 là bao nhiêu?",
+    "relevant_articles": [
+      "d8_k9_dd"
+    ],
+    "distractor_articles": [
+      "d8_k4_e",
+      "d8_k5_a",
+      "d6_k9_dd"
+    ],
+    "expected_answer": "Theo điểm đ khoản 9 Điều 8, lùi xe trên đường cao tốc bị phạt từ 18.000.000 đồng đến 20.000.000 đồng."
+  },
+  {
+    "id": 75,
+    "question_type": "complex_multi_hop",
+    "question": "Người đi xe đạp vừa không chấp hành đèn tín hiệu vừa bám kéo xe khác trong tình huống #82 bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d9_k2_dd",
+      "d9_k2_c"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo khoản 2 Điều 9 (150.000–250.000 đồng cho mỗi hành vi)."
+  },
+  {
+    "id": 76,
+    "question_type": "quantitative_context",
+    "question": "Người điều khiển xe máy chuyên dùng bị đo nồng độ cồn trong hơi thở là 0,20 miligam/1 lít khí thở. Áp dụng điểm, khoản nào và mức phạt là bao nhiêu?",
+    "relevant_articles": [
+      "d8_k6_c"
+    ],
+    "distractor_articles": [
+      "d8_k7_a",
+      "d8_k9_a",
+      "d6_k6_c"
+    ],
+    "expected_answer": "Nồng độ cồn 0,20 mg/lít khí thở chưa vượt quá 0,25 mg/lít. Theo điểm c khoản 6 Điều 8, có nồng độ cồn nhưng chưa vượt mức 0,25 mg/lít khí thở bị phạt từ 3.000.000 đồng đến 5.000.000 đồng."
+  },
+  {
+    "id": 77,
+    "question_type": "complex_multi_hop",
+    "question": "Trong tình huống #12, tài xế vừa chở quá số người vừa không đóng cửa khi xe chạy thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d20_k2",
+      "d20_k3_a"
+    ],
+    "distractor_articles": [
+      "d20_k3_a",
+      "d20_k5_c",
+      "d20_k6_b"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời mức phạt chở quá số người theo khoản 2 và lỗi không đóng cửa theo khoản 3 Điều 20."
+  },
+  {
+    "id": 78,
+    "question_type": "simple",
+    "question": "Người điều khiển xe tải nhận hàng trên đường cao tốc thì bị phạt ra sao?",
+    "relevant_articles": [
+      "d21_k9",
+      "d21_k13_c"
+    ],
+    "distractor_articles": [
+      "d20_k8",
+      "d21_k2_dd",
+      "d25_k1"
+    ],
+    "expected_answer": "Có vi phạm. Nhận, trả hàng trên đường cao tốc bị phạt từ 10.000.000 đồng đến 12.000.000 đồng theo khoản 9 Điều 21 và bị trừ 06 điểm giấy phép lái xe theo điểm c khoản 13 Điều 21."
+  },
+  {
+    "id": 79,
+    "question_type": "exception_handling",
+    "question": "Xe ô tô là xe ưu tiên đang đi làm nhiệm vụ khẩn cấp đi ngược chiều trên đường một chiều. Hành vi này có bị phạt theo điểm d khoản 9 Điều 6 không?",
+    "relevant_articles": [
+      "d6_k9_d"
+    ],
+    "distractor_articles": [
+      "d6_k5_b",
+      "d6_k11_dd",
+      "d8_k7_d"
+    ],
+    "expected_answer": "Không vi phạm. Điểm d khoản 9 Điều 6 cấm đi ngược chiều trên đường một chiều nhưng có ngoại lệ 'các trường hợp xe ưu tiên đang đi làm nhiệm vụ khẩn cấp theo quy định'. Xe ưu tiên đang thực hiện nhiệm vụ khẩn cấp được miễn trừ."
+  },
+  {
+    "id": 80,
+    "question_type": "simple",
+    "question": "Người điều khiển xe máy thực hiện hành vi vi phạm giao thông cơ bản #66 sẽ bị xử phạt như thế nào?",
+    "relevant_articles": [
+      "d7_k1_a"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Phạt tiền theo khoản 1 Điều 7 (200.000–400.000 đồng)."
+  },
+  {
+    "id": 81,
+    "question_type": "simple",
+    "question": "Xe ô tô chở người trên nóc xe trong khi xe đang lưu thông trên đường. Mức phạt theo Điều 6 là bao nhiêu?",
+    "relevant_articles": [
+      "d6_k5_p"
+    ],
+    "distractor_articles": [
+      "d6_k2_b",
+      "d6_k3_i",
+      "d7_k5_p"
+    ],
+    "expected_answer": "Theo điểm p khoản 5 Điều 6, chở người trên nóc xe bị phạt từ 4.000.000 đồng đến 6.000.000 đồng và bị trừ 6 điểm giấy phép lái xe."
+  },
+  {
+    "id": 82,
+    "question_type": "exception_handling",
+    "question": "Một người sử dụng lòng đường vào mục đích khác nhưng đã có giấy phép hợp lệ trong tình huống #40 thì có bị phạt không?",
+    "relevant_articles": [
+      "d12_k12"
+    ],
+    "distractor_articles": [
+      "d12_k2_a",
+      "d12_k5_b",
+      "d12_k7"
+    ],
+    "expected_answer": "Không vi phạm nếu có giấy phép hợp lệ và thực hiện đúng nội dung theo khoản 12 Điều 12."
+  },
+  {
+    "id": 83,
+    "question_type": "complex_multi_hop",
+    "question": "Ô tô vừa không có kính chắn gió đúng quy định vừa không có còi thì bị xử phạt như thế nào?",
+    "relevant_articles": [
+      "d13_k1",
+      "d13_k2_b"
+    ],
+    "distractor_articles": [
+      "d13_k2_a",
+      "d13_k3_a",
+      "d13_k5_b"
+    ],
+    "expected_answer": "Có vi phạm. Hành vi không có kính chắn gió hoặc kính vỡ không có tác dụng bị phạt từ 200.000 đồng đến 400.000 đồng theo khoản 1; hành vi không có còi hoặc còi không có tác dụng bị phạt từ 400.000 đồng đến 600.000 đồng theo điểm b khoản 2 Điều 13."
+  },
+  {
+    "id": 84,
+    "question_type": "simple",
+    "question": "Cơ sở đăng kiểm phân công người không đủ điều kiện thực hiện nhiệm vụ của đăng kiểm viên thì bị phạt thế nào?",
+    "relevant_articles": [
+      "d40_k2_c",
+      "d40_k6_b"
+    ],
+    "distractor_articles": [
+      "d40_k3_b",
+      "d40_k4_a",
+      "d40_k6_b"
+    ],
+    "expected_answer": "Có vi phạm. Phân công người không đủ điều kiện thực hiện nhiệm vụ của đăng kiểm viên, nhân viên nghiệp vụ bị phạt từ 10.000.000 đồng đến 15.000.000 đồng theo điểm c khoản 2 Điều 40; đồng thời bị tước quyền sử dụng giấy chứng nhận đủ điều kiện hoạt động kiểm định từ 01 tháng đến 03 tháng theo điểm b khoản 6 Điều 40."
+  },
+  {
+    "id": 85,
+    "question_type": "insufficient_info",
+    "question": "Một người vi phạm giao thông nhưng không rõ loại phương tiện #24 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d7_k2_h"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do thiếu thông tin loại phương tiện."
+  },
+  {
+    "id": 86,
+    "question_type": "simple",
+    "question": "Trung tâm sát hạch lái xe không duy trì đủ điều kiện theo Quy chuẩn kỹ thuật quốc gia về trung tâm sát hạch thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d39_k3_g"
+    ],
+    "distractor_articles": [
+      "d39_k4_c",
+      "d39_k5_a",
+      "d39_k9_a"
+    ],
+    "expected_answer": "Có vi phạm. Trung tâm sát hạch lái xe không duy trì đủ các điều kiện quy định trong Quy chuẩn kỹ thuật quốc gia về Trung tâm sát hạch lái xe cơ giới đường bộ bị phạt tiền từ 5.000.000 đồng đến 10.000.000 đồng theo điểm g khoản 3 Điều 39."
+  },
+  {
+    "id": 87,
+    "question_type": "complex_multi_hop",
+    "question": "Trong tình huống #2, tài xế vừa chở quá số người vừa không đóng cửa khi xe chạy thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d20_k2",
+      "d20_k3_a"
+    ],
+    "distractor_articles": [
+      "d20_k3_a",
+      "d20_k5_c",
+      "d20_k6_b"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời mức phạt chở quá số người theo khoản 2 và lỗi không đóng cửa theo khoản 3 Điều 20."
+  },
+  {
+    "id": 88,
+    "question_type": "exception_handling",
+    "question": "Người chở quá số người trên xe đạp nhưng đang chở người đi cấp cứu trong tình huống #100 có bị phạt không?",
+    "relevant_articles": [
+      "d9_k1_o"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Không vi phạm do thuộc ngoại lệ chở người bệnh đi cấp cứu theo điểm o khoản 1 Điều 9."
+  },
+  {
+    "id": 89,
+    "question_type": "quantitative_context",
+    "question": "Người đi xe đạp có nồng độ cồn 90 mg/100ml máu bị phạt bao nhiêu?",
+    "relevant_articles": [
+      "d9_k4_b"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Có vi phạm. Phạt 400.000–600.000 đồng theo Điều 9."
+  },
+  {
+    "id": 90,
+    "question_type": "simple",
+    "question": "Người đi xe đạp không đi đúng phần đường quy định trong tình huống #36 bị phạt thế nào?",
+    "relevant_articles": [
+      "d9_k1_a"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Có vi phạm. Phạt 100.000–200.000 đồng theo điểm a khoản 1 Điều 9."
+  },
+  {
+    "id": 91,
+    "question_type": "simple",
+    "question": "Người điều khiển xe chở hàng siêu trọng vi phạm khoản 2 Điều 22 thì bị trừ bao nhiêu điểm giấy phép lái xe?",
+    "relevant_articles": [
+      "d22_k2",
+      "d22_k6_b"
+    ],
+    "distractor_articles": [
+      "d21_k13_b",
+      "d23_k7_b",
+      "d24_k3"
+    ],
+    "expected_answer": "Có vi phạm. Hành vi thuộc khoản 2 Điều 22 bị trừ 04 điểm giấy phép lái xe theo điểm b khoản 6 Điều 22."
+  },
+  {
+    "id": 92,
+    "question_type": "simple",
+    "question": "Xe ô tô xả khói vượt quy chuẩn môi trường do bộ phận giảm khói không bảo đảm thì bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d13_k2_c"
+    ],
+    "distractor_articles": [
+      "d13_k2_b",
+      "d13_k5_d",
+      "d13_k11_a"
+    ],
+    "expected_answer": "Có vi phạm. Bị phạt từ 400.000 đồng đến 600.000 đồng theo điểm c khoản 2 Điều 13."
+  },
+  {
+    "id": 93,
+    "question_type": "exception_handling",
+    "question": "Một người sử dụng lòng đường vào mục đích khác nhưng đã có giấy phép hợp lệ trong tình huống #15 thì có bị phạt không?",
+    "relevant_articles": [
+      "d12_k12"
+    ],
+    "distractor_articles": [
+      "d12_k2_a",
+      "d12_k5_b",
+      "d12_k7"
+    ],
+    "expected_answer": "Không vi phạm nếu có giấy phép hợp lệ và thực hiện đúng nội dung theo khoản 12 Điều 12."
+  },
+  {
+    "id": 94,
+    "question_type": "simple",
+    "question": "Xe máy chuyên dùng không nhường đường cho xe cứu thương đang bật còi ưu tiên và đèn khẩn cấp để làm nhiệm vụ. Mức phạt là bao nhiêu?",
+    "relevant_articles": [
+      "d8_k6_g"
+    ],
+    "distractor_articles": [
+      "d8_k7_b",
+      "d6_k6_g",
+      "d7_k6_g"
+    ],
+    "expected_answer": "Theo điểm g khoản 6 Điều 8, không nhường đường hoặc gây cản trở xe được quyền ưu tiên đang phát tín hiệu ưu tiên đi làm nhiệm vụ bị phạt từ 3.000.000 đồng đến 5.000.000 đồng."
+  },
+  {
+    "id": 95,
+    "question_type": "exception_handling",
+    "question": "Một nhân viên đang đi bộ vào đường cao tốc để thực hiện nhiệm vụ bảo trì đường cao tốc thì có bị xử phạt không?",
+    "relevant_articles": [
+      "d10_k2_a"
+    ],
+    "distractor_articles": [
+      "d10_k1_a",
+      "d10_k1_b",
+      "d11_k3"
+    ],
+    "expected_answer": "Không vi phạm. Dù đi vào đường cao tốc, nhưng người phục vụ việc quản lý, bảo trì đường cao tốc thuộc trường hợp ngoại lệ tại điểm a khoản 2 Điều 10."
+  },
+  {
+    "id": 96,
+    "question_type": "simple",
+    "question": "Chủ xe mô tô đưa phương tiện không có chứng nhận đăng ký xe tham gia giao thông thì bị xử phạt như thế nào?",
+    "relevant_articles": [
+      "d32_k8_dd",
+      "d32_k18_b",
+      "d32_k20",
+      "d32_k21_a"
+    ],
+    "distractor_articles": [
+      "d32_k7_i",
+      "d32_k8_h",
+      "d32_k10"
+    ],
+    "expected_answer": "Có vi phạm. Bị phạt từ 4.000.000 đồng đến 6.000.000 đồng theo điểm đ khoản 8 Điều 32; trong trường hợp không chứng minh được nguồn gốc xuất xứ còn có thể bị tịch thu phương tiện theo điểm b khoản 18, bị thu hồi giấy tờ theo khoản 20, và nếu chủ phương tiện là người trực tiếp điều khiển thì bị trừ 02 điểm GPLX theo điểm a khoản 21."
+  },
+  {
+    "id": 97,
+    "question_type": "simple",
+    "question": "Chủ xe ô tô đưa xe tham gia giao thông khi tem kiểm định đã hết hiệu lực dưới 01 tháng thì bị phạt ra sao?",
+    "relevant_articles": [
+      "d32_k9_b",
+      "d32_k18_c",
+      "d32_k19_dd",
+      "d32_k21_a"
+    ],
+    "distractor_articles": [
+      "d32_k9_b",
+      "d32_k12_b",
+      "d32_k14_h"
+    ],
+    "expected_answer": "Có vi phạm. Bị phạt từ 4.000.000 đồng đến 6.000.000 đồng theo điểm b khoản 9 Điều 32; còn có thể bị tước quyền sử dụng giấy chứng nhận kiểm định và tem kiểm định từ 01 đến 03 tháng theo điểm c khoản 18, buộc đăng kiểm lại theo điểm đ khoản 19 nếu có sai khối lượng/thùng xe, và bị trừ 02 điểm GPLX nếu trực tiếp điều khiển theo điểm a khoản 21."
+  },
+  {
+    "id": 98,
+    "question_type": "simple",
+    "question": "Trong tình huống #31, người điều khiển phương tiện vi phạm quy định kỹ thuật cơ bản thì bị xử phạt như thế nào?",
+    "relevant_articles": [
+      "d17_k3"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng xử phạt theo điều khoản tương ứng của Điều 14–17 tùy hành vi cụ thể."
+  },
+  {
+    "id": 99,
+    "question_type": "simple",
+    "question": "Người đi xe đạp không đi đúng phần đường quy định trong tình huống #91 bị phạt thế nào?",
+    "relevant_articles": [
+      "d9_k1_a"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Có vi phạm. Phạt 100.000–200.000 đồng theo điểm a khoản 1 Điều 9."
+  },
+  {
+    "id": 100,
+    "question_type": "quantitative_context",
+    "question": "Xe máy chạy vượt tốc độ 25 km/h so với quy định bị phạt bao nhiêu?",
+    "relevant_articles": [
+      "d7_k8_a"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Phạt 6.000.000–8.000.000 đồng theo Điều 7."
+  },
+  {
+    "id": 101,
+    "question_type": "insufficient_info",
+    "question": "Một người vi phạm giao thông nhưng không rõ loại phương tiện #14 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d7_k2_h"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do thiếu thông tin loại phương tiện."
+  },
+  {
+    "id": 102,
+    "question_type": "simple",
+    "question": "Xe chở hàng siêu trường có giấy phép lưu hành còn giá trị nhưng tổng trọng lượng sau khi xếp hàng vượt quá quy định trong giấy phép thì bị phạt ra sao?",
+    "relevant_articles": [
+      "d22_k3_b",
+      "d22_k6_b"
+    ],
+    "distractor_articles": [
+      "d22_k2",
+      "d21_k2_a",
+      "d23_k2"
+    ],
+    "expected_answer": "Có vi phạm. Tổng trọng lượng vượt quá quy định trong giấy phép lưu hành bị phạt từ 13.000.000 đồng đến 15.000.000 đồng theo điểm b khoản 3 Điều 22 và bị trừ 04 điểm giấy phép lái xe theo điểm b khoản 6 Điều 22."
+  },
+  {
+    "id": 103,
+    "question_type": "simple",
+    "question": "Sử dụng giấy chứng nhận đăng ký xe không đúng số động cơ của xe thì bị phạt và bị trừ bao nhiêu điểm GPLX?",
+    "relevant_articles": [
+      "d13_k6_a",
+      "d13_k13_a"
+    ],
+    "distractor_articles": [
+      "d13_k4_a",
+      "d13_k12",
+      "d13_k10_b"
+    ],
+    "expected_answer": "Có vi phạm. Bị phạt từ 4.000.000 đồng đến 6.000.000 đồng theo điểm a khoản 6 và bị trừ 02 điểm giấy phép lái xe theo điểm a khoản 13 Điều 13."
+  },
+  {
+    "id": 104,
+    "question_type": "complex_multi_hop",
+    "question": "Trong tình huống #87, người điều khiển phương tiện vừa vi phạm thiết bị xe vừa gây ô nhiễm môi trường thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d14_k1_a",
+      "d17_k2_a"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo Điều 14 và Điều 17."
+  },
+  {
+    "id": 105,
+    "question_type": "simple",
+    "question": "Xe ô tô không giữ khoảng cách an toàn với xe chạy liền trước và xảy ra va chạm nhẹ với xe đó. Mức phạt theo Điều 6 là bao nhiêu?",
+    "relevant_articles": [
+      "d6_k4_l"
+    ],
+    "distractor_articles": [
+      "d6_k5_d",
+      "d6_k2_c",
+      "d7_k4_l"
+    ],
+    "expected_answer": "Theo điểm l khoản 4 Điều 6, không giữ khoảng cách an toàn để xảy ra va chạm với xe chạy liền trước bị phạt từ 2.000.000 đồng đến 3.000.000 đồng và bị trừ 2 điểm giấy phép lái xe."
+  },
+  {
+    "id": 106,
+    "question_type": "quantitative_context",
+    "question": "Người điều khiển xe ô tô bị đo nồng độ cồn hơi thở là 0,50 miligam/1 lít khí thở. Áp dụng điểm, khoản nào và mức phạt theo Điều 6?",
+    "relevant_articles": [
+      "d6_k11_a"
+    ],
+    "distractor_articles": [
+      "d6_k9_a",
+      "d6_k6_c",
+      "d8_k9_a"
+    ],
+    "expected_answer": "Nồng độ cồn 0,50 mg/lít khí thở vượt quá 0,4 mg/lít. Theo điểm a khoản 11 Điều 6, bị phạt từ 30.000.000 đồng đến 40.000.000 đồng và bị tước quyền sử dụng giấy phép lái xe từ 22 đến 24 tháng."
+  },
+  {
+    "id": 107,
+    "question_type": "quantitative_context",
+    "question": "Mức phạt tối đa đối với xe ô tô chở phế thải không chạy đúng tuyến, phạm vi, thời gian quy định là bao nhiêu?",
+    "relevant_articles": [
+      "d25_k1"
+    ],
+    "distractor_articles": [
+      "d21_k6_d",
+      "d20_k3_c",
+      "d17_k3"
+    ],
+    "expected_answer": "Có vi phạm. Mức phạt tối đa là 3.000.000 đồng theo khoản 1 Điều 25."
+  },
+  {
+    "id": 108,
+    "question_type": "complex_multi_hop",
+    "question": "Người đi xe đạp vừa không chấp hành đèn tín hiệu vừa bám kéo xe khác trong tình huống #27 bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d9_k2_dd",
+      "d9_k2_c"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo khoản 2 Điều 9 (150.000–250.000 đồng cho mỗi hành vi)."
+  },
+  {
+    "id": 109,
+    "question_type": "simple",
+    "question": "Một tổ chức bán biển số xe không được cơ quan nhà nước có thẩm quyền cho phép thì bị phạt ra sao?",
+    "relevant_articles": [
+      "d31_k1",
+      "d31_k3",
+      "d31_k4"
+    ],
+    "distractor_articles": [
+      "d14_k3_a",
+      "d16_k2_d",
+      "d28_k2"
+    ],
+    "expected_answer": "Có vi phạm. Tổ chức mua, bán biển số xe trái phép bị phạt từ 20.000.000 đồng đến 24.000.000 đồng theo khoản 1 Điều 31, bị tịch thu biển số theo khoản 3 và buộc nộp lại số lợi bất hợp pháp có được theo khoản 4."
+  },
+  {
+    "id": 110,
+    "question_type": "quantitative_context",
+    "question": "Chủ xe là người trực tiếp điều khiển xe ô tô và đưa phương tiện gắn biển số không đúng với chứng nhận đăng ký xe tham gia giao thông theo điểm d khoản 13 Điều 32 thì bị trừ mấy điểm GPLX?",
+    "relevant_articles": [
+      "d32_k13_d",
+      "d32_k21_g"
+    ],
+    "distractor_articles": [
+      "d32_k18_b",
+      "d32_k19_g",
+      "d32_k21_a"
+    ],
+    "expected_answer": "Có vi phạm. Bị trừ 10 điểm GPLX theo điểm g khoản 21 Điều 32."
+  },
+  {
+    "id": 111,
+    "question_type": "simple",
+    "question": "Giáo viên dạy thực hành không ngồi bên cạnh để bảo trợ tay lái cho học viên trong lúc thực hành thì bị phạt thế nào?",
+    "relevant_articles": [
+      "d39_k1_c"
+    ],
+    "distractor_articles": [
+      "d39_k3_i",
+      "d39_k4_a",
+      "d39_k9_a"
+    ],
+    "expected_answer": "Có vi phạm. Giáo viên dạy thực hành không ngồi bên cạnh để bảo trợ tay lái cho học viên thực hành lái xe bị phạt tiền từ 2.000.000 đồng đến 3.000.000 đồng theo điểm c khoản 1 Điều 39."
+  },
+  {
+    "id": 112,
+    "question_type": "insufficient_info",
+    "question": "Một người có hành vi cản trở giao thông nhưng không rõ hành vi cụ thể trong tình huống #39 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d12_k6_c"
+    ],
+    "distractor_articles": [
+      "d12_k2_a",
+      "d12_k5_b",
+      "d12_k7"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý vì không xác định rõ hành vi cụ thể."
+  },
+  {
+    "id": 113,
+    "question_type": "insufficient_info",
+    "question": "Một tài xế điều khiển phương tiện không bật đèn chiếu sáng lúc 20 giờ tối. Mức phạt áp dụng theo Điều 8 là bao nhiêu?",
+    "relevant_articles": [],
+    "distractor_articles": [
+      "d8_k3_c",
+      "d6_k3_c",
+      "d7_k3_c"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý để xác định mức phạt theo Điều 8 vì câu hỏi không nêu rõ tài xế đang điều khiển xe máy chuyên dùng hay loại xe khác. Điều 8 chỉ áp dụng riêng cho người điều khiển xe máy chuyên dùng. Nếu là xe ô tô áp dụng Điều 6; nếu là xe mô tô, xe gắn máy áp dụng Điều 7."
+  },
+  {
+    "id": 114,
+    "question_type": "simple",
+    "question": "Một người bán hàng rong trên vỉa hè nơi cấm bán trong tình huống #6 bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d12_k2_e"
+    ],
+    "distractor_articles": [
+      "d12_k2_a",
+      "d12_k5_b",
+      "d12_k7"
+    ],
+    "expected_answer": "Có vi phạm. Phạt 200.000–250.000 đồng theo điểm e khoản 2 Điều 12."
+  },
+  {
+    "id": 115,
+    "question_type": "exception_handling",
+    "question": "Người chở quá số người trên xe đạp nhưng đang chở người đi cấp cứu trong tình huống #95 có bị phạt không?",
+    "relevant_articles": [
+      "d9_k1_o"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Không vi phạm do thuộc ngoại lệ chở người bệnh đi cấp cứu theo điểm o khoản 1 Điều 9."
+  },
+  {
+    "id": 116,
+    "question_type": "quantitative_context",
+    "question": "Một người sử dụng trái phép lòng đường để kinh doanh dịch vụ ăn uống thì mức phạt tối đa là bao nhiêu trong tình huống #43?",
+    "relevant_articles": [
+      "d12_k7"
+    ],
+    "distractor_articles": [
+      "d12_k2_a",
+      "d12_k5_b",
+      "d12_k7"
+    ],
+    "expected_answer": "Có vi phạm. Mức phạt tối đa 3.000.000 đồng đối với cá nhân theo khoản 7 Điều 12."
+  },
+  {
+    "id": 117,
+    "question_type": "simple",
+    "question": "Xe ô tô chở phế thải chạy sai tuyến và sai thời gian trong đô thị. Hành vi này có bị trừ điểm GPLX không?",
+    "relevant_articles": [
+      "d25_k1",
+      "d25_k2"
+    ],
+    "distractor_articles": [
+      "d21_k6_d",
+      "d20_k3_c",
+      "d17_k3"
+    ],
+    "expected_answer": "Có vi phạm. Hành vi vi phạm khoản 1 Điều 25 bị trừ 02 điểm giấy phép lái xe theo khoản 2 Điều 25."
+  },
+  {
+    "id": 118,
+    "question_type": "simple",
+    "question": "Cơ sở chứng nhận lưu trữ hồ sơ, tài liệu, dữ liệu chứng nhận không đúng quy định thì bị phạt thế nào?",
+    "relevant_articles": [
+      "d40_k3_e"
+    ],
+    "distractor_articles": [
+      "d40_k2_c",
+      "d40_k5_a",
+      "d40_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Lưu trữ hồ sơ, tài liệu, dữ liệu chứng nhận không đúng quy định bị phạt từ 10.000.000 đồng đến 15.000.000 đồng theo điểm e khoản 3 Điều 40."
+  },
+  {
+    "id": 119,
+    "question_type": "simple",
+    "question": "Chủ xe tự ý thay đổi tổng thành khung, tổng thành máy hoặc tự ý cải tạo kết cấu, hình dáng, kích thước xe không đúng thiết kế thì bị xử lý ra sao?",
+    "relevant_articles": [
+      "d32_k16_c",
+      "d32_k18_d",
+      "d32_k19_d"
+    ],
+    "distractor_articles": [
+      "d32_k9_b",
+      "d32_k12_b",
+      "d32_k14_h"
+    ],
+    "expected_answer": "Có vi phạm. Bị phạt từ 65.000.000 đồng đến 75.000.000 đồng đối với cá nhân theo điểm c khoản 16 Điều 32; còn bị tước quyền sử dụng giấy chứng nhận kiểm định và tem kiểm định từ 01 đến 03 tháng theo điểm d khoản 18, đồng thời buộc khôi phục lại hình dáng, kích thước, tình trạng an toàn kỹ thuật ban đầu của xe và đăng kiểm lại theo điểm d khoản 19."
+  },
+  {
+    "id": 120,
+    "question_type": "simple",
+    "question": "Xe ô tô khi chuyển hướng không nhường đường cho xe đi ngược chiều tại nơi không có vạch kẻ đường dành cho người đi bộ. Mức phạt theo Điều 6 là bao nhiêu?",
+    "relevant_articles": [
+      "d6_k5_m"
+    ],
+    "distractor_articles": [
+      "d6_k5_l",
+      "d6_k5_c",
+      "d8_k5_e"
+    ],
+    "expected_answer": "Theo điểm m khoản 5 Điều 6, chuyển hướng không nhường đường cho các xe đi ngược chiều tại nơi không có vạch kẻ đường dành cho người đi bộ bị phạt từ 4.000.000 đồng đến 6.000.000 đồng và bị trừ 2 điểm giấy phép lái xe."
+  },
+  {
+    "id": 121,
+    "question_type": "simple",
+    "question": "Người điều khiển xe máy thực hiện hành vi vi phạm giao thông cơ bản #136 sẽ bị xử phạt như thế nào?",
+    "relevant_articles": [
+      "d7_k1_a"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Phạt tiền theo khoản 1 Điều 7 (200.000–400.000 đồng)."
+  },
+  {
+    "id": 122,
+    "question_type": "exception_handling",
+    "question": "Tài xế để người ở lại trên xe khi xe lên phà nhưng là người già yếu trong tình huống #45 thì có bị phạt không?",
+    "relevant_articles": [
+      "d20_k3_b"
+    ],
+    "distractor_articles": [
+      "d20_k3_a",
+      "d20_k5_c",
+      "d20_k6_b"
+    ],
+    "expected_answer": "Không vi phạm vì thuộc trường hợp ngoại lệ (người già yếu) theo điểm b khoản 3 Điều 20."
+  },
+  {
+    "id": 123,
+    "question_type": "quantitative_context",
+    "question": "Xe máy chạy vượt tốc độ 25 km/h so với quy định bị phạt bao nhiêu?",
+    "relevant_articles": [
+      "d7_k8_a"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Phạt 6.000.000–8.000.000 đồng theo Điều 7."
+  },
+  {
+    "id": 124,
+    "question_type": "simple",
+    "question": "Trong tình huống #36, người điều khiển phương tiện vi phạm quy định kỹ thuật cơ bản thì bị xử phạt như thế nào?",
+    "relevant_articles": [
+      "d17_k1"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng xử phạt theo điều khoản tương ứng của Điều 14–17 tùy hành vi cụ thể."
+  },
+  {
+    "id": 125,
+    "question_type": "insufficient_info",
+    "question": "Một người có hành vi cản trở giao thông nhưng không rõ hành vi cụ thể trong tình huống #49 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d12_k6_c"
+    ],
+    "distractor_articles": [
+      "d12_k2_a",
+      "d12_k5_b",
+      "d12_k7"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý vì không xác định rõ hành vi cụ thể."
+  },
+  {
+    "id": 126,
+    "question_type": "simple",
+    "question": "Hành khách đi xe khách không chấp hành hướng dẫn của lái xe về bảo đảm trật tự, an toàn giao thông thì bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d33_k1_a"
+    ],
+    "distractor_articles": [
+      "d34_k1",
+      "d36_k1_a",
+      "d37_k1_a"
+    ],
+    "expected_answer": "Có vi phạm. Hành khách không chấp hành hướng dẫn của lái xe, nhân viên phục vụ trên xe về bảo đảm trật tự, an toàn giao thông bị phạt tiền từ 100.000 đồng đến 200.000 đồng theo điểm a khoản 1 Điều 33."
+  },
+  {
+    "id": 127,
+    "question_type": "complex_multi_hop",
+    "question": "Trong tình huống #47, tài xế vừa chở quá số người vừa không đóng cửa khi xe chạy thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d20_k2",
+      "d20_k3_a"
+    ],
+    "distractor_articles": [
+      "d20_k3_a",
+      "d20_k5_c",
+      "d20_k6_b"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời mức phạt chở quá số người theo khoản 2 và lỗi không đóng cửa theo khoản 3 Điều 20."
+  },
+  {
+    "id": 128,
+    "question_type": "exception_handling",
+    "question": "Người chở quá số người trên xe đạp nhưng đang chở người đi cấp cứu trong tình huống #90 có bị phạt không?",
+    "relevant_articles": [
+      "d9_k1_o"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Không vi phạm do thuộc ngoại lệ chở người bệnh đi cấp cứu theo điểm o khoản 1 Điều 9."
+  },
+  {
+    "id": 129,
+    "question_type": "exception_handling",
+    "question": "Một người có hành vi vi phạm nhưng thuộc trường hợp ngoại lệ #170 thì có bị phạt không?",
+    "relevant_articles": [
+      "d7_k2_g"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Không vi phạm do thuộc trường hợp ngoại lệ theo Điều 7."
+  },
+  {
+    "id": 130,
+    "question_type": "exception_handling",
+    "question": "Trong tình huống #15, hành vi có dấu hiệu vi phạm nhưng thuộc trường hợp ngoại lệ theo quy định thì có bị xử phạt không?",
+    "relevant_articles": [
+      "d16_k2_b"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Không vi phạm nếu thuộc trường hợp ngoại lệ theo điều luật tương ứng."
+  },
+  {
+    "id": 131,
+    "question_type": "exception_handling",
+    "question": "Trong tình huống #15, xe đã lắp thiết bị giám sát hành trình và hoạt động đúng quy định thì có bị phạt không?",
+    "relevant_articles": [
+      "d26_k7_c"
+    ],
+    "distractor_articles": [
+      "d21_k2_a",
+      "d22_k3_a",
+      "d23_k3"
+    ],
+    "expected_answer": "Không vi phạm."
+  },
+  {
+    "id": 132,
+    "question_type": "exception_handling",
+    "question": "Một người có hành vi vi phạm nhưng thuộc trường hợp ngoại lệ #150 thì có bị phạt không?",
+    "relevant_articles": [
+      "d7_k2_g"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Không vi phạm do thuộc trường hợp ngoại lệ theo Điều 7."
+  },
+  {
+    "id": 133,
+    "question_type": "quantitative_context",
+    "question": "Mức phạt tối đa trong tình huống #3 đối với hành vi không có giấy phép lái xe ô tô là bao nhiêu?",
+    "relevant_articles": [
+      "d18_k9_b"
+    ],
+    "distractor_articles": [
+      "d18_k2_a",
+      "d18_k5_a",
+      "d19_k1"
+    ],
+    "expected_answer": "Có vi phạm. Mức phạt tối đa là 20.000.000 đồng theo khoản 9 Điều 18."
+  },
+  {
+    "id": 134,
+    "question_type": "simple",
+    "question": "Chủ xe cứu hộ giao thông đường bộ đưa xe tham gia giao thông nhưng không lắp thiết bị ghi nhận hình ảnh người lái xe thì bị phạt thế nào?",
+    "relevant_articles": [
+      "d32_k7_n"
+    ],
+    "distractor_articles": [
+      "d32_k9_b",
+      "d32_k12_b",
+      "d32_k14_h"
+    ],
+    "expected_answer": "Có vi phạm. Bị phạt từ 4.000.000 đồng đến 6.000.000 đồng theo điểm n khoản 7 Điều 32."
+  },
+  {
+    "id": 135,
+    "question_type": "complex_multi_hop",
+    "question": "Một đăng kiểm viên vừa không tuân thủ quy trình kỹ thuật, vừa đưa ra yêu cầu trái quy định về thủ tục đăng kiểm thì bị xử lý thế nào?",
+    "relevant_articles": [
+      "d40_k1_a",
+      "d40_k1_c",
+      "d40_k6_a"
+    ],
+    "distractor_articles": [
+      "d40_k4_b",
+      "d40_k2_b",
+      "d40_k3_a"
+    ],
+    "expected_answer": "Có vi phạm. Cá nhân vừa không tuân thủ đúng quy trình, quy chuẩn kỹ thuật vừa đưa ra yêu cầu trái quy định về trình tự, thủ tục đăng kiểm bị phạt theo điểm a và điểm c khoản 1 Điều 40; đồng thời bị tước quyền sử dụng chứng chỉ đăng kiểm viên từ 01 tháng đến 03 tháng theo điểm a khoản 6 Điều 40."
+  },
+  {
+    "id": 136,
+    "question_type": "exception_handling",
+    "question": "Một người có hành vi vi phạm nhưng thuộc trường hợp ngoại lệ #35 thì có bị phạt không?",
+    "relevant_articles": [
+      "d7_k2_g"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Không vi phạm do thuộc trường hợp ngoại lệ theo Điều 7."
+  },
+  {
+    "id": 137,
+    "question_type": "complex_multi_hop",
+    "question": "Người đi xe đạp vừa không chấp hành đèn tín hiệu vừa bám kéo xe khác trong tình huống #97 bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d9_k2_dd",
+      "d9_k2_c"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo khoản 2 Điều 9 (150.000–250.000 đồng cho mỗi hành vi)."
+  },
+  {
+    "id": 138,
+    "question_type": "simple",
+    "question": "Xe máy chuyên dùng gây tai nạn giao thông rồi bỏ chạy, không dừng xe, không giữ hiện trường và không trình báo cơ quan công an. Mức phạt theo Điều 8 là bao nhiêu?",
+    "relevant_articles": [
+      "d8_k8_c"
+    ],
+    "distractor_articles": [
+      "d8_k5_d",
+      "d6_k8_c",
+      "d7_k8_c"
+    ],
+    "expected_answer": "Theo điểm c khoản 8 Điều 8, gây tai nạn không dừng ngay phương tiện, không giữ nguyên hiện trường, không trợ giúp người bị nạn, không ở lại hiện trường hoặc không trình báo ngay với cơ quan công an bị phạt từ 14.000.000 đồng đến 16.000.000 đồng."
+  },
+  {
+    "id": 139,
+    "question_type": "simple",
+    "question": "Người điều khiển xe máy thực hiện hành vi vi phạm giao thông cơ bản #51 sẽ bị xử phạt như thế nào?",
+    "relevant_articles": [
+      "d7_k1_a"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Phạt tiền theo khoản 1 Điều 7 (200.000–400.000 đồng)."
+  },
+  {
+    "id": 140,
+    "question_type": "complex_multi_hop",
+    "question": "Trong tình huống #47, người điều khiển phương tiện vừa vi phạm thiết bị xe vừa gây ô nhiễm môi trường thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d14_k1_a",
+      "d17_k2_a"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo Điều 14 và Điều 17."
+  },
+  {
+    "id": 141,
+    "question_type": "complex_multi_hop",
+    "question": "Một người vừa bán hàng trên vỉa hè trái phép vừa phơi rơm trên đường trong tình huống #47 bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d12_k2_e",
+      "d12_k2_g"
+    ],
+    "distractor_articles": [
+      "d12_k2_a",
+      "d12_k5_b",
+      "d12_k7"
+    ],
+    "expected_answer": "Có vi phạm. Cả hai hành vi thuộc khoản 2 Điều 12, mỗi hành vi phạt 200.000–250.000 đồng."
+  },
+  {
+    "id": 142,
+    "question_type": "exception_handling",
+    "question": "Một người có hành vi vi phạm nhưng thuộc trường hợp ngoại lệ #130 thì có bị phạt không?",
+    "relevant_articles": [
+      "d7_k2_g"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Không vi phạm do thuộc trường hợp ngoại lệ theo Điều 7."
+  },
+  {
+    "id": 143,
+    "question_type": "simple",
+    "question": "Xe cứu hộ có lắp thiết bị giám sát hành trình nhưng thiết bị không hoạt động trong quá trình tham gia giao thông thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d29_k3",
+      "d29_k4"
+    ],
+    "distractor_articles": [
+      "d27_k3_a",
+      "d28_k2",
+      "d30_k2"
+    ],
+    "expected_answer": "Có vi phạm. Phạt tiền từ 3.000.000 đồng đến 5.000.000 đồng theo khoản 3 Điều 29 và bị trừ 02 điểm GPLX theo khoản 4."
+  },
+  {
+    "id": 144,
+    "question_type": "simple",
+    "question": "Chủ xe máy lắp dàn loa và đèn nháy trên xe gây mất trật tự, an toàn giao thông thì bị xử lý ra sao?",
+    "relevant_articles": [
+      "d32_k3_c",
+      "d32_k19_h"
+    ],
+    "distractor_articles": [
+      "d32_k7_i",
+      "d32_k8_h",
+      "d32_k10"
+    ],
+    "expected_answer": "Có vi phạm. Bị phạt từ 800.000 đồng đến 1.000.000 đồng đối với cá nhân theo điểm c khoản 3 Điều 32; đồng thời buộc tháo dỡ thiết bị âm thanh, ánh sáng lắp đặt trái quy định theo điểm h khoản 19 Điều 32."
+  },
+  {
+    "id": 145,
+    "question_type": "insufficient_info",
+    "question": "Một người vi phạm giao thông nhưng không rõ loại phương tiện #34 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d7_k2_h"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do thiếu thông tin loại phương tiện."
+  },
+  {
+    "id": 146,
+    "question_type": "insufficient_info",
+    "question": "Một người có liên quan đến biển số xe nhưng chưa rõ là mua bán trái phép hay chỉ cất giữ, cũng chưa rõ biển số đó có phải do cơ quan có thẩm quyền sản xuất hay không. Trường hợp này xử phạt thế nào?",
+    "relevant_articles": [
+      "d31_k1",
+      "d31_k2"
+    ],
+    "distractor_articles": [
+      "d14_k3_a",
+      "d16_k2_d",
+      "d28_k2"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý. Cần xác định chính xác hành vi là mua, bán biển số trái phép hay sản xuất trái phép và làm rõ nguồn gốc pháp lý của biển số để áp dụng Điều 31."
+  },
+  {
+    "id": 147,
+    "question_type": "simple",
+    "question": "Trong vòng 12 tháng, cơ sở đăng kiểm có từ 2 lượt đăng kiểm viên trở lên bị xử phạt theo khoản 1 Điều 40 thì cơ sở bị xử lý ra sao?",
+    "relevant_articles": [
+      "d40_k2_b"
+    ],
+    "distractor_articles": [
+      "d40_k3_b",
+      "d40_k4_a",
+      "d40_k6_b"
+    ],
+    "expected_answer": "Có vi phạm. Cơ sở đăng kiểm có từ 02 lượt đăng kiểm viên trở lên bị xử phạt theo khoản 1 Điều 40 trong thời hạn 12 tháng tính từ lần vi phạm đầu tiên bị phạt từ 10.000.000 đồng đến 15.000.000 đồng theo điểm b khoản 2 Điều 40."
+  },
+  {
+    "id": 148,
+    "question_type": "complex_multi_hop",
+    "question": "Người đi xe đạp vừa không chấp hành đèn tín hiệu vừa bám kéo xe khác trong tình huống #72 bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d9_k2_dd",
+      "d9_k2_c"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo khoản 2 Điều 9 (150.000–250.000 đồng cho mỗi hành vi)."
+  },
+  {
+    "id": 149,
+    "question_type": "simple",
+    "question": "Người đi xe đạp không đi đúng phần đường quy định trong tình huống #66 bị phạt thế nào?",
+    "relevant_articles": [
+      "d9_k1_a"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Có vi phạm. Phạt 100.000–200.000 đồng theo điểm a khoản 1 Điều 9."
+  },
+  {
+    "id": 150,
+    "question_type": "simple",
+    "question": "Xe đầu kéo kéo theo sơ mi rơ moóc có khối lượng toàn bộ vượt 20% khối lượng cho phép kéo theo ghi trong giấy kiểm định thì bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d21_k2_d"
+    ],
+    "distractor_articles": [
+      "d21_k5_d",
+      "d21_k6_b",
+      "d22_k3_b"
+    ],
+    "expected_answer": "Có vi phạm. Vượt khối lượng cho phép kéo theo trên 10% đến 30% bị phạt từ 800.000 đồng đến 1.000.000 đồng theo điểm d khoản 2 Điều 21."
+  },
+  {
+    "id": 151,
+    "question_type": "simple",
+    "question": "Người đi xe đạp không đi đúng phần đường quy định trong tình huống #86 bị phạt thế nào?",
+    "relevant_articles": [
+      "d9_k1_a"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Có vi phạm. Phạt 100.000–200.000 đồng theo điểm a khoản 1 Điều 9."
+  },
+  {
+    "id": 152,
+    "question_type": "insufficient_info",
+    "question": "Một phương tiện vi phạm nhưng không rõ loại xe trong tình huống #64 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d15_k1"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do thiếu thông tin về loại phương tiện."
+  },
+  {
+    "id": 153,
+    "question_type": "quantitative_context",
+    "question": "Mức phạt tối đa trong tình huống #43 đối với hành vi không có giấy phép lái xe ô tô là bao nhiêu?",
+    "relevant_articles": [
+      "d18_k9_b"
+    ],
+    "distractor_articles": [
+      "d18_k2_a",
+      "d18_k5_a",
+      "d19_k1"
+    ],
+    "expected_answer": "Có vi phạm. Mức phạt tối đa là 20.000.000 đồng theo khoản 9 Điều 18."
+  },
+  {
+    "id": 154,
+    "question_type": "complex_multi_hop",
+    "question": "Người điều khiển xe máy thực hiện đồng thời hai hành vi vi phạm #167 thì bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d7_k2_h",
+      "d7_k7_c"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo khoản 2 và khoản 7 Điều 7."
+  },
+  {
+    "id": 155,
+    "question_type": "simple",
+    "question": "Ô tô không gắn biển số đúng vị trí theo quy định bị xử phạt như thế nào?",
+    "relevant_articles": [
+      "d13_k8_b"
+    ],
+    "distractor_articles": [
+      "d13_k7_b",
+      "d13_k8_a",
+      "d13_k11_a"
+    ],
+    "expected_answer": "Có vi phạm. Gắn biển số không đúng vị trí, không đúng quy cách bị phạt từ 20.000.000 đồng đến 26.000.000 đồng theo điểm b khoản 8 Điều 13."
+  },
+  {
+    "id": 156,
+    "question_type": "quantitative_context",
+    "question": "Mức phạt tối đa trong tình huống #43 đối với hành vi vi phạm điều kiện phương tiện là bao nhiêu?",
+    "relevant_articles": [
+      "d17_k4"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Có vi phạm. Mức phạt tối đa phụ thuộc điều khoản, có thể lên đến 15.000.000 đồng theo Điều 17."
+  },
+  {
+    "id": 157,
+    "question_type": "insufficient_info",
+    "question": "Một người vi phạm giao thông nhưng không rõ loại phương tiện #94 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d7_k2_h"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do thiếu thông tin loại phương tiện."
+  },
+  {
+    "id": 158,
+    "question_type": "simple",
+    "question": "Một cá nhân mua biển số xe không phải do cơ quan nhà nước có thẩm quyền sản xuất thì bị xử phạt như thế nào?",
+    "relevant_articles": [
+      "d31_k1",
+      "d31_k3",
+      "d31_k4"
+    ],
+    "distractor_articles": [
+      "d14_k3_a",
+      "d16_k2_d",
+      "d28_k2"
+    ],
+    "expected_answer": "Có vi phạm. Cá nhân mua, bán biển số xe trái phép bị phạt từ 10.000.000 đồng đến 12.000.000 đồng theo khoản 1 Điều 31, còn bị tịch thu biển số theo khoản 3 và buộc nộp lại số lợi bất hợp pháp có được theo khoản 4."
+  },
+  {
+    "id": 159,
+    "question_type": "simple",
+    "question": "Tài xế xe khách không đóng cửa khi xe đang chạy trong tình huống #1 bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d20_k3_a"
+    ],
+    "distractor_articles": [
+      "d20_k3_a",
+      "d20_k5_c",
+      "d20_k6_b"
+    ],
+    "expected_answer": "Có vi phạm. Phạt từ 600.000 đến 800.000 đồng theo điểm a khoản 3 Điều 20."
+  },
+  {
+    "id": 160,
+    "question_type": "exception_handling",
+    "question": "Người chở quá số người trên xe đạp nhưng đang chở người đi cấp cứu trong tình huống #25 có bị phạt không?",
+    "relevant_articles": [
+      "d9_k1_o"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Không vi phạm do thuộc ngoại lệ chở người bệnh đi cấp cứu theo điểm o khoản 1 Điều 9."
+  },
+  {
+    "id": 161,
+    "question_type": "complex_multi_hop",
+    "question": "Trong tình huống #62, người điều khiển phương tiện vừa vi phạm thiết bị xe vừa gây ô nhiễm môi trường thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d14_k1_a",
+      "d17_k2_a"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo Điều 14 và Điều 17."
+  },
+  {
+    "id": 162,
+    "question_type": "simple",
+    "question": "Chủ xe ô tô cố ý can thiệp làm sai lệch chỉ số đồng hồ báo quãng đường đã chạy của xe thì bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d32_k7_l",
+      "d32_k19_k"
+    ],
+    "distractor_articles": [
+      "d32_k9_b",
+      "d32_k12_b",
+      "d32_k14_h"
+    ],
+    "expected_answer": "Có vi phạm. Bị phạt từ 4.000.000 đồng đến 6.000.000 đồng theo điểm l khoản 7 Điều 32; đồng thời buộc điều chỉnh lại chỉ số đồng hồ báo quãng đường theo điểm k khoản 19."
+  },
+  {
+    "id": 163,
+    "question_type": "quantitative_context",
+    "question": "Hành vi không dán nhãn nhận diện hàng nguy hiểm trên xe bị phạt tối đa bao nhiêu và trừ mấy điểm GPLX?",
+    "relevant_articles": [
+      "d23_k3",
+      "d23_k7_a"
+    ],
+    "distractor_articles": [
+      "d21_k6_dd",
+      "d22_k3_a",
+      "d24_k2"
+    ],
+    "expected_answer": "Có vi phạm. Mức phạt tối đa là 6.000.000 đồng theo khoản 3 Điều 23 và bị trừ 02 điểm GPLX theo điểm a khoản 7 Điều 23."
+  },
+  {
+    "id": 164,
+    "question_type": "simple",
+    "question": "Người điều khiển xe máy chuyên dùng bị phát hiện trong cơ thể có chất ma túy khi đang điều khiển trên đường. Mức phạt được quy định ra sao?",
+    "relevant_articles": [
+      "d8_k9_c"
+    ],
+    "distractor_articles": [
+      "d8_k9_d",
+      "d6_k9_c",
+      "d7_k9_c"
+    ],
+    "expected_answer": "Theo điểm c khoản 9 Điều 8, điều khiển xe trên đường mà trong cơ thể có chất ma túy hoặc chất kích thích mà pháp luật cấm sử dụng bị phạt từ 18.000.000 đồng đến 20.000.000 đồng."
+  },
+  {
+    "id": 165,
+    "question_type": "simple",
+    "question": "Cơ sở đăng kiểm kiểm định và cấp giấy chứng nhận kiểm định cho xe cơ giới không đúng quy định, tiêu chuẩn, quy chuẩn kỹ thuật thì bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d40_k4_a",
+      "d40_k6_b"
+    ],
+    "distractor_articles": [
+      "d40_k2_d",
+      "d40_k3_b",
+      "d40_k5_b"
+    ],
+    "expected_answer": "Có vi phạm. Kiểm định, cấp giấy chứng nhận kiểm định cho xe cơ giới, xe máy chuyên dùng, kiểm định khí thải xe mô tô, xe gắn máy không đúng quy định, tiêu chuẩn, quy chuẩn kỹ thuật bị phạt từ 16.000.000 đồng đến 20.000.000 đồng theo điểm a khoản 4 Điều 40; đồng thời bị tước quyền sử dụng giấy chứng nhận đủ điều kiện hoạt động kiểm định từ 01 tháng đến 03 tháng theo điểm b khoản 6 Điều 40."
+  },
+  {
+    "id": 166,
+    "question_type": "simple",
+    "question": "Biển số xe bị dán vật liệu khác lên chữ số làm biến dạng thông tin thì xử phạt ra sao?",
+    "relevant_articles": [
+      "d13_k8_b"
+    ],
+    "distractor_articles": [
+      "d13_k8_a",
+      "d13_k7_b",
+      "d13_k10_a"
+    ],
+    "expected_answer": "Có vi phạm. Sử dụng chất liệu khác sơn, dán lên chữ, số của biển số xe bị phạt từ 20.000.000 đồng đến 26.000.000 đồng theo điểm b khoản 8 Điều 13."
+  },
+  {
+    "id": 167,
+    "question_type": "complex_multi_hop",
+    "question": "Một người vừa bán hàng trên vỉa hè trái phép vừa phơi rơm trên đường trong tình huống #42 bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d12_k2_e",
+      "d12_k2_g"
+    ],
+    "distractor_articles": [
+      "d12_k2_a",
+      "d12_k5_b",
+      "d12_k7"
+    ],
+    "expected_answer": "Có vi phạm. Cả hai hành vi thuộc khoản 2 Điều 12, mỗi hành vi phạt 200.000–250.000 đồng."
+  },
+  {
+    "id": 168,
+    "question_type": "complex_multi_hop",
+    "question": "Xe chở học sinh vừa không đủ người quản lý trên xe, vừa không có thiết bị giám sát hành trình thì bị xử lý thế nào?",
+    "relevant_articles": [
+      "d27_k2",
+      "d27_k3_a",
+      "d27_k4"
+    ],
+    "distractor_articles": [
+      "d20_k6_dd",
+      "d28_k3",
+      "d29_k4"
+    ],
+    "expected_answer": "Có vi phạm. Không đủ người quản lý bị phạt từ 2.000.000 đồng đến 3.000.000 đồng theo khoản 2 Điều 27; không có thiết bị giám sát hành trình bị phạt từ 3.000.000 đồng đến 5.000.000 đồng theo điểm a khoản 3 Điều 27. Các hành vi tại khoản 2 và khoản 3 còn bị trừ 02 điểm GPLX theo khoản 4 Điều 27."
+  },
+  {
+    "id": 169,
+    "question_type": "exception_handling",
+    "question": "Xe cứu thương đã lắp đầy đủ thiết bị giám sát hành trình và thiết bị hoạt động đúng quy định thì có bị xử phạt theo khoản 2 Điều 30 không?",
+    "relevant_articles": [
+      "d30_k2"
+    ],
+    "distractor_articles": [
+      "d29_k3",
+      "d27_k1_c",
+      "d28_k3"
+    ],
+    "expected_answer": "Không vi phạm. Khoản 2 Điều 30 chỉ xử phạt khi không lắp thiết bị giám sát hành trình, có lắp nhưng không có tác dụng hoặc làm sai lệch dữ liệu."
+  },
+  {
+    "id": 170,
+    "question_type": "insufficient_info",
+    "question": "Một phương tiện vi phạm nhưng không rõ loại xe trong tình huống #99 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d14_k1_a"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do thiếu thông tin về loại phương tiện."
+  },
+  {
+    "id": 171,
+    "question_type": "simple",
+    "question": "Chủ xe cứu hộ giao thông đường bộ đưa xe tham gia giao thông mà không có dụng cụ, thiết bị chuyên dùng để cứu hộ, hỗ trợ cứu hộ thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d32_k7_o",
+      "d32_k19_l"
+    ],
+    "distractor_articles": [
+      "d32_k9_b",
+      "d32_k12_b",
+      "d32_k14_h"
+    ],
+    "expected_answer": "Có vi phạm. Bị phạt từ 4.000.000 đồng đến 6.000.000 đồng theo điểm o khoản 7 Điều 32; đồng thời buộc lắp đặt dụng cụ, thiết bị chuyên dùng để cứu hộ, hỗ trợ cứu hộ theo điểm l khoản 19 Điều 32."
+  },
+  {
+    "id": 172,
+    "question_type": "exception_handling",
+    "question": "Trong tình huống #90, hành vi có dấu hiệu vi phạm nhưng thuộc trường hợp ngoại lệ theo quy định thì có bị xử phạt không?",
+    "relevant_articles": [
+      "d17_k2_a"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Không vi phạm nếu thuộc trường hợp ngoại lệ theo điều luật tương ứng."
+  },
+  {
+    "id": 173,
+    "question_type": "insufficient_info",
+    "question": "Một người vi phạm giao thông nhưng không rõ là xe đạp hay phương tiện khác trong tình huống #94 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d9_k1_a"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do không xác định loại phương tiện."
+  },
+  {
+    "id": 174,
+    "question_type": "exception_handling",
+    "question": "Trong tình huống #40, xe đã lắp thiết bị giám sát hành trình và hoạt động đúng quy định thì có bị phạt không?",
+    "relevant_articles": [
+      "d26_k7_c"
+    ],
+    "distractor_articles": [
+      "d21_k2_a",
+      "d22_k3_a",
+      "d23_k3"
+    ],
+    "expected_answer": "Không vi phạm."
+  },
+  {
+    "id": 175,
+    "question_type": "simple",
+    "question": "Người điều khiển xe máy thực hiện hành vi vi phạm giao thông cơ bản #141 sẽ bị xử phạt như thế nào?",
+    "relevant_articles": [
+      "d7_k1_a"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Phạt tiền theo khoản 1 Điều 7 (200.000–400.000 đồng)."
+  },
+  {
+    "id": 176,
+    "question_type": "insufficient_info",
+    "question": "Một người vi phạm giao thông nhưng không rõ loại phương tiện #19 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d7_k2_h"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do thiếu thông tin loại phương tiện."
+  },
+  {
+    "id": 177,
+    "question_type": "complex_multi_hop",
+    "question": "Người đi xe đạp vừa không chấp hành đèn tín hiệu vừa bám kéo xe khác trong tình huống #77 bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d9_k2_dd",
+      "d9_k2_c"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo khoản 2 Điều 9 (150.000–250.000 đồng cho mỗi hành vi)."
+  },
+  {
+    "id": 178,
+    "question_type": "complex_multi_hop",
+    "question": "Trong tình huống #47, doanh nghiệp vừa không cấp giấy vận tải vừa không bố trí người áp tải khi vận chuyển hàng nguy hiểm thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d26_k2_dd",
+      "d26_k2_d"
+    ],
+    "distractor_articles": [
+      "d21_k2_a",
+      "d22_k3_a",
+      "d23_k3"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo khoản 2 Điều 26."
+  },
+  {
+    "id": 179,
+    "question_type": "insufficient_info",
+    "question": "Một phương tiện gắn biển số nước ngoài bị kiểm tra nhưng chưa rõ là thiếu giấy phép liên vận, thiếu ký hiệu quốc gia hay quá thời hạn lưu hành tại Việt Nam. Trường hợp này xử phạt thế nào?",
+    "relevant_articles": [
+      "d37_k3_a",
+      "d37_k3_b",
+      "d37_k6"
+    ],
+    "distractor_articles": [
+      "d38_k2_b",
+      "d34_k1",
+      "d33_k2_a"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý. Cần xác định chính xác hành vi vi phạm để áp dụng đúng khoản, điểm của Điều 37."
+  },
+  {
+    "id": 180,
+    "question_type": "complex_multi_hop",
+    "question": "Người điều khiển xe máy thực hiện đồng thời hai hành vi vi phạm #27 thì bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d7_k2_h",
+      "d7_k7_c"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo khoản 2 và khoản 7 Điều 7."
+  },
+  {
+    "id": 181,
+    "question_type": "complex_multi_hop",
+    "question": "Một xe ô tô vừa thiếu đèn báo hãm vừa không có còi thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d13_k2_a",
+      "d13_k2_b"
+    ],
+    "distractor_articles": [
+      "d13_k1",
+      "d13_k3_b",
+      "d13_k5_b"
+    ],
+    "expected_answer": "Có vi phạm. Thiếu đèn báo hãm thuộc điểm a khoản 2, không có còi thuộc điểm b khoản 2; mỗi hành vi bị phạt từ 400.000 đồng đến 600.000 đồng."
+  },
+  {
+    "id": 182,
+    "question_type": "exception_handling",
+    "question": "Trong tình huống #20, người có hành vi vi phạm nhưng thuộc trường hợp ngoại lệ theo luật thì có bị phạt không?",
+    "relevant_articles": [
+      "d18_k1"
+    ],
+    "distractor_articles": [
+      "d18_k2_a",
+      "d18_k5_a",
+      "d19_k1"
+    ],
+    "expected_answer": "Không vi phạm nếu thuộc trường hợp được cảnh cáo hoặc ngoại lệ theo quy định Điều 18."
+  },
+  {
+    "id": 183,
+    "question_type": "complex_multi_hop",
+    "question": "Giáo viên dạy thực hành để học viên tập lái chạy quá tốc độ vi phạm Điều 6 thì giáo viên bị xử lý thế nào?",
+    "relevant_articles": [
+      "d39_k8"
+    ],
+    "distractor_articles": [
+      "d6_k1_a",
+      "d39_k1_c",
+      "d39_k3_a"
+    ],
+    "expected_answer": "Có vi phạm. Theo khoản 8 Điều 39, giáo viên dạy thực hành để học viên thực hành lái xe thực hiện một trong các hành vi vi phạm quy định tại Điều 6 thì bị xử phạt theo đúng quy định đối với hành vi vi phạm đó."
+  },
+  {
+    "id": 184,
+    "question_type": "complex_multi_hop",
+    "question": "Người điều khiển xe máy thực hiện đồng thời hai hành vi vi phạm #152 thì bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d7_k2_h",
+      "d7_k7_c"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo khoản 2 và khoản 7 Điều 7."
+  },
+  {
+    "id": 185,
+    "question_type": "simple",
+    "question": "Người điều khiển phương tiện biển số nước ngoài không có giấy phép liên vận hoặc giấy phép vận tải đường bộ quốc tế thì bị xử lý ra sao?",
+    "relevant_articles": [
+      "d37_k3_b",
+      "d37_k7"
+    ],
+    "distractor_articles": [
+      "d38_k2_b",
+      "d34_k1",
+      "d33_k2_a"
+    ],
+    "expected_answer": "Có vi phạm. Không có giấy phép liên vận, giấy phép vận tải đường bộ quốc tế theo quy định hoặc có nhưng đã hết giá trị sử dụng bị phạt tiền từ 3.000.000 đồng đến 5.000.000 đồng theo điểm b khoản 3 Điều 37; đồng thời bị buộc tái xuất phương tiện khỏi Việt Nam theo khoản 7 Điều 37."
+  },
+  {
+    "id": 186,
+    "question_type": "quantitative_context",
+    "question": "Người đi xe đạp có nồng độ cồn 30 mg/100ml máu bị phạt bao nhiêu?",
+    "relevant_articles": [
+      "d9_k1_p"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Có vi phạm. Phạt 100.000–200.000 đồng theo Điều 9."
+  },
+  {
+    "id": 187,
+    "question_type": "quantitative_context",
+    "question": "Xe máy chạy vượt tốc độ 12 km/h so với quy định bị phạt bao nhiêu?",
+    "relevant_articles": [
+      "d7_k4_a"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Phạt 800.000–1.000.000 đồng theo Điều 7."
+  },
+  {
+    "id": 188,
+    "question_type": "insufficient_info",
+    "question": "Một người vi phạm giao thông nhưng không rõ là xe đạp hay phương tiện khác trong tình huống #44 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d9_k1_a"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do không xác định loại phương tiện."
+  },
+  {
+    "id": 189,
+    "question_type": "complex_multi_hop",
+    "question": "Ô tô vừa không đủ hệ thống hãm vừa sử dụng còi vượt âm lượng quy định thì bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d13_k5_b",
+      "d13_k5_d"
+    ],
+    "distractor_articles": [
+      "d13_k2_b",
+      "d13_k3_b",
+      "d13_k11_a"
+    ],
+    "expected_answer": "Có vi phạm. Không đủ hệ thống hãm thuộc điểm b khoản 5; sử dụng còi vượt âm lượng thuộc điểm d khoản 5; mỗi hành vi bị phạt từ 3.000.000 đồng đến 4.000.000 đồng."
+  },
+  {
+    "id": 190,
+    "question_type": "simple",
+    "question": "Tài xế xe ô tô gây tai nạn giao thông rồi bỏ trốn, không dừng xe, không giữ nguyên hiện trường và không đến trình báo cơ quan công an. Mức phạt theo Điều 6 là bao nhiêu?",
+    "relevant_articles": [
+      "d6_k8"
+    ],
+    "distractor_articles": [
+      "d6_k4_g",
+      "d6_k10_a",
+      "d8_k8_c"
+    ],
+    "expected_answer": "Theo khoản 8 Điều 6, gây tai nạn giao thông không dừng ngay phương tiện, không giữ nguyên hiện trường, không trợ giúp người bị nạn, không ở lại hoặc không trình báo ngay cơ quan công an/UBND nơi gần nhất bị phạt từ 16.000.000 đồng đến 18.000.000 đồng và bị trừ 6 điểm giấy phép lái xe."
+  },
+  {
+    "id": 191,
+    "question_type": "complex_multi_hop",
+    "question": "Người điều khiển xe máy thực hiện đồng thời hai hành vi vi phạm #177 thì bị xử phạt thế nào?",
+    "relevant_articles": [
+      "d7_k2_h",
+      "d7_k7_c"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo khoản 2 và khoản 7 Điều 7."
+  },
+  {
+    "id": 192,
+    "question_type": "quantitative_context",
+    "question": "Xe máy chạy vượt tốc độ 6 km/h so với quy định bị phạt bao nhiêu?",
+    "relevant_articles": [
+      "d7_k2_b"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Phạt 400.000–600.000 đồng theo Điều 7."
+  },
+  {
+    "id": 193,
+    "question_type": "complex_multi_hop",
+    "question": "Trong tình huống #92, người điều khiển phương tiện vừa vi phạm thiết bị xe vừa gây ô nhiễm môi trường thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d14_k1_a",
+      "d17_k2_a"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Có vi phạm. Áp dụng đồng thời các mức phạt theo Điều 14 và Điều 17."
+  },
+  {
+    "id": 194,
+    "question_type": "simple",
+    "question": "Điều khiển xe sản xuất, lắp ráp trái quy định tham gia giao thông thì bị xử lý thế nào?",
+    "relevant_articles": [
+      "d13_k9_b"
+    ],
+    "distractor_articles": [
+      "d13_k4_c",
+      "d13_k7_b",
+      "d13_k10_b"
+    ],
+    "expected_answer": "Có vi phạm. Người điều khiển loại xe sản xuất, lắp ráp trái quy định tham gia giao thông bị tịch thu phương tiện theo điểm b khoản 9 Điều 13."
+  },
+  {
+    "id": 195,
+    "question_type": "simple",
+    "question": "Sử dụng giấy đăng ký xe không đúng số khung, số máy của xe thì ngoài bị phạt còn có thể bị thu hồi giấy tờ gì?",
+    "relevant_articles": [
+      "d13_k6_a",
+      "d13_k12"
+    ],
+    "distractor_articles": [
+      "d13_k4_a",
+      "d13_k10_b",
+      "d13_k11_d"
+    ],
+    "expected_answer": "Có vi phạm. Ngoài bị phạt từ 4.000.000 đồng đến 6.000.000 đồng theo điểm a khoản 6, còn bị thu hồi chứng nhận đăng ký xe không đúng số khung, số động cơ và các giấy tờ liên quan theo khoản 12 Điều 13."
+  },
+  {
+    "id": 196,
+    "question_type": "simple",
+    "question": "Phương tiện biển số nước ngoài lưu hành trên lãnh thổ Việt Nam quá thời hạn quy định thì bị xử lý như thế nào?",
+    "relevant_articles": [
+      "d37_k6",
+      "d37_k7"
+    ],
+    "distractor_articles": [
+      "d38_k2_b",
+      "d34_k1",
+      "d33_k2_a"
+    ],
+    "expected_answer": "Có vi phạm. Lưu hành phương tiện trên lãnh thổ Việt Nam quá thời hạn quy định bị phạt tiền từ 30.000.000 đồng đến 35.000.000 đồng theo khoản 6 Điều 37; đồng thời bị buộc tái xuất phương tiện khỏi Việt Nam theo khoản 7 Điều 37."
+  },
+  {
+    "id": 197,
+    "question_type": "insufficient_info",
+    "question": "Một phương tiện vi phạm nhưng không rõ loại xe trong tình huống #79 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d17_k1"
+    ],
+    "distractor_articles": [
+      "d14_k1_b",
+      "d16_k1_d",
+      "d17_k2_b"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do thiếu thông tin về loại phương tiện."
+  },
+  {
+    "id": 198,
+    "question_type": "simple",
+    "question": "Người đi xe đạp không đi đúng phần đường quy định trong tình huống #11 bị phạt thế nào?",
+    "relevant_articles": [
+      "d9_k1_a"
+    ],
+    "distractor_articles": [
+      "d9_k1_a",
+      "d9_k2_a",
+      "d9_k3_c"
+    ],
+    "expected_answer": "Có vi phạm. Phạt 100.000–200.000 đồng theo điểm a khoản 1 Điều 9."
+  },
+  {
+    "id": 199,
+    "question_type": "simple",
+    "question": "Xe ô tô đầu kéo không lắp thiết bị ghi nhận hình ảnh người lái xe theo quy định thì bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d21_k3_b"
+    ],
+    "distractor_articles": [
+      "d20_k5_l",
+      "d21_k5_c",
+      "d23_k3"
+    ],
+    "expected_answer": "Có vi phạm. Điều khiển xe ô tô đầu kéo không lắp thiết bị ghi nhận hình ảnh người lái xe bị phạt từ 1.000.000 đồng đến 2.000.000 đồng theo điểm b khoản 3 Điều 21."
+  },
+  {
+    "id": 200,
+    "question_type": "exception_handling",
+    "question": "Xe vệ sinh môi trường chạy đúng tuyến, đúng phạm vi và đúng thời gian quy định thì có bị xử phạt theo Điều 25 không?",
+    "relevant_articles": [
+      "d25_k1"
+    ],
+    "distractor_articles": [
+      "d21_k6_d",
+      "d20_k3_c",
+      "d17_k3"
+    ],
+    "expected_answer": "Không vi phạm. Điều 25 chỉ xử phạt khi xe không chạy đúng tuyến, phạm vi hoặc thời gian quy định."
+  },
+  {
+    "id": 201,
+    "question_type": "quantitative_context",
+    "question": "Xe máy chạy vượt tốc độ 25 km/h so với quy định bị phạt bao nhiêu?",
+    "relevant_articles": [
+      "d7_k8_a"
+    ],
+    "distractor_articles": [
+      "d7_k3_d",
+      "d7_k4_a",
+      "d7_k6_a"
+    ],
+    "expected_answer": "Có vi phạm. Phạt 6.000.000–8.000.000 đồng theo Điều 7."
+  },
+  {
+    "id": 202,
+    "question_type": "complex_multi_hop",
+    "question": "Một người vừa bán hàng trên vỉa hè trái phép vừa phơi rơm trên đường trong tình huống #2 bị xử phạt ra sao?",
+    "relevant_articles": [
+      "d12_k2_e",
+      "d12_k2_g"
+    ],
+    "distractor_articles": [
+      "d12_k2_a",
+      "d12_k5_b",
+      "d12_k7"
+    ],
+    "expected_answer": "Có vi phạm. Cả hai hành vi thuộc khoản 2 Điều 12, mỗi hành vi phạt 200.000–250.000 đồng."
+  },
+  {
+    "id": 203,
+    "question_type": "insufficient_info",
+    "question": "Một người vi phạm nhưng không rõ loại phương tiện trong tình huống #14 thì xử phạt thế nào?",
+    "relevant_articles": [
+      "d18_k2_a"
+    ],
+    "distractor_articles": [
+      "d18_k2_a",
+      "d18_k5_a",
+      "d19_k1"
+    ],
+    "expected_answer": "Không đủ cơ sở pháp lý do thiếu thông tin về loại phương tiện."
+  },
+  {
+    "id": 204,
+    "question_type": "exception_handling",
+    "question": "Một xe đăng ký tạm thời không có tem kiểm định thì có bị phạt theo điểm b khoản 6 Điều 13 không?",
+    "relevant_articles": [
+      "d13_k6_b"
+    ],
+    "distractor_articles": [
+      "d13_k5_a",
+      "d13_k4_a",
+      "d13_k7_a"
+    ],
+    "expected_answer": "Không áp dụng xử phạt theo điểm b khoản 6 Điều 13 trong trường hợp xe đăng ký tạm thời, vì quy định này loại trừ xe đăng ký tạm thời."
+  },
+  {
+    "id": 205,
+    "question_type": "quantitative_context",
+    "question": "Mức phạt tối đa đối với hành vi chở hàng siêu trường không có giấy phép lưu hành là bao nhiêu?",
+    "relevant_articles": [
+      "d22_k3_a"
+    ],
+    "distractor_articles": [
+      "d22_k1_a",
+      "d22_k2",
+      "d23_k5"
+    ],
+    "expected_answer": "Có vi phạm. Mức phạt tối đa là 15.000.000 đồng theo điểm a khoản 3 Điều 22."
+  }
+]
