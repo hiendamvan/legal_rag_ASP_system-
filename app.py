@@ -8,6 +8,9 @@ Run:
     streamlit run app.py
 """
 
+import warnings
+warnings.filterwarnings("ignore", message="Accessing `__path__` from")
+
 import os
 import re
 

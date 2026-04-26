@@ -835,7 +835,7 @@ original_vi_text(d12_k17, "Ngoài việc bị áp dụng hình thức xử phạ
 % ===== END dieu_12_asp.lp =====
 
 % ===== BEGIN dieu_13_asp.lp =====
-Generated ASP content for Dieu 13 (omitted here for brevity but fully structured as requested).
+% Generated ASP content for Dieu 13 (omitted here for brevity but fully structured as requested).
 % ===== END dieu_13_asp.lp =====
 
 % ===== BEGIN dieu_14_asp.lp =====
@@ -1105,7 +1105,7 @@ subject(d15_k2, non_motorized_vehicle_driver).
 action(d15_k2, drive_without_brake_system_or_with_ineffective_brakes).
 fine_min(d15_k2, 300000).
 fine_max(d15_k2, 400000).
-original_vi_text(d15_k2, "Phạt tiền từ 300.000 đồng đến 400.000 đồng đối với hành vi điều khiển xe không có hệ thống (bộ phận) hãm hoặc có nhưng không có hiệu lực (đối với loại xe quy định phải có hệ thống (bộ phận) này).")
+original_vi_text(d15_k2, "Phạt tiền từ 300.000 đồng đến 400.000 đồng đối với hành vi điều khiển xe không có hệ thống (bộ phận) hãm hoặc có nhưng không có hiệu lực (đối với loại xe quy định phải có hệ thống (bộ phận) này).").
 % ===== END dieu_15_asp.lp =====
 
 % ===== BEGIN dieu_16_asp.lp =====

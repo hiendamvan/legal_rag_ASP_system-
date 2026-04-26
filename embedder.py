@@ -1,6 +1,7 @@
 """Embedding helper — wraps AITeamVN/Vietnamese_Embedding via sentence-transformers."""
 
 import os
+import warnings
 from dotenv import load_dotenv
 
 load_dotenv()

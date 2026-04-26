@@ -1,0 +1,472 @@
+10:36:52 [INFO] ============================================================
+10:36:52 [INFO] QUERY: xe máy vượt đèn đỏ bị phạt như nào
+10:36:52 [INFO] top_k=5
+10:36:52 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+10:41:10 [INFO] ============================================================
+10:41:10 [INFO] QUERY: xe may vuot den do bi phat nhu nao
+10:41:10 [INFO] top_k=5
+10:41:10 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+10:56:56 [INFO] ============================================================
+10:56:56 [INFO] QUERY: xe máy vượt đèn đỏ bị phạt như nào
+10:56:56 [INFO] top_k=5
+10:56:56 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+10:57:08 [INFO]   → 5 chunks retrieved
+10:57:08 [DEBUG]     chunk: dieu=7 khoan=4 diem=c score=0.5571  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+10:57:08 [DEBUG]     chunk: dieu=8 khoan=1 diem=a score=0.5403  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+10:57:08 [DEBUG]     chunk: dieu=7 khoan=3 diem=đ score=0.5391  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+10:57:08 [DEBUG]     chunk: dieu=8 khoan=2 diem=b score=0.5387  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+10:57:08 [DEBUG]     chunk: dieu=8 khoan=6 diem=b score=0.5340  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+10:57:08 [INFO]   → 15 ASP rules matched
+10:57:08 [DEBUG]     rule: d7_k4_c                    subject=motorbike_driver      action=overtake_when_prohibited_or_in_no_overtaking_zone
+10:57:08 [DEBUG]     rule: d8_k1_a                    subject=specialized_vehicle_driver  action=disobey_road_signs_or_markings
+10:57:08 [DEBUG]     rule: d8_k2_b_1                  subject=specialized_vehicle_driver  action=stop_or_park_on_left_side_of_one_way_or_divided_road
+10:57:08 [DEBUG]     rule: d8_k2_b_2                  subject=specialized_vehicle_driver  action=stop_or_park_on_curve_or_near_hillcrest_with_obstructed_view
+10:57:08 [DEBUG]     rule: d8_k2_b_3                  subject=specialized_vehicle_driver  action=stop_or_park_on_bridge_or_under_overpass
+10:57:08 [DEBUG]     rule: d8_k2_b_4                  subject=specialized_vehicle_driver  action=stop_or_park_at_intersection_or_within_five_meters
+10:57:08 [DEBUG]     rule: d8_k2_b_5                  subject=specialized_vehicle_driver  action=stop_or_park_at_pickup_or_dropoff_point
+10:57:08 [DEBUG]     rule: d8_k2_b_6                  subject=specialized_vehicle_driver  action=stop_or_park_near_gate_blocking_entry_or_exit
+10:57:08 [DEBUG]     rule: d8_k2_b_7                  subject=specialized_vehicle_driver  action=stop_or_park_on_narrow_single_lane_section
+10:57:08 [DEBUG]     rule: d8_k2_b_8                  subject=specialized_vehicle_driver  action=stop_or_park_obstructing_signals_or_signs
+10:57:08 [DEBUG]     rule: d8_k2_b_9                  subject=specialized_vehicle_driver  action=stop_or_park_at_median_opening
+10:57:08 [DEBUG]     rule: d8_k2_b_10                 subject=specialized_vehicle_driver  action=park_too_close_to_opposite_parked_vehicle
+10:57:08 [DEBUG]     rule: d8_k6_b_1                  subject=specialized_vehicle_driver  action=stop_or_park_on_expressway_outside_designated_place
+10:57:08 [DEBUG]     rule: d8_k6_b_2                  subject=specialized_vehicle_driver  action=fail_to_use_hazard_lights_when_stopped_in_emergency_lane_on_expressway
+10:57:08 [DEBUG]     rule: d8_k6_b_3                  subject=specialized_vehicle_driver  action=fail_to_use_hazard_lights_or_place_warning_triangle_150m_when_stopped_on_expressway_lane
+10:57:08 [INFO] [STEP 2] Building LLM extraction prompt ...
+10:57:08 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+xe máy vượt đèn đỏ bị phạt như nào
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d7_k4_c",
+  "subject": "motorbike_driver",
+  "action": "overtake_when_prohibited_or_in_no_overtaking_zone",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k1_a",
+  "subject": "specialized_vehicle_driver",
+  "action": "disobey_road_signs_or_markings",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_1",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_left_side_of_one_way_or_divided_road",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_2",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_curve_or_near_hillcrest_with_obstructed_view",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_3",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_bridge_or_under_overpass",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_4",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_at_intersection_or_within_five_meters",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_5",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_at_pickup_or_dropoff_point",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_6",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_near_gate_blocking_entry_or_exit",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_7",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_narrow_single_lane_section",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_8",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_obstructing_signals_or_signs",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_9",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_at_median_opening",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_10",
+  "subject": "specialized_vehicle_driver",
+  "action": "park_too_close_to_opposite_parked_vehicle",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k6_b_1",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_expressway_outside_designated_place",
+  "context": [
+   "on_expressway"
+  ]
+ },
+ {
+  "rule_id": "d8_k6_b_2",
+  "subject": "specialized_vehicle_driver",
+  "action": "fail_to_use_hazard_lights_when_stopped_in_emergency_lane_on_expressway",
+  "context": [
+   "on_expressway",
+   "after_technical_failure_or_force_majeure"
+  ]
+ },
+ {
+  "rule_id": "d8_k6_b_3",
+  "subject": "specialized_vehicle_driver",
+  "action": "fail_to_use_hazard_lights_or_place_warning_triangle_150m_when_stopped_on_expressway_lane",
+  "context": [
+   "on_expressway",
+   "after_technical_failure_or_force_majeure"
+  ]
+ }
+]
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]},
+    {"predicate": "case_action",       "args": ["user1", "overtake_when_prohibited_or_in_no_overtaking_zone"]}
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên
+5. Chỉ thêm case_context nếu rule có context
+6. Chỉ thêm case_exception nếu có exception áp dụng
+7. Chỉ xuất duy nhất JSON object, không thêm gì khác
+----------------------------------------
+10:57:08 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+10:58:11 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]}, {"predicate": "case_action", "args": ["user1", "overtake_when_prohibited_or_in_no_overtaking_zone"]}]}
+----------------------------------------
+10:58:11 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+10:58:11 [INFO]   → 2 facts parsed
+10:58:11 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]}, {"predicate": "case_action", "args": ["user1", "overtake_when_prohibited_or_in_no_overtaking_zone"]}]
+10:58:11 [INFO] [STEP 5] Converting facts to ASP predicates ...
+10:58:11 [DEBUG]   ASP FACTS:
+driver_type(case1, motorbike_driver).
+did_action(case1, overtake_when_prohibited_or_in_no_overtaking_zone).
+10:58:11 [INFO] [STEP 6] Running clingo reasoning ...
+10:58:11 [ERROR]   [FAIL] Clingo error: parsing failed
+10:58:11 [INFO] [DONE] Pipeline hoàn thành — có lỗi: parsing failed
+10:58:11 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+11:03:07 [INFO] ============================================================
+11:03:07 [INFO] QUERY: xe máy vượt đèn đỏ thì bị phạt thế nào
+11:03:07 [INFO] top_k=5
+11:03:07 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+11:03:08 [INFO]   → 5 chunks retrieved
+11:03:08 [DEBUG]     chunk: dieu=7 khoan=4 diem=c score=0.5633  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+11:03:08 [DEBUG]     chunk: dieu=8 khoan=1 diem=a score=0.5515  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+11:03:08 [DEBUG]     chunk: dieu=8 khoan=2 diem=b score=0.5507  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+11:03:08 [DEBUG]     chunk: dieu=7 khoan=3 diem=đ score=0.5459  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+11:03:08 [DEBUG]     chunk: dieu=8 khoan=7 diem=c score=0.5418  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+11:03:08 [INFO]   → 13 ASP rules matched
+11:03:08 [DEBUG]     rule: d7_k4_c                    subject=motorbike_driver      action=overtake_when_prohibited_or_in_no_overtaking_zone
+11:03:08 [DEBUG]     rule: d8_k1_a                    subject=specialized_vehicle_driver  action=disobey_road_signs_or_markings
+11:03:08 [DEBUG]     rule: d8_k2_b_1                  subject=specialized_vehicle_driver  action=stop_or_park_on_left_side_of_one_way_or_divided_road
+11:03:08 [DEBUG]     rule: d8_k2_b_2                  subject=specialized_vehicle_driver  action=stop_or_park_on_curve_or_near_hillcrest_with_obstructed_view
+11:03:08 [DEBUG]     rule: d8_k2_b_3                  subject=specialized_vehicle_driver  action=stop_or_park_on_bridge_or_under_overpass
+11:03:08 [DEBUG]     rule: d8_k2_b_4                  subject=specialized_vehicle_driver  action=stop_or_park_at_intersection_or_within_five_meters
+11:03:08 [DEBUG]     rule: d8_k2_b_5                  subject=specialized_vehicle_driver  action=stop_or_park_at_pickup_or_dropoff_point
+11:03:08 [DEBUG]     rule: d8_k2_b_6                  subject=specialized_vehicle_driver  action=stop_or_park_near_gate_blocking_entry_or_exit
+11:03:08 [DEBUG]     rule: d8_k2_b_7                  subject=specialized_vehicle_driver  action=stop_or_park_on_narrow_single_lane_section
+11:03:08 [DEBUG]     rule: d8_k2_b_8                  subject=specialized_vehicle_driver  action=stop_or_park_obstructing_signals_or_signs
+11:03:08 [DEBUG]     rule: d8_k2_b_9                  subject=specialized_vehicle_driver  action=stop_or_park_at_median_opening
+11:03:08 [DEBUG]     rule: d8_k2_b_10                 subject=specialized_vehicle_driver  action=park_too_close_to_opposite_parked_vehicle
+11:03:08 [DEBUG]     rule: d8_k7_c                    subject=specialized_vehicle_driver  action=run_red_light
+11:03:08 [INFO] [STEP 2] Building LLM extraction prompt ...
+11:03:08 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+xe máy vượt đèn đỏ thì bị phạt thế nào
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d7_k4_c",
+  "subject": "motorbike_driver",
+  "action": "overtake_when_prohibited_or_in_no_overtaking_zone",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k1_a",
+  "subject": "specialized_vehicle_driver",
+  "action": "disobey_road_signs_or_markings",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_1",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_left_side_of_one_way_or_divided_road",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_2",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_curve_or_near_hillcrest_with_obstructed_view",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_3",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_bridge_or_under_overpass",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_4",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_at_intersection_or_within_five_meters",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_5",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_at_pickup_or_dropoff_point",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_6",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_near_gate_blocking_entry_or_exit",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_7",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_narrow_single_lane_section",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_8",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_obstructing_signals_or_signs",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_9",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_at_median_opening",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_10",
+  "subject": "specialized_vehicle_driver",
+  "action": "park_too_close_to_opposite_parked_vehicle",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k7_c",
+  "subject": "specialized_vehicle_driver",
+  "action": "run_red_light",
+  "context": []
+ }
+]
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]},
+    {"predicate": "case_action",       "args": ["user1", "overtake_when_prohibited_or_in_no_overtaking_zone"]}
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên
+5. Chỉ thêm case_context nếu rule có context
+6. Chỉ thêm case_exception nếu có exception áp dụng
+7. Chỉ xuất duy nhất JSON object, không thêm gì khác
+----------------------------------------
+11:03:08 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+11:03:48 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]}, {"predicate": "case_action", "args": ["user1", "run_red_light"]}]}
+
+</think>
+
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]}, {"predicate": "case_action", "args": ["user1", "run_red_light"]}]}
+----------------------------------------
+11:03:48 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+11:03:48 [ERROR]   [FAIL] Parse error: Extra data: line 3 column 1 (char 154)
+11:03:48 [ERROR]   LLM raw was: '{"facts": [{"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]}, {"predicate": "case_action", "args": ["user1", "run_red_light"]}]}\n\n</think>\n\n{"facts": [{"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]}, {"predicate": "case_action", "args": ["user1", "run_red_light"]}]}'
+11:07:37 [INFO] ============================================================
+11:07:37 [INFO] QUERY: xe máy vượt đèn đỏ thì bị phạt thế nào
+11:07:37 [INFO] top_k=5
+11:07:37 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+11:07:46 [INFO]   → 5 chunks retrieved
+11:07:46 [DEBUG]     chunk: dieu=7 khoan=4 diem=c score=0.5633  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+11:07:46 [DEBUG]     chunk: dieu=8 khoan=1 diem=a score=0.5515  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+11:07:46 [DEBUG]     chunk: dieu=8 khoan=2 diem=b score=0.5507  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+11:07:46 [DEBUG]     chunk: dieu=7 khoan=3 diem=đ score=0.5459  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+11:07:46 [DEBUG]     chunk: dieu=8 khoan=7 diem=c score=0.5418  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+11:07:46 [INFO]   → 13 ASP rules matched
+11:07:46 [DEBUG]     rule: d7_k4_c                    subject=motorbike_driver      action=overtake_when_prohibited_or_in_no_overtaking_zone
+11:07:46 [DEBUG]     rule: d8_k1_a                    subject=specialized_vehicle_driver  action=disobey_road_signs_or_markings
+11:07:46 [DEBUG]     rule: d8_k2_b_1                  subject=specialized_vehicle_driver  action=stop_or_park_on_left_side_of_one_way_or_divided_road
+11:07:46 [DEBUG]     rule: d8_k2_b_2                  subject=specialized_vehicle_driver  action=stop_or_park_on_curve_or_near_hillcrest_with_obstructed_view
+11:07:46 [DEBUG]     rule: d8_k2_b_3                  subject=specialized_vehicle_driver  action=stop_or_park_on_bridge_or_under_overpass
+11:07:46 [DEBUG]     rule: d8_k2_b_4                  subject=specialized_vehicle_driver  action=stop_or_park_at_intersection_or_within_five_meters
+11:07:46 [DEBUG]     rule: d8_k2_b_5                  subject=specialized_vehicle_driver  action=stop_or_park_at_pickup_or_dropoff_point
+11:07:46 [DEBUG]     rule: d8_k2_b_6                  subject=specialized_vehicle_driver  action=stop_or_park_near_gate_blocking_entry_or_exit
+11:07:46 [DEBUG]     rule: d8_k2_b_7                  subject=specialized_vehicle_driver  action=stop_or_park_on_narrow_single_lane_section
+11:07:46 [DEBUG]     rule: d8_k2_b_8                  subject=specialized_vehicle_driver  action=stop_or_park_obstructing_signals_or_signs
+11:07:46 [DEBUG]     rule: d8_k2_b_9                  subject=specialized_vehicle_driver  action=stop_or_park_at_median_opening
+11:07:47 [DEBUG]     rule: d8_k2_b_10                 subject=specialized_vehicle_driver  action=park_too_close_to_opposite_parked_vehicle
+11:07:47 [DEBUG]     rule: d8_k7_c                    subject=specialized_vehicle_driver  action=run_red_light
+11:07:47 [INFO] [STEP 2] Building LLM extraction prompt ...
+11:07:47 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+xe máy vượt đèn đỏ thì bị phạt thế nào
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d7_k4_c",
+  "subject": "motorbike_driver",
+  "action": "overtake_when_prohibited_or_in_no_overtaking_zone",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k1_a",
+  "subject": "specialized_vehicle_driver",
+  "action": "disobey_road_signs_or_markings",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_1",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_left_side_of_one_way_or_divided_road",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_2",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_curve_or_near_hillcrest_with_obstructed_view",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_3",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_bridge_or_under_overpass",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_4",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_at_intersection_or_within_five_meters",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_5",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_at_pickup_or_dropoff_point",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_6",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_near_gate_blocking_entry_or_exit",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_7",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_narrow_single_lane_section",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_8",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_obstructing_signals_or_signs",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_9",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_at_median_opening",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_10",
+  "subject": "specialized_vehicle_driver",
+  "action": "park_too_close_to_opposite_parked_vehicle",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k7_c",
+  "subject": "specialized_vehicle_driver",
+  "action": "run_red_light",
+  "context": []
+ }
+]
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]},
+    {"predicate": "case_action",       "args": ["user1", "overtake_when_prohibited_or_in_no_overtaking_zone"]}
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên
+5. Chỉ thêm case_context nếu rule có context
+6. Chỉ thêm case_exception nếu có exception áp dụng
+7. Chỉ xuất duy nhất JSON object, không thêm gì khác
+----------------------------------------
+11:07:47 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+11:08:03 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]}, {"predicate": "case_action", "args": ["user1", "run_red_light"]}]}
+
+</think>
+
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]}, {"predicate": "case_action", "args": ["user1", "run_red_light"]}]}
+----------------------------------------
+11:08:03 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+11:08:03 [INFO]   → 2 facts parsed
+11:08:03 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]}, {"predicate": "case_action", "args": ["user1", "run_red_light"]}]
+11:08:03 [INFO] [STEP 5] Converting facts to ASP predicates ...
+11:08:03 [DEBUG]   ASP FACTS:
+driver_type(case1, motorbike_driver).
+did_action(case1, run_red_light).
+11:08:03 [INFO] [STEP 6] Running clingo reasoning ...
+11:08:03 [INFO]   → 1 result atoms
+11:08:03 [DEBUG]     result(d7_k7_c,4000000,6000000)
+11:08:03 [INFO] [DONE] Pipeline hoàn thành
+11:08:03 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log

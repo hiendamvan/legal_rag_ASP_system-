@@ -3,7 +3,7 @@ asp_pipeline.py — ASP-based legal reasoning pipeline.
 
 Pipeline:
     1. Retrieve relevant chunks from ChromaDB  (reuses retrieve.py)
-    2. Match chunks to ASP rules in chuong2_full.lp
+    2. Match chunks to ASP rules in nd168_kb.lp
     3. Build structured prompt → call local fine-tuned LLM (localhost:8000)
     4. Parse JSON facts from LLM output
     5. Convert facts → ASP .lp code
@@ -15,8 +15,12 @@ Usage:
     python asp_pipeline.py --query "..." --top_k 5 --verbose
 """
 
+import warnings
+warnings.filterwarnings("ignore", message="Accessing `__path__` from")
+
 import argparse
 import json
+import logging
 import re
 import sys
 from pathlib import Path
@@ -26,8 +30,29 @@ from legal_knowlegde.asp_rule_loader import load_rules, match_chunk_to_rules
 from model.call_llm import call_llm
 
 _KB_DIR       = Path(__file__).parent / "legal_knowlegde"
-_KB_LP        = str(_KB_DIR / "chuong2_full.lp")
+_KB_LP        = str(_KB_DIR / "nd168_kb.lp")
 _REASONING_LP = str(_KB_DIR / "reasoning.lp")
+_LOG_FILE     = Path(__file__).parent / "pipeline_debug.log"
+
+# ── Logger setup ────────────────────────────────────────────────────────────
+
+def _get_logger() -> logging.Logger:
+    logger = logging.getLogger("asp_pipeline")
+    if logger.handlers:
+        return logger  # already configured
+    logger.setLevel(logging.DEBUG)
+    fmt = logging.Formatter("%(asctime)s [%(levelname)s] %(message)s", "%H:%M:%S")
+    # Console handler
+    ch = logging.StreamHandler(sys.stdout)
+    ch.setLevel(logging.DEBUG)
+    ch.setFormatter(fmt)
+    logger.addHandler(ch)
+    # File handler
+    fh = logging.FileHandler(_LOG_FILE, encoding="utf-8")
+    fh.setLevel(logging.DEBUG)
+    fh.setFormatter(fmt)
+    logger.addHandler(fh)
+    return logger
 
 
 # ── Step 1: Retrieve + match ────────────────────────────────────────────────
@@ -65,28 +90,38 @@ def build_extraction_prompt(query: str, rules: list[dict]) -> str:
         ensure_ascii=False,
         indent=1,
     )
+
+    # Build a concrete example from the first matched rule so the LLM
+    # sees exactly which values to copy and which key names to use.
+    ex = rules[0] if rules else {}
+    ex_subject = ex.get("subject", "pedestrian")
+    ex_action  = ex.get("action",  "cross_road_at_improper_location")
+    ex_ctx     = ex.get("context", [])
+    ex_ctx_line = (
+        f'    {{"predicate": "case_context", "args": ["user1", "{ex_ctx[0]}"]}}\n'
+        if ex_ctx else ""
+    )
+
     return (
-        "Bạn là hệ thống trích xuất legal case facts.\n\n"
-        "Nhiệm vụ:\n"
-        "- Đọc câu hỏi người dùng\n"
-        "- Chỉ sử dụng các rule được cung cấp\n"
-        "- Trích xuất case facts chuẩn hóa\n"
-        "- KHÔNG suy luận mức phạt\n\n"
+        "Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.\n\n"
         f"Câu hỏi:\n{query}\n\n"
         f"Các rule liên quan:\n{rules_json}\n\n"
-        "Trả về JSON với format CHÍNH XÁC (chỉ JSON, không giải thích):\n"
-        '{\n'
+        "Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:\n"
+        "{\n"
         '  "facts": [\n'
-        '    {"predicate": "case_subject_type", "args": ["user1", "<subject từ rule>"]},\n'
-        '    {"predicate": "case_action",       "args": ["user1", "<action từ rule>"]},\n'
-        '    {"predicate": "case_context",      "args": ["user1", "<context nếu có>"]}\n'
-        '  ]\n'
-        '}\n\n'
-        "Quy tắc bắt buộc:\n"
-        '- args PHẢI luôn có ĐÚNG 2 phần tử: ["user1", "<giá trị>"]\n'
-        '- Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên\n'
-        "- Chỉ thêm case_context nếu rule có context\n"
-        "- Chỉ thêm case_exception nếu có exception áp dụng"
+        f'    {{"predicate": "case_subject_type", "args": ["user1", "{ex_subject}"]}},\n'
+        f'    {{"predicate": "case_action",       "args": ["user1", "{ex_action}"]}}'
+        + (f',\n{ex_ctx_line}' if ex_ctx_line else '\n') +
+        "  ]\n"
+        "}\n\n"
+        "Quy tắc BẮT BUỘC:\n"
+        '1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"\n'
+        '2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]\n'
+        '3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"\n'
+        "4. Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên\n"
+        "5. Chỉ thêm case_context nếu rule có context\n"
+        "6. Chỉ thêm case_exception nếu có exception áp dụng\n"
+        "7. Chỉ xuất duy nhất JSON object, không thêm gì khác"
     )
 
 
@@ -104,15 +139,21 @@ def parse_llm_facts(llm_output: str) -> list[dict]:
     """
     text = llm_output.strip()
 
+    # Strip <think>...</think> blocks (Qwen3 reasoning traces)
+    text = re.sub(r'<think>[\s\S]*?</think>', '', text).strip()
+
     # Strip markdown code fences
     m = re.search(r'```(?:json)?\s*([\s\S]+?)\s*```', text)
     if m:
         text = m.group(1).strip()
 
-    # Isolate first JSON object
-    m = re.search(r'\{[\s\S]+\}', text)
-    if m:
-        text = m.group(0)
+    # Isolate the LAST JSON object (model may echo JSON before and after think block)
+    all_jsons = list(re.finditer(r'\{[\s\S]+?\}(?=\s*$|\s*\n\s*[^{])', text))
+    if not all_jsons:
+        # fallback: find any JSON object
+        all_jsons = list(re.finditer(r'\{[\s\S]+\}', text))
+    if all_jsons:
+        text = all_jsons[-1].group(0)
 
     data = json.loads(text)
     facts = data.get("facts", [])
@@ -234,10 +275,25 @@ def run_asp_pipeline(query: str, top_k: int = 5) -> dict:
         reasoning_results — list of result/3 atoms from clingo
         error             — error message string (only present on failure)
     """
+    log = _get_logger()
+    log.info("=" * 60)
+    log.info(f"QUERY: {query}")
+    log.info(f"top_k={top_k}")
+
     # 1. Retrieve + match
+    log.info("[STEP 1] Retrieving chunks + matching ASP rules ...")
     chunks, matched_rules = retrieve_and_match(query, top_k)
+    log.info(f"  → {len(chunks)} chunks retrieved")
+    for c in chunks:
+        m = c["metadata"]
+        log.debug(f"    chunk: dieu={m.get('dieu_num')} khoan={m.get('khoan_num')} "
+                  f"diem={m.get('diem')} score={c['score']:.4f}  {m.get('dieu_title','')[:60]}")
+    log.info(f"  → {len(matched_rules)} ASP rules matched")
+    for r in matched_rules:
+        log.debug(f"    rule: {r['rule_id']:25s}  subject={r['subject']:20s}  action={r['action']}")
 
     if not matched_rules:
+        log.warning("  [FAIL] Không tìm thấy ASP rule phù hợp")
         return {
             "query":             query,
             "matched_rules":     [],
@@ -248,16 +304,21 @@ def run_asp_pipeline(query: str, top_k: int = 5) -> dict:
             "reasoning_results": [],
             "error": (
                 "Không tìm thấy ASP rule phù hợp với các điều khoản được retrieve.\n"
-                "Kiểm tra lại chuong2_full.lp hoặc tăng top_k."
+                "Kiểm tra lại nd168_kb.lp hoặc tăng top_k."
             ),
         }
 
     # 2. Build prompt
+    log.info("[STEP 2] Building LLM extraction prompt ...")
     prompt = build_extraction_prompt(query, matched_rules)
+    log.debug(f"  PROMPT:\n{'-'*40}\n{prompt}\n{'-'*40}")
 
     # 3. Call local LLM
+    log.info("[STEP 3] Calling local LLM (localhost:8000) ...")
     llm_raw = call_llm(prompt)
+    log.debug(f"  LLM RAW OUTPUT:\n{'-'*40}\n{llm_raw}\n{'-'*40}")
     if not llm_raw:
+        log.error("  [FAIL] LLM trả về rỗng")
         return {
             "query":             query,
             "matched_rules":     matched_rules,
@@ -270,9 +331,14 @@ def run_asp_pipeline(query: str, top_k: int = 5) -> dict:
         }
 
     # 4. Parse facts
+    log.info("[STEP 4] Parsing JSON facts from LLM output ...")
     try:
         facts_json = parse_llm_facts(llm_raw)
+        log.info(f"  → {len(facts_json)} facts parsed")
+        log.debug(f"  FACTS JSON: {json.dumps(facts_json, ensure_ascii=False)}")
     except (json.JSONDecodeError, ValueError) as e:
+        log.error(f"  [FAIL] Parse error: {e}")
+        log.error(f"  LLM raw was: {repr(llm_raw[:500])}")
         return {
             "query":             query,
             "matched_rules":     matched_rules,
@@ -285,15 +351,22 @@ def run_asp_pipeline(query: str, top_k: int = 5) -> dict:
         }
 
     # 5. Convert to ASP
+    log.info("[STEP 5] Converting facts to ASP predicates ...")
     asp_facts = facts_to_asp(facts_json)
+    log.debug(f"  ASP FACTS:\n{asp_facts}")
 
     # 6. Run clingo
+    log.info("[STEP 6] Running clingo reasoning ...")
     try:
         reasoning_results = run_asp_reasoning(asp_facts)
         error = None
+        log.info(f"  → {len(reasoning_results)} result atoms")
+        for atom in reasoning_results:
+            log.debug(f"    {atom}")
     except Exception as e:
         reasoning_results = []
         error = str(e)
+        log.error(f"  [FAIL] Clingo error: {e}")
 
     result = {
         "query":             query,
@@ -306,6 +379,8 @@ def run_asp_pipeline(query: str, top_k: int = 5) -> dict:
     }
     if error:
         result["error"] = error
+    log.info("[DONE] Pipeline hoàn thành" + (f" — có lỗi: {error}" if error else ""))
+    log.info(f"Log file: {_LOG_FILE}")
     return result
 
 

@@ -272,7 +272,7 @@ if False: # Pushing to HF Hub
 # Merge to 4bit
 if False:
     model.save_pretrained_merged("qwen_finetune_4bit", tokenizer, save_method = "merged_4bit",)
-if True: # Pushing to HF Hub
+if False: # Pushing to HF Hub
     model.push_to_hub_merged("hdv2709/qwen_finetune_4bit", tokenizer, save_method = "merged_4bit_forced", token = userdata.get('HF_TOKEN'))
 
 # Just LoRA adapters
@@ -311,10 +311,10 @@ if False: # Pushing to HF Hub
     model.push_to_hub_gguf("HF_USERNAME/qwen_finetune", tokenizer, quantization_method = "f16", token = "YOUR_HF_TOKEN")
 
 # Save to q4_k_m GGUF
-if False:
+if True:
     model.save_pretrained_gguf("qwen_finetune", tokenizer, quantization_method = "q4_k_m")
-if False: # Pushing to HF Hub
-    model.push_to_hub_gguf("HF_USERNAME/qwen_finetune", tokenizer, quantization_method = "q4_k_m", token = "YOUR_HF_TOKEN")
+if True: # Pushing to HF Hub
+    model.push_to_hub_gguf("hdv2709/qwen_finetune", tokenizer, quantization_method = "q4_k_m", token = userdata.get('HF_TOKEN'))
 
 # Save to multiple GGUF options - much faster if you want multiple!
 if False:
@@ -324,6 +324,9 @@ if False:
         quantization_method = ["q4_k_m", "q8_0", "q5_k_m",],
         token = "YOUR_HF_TOKEN", # Get a token at https://huggingface.co/settings/tokens
     )
+
+if True: # Pushing to HF Hub
+    model.push_to_hub_gguf("hdv2709/qwen_finetune", tokenizer, quantization_method = "q4_k_m", token = userdata.get('HF_TOKEN'))
 
 """Now, use the `qwen_finetune.Q8_0.gguf` file or `qwen_finetune.Q4_K_M.gguf` file in llama.cpp.
 

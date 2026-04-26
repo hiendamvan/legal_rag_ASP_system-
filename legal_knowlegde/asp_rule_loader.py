@@ -1,12 +1,12 @@
 """
-asp_rule_loader.py — Parse chuong2_full.lp into a Python dict of rule objects,
+asp_rule_loader.py — Parse nd168_kb.lp into a Python dict of rule objects,
 and match retrieved chunk metadata to those rules.
 """
 
 import re
 from pathlib import Path
 
-_DEFAULT_LP = Path(__file__).parent / "chuong2_full.lp"
+_DEFAULT_LP = Path(__file__).parent / "nd168_kb.lp"
 
 
 # ---------------------------------------------------------------------------
@@ -38,37 +38,37 @@ def load_rules(lp_path: str | None = None) -> dict[str, dict]:
             continue
 
         # article(id, N).
-        m = re.fullmatch(r'article\((\w+),(\d+)\)\.', line)
+        m = re.fullmatch(r'article\((\w+),\s*(\d+)\)\.', line)
         if m and m.group(1) in rules:
             rules[m.group(1)]["article"] = int(m.group(2))
             continue
 
         # clause(id, N).
-        m = re.fullmatch(r'clause\((\w+),(\d+)\)\.', line)
+        m = re.fullmatch(r'clause\((\w+),\s*(\d+)\)\.', line)
         if m and m.group(1) in rules:
             rules[m.group(1)]["clause"] = int(m.group(2))
             continue
 
         # point(id, "x").
-        m = re.fullmatch(r'point\((\w+),"([^"]+)"\)\.', line)
+        m = re.fullmatch(r'point\((\w+),\s*"([^"]+)"\)\.', line)
         if m and m.group(1) in rules:
             rules[m.group(1)]["point"] = m.group(2)
             continue
 
         # subject(id, val).
-        m = re.fullmatch(r'subject\((\w+),(\w+)\)\.', line)
+        m = re.fullmatch(r'subject\((\w+),\s*(\w+)\)\.', line)
         if m and m.group(1) in rules:
             rules[m.group(1)]["subject"] = m.group(2)
             continue
 
         # action(id, val).
-        m = re.fullmatch(r'action\((\w+),(\w+)\)\.', line)
+        m = re.fullmatch(r'action\((\w+),\s*(\w+)\)\.', line)
         if m and m.group(1) in rules:
             rules[m.group(1)]["action"] = m.group(2)
             continue
 
         # context(id, ctx).
-        m = re.fullmatch(r'context\((\w+),(\w+)\)\.', line)
+        m = re.fullmatch(r'context\((\w+),\s*(\w+)\)\.', line)
         if m and m.group(1) in rules:
             rules[m.group(1)]["context"].append(m.group(2))
             continue
@@ -80,19 +80,19 @@ def load_rules(lp_path: str | None = None) -> dict[str, dict]:
             continue
 
         # fine_min(id, N).
-        m = re.fullmatch(r'fine_min\((\w+),(\d+)\)\.', line)
+        m = re.fullmatch(r'fine_min\((\w+),\s*(\d+)\)\.', line)
         if m and m.group(1) in rules:
             rules[m.group(1)]["fine_min"] = int(m.group(2))
             continue
 
         # fine_max(id, N).
-        m = re.fullmatch(r'fine_max\((\w+),(\d+)\)\.', line)
+        m = re.fullmatch(r'fine_max\((\w+),\s*(\d+)\)\.', line)
         if m and m.group(1) in rules:
             rules[m.group(1)]["fine_max"] = int(m.group(2))
             continue
 
         # original_vi_text(id, "...").  — value may contain commas/quotes
-        m = re.match(r'original_vi_text\((\w+),"(.+)"\)\.', line)
+        m = re.match(r'original_vi_text\((\w+),\s*"(.+)"\)\.', line)
         if m and m.group(1) in rules:
             rules[m.group(1)]["original_vi_text"] = m.group(2)
             continue

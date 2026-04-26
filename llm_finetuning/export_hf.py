@@ -1,13 +1,22 @@
-from datasets import load_dataset
+from datasets import load_dataset, DatasetDict
 from huggingface_hub import login
 from dotenv import load_dotenv
-load_dotenv()
-import os 
+import os
 
+# Load env
+load_dotenv()
 HF_TOKEN = os.getenv("HF_TOKEN")
 login(HF_TOKEN)
 
-dataset = load_dataset("json", data_files="case_fact_chat_format.jsonl", split="train")
-dataset = dataset.train_test_split(test_size=0.1)
+# Load từng file riêng
+train_dataset = load_dataset("json", data_files="./data_finetune/train_chat_format.jsonl", split="train")
+test_dataset = load_dataset("json", data_files="./data_finetune/test_chat_format.jsonl", split="train")
 
+# Gộp lại thành DatasetDict (chuẩn HF)
+dataset = DatasetDict({
+    "train": train_dataset,
+    "test": test_dataset
+})
+
+# Push lên hub
 dataset.push_to_hub("hdv2709/case_fact_legal_chat_format", private=False)
