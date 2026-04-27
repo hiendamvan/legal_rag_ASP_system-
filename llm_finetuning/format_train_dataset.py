@@ -6,7 +6,15 @@ Output format matches the fine-tuning schema with retrieved_rules and case facts
 import json
 import re
 import random
+import sys
+from pathlib import Path
 from collections import defaultdict
+
+UTILS_DIR = Path(__file__).resolve().parent.parent / "utils"
+if str(UTILS_DIR) not in sys.path:
+    sys.path.append(str(UTILS_DIR))
+
+from dataset_rule_ids import infer_rule_ids_from_output
 
 KB_PATH = r"../legal_knowlegde/merged_knowledge_base.lp"
 TRAIN_PATH = r"../public_dataset/train.json"
@@ -218,6 +226,10 @@ def main():
                 "facts": facts
             }
         }
+
+        entry["output"]["rule_id"] = infer_rule_ids_from_output(
+            entry["output"], entry["input"]["retrieved_rules"]
+        )
         
         dataset.append(entry)
     

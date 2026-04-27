@@ -2,6 +2,8 @@ import json
 import random
 from collections import defaultdict
 
+from dataset_rule_ids import enrich_dataset_with_rule_ids
+
 # ===== CONFIG =====
 INPUT_FILE = "../public_dataset/fact_extraction_train_1200.json"
 TRAIN_SIZE = 1000
@@ -47,6 +49,9 @@ random.shuffle(test_data)
 # ===== ADJUST SIZE IF NEEDED =====
 train_data = train_data[:TRAIN_SIZE]
 test_data = test_data[:TEST_SIZE]
+
+train_data = enrich_dataset_with_rule_ids(train_data)
+test_data = enrich_dataset_with_rule_ids(test_data)
 
 # ===== SAVE =====
 with open(OUTPUT_TRAIN, "w", encoding="utf-8") as f:

@@ -1,0 +1,50 @@
+2026-04-27 15:15:38,112 [INFO] Input file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\public_dataset\test.json
+2026-04-27 15:15:38,115 [INFO] Output directory: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\evaluation\batch_logs\test_run_20260427_151538
+2026-04-27 15:15:38,119 [INFO] top_k=10
+2026-04-27 15:15:38,182 [INFO] Filtered to 14 questions by --ids
+2026-04-27 15:15:38,184 [INFO] Loaded 14 questions
+2026-04-27 15:15:38,185 [INFO] [1/14] Running official_00105
+2026-04-27 15:15:38,186 [INFO] Question: người điều khiển phương tiện mà vận chuyển hàng nguy hiểm mà xe ô tô không dán nhãn, biểu trưng nhận diện hàng hóa nguy hiểm thì bị phạt thế nào?
+2026-04-27 15:26:24,805 [INFO] [official_00105] chunks=10 rules=14 facts=2 penalties=1
+2026-04-27 15:26:24,835 [INFO] [2/14] Running official_00517
+2026-04-27 15:26:24,835 [INFO] Question: người điều khiển phương tiện mà điều khiển xe hoạt động không đúng tuyến đường thì bị phạt bao nhiêu?
+2026-04-27 15:28:09,167 [INFO] [official_00517] chunks=10 rules=26 facts=2 penalties=1
+2026-04-27 15:28:09,250 [INFO] [3/14] Running official_00823
+2026-04-27 15:28:09,250 [INFO] Question: người điều khiển xe mô tô mà sử dụng đèn chiếu xa khi gặp người đi bộ qua đường hoặc khi đi trên đoạn đường qua khu dân cư có hệ thống chiếu sáng đang hoạt động hoặc khi gặp xe đi ngược chiều hoặc khi chuyển hướng xe tại nơi đường giao nhau, nhưng đoạn đường có dải phân cách có khả năng chống chói thì có bị phạt không?
+2026-04-27 15:29:49,130 [INFO] [official_00823] chunks=10 rules=17 facts=2 penalties=1
+2026-04-27 15:29:49,135 [INFO] [4/14] Running official_00714
+2026-04-27 15:29:49,136 [INFO] Question: người điều khiển xe mô tô vừa xe thô sơ đang đi trên phần đường dành cho xe thô sơ, vừa người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy không có chứng nhận bảo hiểm bắt buộc trách nhiệm dân sự của chủ xe cơ giới còn hiệu lực thì bị xử phạt thế nào?
+2026-04-27 15:30:41,784 [INFO] [official_00714] chunks=10 rules=12 facts=2 penalties=0
+2026-04-27 15:30:41,784 [INFO] [5/14] Running official_00657
+2026-04-27 15:30:41,784 [INFO] Question: người điều khiển xe mô tô vừa điều khiển xe không đi bên phải theo chiều đi của mình, vừa vi phạm quy định tại một trong các điểm, khoản sau của Điều này mà gây tai nạn giao thông: điểm a, điểm d, điểm đ, điểm g, điểm h, điểm i, điểm k khoản 1; điểm c, điểm đ, điểm g khoản 2; điểm b, điểm e, điểm g, điểm h, điểm k khoản 3; điểm đ khoản 4; điểm c, điểm d khoản 6; điểm c, điểm d, điểm đ khoản 7; điểm a, điểm b, điểm h, điểm k khoản 9 Điều này thì bị xử phạt thế nào?
+2026-04-27 15:31:54,674 [INFO] [official_00657] chunks=10 rules=22 facts=2 penalties=1
+2026-04-27 15:31:54,674 [INFO] [6/14] Running official_00026
+2026-04-27 15:31:54,674 [INFO] Question: người ngồi trên xe mà tự ý mở cửa xe thì bị phạt thế nào?
+2026-04-27 15:32:37,341 [INFO] [official_00026] chunks=10 rules=18 facts=2 penalties=1
+2026-04-27 15:32:37,342 [INFO] [7/14] Running official_00067
+2026-04-27 15:32:37,342 [INFO] Question: chủ phương tiện mà đưa phương tiện không gắn biển số (đối với loại xe có quy định phải gắn biển số) tham gia giao thông thì bị phạt thế nào?
+2026-04-27 15:33:24,994 [INFO] [official_00067] chunks=10 rules=16 facts=2 penalties=2
+2026-04-27 15:33:24,995 [INFO] [8/14] Running official_00147
+2026-04-27 15:33:24,995 [INFO] Question: người điều khiển xe mô tô mà chở người ngồi trên xe không đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" hoặc đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" không cài quai đúng quy cách thì bị phạt thế nào?
+2026-04-27 15:33:56,693 [INFO] [official_00147] chunks=10 rules=11 facts=2 penalties=2
+2026-04-27 15:33:56,693 [INFO] [9/14] Running official_01149
+2026-04-27 15:33:56,694 [INFO] Question: Một người mà dừng xe, đỗ xe, quay đầu xe, lùi xe, tránh xe, vượt xe, chuyển hướng, chuyển làn đường không đúng quy định gây tai nạn giao thông thì bị phạt bao nhiêu?
+2026-04-27 15:36:13,833 [INFO] [official_01149] chunks=10 rules=49 facts=2 penalties=1
+2026-04-27 15:36:13,834 [INFO] [10/14] Running official_01051
+2026-04-27 15:36:13,834 [INFO] Question: Một người mà giấy tờ của phương tiện không có bản dịch sang tiếng Anh hoặc tiếng Việt theo quy định thì bị phạt bao nhiêu?
+2026-04-27 15:36:40,138 [INFO] [official_01051] chunks=10 rules=2 facts=2 penalties=1
+2026-04-27 15:36:40,142 [INFO] [11/14] Running official_00070
+2026-04-27 15:36:40,143 [INFO] Question: người điều khiển phương tiện mà vận chuyển hàng trên xe phải chằng buộc mà không chằng buộc thì bị phạt thế nào?
+2026-04-27 15:37:16,958 [INFO] [official_00070] chunks=10 rules=5 facts=2 penalties=1
+2026-04-27 15:37:16,959 [INFO] [12/14] Running official_00098
+2026-04-27 15:37:16,959 [INFO] Question: cá nhân mà xúc phạm, đe dọa, cản trở, chống đối người thi hành công vụ về bảo đảm trật tự, an toàn giao thông đường bộ thì bị phạt thế nào?
+2026-04-27 15:37:19,257 [ERROR] [official_00098] Error: Không tìm thấy ASP rule phù hợp với các điều khoản được retrieve.
+Kiểm tra lại nd168_kb.lp hoặc tăng top_k.
+2026-04-27 15:37:19,258 [INFO] [13/14] Running official_00781
+2026-04-27 15:37:19,258 [INFO] Question: người điều khiển xe mô tô mà sử dụng đèn chiếu xa khi gặp người đi bộ qua đường hoặc khi đi trên đoạn đường qua khu dân cư có hệ thống chiếu sáng đang hoạt động hoặc khi gặp xe đi ngược chiều hoặc khi chuyển hướng xe tại nơi đường giao nhau, nhưng đoạn đường có dải phân cách có khả năng chống chói thì có bị phạt không?
+2026-04-27 15:37:42,335 [INFO] [official_00781] chunks=10 rules=17 facts=2 penalties=1
+2026-04-27 15:37:42,369 [INFO] [14/14] Running official_00290
+2026-04-27 15:37:42,399 [INFO] Question: chủ phương tiện mà tự ý thay đổi màu sơn của xe không đúng với màu sơn ghi trong chứng nhận đăng ký xe thì bị phạt thế nào?
+2026-04-27 15:38:17,427 [INFO] [official_00290] chunks=10 rules=6 facts=2 penalties=2
+2026-04-27 15:38:17,502 [INFO] Saved results.json, results.jsonl, results.partial.json, summary.json
+2026-04-27 15:38:17,506 [INFO] Finished: success=13 error=1

@@ -153,6 +153,12 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Optional number of questions to run from the start of the dataset.",
     )
+    parser.add_argument(
+        "--ids",
+        nargs="+",
+        default=None,
+        help="Optional list of sample IDs to run (e.g. --ids official_00105 official_00517).",
+    )
     return parser.parse_args()
 
 
@@ -169,7 +175,11 @@ def main() -> None:
     logger.info("top_k=%s", args.top_k)
 
     dataset = load_dataset(input_file)
-    if args.limit is not None:
+    if args.ids is not None:
+        id_set = set(args.ids)
+        dataset = [s for s in dataset if s.get("id") in id_set]
+        logger.info("Filtered to %s questions by --ids", len(dataset))
+    elif args.limit is not None:
         dataset = dataset[:args.limit]
     logger.info("Loaded %s questions", len(dataset))
 

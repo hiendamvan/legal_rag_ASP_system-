@@ -127,10 +127,38 @@ def build_extraction_prompt(query: str, rules: list[dict]) -> str:
 
 # ── Step 3: Parse LLM JSON output ───────────────────────────────────────────
 
+def _extract_json_candidates(text: str) -> list[str]:
+    """
+    Return all balanced-brace JSON object strings found in *text*,
+    ordered from last occurrence to first (so callers try the last one first).
+    """
+    candidates: list[tuple[int, str]] = []
+    i = 0
+    while i < len(text):
+        if text[i] == '{':
+            depth = 0
+            for j in range(i, len(text)):
+                if text[j] == '{':
+                    depth += 1
+                elif text[j] == '}':
+                    depth -= 1
+                    if depth == 0:
+                        candidates.append((i, text[i:j + 1]))
+                        i = j + 1
+                        break
+            else:
+                i += 1
+        else:
+            i += 1
+    # reverse so we try the last (most likely final answer) first
+    candidates.sort(key=lambda x: x[0], reverse=True)
+    return [c for _, c in candidates]
+
+
 def parse_llm_facts(llm_output: str) -> list[dict]:
     """
     Extract the facts list from the LLM response.
-    Handles markdown code fences and surrounding text.
+    Handles markdown code fences, <think> blocks, and multiple JSON objects.
 
     Supported LLM output formats:
       {"facts": [{"predicate": "driver_type", "args": ["case1", "pedestrian"]}, ...]}
@@ -142,24 +170,39 @@ def parse_llm_facts(llm_output: str) -> list[dict]:
     # Strip <think>...</think> blocks (Qwen3 reasoning traces)
     text = re.sub(r'<think>[\s\S]*?</think>', '', text).strip()
 
-    # Strip markdown code fences
-    m = re.search(r'```(?:json)?\s*([\s\S]+?)\s*```', text)
-    if m:
-        text = m.group(1).strip()
+    # If there is a fenced code block, prefer its content
+    fenced = re.search(r'```(?:json)?\s*([\s\S]+?)\s*```', text)
+    if fenced:
+        text = fenced.group(1).strip()
 
-    # Isolate the LAST JSON object (model may echo JSON before and after think block)
-    all_jsons = list(re.finditer(r'\{[\s\S]+?\}(?=\s*$|\s*\n\s*[^{])', text))
-    if not all_jsons:
-        # fallback: find any JSON object
-        all_jsons = list(re.finditer(r'\{[\s\S]+\}', text))
-    if all_jsons:
-        text = all_jsons[-1].group(0)
+    # Try each balanced-brace JSON candidate from last to first until one parses
+    candidates = _extract_json_candidates(text)
+    last_exc: Exception | None = None
+    for candidate in candidates:
+        try:
+            data = json.loads(candidate)
+            if isinstance(data, dict) and "facts" in data:
+                facts = data["facts"]
+                if not isinstance(facts, list):
+                    raise ValueError(f"'facts' must be a list, got {type(facts)}")
+                return facts
+        except Exception as exc:
+            last_exc = exc
+            continue
 
-    data = json.loads(text)
-    facts = data.get("facts", [])
-    if not isinstance(facts, list):
-        raise ValueError(f"'facts' must be a list, got {type(facts)}")
-    return facts
+    # Last resort: try the whole (stripped) text
+    try:
+        data = json.loads(text)
+        facts = data.get("facts", [])
+        if not isinstance(facts, list):
+            raise ValueError(f"'facts' must be a list, got {type(facts)}")
+        return facts
+    except Exception as exc:
+        raise ValueError(
+            f"Cannot parse JSON facts from LLM output. "
+            f"Last error: {last_exc or exc}. "
+            f"Output (first 300 chars): {llm_output[:300]!r}"
+        ) from exc
 
 
 # ── Step 4: Convert facts → ASP ─────────────────────────────────────────────

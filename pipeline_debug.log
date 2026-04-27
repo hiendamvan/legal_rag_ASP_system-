@@ -36913,3 +36913,2572 @@ did_action(case1, put_motorbike_into_traffic_without_emissions_inspection_certif
 12:27:46 [DEBUG]     result(d32_k1_b_1_org,400000,600000)
 12:27:46 [INFO] [DONE] Pipeline hoàn thành
 12:27:46 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+15:15:38 [INFO] ============================================================
+15:15:38 [INFO] QUERY: người điều khiển phương tiện mà vận chuyển hàng nguy hiểm mà xe ô tô không dán nhãn, biểu trưng nhận diện hàng hóa nguy hiểm thì bị phạt thế nào?
+15:15:38 [INFO] top_k=10
+15:15:38 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+15:21:48 [INFO] ============================================================
+15:21:48 [INFO] QUERY: xe máy vượt đen đỏ bị phạt thế nào
+15:21:48 [INFO] top_k=5
+15:21:48 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+15:23:24 [INFO]   → 10 chunks retrieved
+15:23:24 [DEBUG]     chunk: dieu=23 khoan=3 diem= score=0.6609  Điều 23. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:23:24 [DEBUG]     chunk: dieu=23 khoan=1 diem= score=0.5996  Điều 23. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:23:24 [DEBUG]     chunk: dieu=23 khoan=5 diem= score=0.5936  Điều 23. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:23:24 [DEBUG]     chunk: dieu=23 khoan=2 diem= score=0.5680  Điều 23. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:23:24 [DEBUG]     chunk: dieu=47 khoan=3 diem=t score=0.5545  Điều 47. Thủ tục xử phạt, nguyên tắc xử phạt đối với chủ phư
+15:23:24 [DEBUG]     chunk: dieu=26 khoan=2 diem=e score=0.5515  Điều 26. Xử phạt các hành vi vi phạm quy định về trật tự, an
+15:23:24 [DEBUG]     chunk: dieu=23 khoan=4 diem= score=0.5410  Điều 23. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:23:24 [DEBUG]     chunk: dieu=21 khoan=5 diem=c score=0.5227  Điều 21. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:23:24 [DEBUG]     chunk: dieu=22 khoan=1 diem=a score=0.5174  Điều 22. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:23:24 [DEBUG]     chunk: dieu=23 khoan=7 diem=a score=0.5133  Điều 23. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:23:24 [INFO]   → 14 ASP rules matched
+15:23:24 [DEBUG]     rule: d23_k3_1                   subject=driver                action=transport_dangerous_goods_in_vehicle_without_required_labels_or_identification_symbols
+15:23:24 [DEBUG]     rule: d23_k3_2                   subject=driver                action=transport_dangerous_goods_in_vehicle_without_required_warning_lights_or_signals
+15:23:24 [DEBUG]     rule: d23_k1_1                   subject=driver                action=fail_to_clean_vehicle_after_transporting_dangerous_goods
+15:23:24 [DEBUG]     rule: d23_k1_2                   subject=driver                action=fail_to_remove_dangerous_goods_symbol_when_no_longer_transporting_that_goods_type
+15:23:24 [DEBUG]     rule: d23_k5_1                   subject=driver                action=transport_dangerous_goods_without_dangerous_goods_transport_permit
+15:23:24 [DEBUG]     rule: d23_k5_2                   subject=driver                action=transport_dangerous_goods_with_expired_dangerous_goods_transport_permit
+15:23:24 [DEBUG]     rule: d23_k5_3                   subject=driver                action=fail_to_comply_with_dangerous_goods_transport_permit_conditions
+15:23:24 [DEBUG]     rule: d23_k2_1                   subject=driver                action=transport_dangerous_goods_without_transport_dossier
+15:23:24 [DEBUG]     rule: d23_k2_2                   subject=driver                action=transport_dangerous_goods_without_required_safety_training_certificate
+15:23:24 [DEBUG]     rule: d23_k4                     subject=driver                action=transport_explosives_gas_fuel_or_other_flammable_or_explosive_dangerous_goods_through_tunnel_over_100_meters
+15:23:24 [DEBUG]     rule: d21_k5_c_1                 subject=driver                action=operate_freight_vehicle_without_journey_monitoring_device
+15:23:24 [DEBUG]     rule: d21_k5_c_2                 subject=driver                action=operate_freight_vehicle_with_nonfunctional_journey_monitoring_device
+15:23:24 [DEBUG]     rule: d21_k5_c_3                 subject=driver                action=falsify_journey_monitoring_device_data
+15:23:24 [DEBUG]     rule: d22_k1_a                   subject=driver                action=transport_oversized_or_overweight_cargo_without_required_dimension_warning_sign
+15:23:24 [INFO] [STEP 2] Building LLM extraction prompt ...
+15:23:24 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+người điều khiển phương tiện mà vận chuyển hàng nguy hiểm mà xe ô tô không dán nhãn, biểu trưng nhận diện hàng hóa nguy hiểm thì bị phạt thế nào?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d23_k3_1",
+  "subject": "driver",
+  "action": "transport_dangerous_goods_in_vehicle_without_required_labels_or_identification_symbols",
+  "context": []
+ },
+ {
+  "rule_id": "d23_k3_2",
+  "subject": "driver",
+  "action": "transport_dangerous_goods_in_vehicle_without_required_warning_lights_or_signals",
+  "context": []
+ },
+ {
+  "rule_id": "d23_k1_1",
+  "subject": "driver",
+  "action": "fail_to_clean_vehicle_after_transporting_dangerous_goods",
+  "context": []
+ },
+ {
+  "rule_id": "d23_k1_2",
+  "subject": "driver",
+  "action": "fail_to_remove_dangerous_goods_symbol_when_no_longer_transporting_that_goods_type",
+  "context": []
+ },
+ {
+  "rule_id": "d23_k5_1",
+  "subject": "driver",
+  "action": "transport_dangerous_goods_without_dangerous_goods_transport_permit",
+  "context": []
+ },
+ {
+  "rule_id": "d23_k5_2",
+  "subject": "driver",
+  "action": "transport_dangerous_goods_with_expired_dangerous_goods_transport_permit",
+  "context": []
+ },
+ {
+  "rule_id": "d23_k5_3",
+  "subject": "driver",
+  "action": "fail_to_comply_with_dangerous_goods_transport_permit_conditions",
+  "context": []
+ },
+ {
+  "rule_id": "d23_k2_1",
+  "subject": "driver",
+  "action": "transport_dangerous_goods_without_transport_dossier",
+  "context": []
+ },
+ {
+  "rule_id": "d23_k2_2",
+  "subject": "driver",
+  "action": "transport_dangerous_goods_without_required_safety_training_certificate",
+  "context": []
+ },
+ {
+  "rule_id": "d23_k4",
+  "subject": "driver",
+  "action": "transport_explosives_gas_fuel_or_other_flammable_or_explosive_dangerous_goods_through_tunnel_over_100_meters",
+  "context": [
+   "tunnel_over_100_meters"
+  ]
+ },
+ {
+  "rule_id": "d21_k5_c_1",
+  "subject": "driver",
+  "action": "operate_freight_vehicle_without_journey_monitoring_device",
+  "context": []
+ },
+ {
+  "rule_id": "d21_k5_c_2",
+  "subject": "driver",
+  "action": "operate_freight_vehicle_with_nonfunctional_journey_monitoring_device",
+  "context": []
+ },
+ {
+  "rule_id": "d21_k5_c_3",
+  "subject": "driver",
+  "action": "falsify_journey_monitoring_device_data",
+  "context": []
+ },
+ {
+  "rule_id": "d22_k1_a",
+  "subject": "driver",
+  "action": "transport_oversized_or_overweight_cargo_without_required_dimension_warning_sign",
+  "context": []
+ }
+]
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "driver"]},
+    {"predicate": "case_action",       "args": ["user1", "transport_dangerous_goods_in_vehicle_without_required_labels_or_identification_symbols"]}
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên
+5. Chỉ thêm case_context nếu rule có context
+6. Chỉ thêm case_exception nếu có exception áp dụng
+7. Chỉ xuất duy nhất JSON object, không thêm gì khác
+----------------------------------------
+15:23:24 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+15:25:40 [INFO]   → 5 chunks retrieved
+15:25:40 [DEBUG]     chunk: dieu=8 khoan=1 diem=a score=0.4844  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+15:25:40 [DEBUG]     chunk: dieu=7 khoan=4 diem=c score=0.4797  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:25:40 [DEBUG]     chunk: dieu=8 khoan=5 diem=đ score=0.4714  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+15:25:40 [DEBUG]     chunk: dieu=7 khoan=3 diem=đ score=0.4699  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:25:40 [DEBUG]     chunk: dieu=8 khoan=3 diem=a score=0.4698  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+15:25:40 [INFO]   → 3 ASP rules matched
+15:25:40 [DEBUG]     rule: d8_k1_a                    subject=specialized_vehicle_driver  action=disobey_road_signs_or_markings
+15:25:40 [DEBUG]     rule: d7_k4_c                    subject=motorbike_driver      action=overtake_when_prohibited_or_in_no_overtaking_zone
+15:25:40 [DEBUG]     rule: d8_k3_a                    subject=specialized_vehicle_driver  action=speed_over_limit_from_5_to_under_10_kmh
+15:25:40 [INFO] [STEP 2] Building LLM extraction prompt ...
+15:25:40 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+xe máy vượt đen đỏ bị phạt thế nào
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d8_k1_a",
+  "subject": "specialized_vehicle_driver",
+  "action": "disobey_road_signs_or_markings",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k4_c",
+  "subject": "motorbike_driver",
+  "action": "overtake_when_prohibited_or_in_no_overtaking_zone",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k3_a",
+  "subject": "specialized_vehicle_driver",
+  "action": "speed_over_limit_from_5_to_under_10_kmh",
+  "context": []
+ }
+]
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "specialized_vehicle_driver"]},
+    {"predicate": "case_action",       "args": ["user1", "disobey_road_signs_or_markings"]}
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên
+5. Chỉ thêm case_context nếu rule có context
+6. Chỉ thêm case_exception nếu có exception áp dụng
+7. Chỉ xuất duy nhất JSON object, không thêm gì khác
+----------------------------------------
+15:25:40 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+15:26:15 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "specialized_vehicle_driver"]}, {"predicate": "case_action", "args": ["user1", "overtake_when_prohibited_or_in_no_overtaking_zone"]}]}
+----------------------------------------
+15:26:15 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+15:26:15 [INFO]   → 2 facts parsed
+15:26:15 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "specialized_vehicle_driver"]}, {"predicate": "case_action", "args": ["user1", "overtake_when_prohibited_or_in_no_overtaking_zone"]}]
+15:26:15 [INFO] [STEP 5] Converting facts to ASP predicates ...
+15:26:15 [DEBUG]   ASP FACTS:
+driver_type(case1, specialized_vehicle_driver).
+did_action(case1, overtake_when_prohibited_or_in_no_overtaking_zone).
+15:26:15 [INFO] [STEP 6] Running clingo reasoning ...
+15:26:17 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "driver"]}, {"predicate": "case_action", "args": ["user1", "transport_dangerous_goods_in_vehicle_without_required_labels_or_identification_symbols"]}]}
+
+</think>
+
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "driver"]}, {"predicate": "case_action", "args": ["user1", "transport_dangerous_goods_in_vehicle_without_required_labels_or_identification_symbols"]}]}
+----------------------------------------
+15:26:17 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+15:26:17 [INFO]   → 2 facts parsed
+15:26:17 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "driver"]}, {"predicate": "case_action", "args": ["user1", "transport_dangerous_goods_in_vehicle_without_required_labels_or_identification_symbols"]}]
+15:26:17 [INFO] [STEP 5] Converting facts to ASP predicates ...
+15:26:17 [DEBUG]   ASP FACTS:
+driver_type(case1, driver).
+did_action(case1, transport_dangerous_goods_in_vehicle_without_required_labels_or_identification_symbols).
+15:26:17 [INFO] [STEP 6] Running clingo reasoning ...
+15:26:21 [INFO]   → 0 result atoms
+15:26:21 [INFO] [DONE] Pipeline hoàn thành
+15:26:21 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+15:26:24 [INFO]   → 1 result atoms
+15:26:24 [DEBUG]     result(d23_k3_1,4000000,6000000)
+15:26:24 [INFO] [DONE] Pipeline hoàn thành
+15:26:24 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+15:26:24 [INFO] ============================================================
+15:26:24 [INFO] QUERY: người điều khiển phương tiện mà điều khiển xe hoạt động không đúng tuyến đường thì bị phạt bao nhiêu?
+15:26:24 [INFO] top_k=10
+15:26:24 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+15:26:28 [INFO]   → 10 chunks retrieved
+15:26:28 [DEBUG]     chunk: dieu=8 khoan=8 diem=a score=0.5586  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+15:26:28 [DEBUG]     chunk: dieu=8 khoan=1 diem=a score=0.5549  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+15:26:28 [DEBUG]     chunk: dieu=34 khoan=4 diem=c score=0.5521  Điều 34. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:26:28 [DEBUG]     chunk: dieu=38 khoan=2 diem=b score=0.5442  Điều 38. Xử phạt người điều khiển phương tiện đăng ký hoạt đ
+15:26:28 [DEBUG]     chunk: dieu=8 khoan=9 diem=c score=0.5413  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+15:26:28 [DEBUG]     chunk: dieu=8 khoan=9 diem=d score=0.5402  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+15:26:28 [DEBUG]     chunk: dieu=7 khoan=3 diem=a score=0.5379  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:26:28 [DEBUG]     chunk: dieu=8 khoan=6 diem=đ score=0.5368  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+15:26:28 [DEBUG]     chunk: dieu=8 khoan=2 diem=b score=0.5349  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+15:26:28 [DEBUG]     chunk: dieu=7 khoan=1 diem=a score=0.5337  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:26:28 [INFO]   → 26 ASP rules matched
+15:26:28 [DEBUG]     rule: d8_k8_a_1                  subject=specialized_vehicle_driver  action=drive_without_proper_observation_or_slowing_causing_accident
+15:26:28 [DEBUG]     rule: d8_k8_a_2                  subject=specialized_vehicle_driver  action=speed_causing_accident
+15:26:28 [DEBUG]     rule: d8_k8_a_3                  subject=specialized_vehicle_driver  action=improper_maneuver_causing_accident
+15:26:28 [DEBUG]     rule: d8_k8_a_4                  subject=specialized_vehicle_driver  action=open_vehicle_door_unsafely_causing_accident
+15:26:28 [DEBUG]     rule: d8_k8_a_5                  subject=specialized_vehicle_driver  action=wrong_lane_or_unsafe_distance_or_no_entry_or_wrong_way_causing_accident
+15:26:28 [DEBUG]     rule: d8_k1_a                    subject=specialized_vehicle_driver  action=disobey_road_signs_or_markings
+15:26:28 [DEBUG]     rule: d34_k4_c                   subject=driver                action=travel_off_permitted_route_stated_in_transport_permit
+15:26:28 [DEBUG]     rule: d38_k2_b_1                 subject=driver                action=no_control_badge_for_car
+15:26:28 [DEBUG]     rule: d38_k2_b_2                 subject=driver                action=expired_control_badge_for_car
+15:26:28 [DEBUG]     rule: d38_k2_b_3                 subject=driver                action=use_unauthorized_control_badge_for_car
+15:26:28 [DEBUG]     rule: d8_k9_c                    subject=specialized_vehicle_driver  action=drive_with_illicit_drugs_in_body
+15:26:28 [DEBUG]     rule: d8_k9_d                    subject=specialized_vehicle_driver  action=refuse_drug_test
+15:26:28 [DEBUG]     rule: d7_k3_a_1                  subject=motorbike_driver      action=unsafe_turning_or_no_turn_signal
+15:26:28 [DEBUG]     rule: d7_k3_a_2                  subject=motorbike_driver      action=turn_left_in_no_left_turn_zone
+15:26:28 [DEBUG]     rule: d7_k3_a_3                  subject=motorbike_driver      action=turn_right_in_no_right_turn_zone
+15:26:28 [DEBUG]     rule: d8_k2_b_1                  subject=specialized_vehicle_driver  action=stop_or_park_on_left_side_of_one_way_or_divided_road
+15:26:28 [DEBUG]     rule: d8_k2_b_2                  subject=specialized_vehicle_driver  action=stop_or_park_on_curve_or_near_hillcrest_with_obstructed_view
+15:26:28 [DEBUG]     rule: d8_k2_b_3                  subject=specialized_vehicle_driver  action=stop_or_park_on_bridge_or_under_overpass
+15:26:28 [DEBUG]     rule: d8_k2_b_4                  subject=specialized_vehicle_driver  action=stop_or_park_at_intersection_or_within_five_meters
+15:26:28 [DEBUG]     rule: d8_k2_b_5                  subject=specialized_vehicle_driver  action=stop_or_park_at_pickup_or_dropoff_point
+15:26:28 [DEBUG]     rule: d8_k2_b_6                  subject=specialized_vehicle_driver  action=stop_or_park_near_gate_blocking_entry_or_exit
+15:26:28 [DEBUG]     rule: d8_k2_b_7                  subject=specialized_vehicle_driver  action=stop_or_park_on_narrow_single_lane_section
+15:26:28 [DEBUG]     rule: d8_k2_b_8                  subject=specialized_vehicle_driver  action=stop_or_park_obstructing_signals_or_signs
+15:26:28 [DEBUG]     rule: d8_k2_b_9                  subject=specialized_vehicle_driver  action=stop_or_park_at_median_opening
+15:26:28 [DEBUG]     rule: d8_k2_b_10                 subject=specialized_vehicle_driver  action=park_too_close_to_opposite_parked_vehicle
+15:26:28 [DEBUG]     rule: d7_k1_a                    subject=motorbike_driver      action=disobey_signs_or_markings
+15:26:28 [INFO] [STEP 2] Building LLM extraction prompt ...
+15:26:28 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+người điều khiển phương tiện mà điều khiển xe hoạt động không đúng tuyến đường thì bị phạt bao nhiêu?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d8_k8_a_1",
+  "subject": "specialized_vehicle_driver",
+  "action": "drive_without_proper_observation_or_slowing_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k8_a_2",
+  "subject": "specialized_vehicle_driver",
+  "action": "speed_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k8_a_3",
+  "subject": "specialized_vehicle_driver",
+  "action": "improper_maneuver_causing_accident",
+  "context": [
+   "improper_stop_park_u_turn_reverse_pass_overtake_turn_or_lane_change"
+  ]
+ },
+ {
+  "rule_id": "d8_k8_a_4",
+  "subject": "specialized_vehicle_driver",
+  "action": "open_vehicle_door_unsafely_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k8_a_5",
+  "subject": "specialized_vehicle_driver",
+  "action": "wrong_lane_or_unsafe_distance_or_no_entry_or_wrong_way_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k1_a",
+  "subject": "specialized_vehicle_driver",
+  "action": "disobey_road_signs_or_markings",
+  "context": []
+ },
+ {
+  "rule_id": "d34_k4_c",
+  "subject": "driver",
+  "action": "travel_off_permitted_route_stated_in_transport_permit",
+  "context": []
+ },
+ {
+  "rule_id": "d38_k2_b_1",
+  "subject": "driver",
+  "action": "no_control_badge_for_car",
+  "context": []
+ },
+ {
+  "rule_id": "d38_k2_b_2",
+  "subject": "driver",
+  "action": "expired_control_badge_for_car",
+  "context": []
+ },
+ {
+  "rule_id": "d38_k2_b_3",
+  "subject": "driver",
+  "action": "use_unauthorized_control_badge_for_car",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k9_c",
+  "subject": "specialized_vehicle_driver",
+  "action": "drive_with_illicit_drugs_in_body",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k9_d",
+  "subject": "specialized_vehicle_driver",
+  "action": "refuse_drug_test",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k3_a_1",
+  "subject": "motorbike_driver",
+  "action": "unsafe_turning_or_no_turn_signal",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k3_a_2",
+  "subject": "motorbike_driver",
+  "action": "turn_left_in_no_left_turn_zone",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k3_a_3",
+  "subject": "motorbike_driver",
+  "action": "turn_right_in_no_right_turn_zone",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_1",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_left_side_of_one_way_or_divided_road",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_2",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_curve_or_near_hillcrest_with_obstructed_view",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_3",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_bridge_or_under_overpass",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_4",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_at_intersection_or_within_five_meters",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_5",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_at_pickup_or_dropoff_point",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_6",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_near_gate_blocking_entry_or_exit",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_7",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_narrow_single_lane_section",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_8",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_obstructing_signals_or_signs",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_9",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_at_median_opening",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_10",
+  "subject": "specialized_vehicle_driver",
+  "action": "park_too_close_to_opposite_parked_vehicle",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k1_a",
+  "subject": "motorbike_driver",
+  "action": "disobey_signs_or_markings",
+  "context": []
+ }
+]
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "specialized_vehicle_driver"]},
+    {"predicate": "case_action",       "args": ["user1", "drive_without_proper_observation_or_slowing_causing_accident"]}
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên
+5. Chỉ thêm case_context nếu rule có context
+6. Chỉ thêm case_exception nếu có exception áp dụng
+7. Chỉ xuất duy nhất JSON object, không thêm gì khác
+----------------------------------------
+15:26:28 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+15:28:08 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "specialized_vehicle_driver"]}, {"predicate": "case_action", "args": ["user1", "drive_without_proper_observation_or_slowing_causing_accident"]}]}`}
+----------------------------------------
+15:28:08 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+15:28:08 [INFO]   → 2 facts parsed
+15:28:08 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "specialized_vehicle_driver"]}, {"predicate": "case_action", "args": ["user1", "drive_without_proper_observation_or_slowing_causing_accident"]}]
+15:28:08 [INFO] [STEP 5] Converting facts to ASP predicates ...
+15:28:08 [DEBUG]   ASP FACTS:
+driver_type(case1, specialized_vehicle_driver).
+did_action(case1, drive_without_proper_observation_or_slowing_causing_accident).
+15:28:08 [INFO] [STEP 6] Running clingo reasoning ...
+15:28:09 [INFO]   → 1 result atoms
+15:28:09 [DEBUG]     result(d8_k8_a_1,14000000,16000000)
+15:28:09 [INFO] [DONE] Pipeline hoàn thành
+15:28:09 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+15:28:09 [INFO] ============================================================
+15:28:09 [INFO] QUERY: người điều khiển xe mô tô mà sử dụng đèn chiếu xa khi gặp người đi bộ qua đường hoặc khi đi trên đoạn đường qua khu dân cư có hệ thống chiếu sáng đang hoạt động hoặc khi gặp xe đi ngược chiều hoặc khi chuyển hướng xe tại nơi đường giao nhau, nhưng đoạn đường có dải phân cách có khả năng chống chói thì có bị phạt không?
+15:28:09 [INFO] top_k=10
+15:28:09 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+15:28:15 [INFO]   → 10 chunks retrieved
+15:28:15 [DEBUG]     chunk: dieu=7 khoan=1 diem=h score=0.6002  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:28:15 [DEBUG]     chunk: dieu=8 khoan=3 diem=b score=0.5976  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+15:28:15 [DEBUG]     chunk: dieu=6 khoan=3 diem=b score=0.5764  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+15:28:15 [DEBUG]     chunk: dieu=7 khoan=1 diem=g score=0.5424  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:28:15 [DEBUG]     chunk: dieu=8 khoan=3 diem=c score=0.5155  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+15:28:15 [DEBUG]     chunk: dieu=7 khoan=9 diem=k score=0.5003  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:28:15 [DEBUG]     chunk: dieu=7 khoan=1 diem=i score=0.4952  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:28:15 [DEBUG]     chunk: dieu=6 khoan=3 diem=g score=0.4950  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+15:28:15 [DEBUG]     chunk: dieu=7 khoan=3 diem=h score=0.4935  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:28:15 [DEBUG]     chunk: dieu=7 khoan=4 diem=đ score=0.4892  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:28:15 [INFO]   → 17 ASP rules matched
+15:28:15 [DEBUG]     rule: d7_k1_h_1                  subject=motorbike_driver      action=pass_improperly
+15:28:15 [DEBUG]     rule: d7_k1_h_2                  subject=motorbike_driver      action=use_high_beam_improperly
+15:28:15 [DEBUG]     rule: d7_k1_h_3                  subject=motorbike_driver      action=fail_to_yield_to_oncoming_vehicle
+15:28:15 [DEBUG]     rule: d8_k3_b_1                  subject=specialized_vehicle_driver  action=use_horn_or_rev_engine_continuously
+15:28:15 [DEBUG]     rule: d8_k3_b_2                  subject=specialized_vehicle_driver  action=use_air_horn_or_high_beam_improperly
+15:28:15 [DEBUG]     rule: d6_k3_b_1                  subject=driver                action=use_horn_or_rev_engine_continuously
+15:28:15 [DEBUG]     rule: d6_k3_b_2                  subject=driver                action=use_air_horn
+15:28:15 [DEBUG]     rule: d6_k3_b_3                  subject=driver                action=use_high_beam_when_pedestrians_cross
+15:28:15 [DEBUG]     rule: d6_k3_b_4                  subject=driver                action=use_high_beam_on_lit_urban_road
+15:28:15 [DEBUG]     rule: d6_k3_b_5                  subject=driver                action=use_high_beam_when_meeting_oncoming_vehicle
+15:28:15 [DEBUG]     rule: d6_k3_b_6                  subject=driver                action=use_high_beam_while_turning_at_intersection
+15:28:15 [DEBUG]     rule: d7_k1_g                    subject=motorbike_driver      action=fail_to_use_lights
+15:28:15 [DEBUG]     rule: d8_k3_c                    subject=specialized_vehicle_driver  action=fail_to_use_required_lighting
+15:28:15 [DEBUG]     rule: d7_k9_k                    subject=motorbike_driver      action=use_horn_or_rev_engine_continuously
+15:28:15 [DEBUG]     rule: d7_k1_i                    subject=motorbike_driver      action=use_horn_at_prohibited_time
+15:28:15 [DEBUG]     rule: d6_k3_g                    subject=driver                action=fail_to_use_or_insufficiently_use_lights_in_low_visibility
+15:28:15 [DEBUG]     rule: d7_k3_h                    subject=motorbike_driver      action=drive_in_tunnel_without_low_beam
+15:28:15 [INFO] [STEP 2] Building LLM extraction prompt ...
+15:28:15 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+người điều khiển xe mô tô mà sử dụng đèn chiếu xa khi gặp người đi bộ qua đường hoặc khi đi trên đoạn đường qua khu dân cư có hệ thống chiếu sáng đang hoạt động hoặc khi gặp xe đi ngược chiều hoặc khi chuyển hướng xe tại nơi đường giao nhau, nhưng đoạn đường có dải phân cách có khả năng chống chói thì có bị phạt không?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d7_k1_h_1",
+  "subject": "motorbike_driver",
+  "action": "pass_improperly",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k1_h_2",
+  "subject": "motorbike_driver",
+  "action": "use_high_beam_improperly",
+  "context": [
+   "when_meeting_pedestrians_oncoming_traffic_or_turning_at_intersection"
+  ]
+ },
+ {
+  "rule_id": "d7_k1_h_3",
+  "subject": "motorbike_driver",
+  "action": "fail_to_yield_to_oncoming_vehicle",
+  "context": [
+   "on_narrow_road_slope_or_obstructed_section"
+  ]
+ },
+ {
+  "rule_id": "d8_k3_b_1",
+  "subject": "specialized_vehicle_driver",
+  "action": "use_horn_or_rev_engine_continuously",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k3_b_2",
+  "subject": "specialized_vehicle_driver",
+  "action": "use_air_horn_or_high_beam_improperly",
+  "context": [
+   "when_meeting_pedestrians_or_oncoming_traffic_or_in_lit_urban_area_or_when_turning_at_intersection"
+  ]
+ },
+ {
+  "rule_id": "d6_k3_b_1",
+  "subject": "driver",
+  "action": "use_horn_or_rev_engine_continuously",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k3_b_2",
+  "subject": "driver",
+  "action": "use_air_horn",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k3_b_3",
+  "subject": "driver",
+  "action": "use_high_beam_when_pedestrians_cross",
+  "context": [
+   "when_pedestrians_are_crossing"
+  ]
+ },
+ {
+  "rule_id": "d6_k3_b_4",
+  "subject": "driver",
+  "action": "use_high_beam_on_lit_urban_road",
+  "context": [
+   "on_lit_road_through_residential_area"
+  ]
+ },
+ {
+  "rule_id": "d6_k3_b_5",
+  "subject": "driver",
+  "action": "use_high_beam_when_meeting_oncoming_vehicle",
+  "context": [
+   "when_meeting_oncoming_vehicle"
+  ]
+ },
+ {
+  "rule_id": "d6_k3_b_6",
+  "subject": "driver",
+  "action": "use_high_beam_while_turning_at_intersection",
+  "context": [
+   "while_turning_at_intersection"
+  ]
+ },
+ {
+  "rule_id": "d7_k1_g",
+  "subject": "motorbike_driver",
+  "action": "fail_to_use_lights",
+  "context": [
+   "at_night_or_low_visibility"
+  ]
+ },
+ {
+  "rule_id": "d8_k3_c",
+  "subject": "specialized_vehicle_driver",
+  "action": "fail_to_use_required_lighting",
+  "context": [
+   "at_night_or_in_low_visibility_conditions"
+  ]
+ },
+ {
+  "rule_id": "d7_k9_k",
+  "subject": "motorbike_driver",
+  "action": "use_horn_or_rev_engine_continuously",
+  "context": [
+   "in_dense_residential_or_medical_area"
+  ]
+ },
+ {
+  "rule_id": "d7_k1_i",
+  "subject": "motorbike_driver",
+  "action": "use_horn_at_prohibited_time",
+  "context": [
+   "in_dense_residential_or_medical_area_at_night"
+  ]
+ },
+ {
+  "rule_id": "d6_k3_g",
+  "subject": "driver",
+  "action": "fail_to_use_or_insufficiently_use_lights_in_low_visibility",
+  "context": [
+   "nighttime_or_low_visibility"
+  ]
+ },
+ {
+  "rule_id": "d7_k3_h",
+  "subject": "motorbike_driver",
+  "action": "drive_in_tunnel_without_low_beam",
+  "context": [
+   "in_road_tunnel"
+  ]
+ }
+]
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]},
+    {"predicate": "case_action",       "args": ["user1", "pass_improperly"]}
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên
+5. Chỉ thêm case_context nếu rule có context
+6. Chỉ thêm case_exception nếu có exception áp dụng
+7. Chỉ xuất duy nhất JSON object, không thêm gì khác
+----------------------------------------
+15:28:15 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+15:29:48 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]}, {"predicate": "case_action", "args": ["user1", "use_high_beam_improperly"]}]}
+
+```json
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]},
+    {"predicate": "case_action", "args": ["user1", "use_high_beam_improperly"]}
+  ]
+}
+```
+----------------------------------------
+15:29:48 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+15:29:48 [INFO]   → 2 facts parsed
+15:29:48 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]}, {"predicate": "case_action", "args": ["user1", "use_high_beam_improperly"]}]
+15:29:48 [INFO] [STEP 5] Converting facts to ASP predicates ...
+15:29:48 [DEBUG]   ASP FACTS:
+driver_type(case1, motorbike_driver).
+did_action(case1, use_high_beam_improperly).
+15:29:48 [INFO] [STEP 6] Running clingo reasoning ...
+15:29:49 [INFO]   → 1 result atoms
+15:29:49 [DEBUG]     result(d7_k1_h_2,200000,400000)
+15:29:49 [INFO] [DONE] Pipeline hoàn thành
+15:29:49 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+15:29:49 [INFO] ============================================================
+15:29:49 [INFO] QUERY: người điều khiển xe mô tô vừa xe thô sơ đang đi trên phần đường dành cho xe thô sơ, vừa người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy không có chứng nhận bảo hiểm bắt buộc trách nhiệm dân sự của chủ xe cơ giới còn hiệu lực thì bị xử phạt thế nào?
+15:29:49 [INFO] top_k=10
+15:29:49 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+15:29:53 [INFO]   → 10 chunks retrieved
+15:29:53 [DEBUG]     chunk: dieu=9 khoan=4 diem=đ score=0.5011  Điều 9. Xử phạt người điều khiển xe đạp, xe đạp máy, người đ
+15:29:53 [DEBUG]     chunk: dieu=16 khoan=4 diem=b score=0.4951  Điều 16. Xử phạt người điều khiển xe máy chuyên dùng (kể cả 
+15:29:53 [DEBUG]     chunk: dieu=16 khoan=2 diem=c score=0.4936  Điều 16. Xử phạt người điều khiển xe máy chuyên dùng (kể cả 
+15:29:53 [DEBUG]     chunk: dieu=16 khoan=2 diem=đ score=0.4935  Điều 16. Xử phạt người điều khiển xe máy chuyên dùng (kể cả 
+15:29:53 [DEBUG]     chunk: dieu=16 khoan=6 diem= score=0.4894  Điều 16. Xử phạt người điều khiển xe máy chuyên dùng (kể cả 
+15:29:53 [DEBUG]     chunk: dieu=9 khoan=4 diem=d score=0.4891  Điều 9. Xử phạt người điều khiển xe đạp, xe đạp máy, người đ
+15:29:53 [DEBUG]     chunk: dieu=7 khoan=2 diem=i score=0.4876  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:29:53 [DEBUG]     chunk: dieu=15 khoan=1 diem= score=0.4870  Điều 15. Xử phạt người điều khiển xe thô sơ vi phạm quy định
+15:29:53 [DEBUG]     chunk: dieu=38 khoan=1 diem=b score=0.4841  Điều 38. Xử phạt người điều khiển phương tiện đăng ký hoạt đ
+15:29:53 [DEBUG]     chunk: dieu=19 khoan=1 diem= score=0.4826  Điều 19. Xử phạt các hành vi vi phạm quy định về điều kiện c
+15:29:53 [INFO]   → 12 ASP rules matched
+15:29:53 [DEBUG]     rule: d16_k4_b                   subject=specialized_vehicle_driver  action=confiscate_vehicle_if_no_proof_of_origin_for_clause_2_c_dd
+15:29:53 [DEBUG]     rule: d16_k2_c                   subject=specialized_vehicle_driver  action=drive_without_registration_or_with_expired_registration
+15:29:53 [DEBUG]     rule: d16_k6                     subject=specialized_vehicle_driver  action=revoke_invalid_or_unauthorized_registration_and_inspection_documents
+15:29:53 [DEBUG]     rule: d9_k4_d                    subject=motorbike_driver      action=no_helmet_or_improper_helmet_strap
+15:29:53 [DEBUG]     rule: d7_k2_i                    subject=motorbike_driver      action=carry_passenger_without_helmet
+15:29:53 [DEBUG]     rule: d15_k1_1                   subject=non_motorized_vehicle_driver  action=drive_without_warning_sound_device
+15:29:53 [DEBUG]     rule: d15_k1_2                   subject=non_motorized_vehicle_driver  action=drive_without_front_light_or_reflector
+15:29:53 [DEBUG]     rule: d15_k1_3                   subject=non_motorized_vehicle_driver  action=drive_without_rear_signal_or_reflector
+15:29:53 [DEBUG]     rule: d38_k1_b_1                 subject=driver                action=no_control_badge
+15:29:53 [DEBUG]     rule: d38_k1_b_2                 subject=driver                action=expired_control_badge
+15:29:53 [DEBUG]     rule: d38_k1_b_3                 subject=driver                action=use_unauthorized_control_badge
+15:29:53 [DEBUG]     rule: d19_k1                     subject=special_vehicle_driver  action=operate_without_compulsory_liability_insurance
+15:29:53 [INFO] [STEP 2] Building LLM extraction prompt ...
+15:29:53 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+người điều khiển xe mô tô vừa xe thô sơ đang đi trên phần đường dành cho xe thô sơ, vừa người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy không có chứng nhận bảo hiểm bắt buộc trách nhiệm dân sự của chủ xe cơ giới còn hiệu lực thì bị xử phạt thế nào?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d16_k4_b",
+  "subject": "specialized_vehicle_driver",
+  "action": "confiscate_vehicle_if_no_proof_of_origin_for_clause_2_c_dd",
+  "context": []
+ },
+ {
+  "rule_id": "d16_k2_c",
+  "subject": "specialized_vehicle_driver",
+  "action": "drive_without_registration_or_with_expired_registration",
+  "context": []
+ },
+ {
+  "rule_id": "d16_k6",
+  "subject": "specialized_vehicle_driver",
+  "action": "revoke_invalid_or_unauthorized_registration_and_inspection_documents",
+  "context": []
+ },
+ {
+  "rule_id": "d9_k4_d",
+  "subject": "motorbike_driver",
+  "action": "no_helmet_or_improper_helmet_strap",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k2_i",
+  "subject": "motorbike_driver",
+  "action": "carry_passenger_without_helmet",
+  "context": []
+ },
+ {
+  "rule_id": "d15_k1_1",
+  "subject": "non_motorized_vehicle_driver",
+  "action": "drive_without_warning_sound_device",
+  "context": []
+ },
+ {
+  "rule_id": "d15_k1_2",
+  "subject": "non_motorized_vehicle_driver",
+  "action": "drive_without_front_light_or_reflector",
+  "context": []
+ },
+ {
+  "rule_id": "d15_k1_3",
+  "subject": "non_motorized_vehicle_driver",
+  "action": "drive_without_rear_signal_or_reflector",
+  "context": []
+ },
+ {
+  "rule_id": "d38_k1_b_1",
+  "subject": "driver",
+  "action": "no_control_badge",
+  "context": []
+ },
+ {
+  "rule_id": "d38_k1_b_2",
+  "subject": "driver",
+  "action": "expired_control_badge",
+  "context": []
+ },
+ {
+  "rule_id": "d38_k1_b_3",
+  "subject": "driver",
+  "action": "use_unauthorized_control_badge",
+  "context": []
+ },
+ {
+  "rule_id": "d19_k1",
+  "subject": "special_vehicle_driver",
+  "action": "operate_without_compulsory_liability_insurance",
+  "context": []
+ }
+]
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "specialized_vehicle_driver"]},
+    {"predicate": "case_action",       "args": ["user1", "confiscate_vehicle_if_no_proof_of_origin_for_clause_2_c_dd"]}
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên
+5. Chỉ thêm case_context nếu rule có context
+6. Chỉ thêm case_exception nếu có exception áp dụng
+7. Chỉ xuất duy nhất JSON object, không thêm gì khác
+----------------------------------------
+15:29:53 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+15:30:41 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "specialized_vehicle_driver"]}, {"predicate": "case_action", "args": ["user1", "operate_without_compulsory_liability_insurance"]}]}
+
+```json
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "specialized_vehicle_driver"]},
+    {"predicate": "case_action", "args": ["user1", "operate_without_compulsory_liability_insurance"]}
+  ]
+}
+```
+----------------------------------------
+15:30:41 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+15:30:41 [INFO]   → 2 facts parsed
+15:30:41 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "specialized_vehicle_driver"]}, {"predicate": "case_action", "args": ["user1", "operate_without_compulsory_liability_insurance"]}]
+15:30:41 [INFO] [STEP 5] Converting facts to ASP predicates ...
+15:30:41 [DEBUG]   ASP FACTS:
+driver_type(case1, specialized_vehicle_driver).
+did_action(case1, operate_without_compulsory_liability_insurance).
+15:30:41 [INFO] [STEP 6] Running clingo reasoning ...
+15:30:41 [INFO]   → 0 result atoms
+15:30:41 [INFO] [DONE] Pipeline hoàn thành
+15:30:41 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+15:30:41 [INFO] ============================================================
+15:30:41 [INFO] QUERY: người điều khiển xe mô tô vừa điều khiển xe không đi bên phải theo chiều đi của mình, vừa vi phạm quy định tại một trong các điểm, khoản sau của Điều này mà gây tai nạn giao thông: điểm a, điểm d, điểm đ, điểm g, điểm h, điểm i, điểm k khoản 1; điểm c, điểm đ, điểm g khoản 2; điểm b, điểm e, điểm g, điểm h, điểm k khoản 3; điểm đ khoản 4; điểm c, điểm d khoản 6; điểm c, điểm d, điểm đ khoản 7; điểm a, điểm b, điểm h, điểm k khoản 9 Điều này thì bị xử phạt thế nào?
+15:30:41 [INFO] top_k=10
+15:30:41 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+15:30:43 [INFO]   → 10 chunks retrieved
+15:30:43 [DEBUG]     chunk: dieu=7 khoan=10 diem=b score=0.5617  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:30:43 [DEBUG]     chunk: dieu=7 khoan=9 diem=c score=0.5333  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:30:43 [DEBUG]     chunk: dieu=7 khoan=10 diem=a score=0.5228  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:30:43 [DEBUG]     chunk: dieu=7 khoan=3 diem=a score=0.5219  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:30:43 [DEBUG]     chunk: dieu=8 khoan=8 diem=d score=0.5210  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+15:30:43 [DEBUG]     chunk: dieu=7 khoan=3 diem=d score=0.5173  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:30:43 [DEBUG]     chunk: dieu=7 khoan=5 diem=a score=0.5096  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:30:43 [DEBUG]     chunk: dieu=7 khoan=7 diem=a score=0.5074  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:30:43 [DEBUG]     chunk: dieu=7 khoan=2 diem=c score=0.5066  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:30:43 [DEBUG]     chunk: dieu=8 khoan=8 diem=a score=0.5011  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+15:30:43 [INFO]   → 22 ASP rules matched
+15:30:43 [DEBUG]     rule: d7_k10_b                   subject=motorbike_driver      action=listed_violation_causing_accident
+15:30:43 [DEBUG]     rule: d7_k9_c                    subject=motorbike_driver      action=cause_accident_and_fail_to_stop_preserve_scene_assist_or_report
+15:30:43 [DEBUG]     rule: d7_k10_a_1                 subject=motorbike_driver      action=fail_to_observe_or_slow_causing_accident
+15:30:43 [DEBUG]     rule: d7_k10_a_2                 subject=motorbike_driver      action=speeding_causing_accident
+15:30:43 [DEBUG]     rule: d7_k10_a_3                 subject=motorbike_driver      action=improper_maneuver_causing_accident
+15:30:43 [DEBUG]     rule: d7_k10_a_4                 subject=motorbike_driver      action=wrong_lane_or_no_entry_or_wrong_way_causing_accident
+15:30:43 [DEBUG]     rule: d7_k3_a_1                  subject=motorbike_driver      action=unsafe_turning_or_no_turn_signal
+15:30:43 [DEBUG]     rule: d7_k3_a_2                  subject=motorbike_driver      action=turn_left_in_no_left_turn_zone
+15:30:43 [DEBUG]     rule: d7_k3_a_3                  subject=motorbike_driver      action=turn_right_in_no_right_turn_zone
+15:30:43 [DEBUG]     rule: d8_k8_d                    subject=specialized_vehicle_driver  action=listed_violation_causing_accident
+15:30:43 [DEBUG]     rule: d7_k3_d_1                  subject=motorbike_driver      action=fail_to_keep_right
+15:30:43 [DEBUG]     rule: d7_k3_d_2                  subject=motorbike_driver      action=drive_in_wrong_lane_or_wrong_side
+15:30:43 [DEBUG]     rule: d7_k3_d_3                  subject=motorbike_driver      action=drive_across_fixed_median
+15:30:43 [DEBUG]     rule: d7_k5_a                    subject=motorbike_driver      action=fail_to_stop_preserve_scene_or_assist_after_accident
+15:30:43 [DEBUG]     rule: d7_k7_a_1                  subject=motorbike_driver      action=drive_wrong_way_on_one_way_or_no_entry_road
+15:30:43 [DEBUG]     rule: d7_k7_a_2                  subject=motorbike_driver      action=drive_on_sidewalk
+15:30:43 [DEBUG]     rule: d7_k2_c                    subject=motorbike_driver      action=drive_too_slow_without_keeping_right_causing_obstruction
+15:30:43 [DEBUG]     rule: d8_k8_a_1                  subject=specialized_vehicle_driver  action=drive_without_proper_observation_or_slowing_causing_accident
+15:30:43 [DEBUG]     rule: d8_k8_a_2                  subject=specialized_vehicle_driver  action=speed_causing_accident
+15:30:43 [DEBUG]     rule: d8_k8_a_3                  subject=specialized_vehicle_driver  action=improper_maneuver_causing_accident
+15:30:43 [DEBUG]     rule: d8_k8_a_4                  subject=specialized_vehicle_driver  action=open_vehicle_door_unsafely_causing_accident
+15:30:43 [DEBUG]     rule: d8_k8_a_5                  subject=specialized_vehicle_driver  action=wrong_lane_or_unsafe_distance_or_no_entry_or_wrong_way_causing_accident
+15:30:43 [INFO] [STEP 2] Building LLM extraction prompt ...
+15:30:43 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+người điều khiển xe mô tô vừa điều khiển xe không đi bên phải theo chiều đi của mình, vừa vi phạm quy định tại một trong các điểm, khoản sau của Điều này mà gây tai nạn giao thông: điểm a, điểm d, điểm đ, điểm g, điểm h, điểm i, điểm k khoản 1; điểm c, điểm đ, điểm g khoản 2; điểm b, điểm e, điểm g, điểm h, điểm k khoản 3; điểm đ khoản 4; điểm c, điểm d khoản 6; điểm c, điểm d, điểm đ khoản 7; điểm a, điểm b, điểm h, điểm k khoản 9 Điều này thì bị xử phạt thế nào?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d7_k10_b",
+  "subject": "motorbike_driver",
+  "action": "listed_violation_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k9_c",
+  "subject": "motorbike_driver",
+  "action": "cause_accident_and_fail_to_stop_preserve_scene_assist_or_report",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k10_a_1",
+  "subject": "motorbike_driver",
+  "action": "fail_to_observe_or_slow_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k10_a_2",
+  "subject": "motorbike_driver",
+  "action": "speeding_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k10_a_3",
+  "subject": "motorbike_driver",
+  "action": "improper_maneuver_causing_accident",
+  "context": [
+   "improper_expressway_entry_stop_park_u_turn_reverse_overtake_turn_or_lane_change"
+  ]
+ },
+ {
+  "rule_id": "d7_k10_a_4",
+  "subject": "motorbike_driver",
+  "action": "wrong_lane_or_no_entry_or_wrong_way_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k3_a_1",
+  "subject": "motorbike_driver",
+  "action": "unsafe_turning_or_no_turn_signal",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k3_a_2",
+  "subject": "motorbike_driver",
+  "action": "turn_left_in_no_left_turn_zone",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k3_a_3",
+  "subject": "motorbike_driver",
+  "action": "turn_right_in_no_right_turn_zone",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k8_d",
+  "subject": "specialized_vehicle_driver",
+  "action": "listed_violation_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k3_d_1",
+  "subject": "motorbike_driver",
+  "action": "fail_to_keep_right",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k3_d_2",
+  "subject": "motorbike_driver",
+  "action": "drive_in_wrong_lane_or_wrong_side",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k3_d_3",
+  "subject": "motorbike_driver",
+  "action": "drive_across_fixed_median",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k5_a",
+  "subject": "motorbike_driver",
+  "action": "fail_to_stop_preserve_scene_or_assist_after_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k7_a_1",
+  "subject": "motorbike_driver",
+  "action": "drive_wrong_way_on_one_way_or_no_entry_road",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k7_a_2",
+  "subject": "motorbike_driver",
+  "action": "drive_on_sidewalk",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k2_c",
+  "subject": "motorbike_driver",
+  "action": "drive_too_slow_without_keeping_right_causing_obstruction",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k8_a_1",
+  "subject": "specialized_vehicle_driver",
+  "action": "drive_without_proper_observation_or_slowing_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k8_a_2",
+  "subject": "specialized_vehicle_driver",
+  "action": "speed_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k8_a_3",
+  "subject": "specialized_vehicle_driver",
+  "action": "improper_maneuver_causing_accident",
+  "context": [
+   "improper_stop_park_u_turn_reverse_pass_overtake_turn_or_lane_change"
+  ]
+ },
+ {
+  "rule_id": "d8_k8_a_4",
+  "subject": "specialized_vehicle_driver",
+  "action": "open_vehicle_door_unsafely_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k8_a_5",
+  "subject": "specialized_vehicle_driver",
+  "action": "wrong_lane_or_unsafe_distance_or_no_entry_or_wrong_way_causing_accident",
+  "context": []
+ }
+]
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]},
+    {"predicate": "case_action",       "args": ["user1", "listed_violation_causing_accident"]}
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên
+5. Chỉ thêm case_context nếu rule có context
+6. Chỉ thêm case_exception nếu có exception áp dụng
+7. Chỉ xuất duy nhất JSON object, không thêm gì khác
+----------------------------------------
+15:30:43 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+15:31:54 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]}, {"predicate": "case_action", "args": ["user1", "listed_violation_causing_accident"]}]}
+
+```json
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]},
+    {"predicate": "case_action", "args": ["user1", "listed_violation_causing_accident"]}
+  ]
+}
+```
+----------------------------------------
+15:31:54 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+15:31:54 [INFO]   → 2 facts parsed
+15:31:54 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]}, {"predicate": "case_action", "args": ["user1", "listed_violation_causing_accident"]}]
+15:31:54 [INFO] [STEP 5] Converting facts to ASP predicates ...
+15:31:54 [DEBUG]   ASP FACTS:
+driver_type(case1, motorbike_driver).
+did_action(case1, listed_violation_causing_accident).
+15:31:54 [INFO] [STEP 6] Running clingo reasoning ...
+15:31:54 [INFO]   → 1 result atoms
+15:31:54 [DEBUG]     result(d7_k10_b,10000000,14000000)
+15:31:54 [INFO] [DONE] Pipeline hoàn thành
+15:31:54 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+15:31:54 [INFO] ============================================================
+15:31:54 [INFO] QUERY: người ngồi trên xe mà tự ý mở cửa xe thì bị phạt thế nào?
+15:31:54 [INFO] top_k=10
+15:31:54 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+15:31:55 [INFO]   → 10 chunks retrieved
+15:31:55 [DEBUG]     chunk: dieu=33 khoan=2 diem=b score=0.5311  Điều 33. Xử phạt hành khách đi xe vi phạm quy định về trật t
+15:31:55 [DEBUG]     chunk: dieu=20 khoan=3 diem=a score=0.5139  Điều 20. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:31:55 [DEBUG]     chunk: dieu=6 khoan=5 diem=q score=0.5109  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+15:31:55 [DEBUG]     chunk: dieu=21 khoan=1 diem=b score=0.4572  Điều 21. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:31:55 [DEBUG]     chunk: dieu=20 khoan=3 diem=d score=0.4559  Điều 20. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:31:55 [DEBUG]     chunk: dieu=20 khoan=5 diem=a score=0.4551  Điều 20. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:31:55 [DEBUG]     chunk: dieu=20 khoan=3 diem=b score=0.4462  Điều 20. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:31:55 [DEBUG]     chunk: dieu=32 khoan=16 diem=c score=0.4450  Điều 32. Xử phạt, trừ điểm giấy phép lái xe đối với chủ phươ
+15:31:55 [DEBUG]     chunk: dieu=6 khoan=5 diem=p score=0.4440  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+15:31:55 [DEBUG]     chunk: dieu=22 khoan=2 diem= score=0.4433  Điều 22. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:31:55 [INFO]   → 18 ASP rules matched
+15:31:55 [DEBUG]     rule: d33_k2_b_1                 subject=passenger             action=cling_to_vehicle_body
+15:31:55 [DEBUG]     rule: d33_k2_b_2                 subject=passenger             action=stand_sit_or_lie_on_vehicle_roof
+15:31:55 [DEBUG]     rule: d33_k2_b_3                 subject=passenger             action=stay_in_luggage_compartment
+15:31:55 [DEBUG]     rule: d33_k2_b_4                 subject=passenger             action=open_vehicle_door_without_authorization_while_moving
+15:31:55 [DEBUG]     rule: d33_k2_b_5                 subject=passenger             action=perform_other_unsafe_acts_while_vehicle_is_moving
+15:31:55 [DEBUG]     rule: d20_k3_a                   subject=passenger_vehicle_driver  action=keep_boarding_doors_open_while_vehicle_is_moving
+15:31:55 [DEBUG]     rule: d6_k5_q_1                  subject=driver                action=open_vehicle_door_unsafely
+15:31:55 [DEBUG]     rule: d6_k5_q_2                  subject=driver                action=leave_vehicle_door_open_unsafely
+15:31:55 [DEBUG]     rule: d21_k1_b                   subject=driver                action=fail_to_secure_truck_compartment_doors_while_moving
+15:31:55 [DEBUG]     rule: d20_k3_d                   subject=passenger_vehicle_driver  action=allow_hammock_use_on_vehicle_while_moving
+15:31:55 [DEBUG]     rule: d20_k5_a                   subject=passenger_vehicle_driver  action=allow_passengers_to_board_or_alight_while_vehicle_is_moving
+15:31:55 [DEBUG]     rule: d20_k3_b                   subject=passenger_vehicle_driver  action=allow_passengers_to_remain_on_vehicle_during_ferry_loading_unloading_or_crossing
+15:31:55 [DEBUG]     rule: d32_k16_c_ind              subject=vehicle_owner         action=unlawfully_modify_vehicle_frame_engine_brake_drivetrain_running_gear_structure_dimensions_or_use_function
+15:31:55 [DEBUG]     rule: d32_k16_c_org              subject=vehicle_owner         action=unlawfully_modify_vehicle_frame_engine_brake_drivetrain_running_gear_structure_dimensions_or_use_function
+15:31:55 [DEBUG]     rule: d6_k5_p_1                  subject=driver                action=carry_people_in_cargo_bed_unlawfully
+15:31:55 [DEBUG]     rule: d6_k5_p_2                  subject=driver                action=carry_people_on_roof
+15:31:55 [DEBUG]     rule: d6_k5_p_3                  subject=driver                action=allow_person_to_cling_to_door_or_outside_vehicle_while_moving
+15:31:55 [DEBUG]     rule: d22_k2                     subject=driver                action=exceed_permitted_vehicle_dimensions_in_transport_permit_for_oversized_or_overweight_cargo
+15:31:55 [INFO] [STEP 2] Building LLM extraction prompt ...
+15:31:55 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+người ngồi trên xe mà tự ý mở cửa xe thì bị phạt thế nào?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d33_k2_b_1",
+  "subject": "passenger",
+  "action": "cling_to_vehicle_body",
+  "context": []
+ },
+ {
+  "rule_id": "d33_k2_b_2",
+  "subject": "passenger",
+  "action": "stand_sit_or_lie_on_vehicle_roof",
+  "context": []
+ },
+ {
+  "rule_id": "d33_k2_b_3",
+  "subject": "passenger",
+  "action": "stay_in_luggage_compartment",
+  "context": []
+ },
+ {
+  "rule_id": "d33_k2_b_4",
+  "subject": "passenger",
+  "action": "open_vehicle_door_without_authorization_while_moving",
+  "context": []
+ },
+ {
+  "rule_id": "d33_k2_b_5",
+  "subject": "passenger",
+  "action": "perform_other_unsafe_acts_while_vehicle_is_moving",
+  "context": []
+ },
+ {
+  "rule_id": "d20_k3_a",
+  "subject": "passenger_vehicle_driver",
+  "action": "keep_boarding_doors_open_while_vehicle_is_moving",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k5_q_1",
+  "subject": "driver",
+  "action": "open_vehicle_door_unsafely",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k5_q_2",
+  "subject": "driver",
+  "action": "leave_vehicle_door_open_unsafely",
+  "context": []
+ },
+ {
+  "rule_id": "d21_k1_b",
+  "subject": "driver",
+  "action": "fail_to_secure_truck_compartment_doors_while_moving",
+  "context": []
+ },
+ {
+  "rule_id": "d20_k3_d",
+  "subject": "passenger_vehicle_driver",
+  "action": "allow_hammock_use_on_vehicle_while_moving",
+  "context": []
+ },
+ {
+  "rule_id": "d20_k5_a",
+  "subject": "passenger_vehicle_driver",
+  "action": "allow_passengers_to_board_or_alight_while_vehicle_is_moving",
+  "context": []
+ },
+ {
+  "rule_id": "d20_k3_b",
+  "subject": "passenger_vehicle_driver",
+  "action": "allow_passengers_to_remain_on_vehicle_during_ferry_loading_unloading_or_crossing",
+  "context": [
+   "ferry_transfer"
+  ]
+ },
+ {
+  "rule_id": "d32_k16_c_ind",
+  "subject": "vehicle_owner",
+  "action": "unlawfully_modify_vehicle_frame_engine_brake_drivetrain_running_gear_structure_dimensions_or_use_function",
+  "context": []
+ },
+ {
+  "rule_id": "d32_k16_c_org",
+  "subject": "vehicle_owner",
+  "action": "unlawfully_modify_vehicle_frame_engine_brake_drivetrain_running_gear_structure_dimensions_or_use_function",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k5_p_1",
+  "subject": "driver",
+  "action": "carry_people_in_cargo_bed_unlawfully",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k5_p_2",
+  "subject": "driver",
+  "action": "carry_people_on_roof",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k5_p_3",
+  "subject": "driver",
+  "action": "allow_person_to_cling_to_door_or_outside_vehicle_while_moving",
+  "context": []
+ },
+ {
+  "rule_id": "d22_k2",
+  "subject": "driver",
+  "action": "exceed_permitted_vehicle_dimensions_in_transport_permit_for_oversized_or_overweight_cargo",
+  "context": []
+ }
+]
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "passenger"]},
+    {"predicate": "case_action",       "args": ["user1", "cling_to_vehicle_body"]}
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên
+5. Chỉ thêm case_context nếu rule có context
+6. Chỉ thêm case_exception nếu có exception áp dụng
+7. Chỉ xuất duy nhất JSON object, không thêm gì khác
+----------------------------------------
+15:31:55 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+15:32:37 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "passenger"]}, {"predicate": "case_action", "args": ["user1", "open_vehicle_door_without_authorization_while_moving"]}]}`}
+----------------------------------------
+15:32:37 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+15:32:37 [INFO]   → 2 facts parsed
+15:32:37 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "passenger"]}, {"predicate": "case_action", "args": ["user1", "open_vehicle_door_without_authorization_while_moving"]}]
+15:32:37 [INFO] [STEP 5] Converting facts to ASP predicates ...
+15:32:37 [DEBUG]   ASP FACTS:
+driver_type(case1, passenger).
+did_action(case1, open_vehicle_door_without_authorization_while_moving).
+15:32:37 [INFO] [STEP 6] Running clingo reasoning ...
+15:32:37 [INFO]   → 1 result atoms
+15:32:37 [DEBUG]     result(d33_k2_b_4,1000000,2000000)
+15:32:37 [INFO] [DONE] Pipeline hoàn thành
+15:32:37 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+15:32:37 [INFO] ============================================================
+15:32:37 [INFO] QUERY: chủ phương tiện mà đưa phương tiện không gắn biển số (đối với loại xe có quy định phải gắn biển số) tham gia giao thông thì bị phạt thế nào?
+15:32:37 [INFO] top_k=10
+15:32:37 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+15:32:38 [INFO]   → 10 chunks retrieved
+15:32:38 [DEBUG]     chunk: dieu=32 khoan=12 diem=b score=0.6128  Điều 32. Xử phạt, trừ điểm giấy phép lái xe đối với chủ phươ
+15:32:38 [DEBUG]     chunk: dieu=32 khoan=8 diem=h score=0.6062  Điều 32. Xử phạt, trừ điểm giấy phép lái xe đối với chủ phươ
+15:32:38 [DEBUG]     chunk: dieu=16 khoan=1 diem=e score=0.5868  Điều 16. Xử phạt người điều khiển xe máy chuyên dùng (kể cả 
+15:32:38 [DEBUG]     chunk: dieu=37 khoan=2 diem= score=0.5831  Điều 37. Xử phạt người điều khiển phương tiện giao thông cơ 
+15:32:38 [DEBUG]     chunk: dieu=37 khoan=4 diem=b score=0.5826  Điều 37. Xử phạt người điều khiển phương tiện giao thông cơ 
+15:32:38 [DEBUG]     chunk: dieu=32 khoan=13 diem=d score=0.5799  Điều 32. Xử phạt, trừ điểm giấy phép lái xe đối với chủ phươ
+15:32:38 [DEBUG]     chunk: dieu=14 khoan=3 diem=a score=0.5783  Điều 14. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:32:38 [DEBUG]     chunk: dieu=13 khoan=8 diem=b score=0.5676  Điều 13. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:32:38 [DEBUG]     chunk: dieu=14 khoan=3 diem=b score=0.5651  Điều 14. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:32:38 [DEBUG]     chunk: dieu=16 khoan=1 diem=a score=0.5639  Điều 16. Xử phạt người điều khiển xe máy chuyên dùng (kể cả 
+15:32:38 [INFO]   → 16 ASP rules matched
+15:32:38 [DEBUG]     rule: d32_k12_b_ind              subject=vehicle_owner         action=put_vehicle_into_traffic_without_license_plate
+15:32:38 [DEBUG]     rule: d32_k12_b_org              subject=vehicle_owner         action=put_vehicle_into_traffic_without_license_plate
+15:32:38 [DEBUG]     rule: d32_k8_h_1_ind             subject=vehicle_owner         action=put_motorbike_into_traffic_without_license_plate
+15:32:38 [DEBUG]     rule: d32_k8_h_1_org             subject=vehicle_owner         action=put_motorbike_into_traffic_without_license_plate
+15:32:38 [DEBUG]     rule: d32_k8_h_2_ind             subject=vehicle_owner         action=put_motorbike_into_traffic_with_license_plate_not_matching_registration
+15:32:38 [DEBUG]     rule: d32_k8_h_2_org             subject=vehicle_owner         action=put_motorbike_into_traffic_with_license_plate_not_matching_registration
+15:32:38 [DEBUG]     rule: d32_k8_h_3_ind             subject=vehicle_owner         action=put_motorbike_into_traffic_with_unauthorized_license_plate
+15:32:38 [DEBUG]     rule: d32_k8_h_3_org             subject=vehicle_owner         action=put_motorbike_into_traffic_with_unauthorized_license_plate
+15:32:38 [DEBUG]     rule: d16_k1_e                   subject=specialized_vehicle_driver  action=improper_or_obscured_plate
+15:32:38 [DEBUG]     rule: d37_k2                     subject=driver                action=operate_vehicle_without_required_authorization_in_vietnam
+15:32:38 [DEBUG]     rule: d37_k4_b                   subject=driver                action=drive_right_hand_drive_vehicle_without_required_convoy_support
+15:32:38 [DEBUG]     rule: d32_k13_d_ind              subject=vehicle_owner         action=put_vehicle_into_traffic_with_license_plate_not_matching_registration_or_unauthorized_plate
+15:32:38 [DEBUG]     rule: d32_k13_d_org              subject=vehicle_owner         action=put_vehicle_into_traffic_with_license_plate_not_matching_registration_or_unauthorized_plate
+15:32:38 [DEBUG]     rule: d14_k3_a                   subject=motorbike_driver      action=no_plate_or_wrong_or_unauthorized_plate
+15:32:38 [DEBUG]     rule: d14_k3_b                   subject=motorbike_driver      action=improper_or_obscured_plate
+15:32:38 [DEBUG]     rule: d16_k1_a                   subject=specialized_vehicle_driver  action=drive_without_license_plate
+15:32:38 [INFO] [STEP 2] Building LLM extraction prompt ...
+15:32:38 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+chủ phương tiện mà đưa phương tiện không gắn biển số (đối với loại xe có quy định phải gắn biển số) tham gia giao thông thì bị phạt thế nào?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d32_k12_b_ind",
+  "subject": "vehicle_owner",
+  "action": "put_vehicle_into_traffic_without_license_plate",
+  "context": []
+ },
+ {
+  "rule_id": "d32_k12_b_org",
+  "subject": "vehicle_owner",
+  "action": "put_vehicle_into_traffic_without_license_plate",
+  "context": []
+ },
+ {
+  "rule_id": "d32_k8_h_1_ind",
+  "subject": "vehicle_owner",
+  "action": "put_motorbike_into_traffic_without_license_plate",
+  "context": []
+ },
+ {
+  "rule_id": "d32_k8_h_1_org",
+  "subject": "vehicle_owner",
+  "action": "put_motorbike_into_traffic_without_license_plate",
+  "context": []
+ },
+ {
+  "rule_id": "d32_k8_h_2_ind",
+  "subject": "vehicle_owner",
+  "action": "put_motorbike_into_traffic_with_license_plate_not_matching_registration",
+  "context": []
+ },
+ {
+  "rule_id": "d32_k8_h_2_org",
+  "subject": "vehicle_owner",
+  "action": "put_motorbike_into_traffic_with_license_plate_not_matching_registration",
+  "context": []
+ },
+ {
+  "rule_id": "d32_k8_h_3_ind",
+  "subject": "vehicle_owner",
+  "action": "put_motorbike_into_traffic_with_unauthorized_license_plate",
+  "context": []
+ },
+ {
+  "rule_id": "d32_k8_h_3_org",
+  "subject": "vehicle_owner",
+  "action": "put_motorbike_into_traffic_with_unauthorized_license_plate",
+  "context": []
+ },
+ {
+  "rule_id": "d16_k1_e",
+  "subject": "specialized_vehicle_driver",
+  "action": "improper_or_obscured_plate",
+  "context": []
+ },
+ {
+  "rule_id": "d37_k2",
+  "subject": "driver",
+  "action": "operate_vehicle_without_required_authorization_in_vietnam",
+  "context": []
+ },
+ {
+  "rule_id": "d37_k4_b",
+  "subject": "driver",
+  "action": "drive_right_hand_drive_vehicle_without_required_convoy_support",
+  "context": []
+ },
+ {
+  "rule_id": "d32_k13_d_ind",
+  "subject": "vehicle_owner",
+  "action": "put_vehicle_into_traffic_with_license_plate_not_matching_registration_or_unauthorized_plate",
+  "context": []
+ },
+ {
+  "rule_id": "d32_k13_d_org",
+  "subject": "vehicle_owner",
+  "action": "put_vehicle_into_traffic_with_license_plate_not_matching_registration_or_unauthorized_plate",
+  "context": []
+ },
+ {
+  "rule_id": "d14_k3_a",
+  "subject": "motorbike_driver",
+  "action": "no_plate_or_wrong_or_unauthorized_plate",
+  "context": []
+ },
+ {
+  "rule_id": "d14_k3_b",
+  "subject": "motorbike_driver",
+  "action": "improper_or_obscured_plate",
+  "context": []
+ },
+ {
+  "rule_id": "d16_k1_a",
+  "subject": "specialized_vehicle_driver",
+  "action": "drive_without_license_plate",
+  "context": []
+ }
+]
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "vehicle_owner"]},
+    {"predicate": "case_action",       "args": ["user1", "put_vehicle_into_traffic_without_license_plate"]}
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên
+5. Chỉ thêm case_context nếu rule có context
+6. Chỉ thêm case_exception nếu có exception áp dụng
+7. Chỉ xuất duy nhất JSON object, không thêm gì khác
+----------------------------------------
+15:32:38 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+15:33:24 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "vehicle_owner"]}, {"predicate": "case_action", "args": ["user1", "put_vehicle_into_traffic_without_license_plate"]}]}
+
+```json
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "vehicle_owner"]},
+    {"predicate": "case_action", "args": ["user1", "put_vehicle_into_traffic_without_license_plate"]}
+  ]
+}
+```
+----------------------------------------
+15:33:24 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+15:33:24 [INFO]   → 2 facts parsed
+15:33:24 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "vehicle_owner"]}, {"predicate": "case_action", "args": ["user1", "put_vehicle_into_traffic_without_license_plate"]}]
+15:33:24 [INFO] [STEP 5] Converting facts to ASP predicates ...
+15:33:24 [DEBUG]   ASP FACTS:
+driver_type(case1, vehicle_owner).
+did_action(case1, put_vehicle_into_traffic_without_license_plate).
+15:33:24 [INFO] [STEP 6] Running clingo reasoning ...
+15:33:24 [INFO]   → 2 result atoms
+15:33:24 [DEBUG]     result(d32_k12_b_ind,16000000,18000000)
+15:33:24 [DEBUG]     result(d32_k12_b_org,32000000,36000000)
+15:33:24 [INFO] [DONE] Pipeline hoàn thành
+15:33:24 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+15:33:24 [INFO] ============================================================
+15:33:24 [INFO] QUERY: người điều khiển xe mô tô mà chở người ngồi trên xe không đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" hoặc đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" không cài quai đúng quy cách thì bị phạt thế nào?
+15:33:24 [INFO] top_k=10
+15:33:24 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+15:33:26 [INFO]   → 10 chunks retrieved
+15:33:26 [DEBUG]     chunk: dieu=9 khoan=4 diem=đ score=0.6268  Điều 9. Xử phạt người điều khiển xe đạp, xe đạp máy, người đ
+15:33:26 [DEBUG]     chunk: dieu=7 khoan=2 diem=i score=0.6188  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:33:26 [DEBUG]     chunk: dieu=12 khoan=5 diem=b score=0.5715  Điều 12. Xử phạt, trừ điểm giấy phép lái xe các hành vi vi p
+15:33:26 [DEBUG]     chunk: dieu=7 khoan=2 diem=h score=0.5673  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:33:26 [DEBUG]     chunk: dieu=9 khoan=4 diem=d score=0.5521  Điều 9. Xử phạt người điều khiển xe đạp, xe đạp máy, người đ
+15:33:26 [DEBUG]     chunk: dieu=7 khoan=9 diem=h score=0.5105  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:33:26 [DEBUG]     chunk: dieu=20 khoan=5 diem=l score=0.5097  Điều 20. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:33:26 [DEBUG]     chunk: dieu=20 khoan=6 diem=b score=0.5080  Điều 20. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:33:26 [DEBUG]     chunk: dieu=7 khoan=1 diem=d score=0.5028  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:33:26 [DEBUG]     chunk: dieu=7 khoan=2 diem=g score=0.5019  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:33:26 [INFO]   → 11 ASP rules matched
+15:33:26 [DEBUG]     rule: d7_k2_i                    subject=motorbike_driver      action=carry_passenger_without_helmet
+15:33:26 [DEBUG]     rule: d12_k5_b                   subject=motorbike_passenger   action=no_helmet_or_improper_helmet_strap
+15:33:26 [DEBUG]     rule: d7_k2_h                    subject=motorbike_driver      action=no_helmet_or_improper_helmet_strap
+15:33:26 [DEBUG]     rule: d9_k4_d                    subject=motorbike_driver      action=no_helmet_or_improper_helmet_strap
+15:33:26 [DEBUG]     rule: d7_k9_h                    subject=motorbike_driver      action=passenger_reaches_around_driver_to_control_vehicle
+15:33:26 [DEBUG]     rule: d20_k5_l_1                 subject=passenger_vehicle_driver  action=operate_commercial_passenger_vehicle_without_required_driver_image_recorder
+15:33:26 [DEBUG]     rule: d20_k5_l_2                 subject=passenger_vehicle_driver  action=operate_with_nonfunctional_driver_image_recorder
+15:33:26 [DEBUG]     rule: d20_k5_l_3                 subject=passenger_vehicle_driver  action=falsify_driver_image_recorder_data
+15:33:26 [DEBUG]     rule: d20_k6_b                   subject=passenger_vehicle_driver  action=carry_people_on_roof_or_in_luggage_compartment
+15:33:26 [DEBUG]     rule: d7_k1_d                    subject=motorbike_driver      action=carry_passenger_using_umbrella
+15:33:26 [DEBUG]     rule: d7_k2_g                    subject=motorbike_driver      action=carry_two_passengers
+15:33:26 [INFO] [STEP 2] Building LLM extraction prompt ...
+15:33:26 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+người điều khiển xe mô tô mà chở người ngồi trên xe không đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" hoặc đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" không cài quai đúng quy cách thì bị phạt thế nào?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d7_k2_i",
+  "subject": "motorbike_driver",
+  "action": "carry_passenger_without_helmet",
+  "context": []
+ },
+ {
+  "rule_id": "d12_k5_b",
+  "subject": "motorbike_passenger",
+  "action": "no_helmet_or_improper_helmet_strap",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k2_h",
+  "subject": "motorbike_driver",
+  "action": "no_helmet_or_improper_helmet_strap",
+  "context": []
+ },
+ {
+  "rule_id": "d9_k4_d",
+  "subject": "motorbike_driver",
+  "action": "no_helmet_or_improper_helmet_strap",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k9_h",
+  "subject": "motorbike_driver",
+  "action": "passenger_reaches_around_driver_to_control_vehicle",
+  "context": []
+ },
+ {
+  "rule_id": "d20_k5_l_1",
+  "subject": "passenger_vehicle_driver",
+  "action": "operate_commercial_passenger_vehicle_without_required_driver_image_recorder",
+  "context": []
+ },
+ {
+  "rule_id": "d20_k5_l_2",
+  "subject": "passenger_vehicle_driver",
+  "action": "operate_with_nonfunctional_driver_image_recorder",
+  "context": []
+ },
+ {
+  "rule_id": "d20_k5_l_3",
+  "subject": "passenger_vehicle_driver",
+  "action": "falsify_driver_image_recorder_data",
+  "context": []
+ },
+ {
+  "rule_id": "d20_k6_b",
+  "subject": "passenger_vehicle_driver",
+  "action": "carry_people_on_roof_or_in_luggage_compartment",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k1_d",
+  "subject": "motorbike_driver",
+  "action": "carry_passenger_using_umbrella",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k2_g",
+  "subject": "motorbike_driver",
+  "action": "carry_two_passengers",
+  "context": []
+ }
+]
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]},
+    {"predicate": "case_action",       "args": ["user1", "carry_passenger_without_helmet"]}
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên
+5. Chỉ thêm case_context nếu rule có context
+6. Chỉ thêm case_exception nếu có exception áp dụng
+7. Chỉ xuất duy nhất JSON object, không thêm gì khác
+----------------------------------------
+15:33:26 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+15:33:56 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]}, {"predicate": "case_action", "args": ["user1", "carry_passenger_without_helmet"]}]}`}
+----------------------------------------
+15:33:56 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+15:33:56 [INFO]   → 2 facts parsed
+15:33:56 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]}, {"predicate": "case_action", "args": ["user1", "carry_passenger_without_helmet"]}]
+15:33:56 [INFO] [STEP 5] Converting facts to ASP predicates ...
+15:33:56 [DEBUG]   ASP FACTS:
+driver_type(case1, motorbike_driver).
+did_action(case1, carry_passenger_without_helmet).
+15:33:56 [INFO] [STEP 6] Running clingo reasoning ...
+15:33:56 [INFO]   → 2 result atoms
+15:33:56 [DEBUG]     result(d7_k2_i,400000,600000)
+15:33:56 [DEBUG]     result(d9_k4_dd,400000,600000)
+15:33:56 [INFO] [DONE] Pipeline hoàn thành
+15:33:56 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+15:33:56 [INFO] ============================================================
+15:33:56 [INFO] QUERY: Một người mà dừng xe, đỗ xe, quay đầu xe, lùi xe, tránh xe, vượt xe, chuyển hướng, chuyển làn đường không đúng quy định gây tai nạn giao thông thì bị phạt bao nhiêu?
+15:33:56 [INFO] top_k=10
+15:33:56 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+15:33:57 [INFO]   → 10 chunks retrieved
+15:33:57 [DEBUG]     chunk: dieu=6 khoan=8 diem= score=0.5340  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+15:33:57 [DEBUG]     chunk: dieu=8 khoan=2 diem=b score=0.5232  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+15:33:57 [DEBUG]     chunk: dieu=8 khoan=8 diem=a score=0.5228  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+15:33:57 [DEBUG]     chunk: dieu=6 khoan=5 diem=k score=0.5128  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+15:33:57 [DEBUG]     chunk: dieu=6 khoan=13 diem= score=0.5122  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+15:33:57 [DEBUG]     chunk: dieu=6 khoan=10 diem=a score=0.5094  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+15:33:57 [DEBUG]     chunk: dieu=6 khoan=4 diem=b score=0.4983  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+15:33:57 [DEBUG]     chunk: dieu=6 khoan=2 diem=a score=0.4970  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+15:33:57 [DEBUG]     chunk: dieu=6 khoan=3 diem=đ score=0.4917  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+15:33:57 [DEBUG]     chunk: dieu=12 khoan=8 diem= score=0.4906  Điều 12. Xử phạt, trừ điểm giấy phép lái xe các hành vi vi p
+15:33:57 [INFO]   → 49 ASP rules matched
+15:33:57 [DEBUG]     rule: d6_k8_1                    subject=driver                action=fail_to_stop_immediately_after_causing_accident
+15:33:57 [DEBUG]     rule: d6_k8_2                    subject=driver                action=fail_to_preserve_scene_after_causing_accident
+15:33:57 [DEBUG]     rule: d6_k8_3                    subject=driver                action=fail_to_assist_victims_after_causing_accident
+15:33:57 [DEBUG]     rule: d6_k8_4                    subject=driver                action=leave_scene_after_causing_accident
+15:33:57 [DEBUG]     rule: d6_k8_5                    subject=driver                action=fail_to_report_immediately_after_causing_accident
+15:33:57 [DEBUG]     rule: d8_k2_b_1                  subject=specialized_vehicle_driver  action=stop_or_park_on_left_side_of_one_way_or_divided_road
+15:33:57 [DEBUG]     rule: d8_k2_b_2                  subject=specialized_vehicle_driver  action=stop_or_park_on_curve_or_near_hillcrest_with_obstructed_view
+15:33:57 [DEBUG]     rule: d8_k2_b_3                  subject=specialized_vehicle_driver  action=stop_or_park_on_bridge_or_under_overpass
+15:33:57 [DEBUG]     rule: d8_k2_b_4                  subject=specialized_vehicle_driver  action=stop_or_park_at_intersection_or_within_five_meters
+15:33:57 [DEBUG]     rule: d8_k2_b_5                  subject=specialized_vehicle_driver  action=stop_or_park_at_pickup_or_dropoff_point
+15:33:57 [DEBUG]     rule: d8_k2_b_6                  subject=specialized_vehicle_driver  action=stop_or_park_near_gate_blocking_entry_or_exit
+15:33:57 [DEBUG]     rule: d8_k2_b_7                  subject=specialized_vehicle_driver  action=stop_or_park_on_narrow_single_lane_section
+15:33:57 [DEBUG]     rule: d8_k2_b_8                  subject=specialized_vehicle_driver  action=stop_or_park_obstructing_signals_or_signs
+15:33:57 [DEBUG]     rule: d8_k2_b_9                  subject=specialized_vehicle_driver  action=stop_or_park_at_median_opening
+15:33:57 [DEBUG]     rule: d8_k2_b_10                 subject=specialized_vehicle_driver  action=park_too_close_to_opposite_parked_vehicle
+15:33:57 [DEBUG]     rule: d8_k8_a_1                  subject=specialized_vehicle_driver  action=drive_without_proper_observation_or_slowing_causing_accident
+15:33:57 [DEBUG]     rule: d8_k8_a_2                  subject=specialized_vehicle_driver  action=speed_causing_accident
+15:33:57 [DEBUG]     rule: d8_k8_a_3                  subject=specialized_vehicle_driver  action=improper_maneuver_causing_accident
+15:33:57 [DEBUG]     rule: d8_k8_a_4                  subject=specialized_vehicle_driver  action=open_vehicle_door_unsafely_causing_accident
+15:33:57 [DEBUG]     rule: d8_k8_a_5                  subject=specialized_vehicle_driver  action=wrong_lane_or_unsafe_distance_or_no_entry_or_wrong_way_causing_accident
+15:33:57 [DEBUG]     rule: d6_k5_k_1                  subject=driver                action=improper_stop_causing_traffic_jam
+15:33:57 [DEBUG]     rule: d6_k5_k_2                  subject=driver                action=improper_park_causing_traffic_jam
+15:33:57 [DEBUG]     rule: d6_k5_k_3                  subject=driver                action=improper_u_turn_causing_traffic_jam
+15:33:57 [DEBUG]     rule: d6_k13_1                   subject=driver                action=reckless_zigzag_driving_causing_accident
+15:33:57 [DEBUG]     rule: d6_k13_2                   subject=driver                action=street_racing_by_speeding_and_chasing_causing_accident
+15:33:57 [DEBUG]     rule: d6_k13_3                   subject=driver                action=steer_with_feet_while_vehicle_is_moving_causing_accident
+15:33:57 [DEBUG]     rule: d6_k10_a_1                 subject=driver                action=fail_to_observe_reduce_speed_or_stop_for_safety_causing_accident
+15:33:57 [DEBUG]     rule: d6_k10_a_2                 subject=driver                action=speeding_causing_accident
+15:33:57 [DEBUG]     rule: d6_k10_a_3                 subject=driver                action=improper_stop_causing_accident
+15:33:57 [DEBUG]     rule: d6_k10_a_4                 subject=driver                action=improper_park_causing_accident
+15:33:57 [DEBUG]     rule: d6_k10_a_5                 subject=driver                action=improper_u_turn_causing_accident
+15:33:57 [DEBUG]     rule: d6_k10_a_6                 subject=driver                action=improper_reverse_causing_accident
+15:33:57 [DEBUG]     rule: d6_k10_a_7                 subject=driver                action=improper_avoidance_causing_accident
+15:33:57 [DEBUG]     rule: d6_k10_a_8                 subject=driver                action=improper_overtake_causing_accident
+15:33:57 [DEBUG]     rule: d6_k10_a_9                 subject=driver                action=improper_turn_causing_accident
+15:33:57 [DEBUG]     rule: d6_k10_a_10                subject=driver                action=improper_lane_change_causing_accident
+15:33:57 [DEBUG]     rule: d6_k10_a_11                subject=driver                action=wrong_lane_or_carriageway_causing_accident
+15:33:57 [DEBUG]     rule: d6_k10_a_12                subject=driver                action=unsafe_distance_causing_accident
+15:33:57 [DEBUG]     rule: d6_k10_a_13                subject=driver                action=enter_prohibited_road_causing_accident
+15:33:57 [DEBUG]     rule: d6_k4_b_1                  subject=driver                action=on_left_side_of_one_way_or_divided_road
+15:33:57 [DEBUG]     rule: d6_k4_b_2                  subject=driver                action=on_curve_or_near_hillcrest_with_obstructed_view
+15:33:57 [DEBUG]     rule: d6_k4_b_3                  subject=driver                action=on_bridge
+15:33:57 [DEBUG]     rule: d6_k4_b_4                  subject=driver                action=under_overpass
+15:33:57 [DEBUG]     rule: d6_k4_b_5                  subject=driver                action=parallel_to_another_stopped_or_parked_vehicle
+15:33:57 [DEBUG]     rule: d6_k2_a_1                  subject=driver                action=change_lane_where_prohibited
+15:33:57 [DEBUG]     rule: d6_k2_a_2                  subject=driver                action=change_lane_without_signal
+15:33:57 [DEBUG]     rule: d6_k2_a_3                  subject=driver                action=change_multiple_adjacent_lanes_at_once
+15:33:57 [DEBUG]     rule: d12_k8_individual          subject=individual            action=intentionally_alter_or_erase_accident_scene
+15:33:57 [DEBUG]     rule: d12_k8_organization        subject=organization          action=intentionally_alter_or_erase_accident_scene
+15:33:57 [INFO] [STEP 2] Building LLM extraction prompt ...
+15:33:57 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+Một người mà dừng xe, đỗ xe, quay đầu xe, lùi xe, tránh xe, vượt xe, chuyển hướng, chuyển làn đường không đúng quy định gây tai nạn giao thông thì bị phạt bao nhiêu?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d6_k8_1",
+  "subject": "driver",
+  "action": "fail_to_stop_immediately_after_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k8_2",
+  "subject": "driver",
+  "action": "fail_to_preserve_scene_after_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k8_3",
+  "subject": "driver",
+  "action": "fail_to_assist_victims_after_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k8_4",
+  "subject": "driver",
+  "action": "leave_scene_after_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k8_5",
+  "subject": "driver",
+  "action": "fail_to_report_immediately_after_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_1",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_left_side_of_one_way_or_divided_road",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_2",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_curve_or_near_hillcrest_with_obstructed_view",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_3",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_bridge_or_under_overpass",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_4",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_at_intersection_or_within_five_meters",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_5",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_at_pickup_or_dropoff_point",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_6",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_near_gate_blocking_entry_or_exit",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_7",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_on_narrow_single_lane_section",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_8",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_obstructing_signals_or_signs",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_9",
+  "subject": "specialized_vehicle_driver",
+  "action": "stop_or_park_at_median_opening",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k2_b_10",
+  "subject": "specialized_vehicle_driver",
+  "action": "park_too_close_to_opposite_parked_vehicle",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k8_a_1",
+  "subject": "specialized_vehicle_driver",
+  "action": "drive_without_proper_observation_or_slowing_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k8_a_2",
+  "subject": "specialized_vehicle_driver",
+  "action": "speed_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k8_a_3",
+  "subject": "specialized_vehicle_driver",
+  "action": "improper_maneuver_causing_accident",
+  "context": [
+   "improper_stop_park_u_turn_reverse_pass_overtake_turn_or_lane_change"
+  ]
+ },
+ {
+  "rule_id": "d8_k8_a_4",
+  "subject": "specialized_vehicle_driver",
+  "action": "open_vehicle_door_unsafely_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k8_a_5",
+  "subject": "specialized_vehicle_driver",
+  "action": "wrong_lane_or_unsafe_distance_or_no_entry_or_wrong_way_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k5_k_1",
+  "subject": "driver",
+  "action": "improper_stop_causing_traffic_jam",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k5_k_2",
+  "subject": "driver",
+  "action": "improper_park_causing_traffic_jam",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k5_k_3",
+  "subject": "driver",
+  "action": "improper_u_turn_causing_traffic_jam",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k13_1",
+  "subject": "driver",
+  "action": "reckless_zigzag_driving_causing_accident",
+  "context": [
+   "on_road"
+  ]
+ },
+ {
+  "rule_id": "d6_k13_2",
+  "subject": "driver",
+  "action": "street_racing_by_speeding_and_chasing_causing_accident",
+  "context": [
+   "on_road"
+  ]
+ },
+ {
+  "rule_id": "d6_k13_3",
+  "subject": "driver",
+  "action": "steer_with_feet_while_vehicle_is_moving_causing_accident",
+  "context": [
+   "while_vehicle_is_moving"
+  ]
+ },
+ {
+  "rule_id": "d6_k10_a_1",
+  "subject": "driver",
+  "action": "fail_to_observe_reduce_speed_or_stop_for_safety_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k10_a_2",
+  "subject": "driver",
+  "action": "speeding_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k10_a_3",
+  "subject": "driver",
+  "action": "improper_stop_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k10_a_4",
+  "subject": "driver",
+  "action": "improper_park_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k10_a_5",
+  "subject": "driver",
+  "action": "improper_u_turn_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k10_a_6",
+  "subject": "driver",
+  "action": "improper_reverse_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k10_a_7",
+  "subject": "driver",
+  "action": "improper_avoidance_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k10_a_8",
+  "subject": "driver",
+  "action": "improper_overtake_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k10_a_9",
+  "subject": "driver",
+  "action": "improper_turn_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k10_a_10",
+  "subject": "driver",
+  "action": "improper_lane_change_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k10_a_11",
+  "subject": "driver",
+  "action": "wrong_lane_or_carriageway_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k10_a_12",
+  "subject": "driver",
+  "action": "unsafe_distance_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k10_a_13",
+  "subject": "driver",
+  "action": "enter_prohibited_road_causing_accident",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k4_b_1",
+  "subject": "driver",
+  "action": "on_left_side_of_one_way_or_divided_road",
+  "context": [
+   "stop_or_park_on_left_side_of_road"
+  ]
+ },
+ {
+  "rule_id": "d6_k4_b_2",
+  "subject": "driver",
+  "action": "on_curve_or_near_hillcrest_with_obstructed_view",
+  "context": [
+   "stop_or_park_on_curve_or_near_hillcrest"
+  ]
+ },
+ {
+  "rule_id": "d6_k4_b_3",
+  "subject": "driver",
+  "action": "on_bridge",
+  "context": [
+   "stop_or_park_on_bridge"
+  ]
+ },
+ {
+  "rule_id": "d6_k4_b_4",
+  "subject": "driver",
+  "action": "under_overpass",
+  "context": [
+   "stop_or_park_under_overpass"
+  ]
+ },
+ {
+  "rule_id": "d6_k4_b_5",
+  "subject": "driver",
+  "action": "parallel_to_another_stopped_or_parked_vehicle",
+  "context": [
+   "double_park"
+  ]
+ },
+ {
+  "rule_id": "d6_k2_a_1",
+  "subject": "driver",
+  "action": "change_lane_where_prohibited",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k2_a_2",
+  "subject": "driver",
+  "action": "change_lane_without_signal",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k2_a_3",
+  "subject": "driver",
+  "action": "change_multiple_adjacent_lanes_at_once",
+  "context": []
+ },
+ {
+  "rule_id": "d12_k8_individual",
+  "subject": "individual",
+  "action": "intentionally_alter_or_erase_accident_scene",
+  "context": []
+ },
+ {
+  "rule_id": "d12_k8_organization",
+  "subject": "organization",
+  "action": "intentionally_alter_or_erase_accident_scene",
+  "context": []
+ }
+]
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "driver"]},
+    {"predicate": "case_action",       "args": ["user1", "fail_to_stop_immediately_after_causing_accident"]}
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên
+5. Chỉ thêm case_context nếu rule có context
+6. Chỉ thêm case_exception nếu có exception áp dụng
+7. Chỉ xuất duy nhất JSON object, không thêm gì khác
+----------------------------------------
+15:33:57 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+15:36:13 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "driver"]}, {"predicate": "case_action", "args": ["user1", "fail_to_stop_immediately_after_causing_accident"]}]}
+
+```json
+{
+  "facts": [
+    {
+      "predicate": "case_subject_type",
+      "args": ["user1", "driver"]
+    },
+    {
+      "predicate": "case_action",
+      "args": ["user1", "fail_to_stop_immediately_after_causing_accident"]
+    }
+  ]
+}
+```
+----------------------------------------
+15:36:13 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+15:36:13 [INFO]   → 2 facts parsed
+15:36:13 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "driver"]}, {"predicate": "case_action", "args": ["user1", "fail_to_stop_immediately_after_causing_accident"]}]
+15:36:13 [INFO] [STEP 5] Converting facts to ASP predicates ...
+15:36:13 [DEBUG]   ASP FACTS:
+driver_type(case1, driver).
+did_action(case1, fail_to_stop_immediately_after_causing_accident).
+15:36:13 [INFO] [STEP 6] Running clingo reasoning ...
+15:36:13 [INFO]   → 1 result atoms
+15:36:13 [DEBUG]     result(d6_k8_1,16000000,18000000)
+15:36:13 [INFO] [DONE] Pipeline hoàn thành
+15:36:13 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+15:36:13 [INFO] ============================================================
+15:36:13 [INFO] QUERY: Một người mà giấy tờ của phương tiện không có bản dịch sang tiếng Anh hoặc tiếng Việt theo quy định thì bị phạt bao nhiêu?
+15:36:13 [INFO] top_k=10
+15:36:13 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+15:36:15 [INFO]   → 10 chunks retrieved
+15:36:15 [DEBUG]     chunk: dieu=37 khoan=1 diem=a score=0.5653  Điều 37. Xử phạt người điều khiển phương tiện giao thông cơ 
+15:36:15 [DEBUG]     chunk: dieu=48 khoan=3 diem=b score=0.4775  Điều 48. Tạm giữ phương tiện, giấy tờ có liên quan đến người
+15:36:15 [DEBUG]     chunk: dieu=48 khoan=3 diem=a score=0.4721  Điều 48. Tạm giữ phương tiện, giấy tờ có liên quan đến người
+15:36:15 [DEBUG]     chunk: dieu=48 khoan=4 diem= score=0.4696  Điều 48. Tạm giữ phương tiện, giấy tờ có liên quan đến người
+15:36:15 [DEBUG]     chunk: dieu=48 khoan=3 diem=c score=0.4609  Điều 48. Tạm giữ phương tiện, giấy tờ có liên quan đến người
+15:36:15 [DEBUG]     chunk: dieu=48 khoan=3 diem=d score=0.4530  Điều 48. Tạm giữ phương tiện, giấy tờ có liên quan đến người
+15:36:15 [DEBUG]     chunk: dieu=47 khoan=2 diem= score=0.4513  Điều 47. Thủ tục xử phạt, nguyên tắc xử phạt đối với chủ phư
+15:36:15 [DEBUG]     chunk: dieu=47 khoan=8 diem=b score=0.4498  Điều 47. Thủ tục xử phạt, nguyên tắc xử phạt đối với chủ phư
+15:36:15 [DEBUG]     chunk: dieu=16 khoan=4 diem=b score=0.4462  Điều 16. Xử phạt người điều khiển xe máy chuyên dùng (kể cả 
+15:36:15 [DEBUG]     chunk: dieu=13 khoan=10 diem=b score=0.4338  Điều 13. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:36:15 [INFO]   → 2 ASP rules matched
+15:36:15 [DEBUG]     rule: d37_k1_a                   subject=driver                action=vehicle_documents_not_translated_to_required_language
+15:36:15 [DEBUG]     rule: d16_k4_b                   subject=specialized_vehicle_driver  action=confiscate_vehicle_if_no_proof_of_origin_for_clause_2_c_dd
+15:36:15 [INFO] [STEP 2] Building LLM extraction prompt ...
+15:36:15 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+Một người mà giấy tờ của phương tiện không có bản dịch sang tiếng Anh hoặc tiếng Việt theo quy định thì bị phạt bao nhiêu?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d37_k1_a",
+  "subject": "driver",
+  "action": "vehicle_documents_not_translated_to_required_language",
+  "context": []
+ },
+ {
+  "rule_id": "d16_k4_b",
+  "subject": "specialized_vehicle_driver",
+  "action": "confiscate_vehicle_if_no_proof_of_origin_for_clause_2_c_dd",
+  "context": []
+ }
+]
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "driver"]},
+    {"predicate": "case_action",       "args": ["user1", "vehicle_documents_not_translated_to_required_language"]}
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên
+5. Chỉ thêm case_context nếu rule có context
+6. Chỉ thêm case_exception nếu có exception áp dụng
+7. Chỉ xuất duy nhất JSON object, không thêm gì khác
+----------------------------------------
+15:36:15 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+15:36:39 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "driver"]}, {"predicate": "case_action", "args": ["user1", "vehicle_documents_not_translated_to_required_language"]}]}
+
+```json
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "driver"]},
+    {"predicate": "case_action", "args": ["user1", "vehicle_documents_not_translated_to_required_language"]}
+  ]
+}
+```
+----------------------------------------
+15:36:39 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+15:36:39 [INFO]   → 2 facts parsed
+15:36:39 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "driver"]}, {"predicate": "case_action", "args": ["user1", "vehicle_documents_not_translated_to_required_language"]}]
+15:36:39 [INFO] [STEP 5] Converting facts to ASP predicates ...
+15:36:39 [DEBUG]   ASP FACTS:
+driver_type(case1, driver).
+did_action(case1, vehicle_documents_not_translated_to_required_language).
+15:36:39 [INFO] [STEP 6] Running clingo reasoning ...
+15:36:40 [INFO]   → 1 result atoms
+15:36:40 [DEBUG]     result(d37_k1_a,1000000,2000000)
+15:36:40 [INFO] [DONE] Pipeline hoàn thành
+15:36:40 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+15:36:40 [INFO] ============================================================
+15:36:40 [INFO] QUERY: người điều khiển phương tiện mà vận chuyển hàng trên xe phải chằng buộc mà không chằng buộc thì bị phạt thế nào?
+15:36:40 [INFO] top_k=10
+15:36:40 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+15:36:41 [INFO]   → 10 chunks retrieved
+15:36:41 [DEBUG]     chunk: dieu=21 khoan=8 diem=đ score=0.6187  Điều 21. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:36:41 [DEBUG]     chunk: dieu=36 khoan=1 diem=a score=0.5850  Điều 36. Xử phạt người điều khiển xe mô tô, xe gắn máy, xe t
+15:36:41 [DEBUG]     chunk: dieu=47 khoan=5 diem=h score=0.5662  Điều 47. Thủ tục xử phạt, nguyên tắc xử phạt đối với chủ phư
+15:36:41 [DEBUG]     chunk: dieu=21 khoan=10 diem=a score=0.5420  Điều 21. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:36:41 [DEBUG]     chunk: dieu=47 khoan=5 diem=a score=0.5371  Điều 47. Thủ tục xử phạt, nguyên tắc xử phạt đối với chủ phư
+15:36:41 [DEBUG]     chunk: dieu=47 khoan=5 diem=d score=0.5287  Điều 47. Thủ tục xử phạt, nguyên tắc xử phạt đối với chủ phư
+15:36:41 [DEBUG]     chunk: dieu=47 khoan=5 diem=e score=0.5268  Điều 47. Thủ tục xử phạt, nguyên tắc xử phạt đối với chủ phư
+15:36:41 [DEBUG]     chunk: dieu=47 khoan=5 diem=đ score=0.5249  Điều 47. Thủ tục xử phạt, nguyên tắc xử phạt đối với chủ phư
+15:36:41 [DEBUG]     chunk: dieu=47 khoan=5 diem=c score=0.5244  Điều 47. Thủ tục xử phạt, nguyên tắc xử phạt đối với chủ phư
+15:36:41 [DEBUG]     chunk: dieu=23 khoan=3 diem= score=0.5183  Điều 23. Xử phạt, trừ điểm giấy phép lái xe của người điều k
+15:36:41 [INFO]   → 5 ASP rules matched
+15:36:41 [DEBUG]     rule: d36_k1_a                   subject=driver                action=improperly_secure_cargo_or_cause_danger_to_traffic
+15:36:41 [DEBUG]     rule: d21_k10_a_1                subject=driver                action=transport_vehicles_machinery_equipment_or_cylindrical_goods_without_tie_down
+15:36:41 [DEBUG]     rule: d21_k10_a_2                subject=driver                action=transport_vehicles_machinery_equipment_or_cylindrical_goods_with_noncompliant_tie_down
+15:36:41 [DEBUG]     rule: d23_k3_1                   subject=driver                action=transport_dangerous_goods_in_vehicle_without_required_labels_or_identification_symbols
+15:36:41 [DEBUG]     rule: d23_k3_2                   subject=driver                action=transport_dangerous_goods_in_vehicle_without_required_warning_lights_or_signals
+15:36:41 [INFO] [STEP 2] Building LLM extraction prompt ...
+15:36:41 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+người điều khiển phương tiện mà vận chuyển hàng trên xe phải chằng buộc mà không chằng buộc thì bị phạt thế nào?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d36_k1_a",
+  "subject": "driver",
+  "action": "improperly_secure_cargo_or_cause_danger_to_traffic",
+  "context": []
+ },
+ {
+  "rule_id": "d21_k10_a_1",
+  "subject": "driver",
+  "action": "transport_vehicles_machinery_equipment_or_cylindrical_goods_without_tie_down",
+  "context": []
+ },
+ {
+  "rule_id": "d21_k10_a_2",
+  "subject": "driver",
+  "action": "transport_vehicles_machinery_equipment_or_cylindrical_goods_with_noncompliant_tie_down",
+  "context": []
+ },
+ {
+  "rule_id": "d23_k3_1",
+  "subject": "driver",
+  "action": "transport_dangerous_goods_in_vehicle_without_required_labels_or_identification_symbols",
+  "context": []
+ },
+ {
+  "rule_id": "d23_k3_2",
+  "subject": "driver",
+  "action": "transport_dangerous_goods_in_vehicle_without_required_warning_lights_or_signals",
+  "context": []
+ }
+]
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "driver"]},
+    {"predicate": "case_action",       "args": ["user1", "improperly_secure_cargo_or_cause_danger_to_traffic"]}
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên
+5. Chỉ thêm case_context nếu rule có context
+6. Chỉ thêm case_exception nếu có exception áp dụng
+7. Chỉ xuất duy nhất JSON object, không thêm gì khác
+----------------------------------------
+15:36:41 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+15:37:16 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "driver"]}, {"predicate": "case_action", "args": ["user1", "transport_vehicles_machinery_equipment_or_cylindrical_goods_without_tie_down"]}]}`}
+----------------------------------------
+15:37:16 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+15:37:16 [INFO]   → 2 facts parsed
+15:37:16 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "driver"]}, {"predicate": "case_action", "args": ["user1", "transport_vehicles_machinery_equipment_or_cylindrical_goods_without_tie_down"]}]
+15:37:16 [INFO] [STEP 5] Converting facts to ASP predicates ...
+15:37:16 [DEBUG]   ASP FACTS:
+driver_type(case1, driver).
+did_action(case1, transport_vehicles_machinery_equipment_or_cylindrical_goods_without_tie_down).
+15:37:16 [INFO] [STEP 6] Running clingo reasoning ...
+15:37:16 [INFO]   → 1 result atoms
+15:37:16 [DEBUG]     result(d21_k10_a_1,18000000,22000000)
+15:37:16 [INFO] [DONE] Pipeline hoàn thành
+15:37:16 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+15:37:16 [INFO] ============================================================
+15:37:16 [INFO] QUERY: cá nhân mà xúc phạm, đe dọa, cản trở, chống đối người thi hành công vụ về bảo đảm trật tự, an toàn giao thông đường bộ thì bị phạt thế nào?
+15:37:16 [INFO] top_k=10
+15:37:16 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+15:37:19 [INFO]   → 10 chunks retrieved
+15:37:19 [DEBUG]     chunk: dieu=41 khoan=5 diem=a score=0.5990  Điều 41. Phân định thẩm quyền xử phạt vi phạm hành chính về 
+15:37:19 [DEBUG]     chunk: dieu=41 khoan=5 diem=b score=0.5931  Điều 41. Phân định thẩm quyền xử phạt vi phạm hành chính về 
+15:37:19 [DEBUG]     chunk: dieu=41 khoan=4 diem=g score=0.5922  Điều 41. Phân định thẩm quyền xử phạt vi phạm hành chính về 
+15:37:19 [DEBUG]     chunk: dieu=41 khoan=4 diem=a score=0.5917  Điều 41. Phân định thẩm quyền xử phạt vi phạm hành chính về 
+15:37:19 [DEBUG]     chunk: dieu=41 khoan=2 diem=a score=0.5909  Điều 41. Phân định thẩm quyền xử phạt vi phạm hành chính về 
+15:37:19 [DEBUG]     chunk: dieu=41 khoan=4 diem=c score=0.5906  Điều 41. Phân định thẩm quyền xử phạt vi phạm hành chính về 
+15:37:19 [DEBUG]     chunk: dieu=41 khoan=4 diem=đ score=0.5904  Điều 41. Phân định thẩm quyền xử phạt vi phạm hành chính về 
+15:37:19 [DEBUG]     chunk: dieu=41 khoan=4 diem=b score=0.5903  Điều 41. Phân định thẩm quyền xử phạt vi phạm hành chính về 
+15:37:19 [DEBUG]     chunk: dieu=41 khoan=4 diem=h score=0.5898  Điều 41. Phân định thẩm quyền xử phạt vi phạm hành chính về 
+15:37:19 [DEBUG]     chunk: dieu=41 khoan=4 diem=d score=0.5889  Điều 41. Phân định thẩm quyền xử phạt vi phạm hành chính về 
+15:37:19 [INFO]   → 0 ASP rules matched
+15:37:19 [WARNING]   [FAIL] Không tìm thấy ASP rule phù hợp
+15:37:19 [INFO] ============================================================
+15:37:19 [INFO] QUERY: người điều khiển xe mô tô mà sử dụng đèn chiếu xa khi gặp người đi bộ qua đường hoặc khi đi trên đoạn đường qua khu dân cư có hệ thống chiếu sáng đang hoạt động hoặc khi gặp xe đi ngược chiều hoặc khi chuyển hướng xe tại nơi đường giao nhau, nhưng đoạn đường có dải phân cách có khả năng chống chói thì có bị phạt không?
+15:37:19 [INFO] top_k=10
+15:37:19 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+15:37:20 [INFO]   → 10 chunks retrieved
+15:37:20 [DEBUG]     chunk: dieu=7 khoan=1 diem=h score=0.6002  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:37:20 [DEBUG]     chunk: dieu=8 khoan=3 diem=b score=0.5976  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+15:37:20 [DEBUG]     chunk: dieu=6 khoan=3 diem=b score=0.5764  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+15:37:20 [DEBUG]     chunk: dieu=7 khoan=1 diem=g score=0.5424  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:37:20 [DEBUG]     chunk: dieu=8 khoan=3 diem=c score=0.5155  Điều 8. Xử phạt người điều khiển xe máy chuyên dùng vi phạm 
+15:37:20 [DEBUG]     chunk: dieu=7 khoan=9 diem=k score=0.5003  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:37:20 [DEBUG]     chunk: dieu=7 khoan=1 diem=i score=0.4952  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:37:20 [DEBUG]     chunk: dieu=6 khoan=3 diem=g score=0.4950  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+15:37:20 [DEBUG]     chunk: dieu=7 khoan=3 diem=h score=0.4935  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:37:20 [DEBUG]     chunk: dieu=7 khoan=4 diem=đ score=0.4892  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+15:37:20 [INFO]   → 17 ASP rules matched
+15:37:20 [DEBUG]     rule: d7_k1_h_1                  subject=motorbike_driver      action=pass_improperly
+15:37:20 [DEBUG]     rule: d7_k1_h_2                  subject=motorbike_driver      action=use_high_beam_improperly
+15:37:20 [DEBUG]     rule: d7_k1_h_3                  subject=motorbike_driver      action=fail_to_yield_to_oncoming_vehicle
+15:37:20 [DEBUG]     rule: d8_k3_b_1                  subject=specialized_vehicle_driver  action=use_horn_or_rev_engine_continuously
+15:37:20 [DEBUG]     rule: d8_k3_b_2                  subject=specialized_vehicle_driver  action=use_air_horn_or_high_beam_improperly
+15:37:20 [DEBUG]     rule: d6_k3_b_1                  subject=driver                action=use_horn_or_rev_engine_continuously
+15:37:20 [DEBUG]     rule: d6_k3_b_2                  subject=driver                action=use_air_horn
+15:37:20 [DEBUG]     rule: d6_k3_b_3                  subject=driver                action=use_high_beam_when_pedestrians_cross
+15:37:20 [DEBUG]     rule: d6_k3_b_4                  subject=driver                action=use_high_beam_on_lit_urban_road
+15:37:20 [DEBUG]     rule: d6_k3_b_5                  subject=driver                action=use_high_beam_when_meeting_oncoming_vehicle
+15:37:20 [DEBUG]     rule: d6_k3_b_6                  subject=driver                action=use_high_beam_while_turning_at_intersection
+15:37:20 [DEBUG]     rule: d7_k1_g                    subject=motorbike_driver      action=fail_to_use_lights
+15:37:20 [DEBUG]     rule: d8_k3_c                    subject=specialized_vehicle_driver  action=fail_to_use_required_lighting
+15:37:20 [DEBUG]     rule: d7_k9_k                    subject=motorbike_driver      action=use_horn_or_rev_engine_continuously
+15:37:20 [DEBUG]     rule: d7_k1_i                    subject=motorbike_driver      action=use_horn_at_prohibited_time
+15:37:20 [DEBUG]     rule: d6_k3_g                    subject=driver                action=fail_to_use_or_insufficiently_use_lights_in_low_visibility
+15:37:20 [DEBUG]     rule: d7_k3_h                    subject=motorbike_driver      action=drive_in_tunnel_without_low_beam
+15:37:20 [INFO] [STEP 2] Building LLM extraction prompt ...
+15:37:20 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+người điều khiển xe mô tô mà sử dụng đèn chiếu xa khi gặp người đi bộ qua đường hoặc khi đi trên đoạn đường qua khu dân cư có hệ thống chiếu sáng đang hoạt động hoặc khi gặp xe đi ngược chiều hoặc khi chuyển hướng xe tại nơi đường giao nhau, nhưng đoạn đường có dải phân cách có khả năng chống chói thì có bị phạt không?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d7_k1_h_1",
+  "subject": "motorbike_driver",
+  "action": "pass_improperly",
+  "context": []
+ },
+ {
+  "rule_id": "d7_k1_h_2",
+  "subject": "motorbike_driver",
+  "action": "use_high_beam_improperly",
+  "context": [
+   "when_meeting_pedestrians_oncoming_traffic_or_turning_at_intersection"
+  ]
+ },
+ {
+  "rule_id": "d7_k1_h_3",
+  "subject": "motorbike_driver",
+  "action": "fail_to_yield_to_oncoming_vehicle",
+  "context": [
+   "on_narrow_road_slope_or_obstructed_section"
+  ]
+ },
+ {
+  "rule_id": "d8_k3_b_1",
+  "subject": "specialized_vehicle_driver",
+  "action": "use_horn_or_rev_engine_continuously",
+  "context": []
+ },
+ {
+  "rule_id": "d8_k3_b_2",
+  "subject": "specialized_vehicle_driver",
+  "action": "use_air_horn_or_high_beam_improperly",
+  "context": [
+   "when_meeting_pedestrians_or_oncoming_traffic_or_in_lit_urban_area_or_when_turning_at_intersection"
+  ]
+ },
+ {
+  "rule_id": "d6_k3_b_1",
+  "subject": "driver",
+  "action": "use_horn_or_rev_engine_continuously",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k3_b_2",
+  "subject": "driver",
+  "action": "use_air_horn",
+  "context": []
+ },
+ {
+  "rule_id": "d6_k3_b_3",
+  "subject": "driver",
+  "action": "use_high_beam_when_pedestrians_cross",
+  "context": [
+   "when_pedestrians_are_crossing"
+  ]
+ },
+ {
+  "rule_id": "d6_k3_b_4",
+  "subject": "driver",
+  "action": "use_high_beam_on_lit_urban_road",
+  "context": [
+   "on_lit_road_through_residential_area"
+  ]
+ },
+ {
+  "rule_id": "d6_k3_b_5",
+  "subject": "driver",
+  "action": "use_high_beam_when_meeting_oncoming_vehicle",
+  "context": [
+   "when_meeting_oncoming_vehicle"
+  ]
+ },
+ {
+  "rule_id": "d6_k3_b_6",
+  "subject": "driver",
+  "action": "use_high_beam_while_turning_at_intersection",
+  "context": [
+   "while_turning_at_intersection"
+  ]
+ },
+ {
+  "rule_id": "d7_k1_g",
+  "subject": "motorbike_driver",
+  "action": "fail_to_use_lights",
+  "context": [
+   "at_night_or_low_visibility"
+  ]
+ },
+ {
+  "rule_id": "d8_k3_c",
+  "subject": "specialized_vehicle_driver",
+  "action": "fail_to_use_required_lighting",
+  "context": [
+   "at_night_or_in_low_visibility_conditions"
+  ]
+ },
+ {
+  "rule_id": "d7_k9_k",
+  "subject": "motorbike_driver",
+  "action": "use_horn_or_rev_engine_continuously",
+  "context": [
+   "in_dense_residential_or_medical_area"
+  ]
+ },
+ {
+  "rule_id": "d7_k1_i",
+  "subject": "motorbike_driver",
+  "action": "use_horn_at_prohibited_time",
+  "context": [
+   "in_dense_residential_or_medical_area_at_night"
+  ]
+ },
+ {
+  "rule_id": "d6_k3_g",
+  "subject": "driver",
+  "action": "fail_to_use_or_insufficiently_use_lights_in_low_visibility",
+  "context": [
+   "nighttime_or_low_visibility"
+  ]
+ },
+ {
+  "rule_id": "d7_k3_h",
+  "subject": "motorbike_driver",
+  "action": "drive_in_tunnel_without_low_beam",
+  "context": [
+   "in_road_tunnel"
+  ]
+ }
+]
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]},
+    {"predicate": "case_action",       "args": ["user1", "pass_improperly"]}
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên
+5. Chỉ thêm case_context nếu rule có context
+6. Chỉ thêm case_exception nếu có exception áp dụng
+7. Chỉ xuất duy nhất JSON object, không thêm gì khác
+----------------------------------------
+15:37:20 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+15:37:42 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]}, {"predicate": "case_action", "args": ["user1", "use_high_beam_improperly"]}]}
+
+```json
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]},
+    {"predicate": "case_action", "args": ["user1", "use_high_beam_improperly"]}
+  ]
+}
+```
+----------------------------------------
+15:37:42 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+15:37:42 [INFO]   → 2 facts parsed
+15:37:42 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "motorbike_driver"]}, {"predicate": "case_action", "args": ["user1", "use_high_beam_improperly"]}]
+15:37:42 [INFO] [STEP 5] Converting facts to ASP predicates ...
+15:37:42 [DEBUG]   ASP FACTS:
+driver_type(case1, motorbike_driver).
+did_action(case1, use_high_beam_improperly).
+15:37:42 [INFO] [STEP 6] Running clingo reasoning ...
+15:37:42 [INFO]   → 1 result atoms
+15:37:42 [DEBUG]     result(d7_k1_h_2,200000,400000)
+15:37:42 [INFO] [DONE] Pipeline hoàn thành
+15:37:42 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+15:37:42 [INFO] ============================================================
+15:37:42 [INFO] QUERY: chủ phương tiện mà tự ý thay đổi màu sơn của xe không đúng với màu sơn ghi trong chứng nhận đăng ký xe thì bị phạt thế nào?
+15:37:42 [INFO] top_k=10
+15:37:42 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+15:37:43 [INFO]   → 10 chunks retrieved
+15:37:43 [DEBUG]     chunk: dieu=32 khoan=7 diem=i score=0.5876  Điều 32. Xử phạt, trừ điểm giấy phép lái xe đối với chủ phươ
+15:37:43 [DEBUG]     chunk: dieu=32 khoan=1 diem=a score=0.5571  Điều 32. Xử phạt, trừ điểm giấy phép lái xe đối với chủ phươ
+15:37:43 [DEBUG]     chunk: dieu=47 khoan=6 diem=a score=0.5320  Điều 47. Thủ tục xử phạt, nguyên tắc xử phạt đối với chủ phư
+15:37:43 [DEBUG]     chunk: dieu=47 khoan=3 diem=a score=0.5239  Điều 47. Thủ tục xử phạt, nguyên tắc xử phạt đối với chủ phư
+15:37:43 [DEBUG]     chunk: dieu=47 khoan=6 diem=b score=0.5145  Điều 47. Thủ tục xử phạt, nguyên tắc xử phạt đối với chủ phư
+15:37:43 [DEBUG]     chunk: dieu=47 khoan=3 diem=n score=0.5052  Điều 47. Thủ tục xử phạt, nguyên tắc xử phạt đối với chủ phư
+15:37:43 [DEBUG]     chunk: dieu=47 khoan=6 diem=e score=0.4993  Điều 47. Thủ tục xử phạt, nguyên tắc xử phạt đối với chủ phư
+15:37:43 [DEBUG]     chunk: dieu=32 khoan=19 diem=a score=0.4851  Điều 32. Xử phạt, trừ điểm giấy phép lái xe đối với chủ phươ
+15:37:43 [DEBUG]     chunk: dieu=32 khoan=16 diem=c score=0.4832  Điều 32. Xử phạt, trừ điểm giấy phép lái xe đối với chủ phươ
+15:37:43 [DEBUG]     chunk: dieu=3 khoan=3 diem=n score=0.4816  Điều 3. Hình thức xử phạt vi phạm hành chính, biện pháp khắc
+15:37:43 [INFO]   → 6 ASP rules matched
+15:37:43 [DEBUG]     rule: d32_k7_i_ind               subject=vehicle_owner         action=change_vehicle_paint_color_without_matching_registration
+15:37:43 [DEBUG]     rule: d32_k7_i_org               subject=vehicle_owner         action=change_vehicle_paint_color_without_matching_registration
+15:37:43 [DEBUG]     rule: d32_k1_a_ind               subject=vehicle_owner         action=change_vehicle_brand_or_paint_color_without_matching_registration
+15:37:43 [DEBUG]     rule: d32_k1_a_org               subject=vehicle_owner         action=change_vehicle_brand_or_paint_color_without_matching_registration
+15:37:43 [DEBUG]     rule: d32_k16_c_ind              subject=vehicle_owner         action=unlawfully_modify_vehicle_frame_engine_brake_drivetrain_running_gear_structure_dimensions_or_use_function
+15:37:43 [DEBUG]     rule: d32_k16_c_org              subject=vehicle_owner         action=unlawfully_modify_vehicle_frame_engine_brake_drivetrain_running_gear_structure_dimensions_or_use_function
+15:37:43 [INFO] [STEP 2] Building LLM extraction prompt ...
+15:37:43 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+chủ phương tiện mà tự ý thay đổi màu sơn của xe không đúng với màu sơn ghi trong chứng nhận đăng ký xe thì bị phạt thế nào?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d32_k7_i_ind",
+  "subject": "vehicle_owner",
+  "action": "change_vehicle_paint_color_without_matching_registration",
+  "context": []
+ },
+ {
+  "rule_id": "d32_k7_i_org",
+  "subject": "vehicle_owner",
+  "action": "change_vehicle_paint_color_without_matching_registration",
+  "context": []
+ },
+ {
+  "rule_id": "d32_k1_a_ind",
+  "subject": "vehicle_owner",
+  "action": "change_vehicle_brand_or_paint_color_without_matching_registration",
+  "context": []
+ },
+ {
+  "rule_id": "d32_k1_a_org",
+  "subject": "vehicle_owner",
+  "action": "change_vehicle_brand_or_paint_color_without_matching_registration",
+  "context": []
+ },
+ {
+  "rule_id": "d32_k16_c_ind",
+  "subject": "vehicle_owner",
+  "action": "unlawfully_modify_vehicle_frame_engine_brake_drivetrain_running_gear_structure_dimensions_or_use_function",
+  "context": []
+ },
+ {
+  "rule_id": "d32_k16_c_org",
+  "subject": "vehicle_owner",
+  "action": "unlawfully_modify_vehicle_frame_engine_brake_drivetrain_running_gear_structure_dimensions_or_use_function",
+  "context": []
+ }
+]
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "vehicle_owner"]},
+    {"predicate": "case_action",       "args": ["user1", "change_vehicle_paint_color_without_matching_registration"]}
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên
+5. Chỉ thêm case_context nếu rule có context
+6. Chỉ thêm case_exception nếu có exception áp dụng
+7. Chỉ xuất duy nhất JSON object, không thêm gì khác
+----------------------------------------
+15:37:43 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+15:38:17 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"facts": [{"predicate": "case_subject_type", "args": ["user1", "vehicle_owner"]}, {"predicate": "case_action", "args": ["user1", "change_vehicle_paint_color_without_matching_registration"]}]}
+
+```json
+{
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "vehicle_owner"]},
+    {"predicate": "case_action", "args": ["user1", "change_vehicle_paint_color_without_matching_registration"]}
+  ]
+}
+```
+----------------------------------------
+15:38:17 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+15:38:17 [INFO]   → 2 facts parsed
+15:38:17 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "vehicle_owner"]}, {"predicate": "case_action", "args": ["user1", "change_vehicle_paint_color_without_matching_registration"]}]
+15:38:17 [INFO] [STEP 5] Converting facts to ASP predicates ...
+15:38:17 [DEBUG]   ASP FACTS:
+driver_type(case1, vehicle_owner).
+did_action(case1, change_vehicle_paint_color_without_matching_registration).
+15:38:17 [INFO] [STEP 6] Running clingo reasoning ...
+15:38:17 [INFO]   → 2 result atoms
+15:38:17 [DEBUG]     result(d32_k7_i_ind,4000000,6000000)
+15:38:17 [DEBUG]     result(d32_k7_i_org,8000000,12000000)
+15:38:17 [INFO] [DONE] Pipeline hoàn thành
+15:38:17 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log

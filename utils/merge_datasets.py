@@ -3,6 +3,8 @@ import os
 import glob
 import random
 
+from dataset_rule_ids import enrich_dataset_with_rule_ids
+
 # Đường dẫn gốc dự án (thư mục cha của utils/)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEST_DATA_DIR = os.path.join(BASE_DIR, "data", "test_data")
@@ -60,6 +62,8 @@ def split_and_save(data, train_size, output_dir):
 
     train_data = reindex(train_data)
     test_data = reindex(test_data)
+    train_data = enrich_dataset_with_rule_ids(train_data)
+    test_data = enrich_dataset_with_rule_ids(test_data)
 
     train_path = os.path.join(output_dir, "train.json")
     test_path = os.path.join(output_dir, "test.json")

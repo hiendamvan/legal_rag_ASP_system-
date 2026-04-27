@@ -1,0 +1,9 @@
+{
+  "input_file": "D:\\giao trinh dai hoc\\KÌ 8 KLTN\\legal_rag_ASP_system-\\public_dataset\\test.json",
+  "output_dir": "D:\\giao trinh dai hoc\\KÌ 8 KLTN\\legal_rag_ASP_system-\\evaluation\\batch_logs\\test_run_20260427_151538",
+  "question_count": 14,
+  "error_count": 1,
+  "success_count": 13,
+  "top_k": 10,
+  "created_at": "2026-04-27T15:38:17"
+}
