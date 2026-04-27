@@ -1,0 +1,607 @@
+2026-04-27 10:02:39,625 [INFO] Input file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\public_dataset\test.json
+2026-04-27 10:02:39,641 [INFO] Output directory: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\evaluation\batch_logs\test_run_20260427_100239
+2026-04-27 10:02:39,641 [INFO] top_k=10
+2026-04-27 10:02:39,641 [INFO] Loaded 200 questions
+2026-04-27 10:02:39,641 [INFO] [1/200] Running official_00351
+2026-04-27 10:02:39,641 [INFO] Question: tổ chức mà tổ chức tuyển sinh, đào tạo lái xe mà không có giấy phép đào tạo lái xe thì bị phạt bao nhiêu?
+2026-04-27 10:03:24,060 [INFO] [official_00351] chunks=10 rules=16 facts=2 penalties=1
+2026-04-27 10:03:24,063 [INFO] [2/200] Running official_00470
+2026-04-27 10:03:24,074 [INFO] Question: người điều khiển phương tiện mà không có ghế ngồi phù hợp với lứa tuổi theo quy định thì bị phạt bao nhiêu?
+2026-04-27 10:04:07,936 [INFO] [official_00470] chunks=10 rules=14 facts=2 penalties=1
+2026-04-27 10:04:07,936 [INFO] [3/200] Running official_00905
+2026-04-27 10:04:07,936 [INFO] Question: người điều khiển phương tiện mà điều khiển xe mà tổng trọng lượng (khối lượng toàn bộ) của xe hoặc tải trọng trục xe (bao gồm cả hàng hóa xếp trên xe, người được chở trên xe) vượt quá tải trọng cho phép của đường bộ trên 50%, nhưng xe có giấy phép lưu hành còn giá trị thì có bị phạt không?
+2026-04-27 10:05:12,344 [INFO] [official_00905] chunks=10 rules=18 facts=2 penalties=1
+2026-04-27 10:05:12,346 [INFO] [4/200] Running official_00105
+2026-04-27 10:05:12,347 [INFO] Question: người điều khiển phương tiện mà vận chuyển hàng nguy hiểm mà xe ô tô không dán nhãn, biểu trưng nhận diện hàng hóa nguy hiểm thì bị phạt thế nào?
+2026-04-27 10:06:06,360 [ERROR] [official_00105] Error: Lỗi parse JSON từ LLM: Expecting ',' delimiter: line 4 column 142 (char 225)
+2026-04-27 10:06:06,360 [INFO] [5/200] Running official_00205
+2026-04-27 10:06:06,360 [INFO] Question: người ngồi trên xe mà trong khoang chở hành lý thì bị phạt thế nào?
+2026-04-27 10:06:39,210 [INFO] [official_00205] chunks=10 rules=12 facts=2 penalties=1
+2026-04-27 10:06:39,213 [INFO] [6/200] Running official_01123
+2026-04-27 10:06:39,213 [INFO] Question: Một người mà điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn vượt quá 50 miligam đến 80 miligam/100 mililít máu hoặc vượt quá 0,25 miligam đến 0,4 miligam/1 lít khí thở thì bị phạt bao nhiêu?
+2026-04-27 10:07:10,242 [INFO] [official_01123] chunks=10 rules=10 facts=2 penalties=1
+2026-04-27 10:07:10,242 [INFO] [7/200] Running official_00410
+2026-04-27 10:07:10,256 [INFO] Question: người ngồi trên xe mà chất dễ cháy, nổ thì bị phạt bao nhiêu?
+2026-04-27 10:07:44,303 [INFO] [official_00410] chunks=10 rules=10 facts=3 penalties=0
+2026-04-27 10:07:44,303 [INFO] [8/200] Running official_01069
+2026-04-27 10:07:44,304 [INFO] Question: Một người mà tránh xe, vượt xe không đúng quy định thì bị phạt bao nhiêu?
+2026-04-27 10:08:46,019 [INFO] [official_01069] chunks=10 rules=29 facts=2 penalties=1
+2026-04-27 10:08:46,020 [INFO] [9/200] Running official_00517
+2026-04-27 10:08:46,021 [INFO] Question: người điều khiển phương tiện mà điều khiển xe hoạt động không đúng tuyến đường thì bị phạt bao nhiêu?
+2026-04-27 10:09:42,482 [ERROR] [official_00517] Error: Lỗi parse JSON từ LLM: Extra data: line 1 column 210 (char 209)
+2026-04-27 10:09:42,482 [INFO] [10/200] Running official_00726
+2026-04-27 10:09:42,482 [INFO] Question: người điều khiển phương tiện vừa xếp hàng hóa lên mỗi xe ô tô vượt quá trọng tải cho phép trên 10% đến 50%, vừa không có tín hiệu báo trước khi chuyển làn đường thì bị xử phạt thế nào?
+2026-04-27 10:10:14,584 [INFO] [official_00726] chunks=10 rules=8 facts=3 penalties=1
+2026-04-27 10:10:14,585 [INFO] [11/200] Running official_00282
+2026-04-27 10:10:14,585 [INFO] Question: người điều khiển phương tiện mà không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường thì bị phạt thế nào?
+2026-04-27 10:10:41,468 [INFO] [official_00282] chunks=10 rules=9 facts=2 penalties=1
+2026-04-27 10:10:41,469 [INFO] [12/200] Running official_00686
+2026-04-27 10:10:41,469 [INFO] Question: chủ phương tiện vừa giao phương tiện hoặc để cho người làm công, người đại diện điều khiển phương tiện thực hiện hành vi vi phạm quy định tại điểm b khoản 2 Điều 21 của Nghị định này hoặc trực tiếp điều khiển phương tiện thực hiện hành vi vi phạm quy định tại điểm b khoản 2 Điều 21 của Nghị định này, vừa lắp kính chắn gió, kính cửa của xe không phải là loại kính an toàn thì bị xử phạt thế nào?
+2026-04-27 10:11:10,799 [INFO] [official_00686] chunks=10 rules=6 facts=2 penalties=2
+2026-04-27 10:11:10,800 [INFO] [13/200] Running official_00709
+2026-04-27 10:11:10,800 [INFO] Question: người điều khiển phương tiện vừa không cấp thẻ nhận dạng lái xe, vừa chở công-ten-nơ trên xe (kể cả sơ mi rơ moóc) mà bị cắt nóc trái quy định thì bị xử phạt thế nào?
+2026-04-27 10:11:54,548 [INFO] [official_00709] chunks=10 rules=15 facts=2 penalties=1
+2026-04-27 10:11:54,548 [INFO] [14/200] Running official_01006
+2026-04-27 10:11:54,549 [INFO] Question: Một người mà cơ sở đào tạo lái xe không lưu trữ hoặc lưu trữ không đầy đủ hồ sơ theo quy định của 01 khóa đào tạo thì bị phạt bao nhiêu?
+2026-04-27 10:12:35,074 [INFO] [official_01006] chunks=10 rules=16 facts=2 penalties=1
+2026-04-27 10:12:35,075 [INFO] [15/200] Running official_00313
+2026-04-27 10:12:35,075 [INFO] Question: cơ sở đào tạo lái xe mà bố trí giáo viên không đủ tiêu chuẩn để giảng dạy thì bị phạt bao nhiêu?
+2026-04-27 10:13:06,402 [INFO] [official_00313] chunks=10 rules=11 facts=2 penalties=1
+2026-04-27 10:13:06,403 [INFO] [16/200] Running official_00642
+2026-04-27 10:13:06,403 [INFO] Question: người điều khiển phương tiện vừa vận chuyển hàng nguy hiểm mà xe ô tô không dán nhãn, biểu trưng nhận diện hàng hóa nguy hiểm, vừa trên 20% đến 50% đối với xe xi téc chở chất lỏng thì bị xử phạt thế nào?
+2026-04-27 10:13:58,269 [INFO] [official_00642] chunks=10 rules=18 facts=2 penalties=1
+2026-04-27 10:13:58,270 [INFO] [17/200] Running official_00611
+2026-04-27 10:13:58,270 [INFO] Question: người điều khiển xe chở khách vừa làm sai lệch dữ liệu của thiết bị ghi nhận hình ảnh người lái xe lắp trên xe ô tô, vừa vận chuyển không đúng đối tượng theo quy định (đối với xe kinh doanh vận tải hành khách theo hợp đồng vận chuyển trẻ em mầm non, học sinh, sinh viên, cán bộ, công chức, viên chức, công nhân) thì bị xử phạt thế nào?
+2026-04-27 10:14:39,423 [INFO] [official_00611] chunks=10 rules=15 facts=2 penalties=1
+2026-04-27 10:14:39,423 [INFO] [18/200] Running official_00031
+2026-04-27 10:14:39,424 [INFO] Question: chủ phương tiện mà giao xe hoặc để cho người không đủ điều kiện theo quy định tại khoản 1 Điều 56 (đối với xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô), khoản 2 Điều 56 (đối với xe máy chuyên dùng) của Luật Trật tự, an toàn giao thông đường bộ điều khiển xe tham gia giao thông thì bị phạt thế nào?
+2026-04-27 10:15:28,739 [INFO] [official_00031] chunks=10 rules=12 facts=2 penalties=2
+2026-04-27 10:15:28,739 [INFO] [19/200] Running official_00013
+2026-04-27 10:15:28,740 [INFO] Question: người điều khiển phương tiện mà không có báo hiệu bằng đèn khẩn cấp khi dừng xe, đỗ xe trong hầm đường bộ trong trường hợp gặp sự cố kỹ thuật hoặc bất khả kháng khác buộc phải dừng xe, đỗ xe thì bị phạt thế nào?
+2026-04-27 10:16:59,660 [INFO] [official_00013] chunks=10 rules=35 facts=3 penalties=1
+2026-04-27 10:16:59,661 [INFO] [20/200] Running official_01100
+2026-04-27 10:16:59,661 [INFO] Question: Một người mà vượt xe trong những trường hợp không được vượt thì bị phạt bao nhiêu?
+2026-04-27 10:17:44,387 [INFO] [official_01100] chunks=10 rules=20 facts=2 penalties=1
+2026-04-27 10:17:44,387 [INFO] [21/200] Running official_00465
+2026-04-27 10:17:44,388 [INFO] Question: người điều khiển xe máy chuyên dùng mà điều khiển xe không có chứng nhận đăng ký xe (hoặc bản sao chứng nhận đăng ký xe có chứng thực kèm theo bản gốc giấy biên nhận của tổ chức tín dụng, chi nhánh ngân hàng nước ngoài trong trường hợp tổ chức tín dụng, chi nhánh ngân hàng nước ngoài giữ bản gốc chứng nhận đăng ký xe) hoặc sử dụng chứng nhận đăng ký xe (hoặc bản sao chứng nhận đăng ký xe có chứng thực kèm theo bản gốc giấy biên nhận của tổ chức tín dụng, chi nhánh ngân hàng nước ngoài trong trường hợp tổ chức tín dụng, chi nhánh ngân hàng nước ngoài giữ bản gốc chứng nhận đăng ký xe) đã hết hạn sử dụng, hết hiệu lực (kể cả rơ moóc) thì bị phạt bao nhiêu?
+2026-04-27 10:18:34,330 [INFO] [official_00465] chunks=10 rules=15 facts=2 penalties=1
+2026-04-27 10:18:34,330 [INFO] [22/200] Running official_00144
+2026-04-27 10:18:34,331 [INFO] Question: chủ phương tiện mà giao phương tiện hoặc để cho người làm công, người đại diện điều khiển phương tiện thực hiện hành vi vi phạm quy định tại điểm a khoản 5 Điều 34 của Nghị định này hoặc trực tiếp điều khiển phương tiện thực hiện hành vi vi phạm quy định tại điểm a khoản 5 Điều 34 của Nghị định này thì bị phạt thế nào?
+2026-04-27 10:19:17,563 [INFO] [official_00144] chunks=10 rules=12 facts=2 penalties=2
+2026-04-27 10:19:17,564 [INFO] [23/200] Running official_00505
+2026-04-27 10:19:17,565 [INFO] Question: người điều khiển xe mô tô mà điều khiển xe lắp đèn chiếu sáng về phía sau xe thì bị phạt bao nhiêu?
+2026-04-27 10:20:00,378 [INFO] [official_00505] chunks=10 rules=16 facts=3 penalties=1
+2026-04-27 10:20:00,379 [INFO] [24/200] Running official_00649
+2026-04-27 10:20:00,379 [INFO] Question: chủ phương tiện vừa tự ý thay đổi tổng thành khung, tổng thành máy (động cơ), hệ thống phanh, hệ thống truyền động (truyền lực), hệ thống chuyển động hoặc tự ý cải tạo kết cấu, hình dáng, kích thước của xe không đúng thiết kế của nhà sản xuất hoặc thiết kế trong hồ sơ đã nộp cho cơ quan đăng ký xe hoặc thiết kế cải tạo đã được cơ quan có thẩm quyền phê duyệt; tự ý thay đổi tính năng sử dụng của xe hoặc tự ý lắp đặt thêm cơ cấu nâng hạ thùng xe, nâng hạ công-ten-nơ trên xe (kể cả rơ moóc và sơ mi rơ moóc), vừa giao phương tiện hoặc để cho người làm công, người đại diện điều khiển phương tiện thực hiện hành vi vi phạm quy định tại điểm d khoản 6 Điều 20; điểm b khoản 5 Điều 21 của Nghị định này hoặc trực tiếp điều khiển phương tiện thực hiện hành vi vi phạm quy định tại điểm d khoản 6 Điều 20; điểm b khoản 5 Điều 21 của Nghị định này thì bị xử phạt thế nào?
+2026-04-27 10:20:41,238 [INFO] [official_00649] chunks=10 rules=8 facts=2 penalties=2
+2026-04-27 10:20:41,239 [INFO] [25/200] Running official_01080
+2026-04-27 10:20:41,240 [INFO] Question: Một người mà dẫn dắt vật nuôi, mang vác vật cồng kềnh thì bị phạt bao nhiêu?
+2026-04-27 10:21:13,682 [INFO] [official_01080] chunks=10 rules=13 facts=2 penalties=1
+2026-04-27 10:21:13,682 [INFO] [26/200] Running official_00823
+2026-04-27 10:21:13,683 [INFO] Question: người điều khiển xe mô tô mà sử dụng đèn chiếu xa khi gặp người đi bộ qua đường hoặc khi đi trên đoạn đường qua khu dân cư có hệ thống chiếu sáng đang hoạt động hoặc khi gặp xe đi ngược chiều hoặc khi chuyển hướng xe tại nơi đường giao nhau, nhưng đoạn đường có dải phân cách có khả năng chống chói thì có bị phạt không?
+2026-04-27 10:22:08,627 [ERROR] [official_00823] Error: Lỗi parse JSON từ LLM: Expecting ',' delimiter: line 4 column 80 (char 173)
+2026-04-27 10:22:08,627 [INFO] [27/200] Running official_00474
+2026-04-27 10:22:08,628 [INFO] Question: người điều khiển xe ô tô mà người điều khiển xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ, rơ moóc, sơ mi rơ moóc và các loại xe tương tự xe ô tô kinh doanh vận tải không mang theo giấy chứng nhận kiểm định an toàn kỹ thuật và bảo vệ môi trường đối với loại xe có quy định phải kiểm định thì bị phạt bao nhiêu?
+2026-04-27 10:22:44,955 [INFO] [official_00474] chunks=10 rules=10 facts=3 penalties=1
+2026-04-27 10:22:44,957 [INFO] [28/200] Running official_01150
+2026-04-27 10:22:44,957 [INFO] Question: Một người mà điều khiển xe ô tô tham gia kinh doanh vận tải hàng hóa không lắp thiết bị giám sát hành trình thì bị phạt bao nhiêu?
+2026-04-27 10:23:08,734 [INFO] [official_01150] chunks=10 rules=6 facts=2 penalties=1
+2026-04-27 10:23:08,735 [INFO] [29/200] Running official_00355
+2026-04-27 10:23:08,736 [INFO] Question: người điều khiển phương tiện mà vận chuyển hàng hóa mà sắp xếp, chằng buộc hàng hóa không bảo đảm an toàn hoặc gây nguy hiểm cho người, phương tiện tham gia giao thông thì bị phạt bao nhiêu?
+2026-04-27 10:23:40,110 [INFO] [official_00355] chunks=10 rules=10 facts=2 penalties=1
+2026-04-27 10:23:40,111 [INFO] [30/200] Running official_00714
+2026-04-27 10:23:40,111 [INFO] Question: người điều khiển xe mô tô vừa xe thô sơ đang đi trên phần đường dành cho xe thô sơ, vừa người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy không có chứng nhận bảo hiểm bắt buộc trách nhiệm dân sự của chủ xe cơ giới còn hiệu lực thì bị xử phạt thế nào?
+2026-04-27 10:24:21,785 [ERROR] [official_00714] Error: Lỗi parse JSON từ LLM: Expecting ',' delimiter: line 4 column 102 (char 205)
+2026-04-27 10:24:21,786 [INFO] [31/200] Running official_00702
+2026-04-27 10:24:21,786 [INFO] Question: người điều khiển xe mô tô vừa sử dụng còi trong thời gian từ 22 giờ ngày hôm trước đến 05 giờ ngày hôm sau trong khu đông dân cư, khu vực cơ sở khám bệnh, chữa bệnh, vừa sử dụng giấy phép lái xe không do cơ quan có thẩm quyền cấp thì bị xử phạt thế nào?
+2026-04-27 10:25:06,318 [INFO] [official_00702] chunks=10 rules=14 facts=3 penalties=1
+2026-04-27 10:25:06,318 [INFO] [32/200] Running official_00492
+2026-04-27 10:25:06,319 [INFO] Question: người điều khiển xe máy chuyên dùng mà vi phạm quy định tại điểm b khoản 8 Điều này mà gây tai nạn giao thông thì bị phạt bao nhiêu?
+2026-04-27 10:26:10,282 [INFO] [official_00492] chunks=10 rules=24 facts=2 penalties=1
+2026-04-27 10:26:10,309 [INFO] [33/200] Running official_00341
+2026-04-27 10:26:10,324 [INFO] Question: người điều khiển xe chở khách mà chuyển tải, xuống khách hoặc các hành vi khác nhằm trốn tránh phát hiện xe chở quá tải, quá số người theo quy định của pháp luật thì bị phạt bao nhiêu?
+2026-04-27 10:26:55,153 [INFO] [official_00341] chunks=10 rules=10 facts=2 penalties=1
+2026-04-27 10:26:55,154 [INFO] [34/200] Running official_00348
+2026-04-27 10:26:55,154 [INFO] Question: người điều khiển phương tiện mà vận chuyển hàng hóa là phương tiện vận tải, máy móc, thiết bị kỹ thuật, hàng dạng trụ không chằng buộc thì bị phạt bao nhiêu?
+2026-04-27 10:27:34,973 [INFO] [official_00348] chunks=10 rules=14 facts=2 penalties=1
+2026-04-27 10:27:34,974 [INFO] [35/200] Running official_00858
+2026-04-27 10:27:34,974 [INFO] Question: người điều khiển phương tiện mà điều khiển xe có kích thước bao ngoài vượt quá khổ giới hạn của đường bộ hoặc chở hàng vượt khổ giới hạn của đường bộ hoặc chở hàng vượt quá kích thước giới hạn xếp hàng hóa của xe tham gia giao thông, nhưng xe có giấy phép lưu hành còn giá trị thì có bị phạt không?
+2026-04-27 10:28:21,797 [INFO] [official_00858] chunks=10 rules=14 facts=2 penalties=1
+2026-04-27 10:28:21,800 [INFO] [36/200] Running official_00325
+2026-04-27 10:28:21,800 [INFO] Question: người điều khiển xe máy chuyên dùng mà mở cửa xe, để cửa xe mở không bảo đảm an toàn gây tai nạn giao thông thì bị phạt bao nhiêu?
+2026-04-27 10:29:23,940 [INFO] [official_00325] chunks=10 rules=26 facts=2 penalties=1
+2026-04-27 10:29:23,941 [INFO] [37/200] Running official_00665
+2026-04-27 10:29:23,941 [INFO] Question: người điều khiển xe mô tô vừa tụ tập từ 03 xe trở lên ở lòng đường, trong hầm đường bộ, vừa điều khiển xe chạy tốc độ thấp mà không đi bên phải phần đường xe chạy gây cản trở giao thông thì bị xử phạt thế nào?
+2026-04-27 10:30:12,095 [INFO] [official_00665] chunks=10 rules=16 facts=4 penalties=2
+2026-04-27 10:30:12,096 [INFO] [38/200] Running official_00066
+2026-04-27 10:30:12,097 [INFO] Question: người điều khiển xe chở khách mà không đóng cửa lên xuống khi xe đang chạy thì bị phạt thế nào?
+2026-04-27 10:30:58,804 [INFO] [official_00066] chunks=10 rules=19 facts=2 penalties=1
+2026-04-27 10:30:58,804 [INFO] [39/200] Running official_01013
+2026-04-27 10:30:58,805 [INFO] Question: Một người mà lợi dụng việc xảy ra tai nạn giao thông đường bộ để hành hung, đe dọa, xúi giục, gây sức ép, làm mất trật tự, cản trở việc xử lý tai nạn giao thông đường bộ thì bị phạt bao nhiêu?
+2026-04-27 10:31:32,985 [INFO] [official_01013] chunks=10 rules=11 facts=2 penalties=1
+2026-04-27 10:31:32,986 [INFO] [40/200] Running official_00555
+2026-04-27 10:31:32,986 [INFO] Question: người điều khiển xe chở khách vừa để rơi hành lý, hàng hóa trên xe xuống đường, vừa không đóng cửa lên xuống khi xe đang chạy thì bị xử phạt thế nào?
+2026-04-27 10:32:07,826 [INFO] [official_00555] chunks=10 rules=13 facts=2 penalties=1
+2026-04-27 10:32:07,827 [INFO] [41/200] Running official_00975
+2026-04-27 10:32:07,827 [INFO] Question: Một người mà không có chứng chỉ bồi dưỡng kiến thức pháp luật về giao thông đường bộ thì bị phạt bao nhiêu?
+2026-04-27 10:32:40,145 [INFO] [official_00975] chunks=10 rules=13 facts=2 penalties=1
+2026-04-27 10:32:40,145 [INFO] [42/200] Running official_00657
+2026-04-27 10:32:40,147 [INFO] Question: người điều khiển xe mô tô vừa điều khiển xe không đi bên phải theo chiều đi của mình, vừa vi phạm quy định tại một trong các điểm, khoản sau của Điều này mà gây tai nạn giao thông: điểm a, điểm d, điểm đ, điểm g, điểm h, điểm i, điểm k khoản 1; điểm c, điểm đ, điểm g khoản 2; điểm b, điểm e, điểm g, điểm h, điểm k khoản 3; điểm đ khoản 4; điểm c, điểm d khoản 6; điểm c, điểm d, điểm đ khoản 7; điểm a, điểm b, điểm h, điểm k khoản 9 Điều này thì bị xử phạt thế nào?
+2026-04-27 10:33:43,499 [ERROR] [official_00657] Error: Lỗi parse JSON từ LLM: Expecting ',' delimiter: line 4 column 89 (char 182)
+2026-04-27 10:33:43,515 [INFO] [43/200] Running official_00284
+2026-04-27 10:33:43,515 [INFO] Question: người điều khiển phương tiện mà chở hàng siêu trường, siêu trọng có giấy phép lưu hành còn giá trị sử dụng nhưng chở không đúng loại hàng quy định trong giấy phép lưu hành thì bị phạt thế nào?
+2026-04-27 10:34:22,979 [INFO] [official_00284] chunks=10 rules=13 facts=2 penalties=1
+2026-04-27 10:34:22,979 [INFO] [44/200] Running official_00026
+2026-04-27 10:34:22,980 [INFO] Question: người ngồi trên xe mà tự ý mở cửa xe thì bị phạt thế nào?
+2026-04-27 10:35:04,532 [ERROR] [official_00026] Error: Lỗi parse JSON từ LLM: Extra data: line 1 column 185 (char 184)
+2026-04-27 10:35:04,533 [INFO] [45/200] Running official_00887
+2026-04-27 10:35:04,533 [INFO] Question: người điều khiển phương tiện mà điều khiển xe có kích thước bao ngoài vượt quá khổ giới hạn của đường bộ hoặc chở hàng vượt khổ giới hạn của đường bộ hoặc chở hàng vượt quá kích thước giới hạn xếp hàng hóa của xe tham gia giao thông, nhưng xe có giấy phép lưu hành còn giá trị thì có bị phạt không?
+2026-04-27 10:35:30,804 [INFO] [official_00887] chunks=10 rules=14 facts=2 penalties=1
+2026-04-27 10:35:30,805 [INFO] [46/200] Running official_00324
+2026-04-27 10:35:30,806 [INFO] Question: người điều khiển phương tiện mà điều khiển xe chạy quá tốc độ quy định trên 35 km/h thì bị phạt bao nhiêu?
+2026-04-27 10:35:57,956 [INFO] [official_00324] chunks=10 rules=9 facts=2 penalties=1
+2026-04-27 10:35:57,957 [INFO] [47/200] Running official_00801
+2026-04-27 10:35:57,957 [INFO] Question: người điều khiển phương tiện mà điều khiển xe mà tổng trọng lượng (khối lượng toàn bộ) của xe vượt quá tải trọng cho phép của đường bộ trên 10% đến 20%, nhưng xe có giấy phép lưu hành còn giá trị thì có bị phạt không?
+2026-04-27 10:36:31,458 [INFO] [official_00801] chunks=10 rules=11 facts=2 penalties=1
+2026-04-27 10:36:31,494 [INFO] [48/200] Running official_01111
+2026-04-27 10:36:31,554 [INFO] Question: Một người mà lưu thông trực tiếp trên đường mà không thực hiện biện pháp bảo vệ đường theo quy định thì bị phạt bao nhiêu?
+2026-04-27 10:36:55,407 [INFO] [official_01111] chunks=10 rules=6 facts=2 penalties=1
+2026-04-27 10:36:55,437 [INFO] [49/200] Running official_01012
+2026-04-27 10:36:55,446 [INFO] Question: Một người mà không nhường đường hoặc gây cản trở xe được quyền ưu tiên đang phát tín hiệu ưu tiên đi làm nhiệm vụ thì bị phạt bao nhiêu?
+2026-04-27 10:37:24,919 [INFO] [official_01012] chunks=10 rules=10 facts=2 penalties=1
+2026-04-27 10:37:24,920 [INFO] [50/200] Running official_00266
+2026-04-27 10:37:24,920 [INFO] Question: người điều khiển xe mô tô mà chuyển hướng không nhường quyền đi trước cho: người đi bộ, xe lăn của người khuyết tật qua đường tại nơi có vạch kẻ đường dành cho người đi bộ thì bị phạt thế nào?
+2026-04-27 10:38:12,010 [INFO] [official_00266] chunks=10 rules=17 facts=3 penalties=1
+2026-04-27 10:38:12,011 [INFO] [51/200] Running official_00318
+2026-04-27 10:38:12,012 [INFO] Question: chủ phương tiện mà tự ý thay đổi nhãn hiệu, màu sơn của xe không đúng với chứng nhận đăng ký xe thì bị phạt bao nhiêu?
+2026-04-27 10:38:43,688 [INFO] [official_00318] chunks=10 rules=10 facts=2 penalties=2
+2026-04-27 10:38:43,688 [INFO] [52/200] Running official_00057
+2026-04-27 10:38:43,689 [INFO] Question: chủ phương tiện mà giao phương tiện hoặc để cho người làm công, người đại diện điều khiển phương tiện thực hiện hành vi vi phạm quy định tại khoản 7 Điều 21 của Nghị định này hoặc trực tiếp điều khiển phương tiện thực hiện hành vi vi phạm quy định tại khoản 7 Điều 21 của Nghị định này thì bị phạt thế nào?
+2026-04-27 10:39:22,119 [INFO] [official_00057] chunks=10 rules=10 facts=2 penalties=2
+2026-04-27 10:39:22,121 [INFO] [53/200] Running official_00102
+2026-04-27 10:39:22,122 [INFO] Question: giáo viên dạy lái xe mà có phù hiệu nhưng không đeo khi lái xe tập lái thì bị phạt thế nào?
+2026-04-27 10:40:09,335 [INFO] [official_00102] chunks=10 rules=17 facts=2 penalties=1
+2026-04-27 10:40:09,335 [INFO] [54/200] Running official_00397
+2026-04-27 10:40:09,335 [INFO] Question: người điều khiển xe máy chuyên dùng mà thực hiện hành vi quy định tại điểm c, điểm đ khoản 2 Điều này trong trường hợp không có chứng nhận đăng ký xe (hoặc bản sao chứng nhận đăng ký xe có chứng thực kèm theo bản gốc giấy biên nhận của tổ chức tín dụng, chi nhánh ngân hàng nước ngoài trong trường hợp tổ chức tín dụng, chi nhánh ngân hàng nước ngoài giữ bản gốc chứng nhận đăng ký xe) hoặc sử dụng chứng nhận đăng ký xe (hoặc bản sao chứng nhận đăng ký xe có chứng thực kèm theo bản gốc giấy biên nhận của tổ chức tín dụng, chi nhánh ngân hàng nước ngoài trong trường hợp tổ chức tín dụng, chi nhánh ngân hàng nước ngoài giữ bản gốc chứng nhận đăng ký xe) không do cơ quan có thẩm quyền cấp, không đúng số khung, số động cơ (số máy) của xe hoặc bị tẩy xóa (kể cả rơ moóc) mà không chứng minh được nguồn gốc xuất xứ của phương tiện (không có giấy tờ, chứng nhận nguồn gốc xe, chứng nhận quyền sở hữu hợp pháp) thì bị tịch thu phương tiện thì bị phạt bao nhiêu?
+2026-04-27 10:40:57,688 [INFO] [official_00397] chunks=10 rules=10 facts=2 penalties=0
+2026-04-27 10:40:57,689 [INFO] [55/200] Running official_00055
+2026-04-27 10:40:57,690 [INFO] Question: người điều khiển xe súc vật kéo mà để vật nuôi kéo xe mà không có người điều khiển thì bị phạt thế nào?
+2026-04-27 10:41:36,532 [INFO] [official_00055] chunks=10 rules=13 facts=2 penalties=1
+2026-04-27 10:41:36,534 [INFO] [56/200] Running official_00602
+2026-04-27 10:41:36,534 [INFO] Question: người đi xe đạp vừa vượt bên phải trong các trường hợp không được phép, vừa dừng xe, đỗ xe trên phần đường xe chạy ở đoạn đường ngoài đô thị nơi có lề đường thì bị xử phạt thế nào?
+2026-04-27 10:43:02,870 [INFO] [official_00602] chunks=10 rules=33 facts=3 penalties=2
+2026-04-27 10:43:02,870 [INFO] [57/200] Running official_01183
+2026-04-27 10:43:02,871 [INFO] Question: Một người mà gây tai nạn giao thông không dừng ngay phương tiện, không giữ nguyên hiện trường, không trợ giúp người bị nạn, không ở lại hiện trường hoặc không đến trình báo ngay với cơ quan công an, Ủy ban nhân dân nơi gần nhất thì bị phạt bao nhiêu?
+2026-04-27 10:44:18,725 [INFO] [official_01183] chunks=10 rules=28 facts=5 penalties=4
+2026-04-27 10:44:18,726 [INFO] [58/200] Running official_00064
+2026-04-27 10:44:18,726 [INFO] Question: người điều khiển phương tiện mà không giảm tốc độ (hoặc dừng lại) và nhường đường khi điều khiển xe đi từ đường nhánh ra đường chính thì bị phạt thế nào?
+2026-04-27 10:44:59,258 [INFO] [official_00064] chunks=10 rules=16 facts=2 penalties=1
+2026-04-27 10:44:59,259 [INFO] [59/200] Running official_00926
+2026-04-27 10:44:59,259 [INFO] Question: người điều khiển xe chở khách mà điều khiển xe ô tô kinh doanh vận tải không có dây đai an toàn tại các vị trí ghế ngồi, giường nằm theo quy định, nhưng đây là xe buýt nội tỉnh thì có bị phạt không?
+2026-04-27 10:45:31,525 [INFO] [official_00926] chunks=10 rules=8 facts=2 penalties=1
+2026-04-27 10:45:31,537 [INFO] [60/200] Running official_00017
+2026-04-27 10:45:31,538 [INFO] Question: người điều khiển phương tiện mà không đến trình báo ngay với cơ quan công an, Ủy ban nhân dân nơi gần nhất thì bị phạt thế nào?
+2026-04-27 10:45:57,932 [INFO] [official_00017] chunks=10 rules=8 facts=2 penalties=1
+2026-04-27 10:45:57,964 [INFO] [61/200] Running official_00710
+2026-04-27 10:45:57,981 [INFO] Question: người điều khiển xe mô tô vừa điều khiển xe thành đoàn gây cản trở giao thông, vừa đi ngược chiều của đường một chiều, đi ngược chiều trên đường có biển \"Cấm đi ngược chiều\" thì bị xử phạt thế nào?
+2026-04-27 10:46:40,463 [INFO] [official_00710] chunks=10 rules=17 facts=2 penalties=1
+2026-04-27 10:46:40,464 [INFO] [62/200] Running official_00501
+2026-04-27 10:46:40,464 [INFO] Question: người điều khiển xe chở khách mà đón, trả hành khách không đúng địa điểm đón, trả hành khách được ghi trong hợp đồng thì bị phạt bao nhiêu?
+2026-04-27 10:47:18,746 [INFO] [official_00501] chunks=10 rules=13 facts=2 penalties=1
+2026-04-27 10:47:18,746 [INFO] [63/200] Running official_00969
+2026-04-27 10:47:18,746 [INFO] Question: Một người mà điều khiển xe không gắn biển số (đối với loại xe có quy định phải gắn biển số) thì bị phạt bao nhiêu?
+2026-04-27 10:47:49,698 [INFO] [official_00969] chunks=10 rules=12 facts=2 penalties=1
+2026-04-27 10:47:49,698 [INFO] [64/200] Running official_00843
+2026-04-27 10:47:49,698 [INFO] Question: người điều khiển phương tiện mà điều khiển xe mà tổng trọng lượng (khối lượng toàn bộ) của xe vượt quá tải trọng cho phép của đường bộ trên 10% đến 20%, nhưng xe có giấy phép lưu hành còn giá trị thì có bị phạt không?
+2026-04-27 10:48:01,901 [INFO] [official_00843] chunks=10 rules=11 facts=2 penalties=1
+2026-04-27 10:48:01,959 [INFO] [65/200] Running official_00915
+2026-04-27 10:48:01,960 [INFO] Question: người điều khiển phương tiện mà điều khiển xe có kích thước bao ngoài vượt quá khổ giới hạn của đường bộ hoặc chở hàng vượt khổ giới hạn của đường bộ hoặc chở hàng vượt quá kích thước giới hạn xếp hàng hóa của xe tham gia giao thông, nhưng xe có giấy phép lưu hành còn giá trị thì có bị phạt không?
+2026-04-27 10:48:20,875 [INFO] [official_00915] chunks=10 rules=14 facts=2 penalties=1
+2026-04-27 10:48:20,875 [INFO] [66/200] Running official_00007
+2026-04-27 10:48:20,876 [INFO] Question: người điều khiển xe máy chuyên dùng mà điều khiển xe chạy quá tốc độ quy định gây tai nạn giao thông thì bị phạt thế nào?
+2026-04-27 10:48:55,520 [INFO] [official_00007] chunks=10 rules=13 facts=2 penalties=1
+2026-04-27 10:48:55,521 [INFO] [67/200] Running official_01099
+2026-04-27 10:48:55,521 [INFO] Question: Một người mà thực hiện hành vi quy định tại điểm đ khoản 2 Điều này còn bị tịch thu thiết bị phát tín hiệu ưu tiên lắp đặt, sử dụng trái quy định thì bị phạt bao nhiêu?
+2026-04-27 10:49:22,617 [INFO] [official_01099] chunks=10 rules=7 facts=3 penalties=1
+2026-04-27 10:49:22,618 [INFO] [68/200] Running official_00990
+2026-04-27 10:49:22,619 [INFO] Question: Một người mà  thì bị phạt bao nhiêu?
+2026-04-27 10:49:58,720 [INFO] [official_00990] chunks=10 rules=15 facts=2 penalties=1
+2026-04-27 10:49:58,721 [INFO] [69/200] Running official_01095
+2026-04-27 10:49:58,721 [INFO] Question: Một người mà dùng tay cầm và sử dụng điện thoại hoặc các thiết bị điện tử khác thì bị phạt bao nhiêu?
+2026-04-27 10:50:20,796 [INFO] [official_01095] chunks=10 rules=4 facts=3 penalties=1
+2026-04-27 10:50:20,797 [INFO] [70/200] Running official_01152
+2026-04-27 10:50:20,797 [INFO] Question: Một người mà điều khiển xe ô tô cứu thương không lắp thiết bị giám sát hành trình thì bị phạt bao nhiêu?
+2026-04-27 10:50:53,789 [INFO] [official_01152] chunks=10 rules=12 facts=2 penalties=1
+2026-04-27 10:50:53,812 [INFO] [71/200] Running official_00879
+2026-04-27 10:50:53,813 [INFO] Question: người điều khiển xe mô tô mà sử dụng đèn chiếu xa khi gặp người đi bộ qua đường hoặc khi đi trên đoạn đường qua khu dân cư có hệ thống chiếu sáng đang hoạt động hoặc khi gặp xe đi ngược chiều hoặc khi chuyển hướng xe tại nơi đường giao nhau, nhưng đoạn đường có dải phân cách có khả năng chống chói thì có bị phạt không?
+2026-04-27 10:51:24,433 [INFO] [official_00879] chunks=10 rules=17 facts=3 penalties=1
+2026-04-27 10:51:24,433 [INFO] [72/200] Running official_00481
+2026-04-27 10:51:24,433 [INFO] Question: chủ phương tiện mà tự ý thay đổi khung, máy, hình dáng, kích thước, đặc tính của xe thì bị phạt bao nhiêu?
+2026-04-27 10:51:52,637 [INFO] [official_00481] chunks=10 rules=8 facts=2 penalties=2
+2026-04-27 10:51:52,684 [INFO] [73/200] Running official_01061
+2026-04-27 10:51:52,736 [INFO] Question: Một người mà đỗ xe trên dốc không chèn bánh thì bị phạt bao nhiêu?
+2026-04-27 10:53:33,209 [INFO] [official_01061] chunks=10 rules=42 facts=2 penalties=1
+2026-04-27 10:53:33,210 [INFO] [74/200] Running official_01177
+2026-04-27 10:53:33,210 [INFO] Question: Một người mà đi không đúng phần đường hoặc làn đường quy định (làn cùng chiều hoặc làn ngược chiều) thì bị phạt bao nhiêu?
+2026-04-27 10:54:16,604 [INFO] [official_01177] chunks=10 rules=19 facts=2 penalties=1
+2026-04-27 10:54:16,632 [INFO] [75/200] Running official_00621
+2026-04-27 10:54:16,651 [INFO] Question: người đi xe đạp vừa không đi bên phải theo chiều đi của mình, vừa dừng xe đột ngột thì bị xử phạt thế nào?
+2026-04-27 10:54:52,212 [INFO] [official_00621] chunks=10 rules=15 facts=2 penalties=1
+2026-04-27 10:54:52,212 [INFO] [76/200] Running official_00930
+2026-04-27 10:54:52,213 [INFO] Question: người điều khiển phương tiện mà điều khiển xe có kích thước bao ngoài vượt quá khổ giới hạn của đường bộ hoặc chở hàng vượt khổ giới hạn của đường bộ hoặc chở hàng vượt quá kích thước giới hạn xếp hàng hóa của xe tham gia giao thông, nhưng xe có giấy phép lưu hành còn giá trị thì có bị phạt không?
+2026-04-27 10:55:13,886 [INFO] [official_00930] chunks=10 rules=14 facts=2 penalties=1
+2026-04-27 10:55:13,887 [INFO] [77/200] Running official_00164
+2026-04-27 10:55:13,888 [INFO] Question: người điều khiển phương tiện mà lùi xe ở đường một chiều thì bị phạt thế nào?
+2026-04-27 10:56:43,053 [INFO] [official_00164] chunks=10 rules=37 facts=3 penalties=1
+2026-04-27 10:56:43,054 [INFO] [78/200] Running official_00134
+2026-04-27 10:56:43,055 [INFO] Question: người điều khiển phương tiện mà không có thiết bị ghi nhận hình ảnh trẻ em mầm non, học sinh và thiết bị có chức năng cảnh báo, chống bỏ quên trẻ em trên xe thì bị phạt thế nào?
+2026-04-27 10:57:31,354 [INFO] [official_00134] chunks=10 rules=17 facts=2 penalties=1
+2026-04-27 10:57:31,354 [INFO] [79/200] Running official_00067
+2026-04-27 10:57:31,354 [INFO] Question: chủ phương tiện mà đưa phương tiện không gắn biển số (đối với loại xe có quy định phải gắn biển số) tham gia giao thông thì bị phạt thế nào?
+2026-04-27 10:58:18,735 [ERROR] [official_00067] Error: Lỗi parse JSON từ LLM: Expecting ',' delimiter: line 4 column 102 (char 192)
+2026-04-27 10:58:18,735 [INFO] [80/200] Running official_00747
+2026-04-27 10:58:18,735 [INFO] Question: người điều khiển phương tiện vừa không trợ giúp người bị nạn, vừa  thì bị xử phạt thế nào?
+2026-04-27 10:58:55,883 [INFO] [official_00747] chunks=10 rules=15 facts=2 penalties=1
+2026-04-27 10:58:55,883 [INFO] [81/200] Running official_00836
+2026-04-27 10:58:55,883 [INFO] Question: người điều khiển phương tiện mà chở người trên xe được kéo, nhưng người ngồi trên xe được kéo là người điều khiển thì có bị phạt không?
+2026-04-27 10:59:46,840 [INFO] [official_00836] chunks=10 rules=20 facts=2 penalties=1
+2026-04-27 10:59:46,842 [INFO] [82/200] Running official_00268
+2026-04-27 10:59:46,842 [INFO] Question: người điều khiển xe máy chuyên dùng mà dừng xe, đỗ xe trong hầm đường bộ không đúng nơi quy định thì bị phạt thế nào?
+2026-04-27 11:01:10,839 [INFO] [official_00268] chunks=10 rules=34 facts=3 penalties=1
+2026-04-27 11:01:10,883 [INFO] [83/200] Running official_00393
+2026-04-27 11:01:10,883 [INFO] Question: người điều khiển phương tiện mà điều khiển xe (kể cả rơ moóc và sơ mi rơ moóc) chở hàng vượt trọng tải (khối lượng hàng chuyên chở) cho phép tham gia giao thông được ghi trong giấy chứng nhận kiểm định an toàn kỹ thuật và bảo vệ môi trường của xe trên 100% đến 150% thì bị phạt bao nhiêu?
+2026-04-27 11:01:39,656 [INFO] [official_00393] chunks=10 rules=7 facts=2 penalties=1
+2026-04-27 11:01:39,656 [INFO] [84/200] Running official_01027
+2026-04-27 11:01:39,656 [INFO] Question: Một người mà có sử dụng cơ cấu khóa hãm nhưng công-ten-nơ vẫn bị xê dịch trong quá trình vận chuyển thì bị phạt bao nhiêu?
+2026-04-27 11:02:06,558 [INFO] [official_01027] chunks=10 rules=7 facts=2 penalties=1
+2026-04-27 11:02:06,558 [INFO] [85/200] Running official_00612
+2026-04-27 11:02:06,558 [INFO] Question: người đi xe đạp vừa gây tai nạn giao thông không dừng ngay phương tiện, không giữ nguyên hiện trường, không trợ giúp người bị nạn, không ở lại hiện trường hoặc không đến trình báo ngay với cơ quan công an, Ủy ban nhân dân nơi gần nhất, vừa không nhường đường cho xe xin vượt khi có đủ điều kiện an toàn hoặc gây cản trở đối với xe cơ giới xin vượt, gây cản trở xe ưu tiên thì bị xử phạt thế nào?
+2026-04-27 11:02:49,319 [INFO] [official_00612] chunks=10 rules=17 facts=2 penalties=1
+2026-04-27 11:02:49,319 [INFO] [86/200] Running official_00603
+2026-04-27 11:02:49,319 [INFO] Question: cơ sở đào tạo lái xe vừa không công khai quy chế tuyển sinh, quản lý đào tạo và mức thu học phí theo quy định, vừa cơ sở đào tạo lái xe không có đủ hệ thống phòng học thì bị xử phạt thế nào?
+2026-04-27 11:03:24,315 [INFO] [official_00603] chunks=10 rules=12 facts=2 penalties=1
+2026-04-27 11:03:24,315 [INFO] [87/200] Running official_00402
+2026-04-27 11:03:24,315 [INFO] Question: chủ phương tiện mà không làm thủ tục thu hồi chứng nhận đăng ký xe; biển số xe; giấy chứng nhận kiểm định an toàn kỹ thuật và bảo vệ môi trường theo quy định thì bị phạt bao nhiêu?
+2026-04-27 11:03:47,445 [INFO] [official_00402] chunks=10 rules=4 facts=2 penalties=2
+2026-04-27 11:03:47,458 [INFO] [88/200] Running official_00147
+2026-04-27 11:03:47,458 [INFO] Question: người điều khiển xe mô tô mà chở người ngồi trên xe không đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" hoặc đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" không cài quai đúng quy cách thì bị phạt thế nào?
+2026-04-27 11:04:18,587 [ERROR] [official_00147] Error: Lỗi parse JSON từ LLM: Extra data: line 1 column 170 (char 169)
+2026-04-27 11:04:18,606 [INFO] [89/200] Running official_00716
+2026-04-27 11:04:18,606 [INFO] Question: người điều khiển xe mô tô vừa không giữ khoảng cách an toàn để xảy ra va chạm với xe chạy liền trước, vừa chở theo 02 người trên xe thì bị xử phạt thế nào?
+2026-04-27 11:04:51,631 [INFO] [official_00716] chunks=10 rules=13 facts=2 penalties=1
+2026-04-27 11:04:51,631 [INFO] [90/200] Running official_00311
+2026-04-27 11:04:51,632 [INFO] Question: người điều khiển xe máy chuyên dùng mà không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường thì bị phạt bao nhiêu?
+2026-04-27 11:05:49,147 [INFO] [official_00311] chunks=10 rules=26 facts=2 penalties=1
+2026-04-27 11:05:49,147 [INFO] [91/200] Running official_00018
+2026-04-27 11:05:49,147 [INFO] Question: người điều khiển xe máy chuyên dùng mà điều khiển xe có các bộ phận chuyên dùng lắp đặt không đúng vị trí thì bị phạt thế nào?
+2026-04-27 11:07:01,161 [INFO] [official_00018] chunks=10 rules=32 facts=2 penalties=1
+2026-04-27 11:07:01,174 [INFO] [92/200] Running official_01022
+2026-04-27 11:07:01,174 [INFO] Question: Một người mà vận chuyển khách liên vận quốc tế theo tuyến cố định không có hoặc không mang theo lệnh vận chuyển, không có danh sách hành khách theo quy định hoặc chở người không có tên trong danh sách hành khách thì bị phạt bao nhiêu?
+2026-04-27 11:07:42,934 [INFO] [official_01022] chunks=10 rules=13 facts=2 penalties=1
+2026-04-27 11:07:42,934 [INFO] [93/200] Running official_00210
+2026-04-27 11:07:42,934 [INFO] Question: người điều khiển xe mô tô mà điều khiển xe chạy quá tốc độ quy định từ 05 km/h đến dưới 10 km/h thì bị phạt thế nào?
+2026-04-27 11:08:21,003 [INFO] [official_00210] chunks=10 rules=15 facts=2 penalties=1
+2026-04-27 11:08:21,003 [INFO] [94/200] Running official_00874
+2026-04-27 11:08:21,003 [INFO] Question: người điều khiển phương tiện mà điều khiển xe có kích thước bao ngoài vượt quá khổ giới hạn của đường bộ hoặc chở hàng vượt khổ giới hạn của đường bộ hoặc chở hàng vượt quá kích thước giới hạn xếp hàng hóa của xe tham gia giao thông, nhưng xe có giấy phép lưu hành còn giá trị thì có bị phạt không?
+2026-04-27 11:08:43,151 [INFO] [official_00874] chunks=10 rules=14 facts=2 penalties=1
+2026-04-27 11:08:43,152 [INFO] [95/200] Running official_00048
+2026-04-27 11:08:43,152 [INFO] Question: người điều khiển xe máy chuyên dùng mà đi không đúng phần đường hoặc làn đường quy định (làn cùng chiều hoặc làn ngược chiều) thì bị phạt thế nào?
+2026-04-27 11:09:55,997 [INFO] [official_00048] chunks=10 rules=33 facts=2 penalties=1
+2026-04-27 11:09:55,997 [INFO] [96/200] Running official_01064
+2026-04-27 11:09:55,997 [INFO] Question: Một người mà chuyển hướng không quan sát thì bị phạt bao nhiêu?
+2026-04-27 11:11:14,129 [INFO] [official_01064] chunks=10 rules=35 facts=2 penalties=1
+2026-04-27 11:11:14,130 [INFO] [97/200] Running official_00131
+2026-04-27 11:11:14,131 [INFO] Question: người thực hiện hành vi mà tổ chức đua xe trái phép thì bị phạt thế nào?
+2026-04-27 11:11:52,389 [INFO] [official_00131] chunks=10 rules=13 facts=2 penalties=2
+2026-04-27 11:11:52,389 [INFO] [98/200] Running official_00476
+2026-04-27 11:11:52,389 [INFO] Question: người điều khiển phương tiện mà điều khiển xe ô tô cứu hộ giao thông đường bộ không lắp thiết bị ghi nhận hình ảnh người lái xe thì bị phạt bao nhiêu?
+2026-04-27 11:12:39,726 [INFO] [official_00476] chunks=10 rules=20 facts=2 penalties=1
+2026-04-27 11:12:39,726 [INFO] [99/200] Running official_00736
+2026-04-27 11:12:39,726 [INFO] Question: người điều khiển phương tiện vừa để rơi hàng hóa xuống đường, vừa vượt xe tại đoạn đường có biển báo hiệu có nội dung cấm vượt thì bị xử phạt thế nào?
+2026-04-27 11:13:06,885 [INFO] [official_00736] chunks=10 rules=9 facts=2 penalties=1
+2026-04-27 11:13:06,885 [INFO] [100/200] Running official_01005
+2026-04-27 11:13:06,885 [INFO] Question: Một người mà không thực hiện đúng quy định về biển số, quy định về kẻ hoặc dán chữ, số biển số, thông tin trên thành xe, cửa xe (kể cả rơ moóc và sơ mi rơ moóc) thì bị phạt bao nhiêu?
+2026-04-27 11:13:43,978 [INFO] [official_01005] chunks=10 rules=14 facts=2 penalties=2
+2026-04-27 11:13:43,978 [INFO] [101/200] Running official_01066
+2026-04-27 11:13:43,978 [INFO] Question: Một người mà điểm đón, trả khách thì bị phạt bao nhiêu?
+2026-04-27 11:14:22,522 [INFO] [official_01066] chunks=10 rules=14 facts=2 penalties=1
+2026-04-27 11:14:22,522 [INFO] [102/200] Running official_00176
+2026-04-27 11:14:22,522 [INFO] Question: người đi xe đạp mà đuổi nhau trên đường thì bị phạt thế nào?
+2026-04-27 11:14:54,910 [INFO] [official_00176] chunks=10 rules=13 facts=2 penalties=1
+2026-04-27 11:14:54,910 [INFO] [103/200] Running official_00417
+2026-04-27 11:14:54,925 [INFO] Question: chủ phương tiện mà hoặc gắn biển số không do cơ quan có thẩm quyền cấp tham gia giao thông thì bị phạt bao nhiêu?
+2026-04-27 11:15:31,205 [INFO] [official_00417] chunks=10 rules=15 facts=2 penalties=1
+2026-04-27 11:15:31,205 [INFO] [104/200] Running official_00940
+2026-04-27 11:15:31,205 [INFO] Question: người điều khiển xe chở khách mà điều khiển xe ô tô kinh doanh vận tải không có dây đai an toàn tại các vị trí ghế ngồi, giường nằm theo quy định, nhưng đây là xe buýt nội tỉnh thì có bị phạt không?
+2026-04-27 11:15:49,461 [INFO] [official_00940] chunks=10 rules=8 facts=2 penalties=1
+2026-04-27 11:15:49,461 [INFO] [105/200] Running official_00614
+2026-04-27 11:15:49,461 [INFO] Question: cá nhân vừa phạt tiền từ 3.000.000 đồng đến 5.000.000 đồng đối với cá nhân thực hiện hành vi bày, bán máy móc, thiết bị, vật tư hoặc sản xuất, gia công hàng hóa trên lòng đường, vỉa hè, vừa đặt, để chướng ngại vật, vật cản khác trái phép trên đường bộ thì bị xử phạt thế nào?
+2026-04-27 11:16:18,931 [INFO] [official_00614] chunks=10 rules=8 facts=2 penalties=1
+2026-04-27 11:16:18,931 [INFO] [106/200] Running official_00394
+2026-04-27 11:16:18,931 [INFO] Question: chủ phương tiện mà không làm thủ tục cấp chứng nhận đăng ký xe, biển số xe trong trường hợp thay đổi chủ xe theo quy định thì bị phạt bao nhiêu?
+2026-04-27 11:16:45,121 [INFO] [official_00394] chunks=10 rules=8 facts=2 penalties=2
+2026-04-27 11:16:45,122 [INFO] [107/200] Running official_00651
+2026-04-27 11:16:45,122 [INFO] Question: người điều khiển xe chở khách vừa chở quá số người quy định được phép chở của phương tiện, vừa để người mắc võng nằm trên xe khi xe đang chạy thì bị xử phạt thế nào?
+2026-04-27 11:17:13,980 [INFO] [official_00651] chunks=10 rules=8 facts=2 penalties=1
+2026-04-27 11:17:13,980 [INFO] [108/200] Running official_01164
+2026-04-27 11:17:13,980 [INFO] Question: Một người mà dùng chân điều khiển vô lăng xe khi xe đang chạy trên đường bộ gây tai nạn giao thông thì bị phạt bao nhiêu?
+2026-04-27 11:18:28,207 [INFO] [official_01164] chunks=10 rules=34 facts=3 penalties=1
+2026-04-27 11:18:28,207 [INFO] [109/200] Running official_01116
+2026-04-27 11:18:28,207 [INFO] Question: Một người mà không bóc (xóa) biểu trưng nguy hiểm trên phương tiện khi không tiếp tục vận chuyển loại hàng hóa đó thì bị phạt bao nhiêu?
+2026-04-27 11:19:01,379 [INFO] [official_01116] chunks=10 rules=8 facts=2 penalties=1
+2026-04-27 11:19:01,379 [INFO] [110/200] Running official_01141
+2026-04-27 11:19:01,379 [INFO] Question: Một người mà quay đầu xe tại nơi đường hẹp, đường dốc, đoạn đường cong tầm nhìn bị che khuất, nơi có biển báo hiệu có nội dung cấm quay đầu đối với loại phương tiện đang điều khiển thì bị phạt bao nhiêu?
+2026-04-27 11:20:37,282 [INFO] [official_01141] chunks=10 rules=43 facts=3 penalties=1
+2026-04-27 11:20:37,282 [INFO] [111/200] Running official_01149
+2026-04-27 11:20:37,282 [INFO] Question: Một người mà dừng xe, đỗ xe, quay đầu xe, lùi xe, tránh xe, vượt xe, chuyển hướng, chuyển làn đường không đúng quy định gây tai nạn giao thông thì bị phạt bao nhiêu?
+2026-04-27 11:22:37,780 [ERROR] [official_01149] Error: Lỗi parse JSON từ LLM: Expecting ',' delimiter: line 10 column 6 (char 222)
+2026-04-27 11:22:37,780 [INFO] [112/200] Running official_00519
+2026-04-27 11:22:37,780 [INFO] Question: người điều khiển phương tiện mà điều khiển xe ô tô kinh doanh vận tải chở trẻ em mầm non, học sinh tiểu học, xe ô tô kinh doanh vận tải kết hợp với hoạt động đưa đón trẻ em mầm non, học sinh tiểu học không có dây đai an toàn phù hợp với lứa tuổi thì bị phạt bao nhiêu?
+2026-04-27 11:23:28,658 [INFO] [official_00519] chunks=10 rules=16 facts=2 penalties=1
+2026-04-27 11:23:28,658 [INFO] [113/200] Running official_00148
+2026-04-27 11:23:28,658 [INFO] Question: chủ phương tiện mà đưa xe cứu hộ giao thông đường bộ, xe cứu thương không lắp thiết bị giám sát hành trình của xe hoặc lắp thiết bị nhưng thiết bị không hoạt động, không đúng quy chuẩn theo quy định hoặc làm sai lệch dữ liệu của thiết bị giám sát hành trình trên xe ô tô tham gia giao thông thì bị phạt thế nào?
+2026-04-27 11:24:21,555 [INFO] [official_00148] chunks=10 rules=15 facts=2 penalties=2
+2026-04-27 11:24:21,555 [INFO] [114/200] Running official_00853
+2026-04-27 11:24:21,555 [INFO] Question: người điều khiển xe máy chuyên dùng mà trên cầu , gầm cầu vượt , song song với một xe khác đang dừng, đỗ, nhưng khu vực này được tổ chức giao thông cho phép thì có bị phạt không?
+2026-04-27 11:25:40,560 [INFO] [official_00853] chunks=10 rules=32 facts=2 penalties=1
+2026-04-27 11:25:40,560 [INFO] [115/200] Running official_00955
+2026-04-27 11:25:40,560 [INFO] Question: Một người mà hoặc phạm vi hoạt động theo quy định thì bị phạt bao nhiêu?
+2026-04-27 11:26:10,642 [INFO] [official_00955] chunks=10 rules=12 facts=2 penalties=1
+2026-04-27 11:26:10,642 [INFO] [116/200] Running official_00009
+2026-04-27 11:26:10,642 [INFO] Question: cơ sở đào tạo lái xe mà không gắn biển xe \"Tập lái\" trên xe theo quy định thì bị phạt thế nào?
+2026-04-27 11:26:59,594 [INFO] [official_00009] chunks=10 rules=18 facts=2 penalties=1
+2026-04-27 11:26:59,594 [INFO] [117/200] Running official_01010
+2026-04-27 11:26:59,594 [INFO] Question: Một người mà chở hàng hoặc chất thải để nước chảy xuống mặt đường gây mất an toàn giao thông thì bị phạt bao nhiêu?
+2026-04-27 11:27:22,108 [INFO] [official_01010] chunks=10 rules=5 facts=2 penalties=1
+2026-04-27 11:27:22,109 [INFO] [118/200] Running official_00243
+2026-04-27 11:27:22,109 [INFO] Question: người điều khiển phương tiện mà không đi đúng phần đường, làn đường gây tai nạn giao thông thì bị phạt thế nào?
+2026-04-27 11:28:47,588 [INFO] [official_00243] chunks=10 rules=38 facts=2 penalties=1
+2026-04-27 11:28:47,589 [INFO] [119/200] Running official_00783
+2026-04-27 11:28:47,590 [INFO] Question: người điều khiển xe máy chuyên dùng mà trên cầu , gầm cầu vượt , song song với một xe khác đang dừng, đỗ, nhưng đây là nơi được phép dừng xe, đỗ xe thì có bị phạt không?
+2026-04-27 11:30:13,674 [INFO] [official_00783] chunks=10 rules=36 facts=2 penalties=1
+2026-04-27 11:30:13,674 [INFO] [120/200] Running official_00740
+2026-04-27 11:30:13,675 [INFO] Question: người điều khiển phương tiện vừa chở hàng vượt quá bề rộng thùng xe (kể cả bề rộng rơ moóc và sơ mi rơ moóc), vừa lùi xe ở đường có biển \"Cấm đi ngược chiều\" thì bị xử phạt thế nào?
+2026-04-27 11:30:33,984 [INFO] [official_00740] chunks=10 rules=4 facts=2 penalties=1
+2026-04-27 11:30:34,010 [INFO] [121/200] Running official_01179
+2026-04-27 11:30:34,010 [INFO] Question: Một người mà điều khiển xe lạng lách, đánh võng trên đường bộ gây tai nạn giao thông thì bị phạt bao nhiêu?
+2026-04-27 11:31:07,210 [INFO] [official_01179] chunks=10 rules=11 facts=3 penalties=1
+2026-04-27 11:31:07,210 [INFO] [122/200] Running official_00941
+2026-04-27 11:31:07,226 [INFO] Question: người điều khiển phương tiện mà điều khiển xe mà tổng trọng lượng (khối lượng toàn bộ) của xe vượt quá tải trọng cho phép của đường bộ trên 10% đến 20%, nhưng xe có giấy phép lưu hành còn giá trị thì có bị phạt không?
+2026-04-27 11:31:24,512 [INFO] [official_00941] chunks=10 rules=11 facts=2 penalties=1
+2026-04-27 11:31:24,512 [INFO] [123/200] Running official_00832
+2026-04-27 11:31:24,512 [INFO] Question: người điều khiển phương tiện mà điều khiển xe có kích thước bao ngoài vượt quá khổ giới hạn của đường bộ hoặc chở hàng vượt khổ giới hạn của đường bộ hoặc chở hàng vượt quá kích thước giới hạn xếp hàng hóa của xe tham gia giao thông, nhưng xe có giấy phép lưu hành còn giá trị thì có bị phạt không?
+2026-04-27 11:31:44,920 [INFO] [official_00832] chunks=10 rules=14 facts=2 penalties=1
+2026-04-27 11:31:44,920 [INFO] [124/200] Running official_00259
+2026-04-27 11:31:44,920 [INFO] Question: người điều khiển xe chở khách mà đe dọa, xúc phạm, tranh giành, lôi kéo hành khách thì bị phạt thế nào?
+2026-04-27 11:32:26,656 [INFO] [official_00259] chunks=10 rules=15 facts=2 penalties=1
+2026-04-27 11:32:26,672 [INFO] [125/200] Running official_00231
+2026-04-27 11:32:26,672 [INFO] Question: người điều khiển phương tiện mà vận chuyển hành khách hoặc hàng hóa không đúng với quy định tại các điều ước quốc tế mà Việt Nam đã ký kết thì bị phạt thế nào?
+2026-04-27 11:33:08,687 [INFO] [official_00231] chunks=10 rules=17 facts=2 penalties=1
+2026-04-27 11:33:08,687 [INFO] [126/200] Running official_00707
+2026-04-27 11:33:08,687 [INFO] Question: người điều khiển phương tiện vừa không tuân thủ các quy định về dừng xe, đỗ xe tại nơi đường bộ giao nhau cùng mức với đường sắt, vừa điều khiển xe không lắp thiết bị ghi nhận hình ảnh người lái xe thì bị xử phạt thế nào?
+2026-04-27 11:33:38,338 [INFO] [official_00707] chunks=10 rules=8 facts=2 penalties=1
+2026-04-27 11:33:38,338 [INFO] [127/200] Running official_00479
+2026-04-27 11:33:38,338 [INFO] Question: người đi xe đạp mà bám, kéo, đẩy xe khác, vật khác, mang vác vật cồng kềnh thì bị phạt bao nhiêu?
+2026-04-27 11:34:09,989 [INFO] [official_00479] chunks=10 rules=12 facts=2 penalties=1
+2026-04-27 11:34:09,989 [INFO] [128/200] Running official_01051
+2026-04-27 11:34:09,989 [INFO] Question: Một người mà giấy tờ của phương tiện không có bản dịch sang tiếng Anh hoặc tiếng Việt theo quy định thì bị phạt bao nhiêu?
+2026-04-27 11:34:32,610 [ERROR] [official_01051] Error: Lỗi parse JSON từ LLM: Expecting ',' delimiter: line 4 column 109 (char 192)
+2026-04-27 11:34:32,611 [INFO] [129/200] Running official_00536
+2026-04-27 11:34:32,611 [INFO] Question: người điều khiển phương tiện mà có nhưng đã hết giá trị sử dụng thì bị phạt bao nhiêu?
+2026-04-27 11:34:58,245 [INFO] [official_00536] chunks=10 rules=9 facts=2 penalties=1
+2026-04-27 11:34:58,345 [INFO] [130/200] Running official_00632
+2026-04-27 11:34:58,345 [INFO] Question: chủ phương tiện vừa lắp đặt, sử dụng thiết bị âm thanh, ánh sáng trên xe gây mất trật tự, an toàn giao thông đường bộ, vừa không làm thủ tục đổi chứng nhận đăng ký xe, biển số xe theo quy định thì bị xử phạt thế nào?
+2026-04-27 11:35:26,028 [INFO] [official_00632] chunks=10 rules=8 facts=2 penalties=2
+2026-04-27 11:35:26,044 [INFO] [131/200] Running official_00927
+2026-04-27 11:35:26,044 [INFO] Question: người điều khiển phương tiện mà điều khiển xe mà tổng trọng lượng (khối lượng toàn bộ) của xe vượt quá tải trọng cho phép của đường bộ trên 10% đến 20%, nhưng xe có giấy phép lưu hành còn giá trị thì có bị phạt không?
+2026-04-27 11:35:38,318 [INFO] [official_00927] chunks=10 rules=11 facts=2 penalties=1
+2026-04-27 11:35:38,318 [INFO] [132/200] Running official_00188
+2026-04-27 11:35:38,318 [INFO] Question: người điều khiển phương tiện mà vận chuyển động vật sống, thực phẩm tươi sống không mang đủ giấy tờ theo quy định (đối với loại động vật sống, thực phẩm tươi sống khi vận chuyển phải có giấy tờ) thì bị phạt thế nào?
+2026-04-27 11:36:08,330 [INFO] [official_00188] chunks=10 rules=9 facts=2 penalties=1
+2026-04-27 11:36:08,330 [INFO] [133/200] Running official_00774
+2026-04-27 11:36:08,330 [INFO] Question: người điều khiển phương tiện mà điều khiển xe có kích thước bao ngoài vượt quá khổ giới hạn của đường bộ hoặc chở hàng vượt khổ giới hạn của đường bộ hoặc chở hàng vượt quá kích thước giới hạn xếp hàng hóa của xe tham gia giao thông, nhưng xe có giấy phép lưu hành còn giá trị thì có bị phạt không?
+2026-04-27 11:36:29,252 [INFO] [official_00774] chunks=10 rules=14 facts=2 penalties=1
+2026-04-27 11:36:29,252 [INFO] [134/200] Running official_00247
+2026-04-27 11:36:29,252 [INFO] Question: người điều khiển xe chở khách mà vận chuyển hành khách theo tuyến cố định không có hoặc không mang theo lệnh vận chuyển hoặc có mang theo lệnh vận chuyển nhưng không ghi đầy đủ thông tin, không có xác nhận của bến xe khách nơi đi, bến xe khách nơi đến theo quy định thì bị phạt thế nào?
+2026-04-27 11:37:20,645 [INFO] [official_00247] chunks=10 rules=14 facts=2 penalties=1
+2026-04-27 11:37:20,645 [INFO] [135/200] Running official_00061
+2026-04-27 11:37:20,645 [INFO] Question: người đi xe đạp mà không chấp hành hiệu lệnh hoặc chỉ dẫn của biển báo hiệu, vạch kẻ đường thì bị phạt thế nào?
+2026-04-27 11:37:49,741 [INFO] [official_00061] chunks=10 rules=10 facts=2 penalties=1
+2026-04-27 11:37:49,741 [INFO] [136/200] Running official_00873
+2026-04-27 11:37:49,741 [INFO] Question: người điều khiển phương tiện mà điều khiển xe có kích thước bao ngoài vượt quá khổ giới hạn của đường bộ hoặc chở hàng vượt khổ giới hạn của đường bộ hoặc chở hàng vượt quá kích thước giới hạn xếp hàng hóa của xe tham gia giao thông, nhưng xe có giấy phép lưu hành còn giá trị thì có bị phạt không?
+2026-04-27 11:38:02,275 [INFO] [official_00873] chunks=10 rules=14 facts=2 penalties=1
+2026-04-27 11:38:02,296 [INFO] [137/200] Running official_00592
+2026-04-27 11:38:02,296 [INFO] Question: cá nhân vừa phạt tiền từ 2.000.000 đồng đến 4.000.000 đồng đối với cá nhân cố ý thay đổi, xóa dấu vết hiện trường vụ tai nạn giao thông, vừa sử dụng bàn trượt, pa-tanh, các thiết bị tương tự trên phần đường xe chạy thì bị xử phạt thế nào?
+2026-04-27 11:38:42,639 [INFO] [official_00592] chunks=10 rules=15 facts=2 penalties=1
+2026-04-27 11:38:42,639 [INFO] [138/200] Running official_00644
+2026-04-27 11:38:42,639 [INFO] Question: chủ phương tiện vừa giao phương tiện hoặc để cho người làm công, người đại diện điều khiển phương tiện thực hiện hành vi vi phạm quy định tại điểm b khoản 2 Điều 21 của Nghị định này hoặc trực tiếp điều khiển phương tiện thực hiện hành vi vi phạm quy định tại điểm b khoản 2 Điều 21 của Nghị định này, vừa đưa phương tiện không có chứng nhận đăng ký xe (hoặc bản sao chứng nhận đăng ký xe có chứng thực kèm theo bản gốc giấy biên nhận của tổ chức tín dụng, chi nhánh ngân hàng nước ngoài trong trường hợp tổ chức tín dụng, chi nhánh ngân hàng nước ngoài giữ bản gốc chứng nhận đăng ký xe) tham gia giao thông hoặc có nhưng đã hết hạn sử dụng, hết hiệu lực; đưa phương tiện có chứng nhận đăng ký xe tạm thời, phương tiện có phạm vi hoạt động hạn chế tham gia giao thông quá thời hạn, tuyến đường, phạm vi cho phép thì bị xử phạt thế nào?
+2026-04-27 11:39:16,148 [INFO] [official_00644] chunks=10 rules=7 facts=2 penalties=2
+2026-04-27 11:39:16,149 [INFO] [139/200] Running official_00217
+2026-04-27 11:39:16,149 [INFO] Question: người điều khiển phương tiện mà chở hàng siêu trường, siêu trọng không có báo hiệu kích thước của hàng theo quy định thì bị phạt thế nào?
+2026-04-27 11:40:00,175 [INFO] [official_00217] chunks=10 rules=13 facts=2 penalties=1
+2026-04-27 11:40:00,175 [INFO] [140/200] Running official_00408
+2026-04-27 11:40:00,175 [INFO] Question: chủ phương tiện mà không làm thủ tục đổi chứng nhận đăng ký xe, biển số xe theo quy định thì bị phạt bao nhiêu?
+2026-04-27 11:40:26,347 [INFO] [official_00408] chunks=10 rules=8 facts=2 penalties=2
+2026-04-27 11:40:26,347 [INFO] [141/200] Running official_00427
+2026-04-27 11:40:26,347 [INFO] Question: chủ phương tiện mà giao phương tiện hoặc để cho người làm công, người đại diện điều khiển phương tiện thực hiện hành vi vi phạm quy định tại điểm a, điểm d khoản 5 Điều 21 của Nghị định này hoặc trực tiếp điều khiển phương tiện thực hiện hành vi vi phạm quy định tại điểm a, điểm d khoản 5 Điều 21 của Nghị định này thì bị phạt bao nhiêu?
+2026-04-27 11:41:06,002 [INFO] [official_00427] chunks=10 rules=10 facts=2 penalties=2
+2026-04-27 11:41:06,033 [INFO] [142/200] Running official_00070
+2026-04-27 11:41:06,033 [INFO] Question: người điều khiển phương tiện mà vận chuyển hàng trên xe phải chằng buộc mà không chằng buộc thì bị phạt thế nào?
+2026-04-27 11:41:32,632 [ERROR] [official_00070] Error: Lỗi parse JSON từ LLM: Extra data: line 1 column 206 (char 205)
+2026-04-27 11:41:32,654 [INFO] [143/200] Running official_00840
+2026-04-27 11:41:32,654 [INFO] Question: người điều khiển xe máy chuyên dùng mà sử dụng còi hơi, sử dụng đèn chiếu xa khi gặp người đi bộ qua đường hoặc khi đi trên đoạn đường qua khu dân cư có hệ thống chiếu sáng đang hoạt động hoặc khi gặp xe đi ngược chiều hoặc khi chuyển hướng xe tại nơi đường giao nhau, nhưng đoạn đường có dải phân cách có khả năng chống chói thì có bị phạt không?
+2026-04-27 11:42:41,454 [INFO] [official_00840] chunks=10 rules=25 facts=2 penalties=0
+2026-04-27 11:42:41,454 [INFO] [144/200] Running official_00496
+2026-04-27 11:42:41,470 [INFO] Question: người điều khiển xe máy chuyên dùng mà  thì bị phạt bao nhiêu?
+2026-04-27 11:43:49,367 [INFO] [official_00496] chunks=10 rules=30 facts=2 penalties=1
+2026-04-27 11:43:49,367 [INFO] [145/200] Running official_01081
+2026-04-27 11:43:49,368 [INFO] Question: Một người mà đưa ra các yêu cầu trái quy định về trình tự, thủ tục đăng kiểm thì bị phạt bao nhiêu?
+2026-04-27 11:44:16,119 [INFO] [official_01081] chunks=10 rules=8 facts=2 penalties=1
+2026-04-27 11:44:16,119 [INFO] [146/200] Running official_00574
+2026-04-27 11:44:16,120 [INFO] Question: người đi xe đạp vừa chuyển hướng đột ngột trước đầu xe cơ giới đang chạy, vừa điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn vượt quá 50 miligam đến 80 miligam/100 mililít máu hoặc vượt quá 0,25 miligam đến 0,4 miligam/1 lít khí thở thì bị xử phạt thế nào?
+2026-04-27 11:44:57,836 [INFO] [official_00574] chunks=10 rules=13 facts=2 penalties=1
+2026-04-27 11:44:57,836 [INFO] [147/200] Running official_01147
+2026-04-27 11:44:57,836 [INFO] Question: Một người mà không giảm tốc độ và nhường đường cho xe đi đến từ bên phải tại nơi đường giao nhau không có báo hiệu đi theo vòng xuyến thì bị phạt bao nhiêu?
+2026-04-27 11:45:44,137 [INFO] [official_01147] chunks=10 rules=18 facts=2 penalties=1
+2026-04-27 11:45:44,137 [INFO] [148/200] Running official_00439
+2026-04-27 11:45:44,137 [INFO] Question: chủ phương tiện mà đưa phương tiện gắn biển số không đúng với chứng nhận đăng ký xe hoặc gắn biển số không do cơ quan có thẩm quyền cấp (kể cả rơ moóc và sơ mi rơ moóc) tham gia giao thông thì bị phạt bao nhiêu?
+2026-04-27 11:46:19,683 [INFO] [official_00439] chunks=10 rules=12 facts=2 penalties=2
+2026-04-27 11:46:19,683 [INFO] [149/200] Running official_00260
+2026-04-27 11:46:19,683 [INFO] Question: người điều khiển phương tiện mà không nhường đường cho xe đi ngược chiều theo quy định tại nơi đường hẹp, đường dốc, nơi có chướng ngại vật thì bị phạt thế nào?
+2026-04-27 11:47:14,733 [INFO] [official_00260] chunks=10 rules=25 facts=2 penalties=1
+2026-04-27 11:47:14,749 [INFO] [150/200] Running official_01125
+2026-04-27 11:47:14,749 [INFO] Question: Một người mà vận chuyển không đúng đối tượng theo quy định (đối với xe kinh doanh vận tải hành khách theo hợp đồng vận chuyển trẻ em mầm non, học sinh, sinh viên, cán bộ, công chức, viên chức, công nhân) thì bị phạt bao nhiêu?
+2026-04-27 11:47:50,387 [INFO] [official_01125] chunks=10 rules=9 facts=3 penalties=2
+2026-04-27 11:47:50,387 [INFO] [151/200] Running official_00531
+2026-04-27 11:47:50,387 [INFO] Question: cơ sở đăng kiểm mà cấp chứng nhận cải tạo không đúng quy định thì bị phạt bao nhiêu?
+2026-04-27 11:48:18,618 [INFO] [official_00531] chunks=10 rules=9 facts=2 penalties=1
+2026-04-27 11:48:18,646 [INFO] [152/200] Running official_00960
+2026-04-27 11:48:18,646 [INFO] Question: Một người mà không chấp hành hiệu lệnh, hướng dẫn của người điều khiển giao thông hoặc người kiểm soát giao thông thì bị phạt bao nhiêu?
+2026-04-27 11:48:45,291 [INFO] [official_00960] chunks=10 rules=9 facts=2 penalties=1
+2026-04-27 11:48:45,291 [INFO] [153/200] Running official_00529
+2026-04-27 11:48:45,291 [INFO] Question: người đi bộ mà vượt qua dải phân cách thì bị phạt bao nhiêu?
+2026-04-27 11:49:16,858 [INFO] [official_00529] chunks=10 rules=13 facts=2 penalties=1
+2026-04-27 11:49:16,895 [INFO] [154/200] Running official_00944
+2026-04-27 11:49:16,895 [INFO] Question: người điều khiển phương tiện mà điều khiển xe có kích thước bao ngoài vượt quá khổ giới hạn của đường bộ hoặc chở hàng vượt khổ giới hạn của đường bộ hoặc chở hàng vượt quá kích thước giới hạn xếp hàng hóa của xe tham gia giao thông, nhưng xe có giấy phép lưu hành còn giá trị thì có bị phạt không?
+2026-04-27 11:49:29,933 [INFO] [official_00944] chunks=10 rules=14 facts=2 penalties=1
+2026-04-27 11:49:29,933 [INFO] [155/200] Running official_00350
+2026-04-27 11:49:29,947 [INFO] Question: người điều khiển phương tiện mà dừng xe nơi có biển \"Cấm dừng xe và đỗ xe\" thì bị phạt bao nhiêu?
+2026-04-27 11:51:11,281 [INFO] [official_00350] chunks=10 rules=45 facts=2 penalties=1
+2026-04-27 11:51:11,281 [INFO] [156/200] Running official_00595
+2026-04-27 11:51:11,281 [INFO] Question: tổ chức vừa khi có điều kiện mà cố ý không cứu giúp người bị tai nạn giao thông đường bộ, vừa lợi dụng việc xảy ra tai nạn giao thông đường bộ để hành hung, đe dọa, xúi giục, gây sức ép, làm mất trật tự, cản trở việc xử lý tai nạn giao thông đường bộ thì bị xử phạt thế nào?
+2026-04-27 11:51:50,323 [INFO] [official_00595] chunks=10 rules=11 facts=2 penalties=1
+2026-04-27 11:51:50,323 [INFO] [157/200] Running official_00098
+2026-04-27 11:51:50,323 [INFO] Question: cá nhân mà xúc phạm, đe dọa, cản trở, chống đối người thi hành công vụ về bảo đảm trật tự, an toàn giao thông đường bộ thì bị phạt thế nào?
+2026-04-27 11:51:51,420 [ERROR] [official_00098] Error: Không tìm thấy ASP rule phù hợp với các điều khoản được retrieve.
+Kiểm tra lại nd168_kb.lp hoặc tăng top_k.
+2026-04-27 11:51:51,436 [INFO] [158/200] Running official_00003
+2026-04-27 11:51:51,436 [INFO] Question: chủ phương tiện mà hoặc gắn biển số không do cơ quan có thẩm quyền cấp tham gia giao thông thì bị phạt thế nào?
+2026-04-27 11:52:28,866 [INFO] [official_00003] chunks=10 rules=15 facts=2 penalties=1
+2026-04-27 11:52:28,866 [INFO] [159/200] Running official_00780
+2026-04-27 11:52:28,866 [INFO] Question: người điều khiển phương tiện mà chở người trên xe được kéo, nhưng người ngồi trên xe được kéo là người điều khiển thì có bị phạt không?
+2026-04-27 11:53:21,245 [INFO] [official_00780] chunks=10 rules=20 facts=2 penalties=1
+2026-04-27 11:53:21,246 [INFO] [160/200] Running official_00457
+2026-04-27 11:53:21,246 [INFO] Question: người điều khiển xe súc vật kéo mà phạt tiền từ 1.000.000 đồng đến 2.000.000 đồng đối với người điều khiển, dẫn dắt vật nuôi, điều khiển xe vật nuôi kéo đi vào đường cao tốc thì bị phạt bao nhiêu?
+2026-04-27 11:54:01,738 [INFO] [official_00457] chunks=10 rules=13 facts=3 penalties=1
+2026-04-27 11:54:01,738 [INFO] [161/200] Running official_00781
+2026-04-27 11:54:01,738 [INFO] Question: người điều khiển xe mô tô mà sử dụng đèn chiếu xa khi gặp người đi bộ qua đường hoặc khi đi trên đoạn đường qua khu dân cư có hệ thống chiếu sáng đang hoạt động hoặc khi gặp xe đi ngược chiều hoặc khi chuyển hướng xe tại nơi đường giao nhau, nhưng đoạn đường có dải phân cách có khả năng chống chói thì có bị phạt không?
+2026-04-27 11:54:57,160 [ERROR] [official_00781] Error: Lỗi parse JSON từ LLM: Expecting ',' delimiter: line 4 column 80 (char 173)
+2026-04-27 11:54:57,160 [INFO] [162/200] Running official_01197
+2026-04-27 11:54:57,160 [INFO] Question: Một người mà quay đầu xe không đúng quy định gây tai nạn giao thông thì bị phạt bao nhiêu?
+2026-04-27 11:56:00,420 [INFO] [official_01197] chunks=10 rules=28 facts=2 penalties=1
+2026-04-27 11:56:00,420 [INFO] [163/200] Running official_00660
+2026-04-27 11:56:00,420 [INFO] Question: người điều khiển phương tiện vừa chuyển hướng không giảm tốc độ, vừa lùi xe trên đường cao tốc thì bị xử phạt thế nào?
+2026-04-27 11:57:10,356 [INFO] [official_00660] chunks=10 rules=28 facts=2 penalties=1
+2026-04-27 11:57:10,356 [INFO] [164/200] Running official_00748
+2026-04-27 11:57:10,372 [INFO] Question: người điều khiển phương tiện vừa sử dụng còi, rú ga liên tục, vừa vượt xe tại đoạn đường có biển báo hiệu có nội dung cấm vượt thì bị xử phạt thế nào?
+2026-04-27 11:57:57,169 [INFO] [official_00748] chunks=10 rules=20 facts=2 penalties=1
+2026-04-27 11:57:57,169 [INFO] [165/200] Running official_00591
+2026-04-27 11:57:57,169 [INFO] Question: cơ sở đào tạo lái xe vừa tuyển sinh học viên không đủ hồ sơ theo quy định, vừa cơ sở đào tạo lái xe không có đủ thiết bị giám sát thời gian học lý thuyết, thời gian, quãng đường học thực hành lái xe của học viên thì bị xử phạt thế nào?
+2026-04-27 11:58:30,680 [INFO] [official_00591] chunks=10 rules=10 facts=2 penalties=1
+2026-04-27 11:58:30,680 [INFO] [166/200] Running official_00267
+2026-04-27 11:58:30,680 [INFO] Question: người đi xe đạp mà người điều khiển xe đạp, xe đạp máy sử dụng ô (dù), dùng tay cầm và sử dụng điện thoại hoặc các thiết bị điện tử khác thì bị phạt thế nào?
+2026-04-27 11:59:03,551 [INFO] [official_00267] chunks=10 rules=12 facts=2 penalties=1
+2026-04-27 11:59:03,551 [INFO] [167/200] Running official_00687
+2026-04-27 11:59:03,551 [INFO] Question: người điều khiển xe máy chuyên dùng vừa quay đầu xe trên đường cao tốc, vừa điều khiển xe có hệ thống chuyển hướng không bảo đảm tiêu chuẩn kỹ thuật thì bị xử phạt thế nào?
+2026-04-27 12:00:00,679 [INFO] [official_00687] chunks=10 rules=19 facts=2 penalties=1
+2026-04-27 12:00:00,679 [INFO] [168/200] Running official_00752
+2026-04-27 12:00:00,679 [INFO] Question: người điều khiển phương tiện vừa dừng xe, đỗ xe trên dải phân cách cố định ở giữa hai phần đường xe chạy, vừa sử dụng đèn chiếu xa khi gặp người đi bộ qua đường thì bị xử phạt thế nào?
+2026-04-27 12:01:32,744 [INFO] [official_00752] chunks=10 rules=43 facts=2 penalties=1
+2026-04-27 12:01:32,744 [INFO] [169/200] Running official_00679
+2026-04-27 12:01:32,744 [INFO] Question: người điều khiển xe máy chuyên dùng vừa xe thô sơ đang đi trên phần đường dành cho xe thô sơ, vừa dừng xe, đỗ xe trên dải phân cách cố định ở giữa hai phần đường xe chạy thì bị xử phạt thế nào?
+2026-04-27 12:02:48,818 [INFO] [official_00679] chunks=10 rules=31 facts=2 penalties=1
+2026-04-27 12:02:48,818 [INFO] [170/200] Running official_00251
+2026-04-27 12:02:48,818 [INFO] Question: người điều khiển phương tiện mà điều khiển xe ô tô đầu kéo không lắp thiết bị ghi nhận hình ảnh người lái xe thì bị phạt thế nào?
+2026-04-27 12:03:32,058 [INFO] [official_00251] chunks=10 rules=18 facts=2 penalties=1
+2026-04-27 12:03:32,185 [INFO] [171/200] Running official_00800
+2026-04-27 12:03:32,253 [INFO] Question: người điều khiển xe chở khách mà điều khiển xe ô tô kinh doanh vận tải không có dây đai an toàn tại các vị trí ghế ngồi, giường nằm theo quy định, nhưng đây là xe buýt nội tỉnh thì có bị phạt không?
+2026-04-27 12:04:00,557 [INFO] [official_00800] chunks=10 rules=8 facts=2 penalties=1
+2026-04-27 12:04:00,557 [INFO] [172/200] Running official_00129
+2026-04-27 12:04:00,557 [INFO] Question: người điều khiển phương tiện mà có lắp thiết bị giám sát hành trình nhưng không có tác dụng trong quá trình xe tham gia giao thông theo quy định thì bị phạt thế nào?
+2026-04-27 12:04:45,788 [INFO] [official_00129] chunks=10 rules=20 facts=2 penalties=0
+2026-04-27 12:04:45,788 [INFO] [173/200] Running official_00846
+2026-04-27 12:04:45,788 [INFO] Question: người điều khiển phương tiện mà điều khiển xe có kích thước bao ngoài vượt quá khổ giới hạn của đường bộ hoặc chở hàng vượt khổ giới hạn của đường bộ hoặc chở hàng vượt quá kích thước giới hạn xếp hàng hóa của xe tham gia giao thông, nhưng xe có giấy phép lưu hành còn giá trị thì có bị phạt không?
+2026-04-27 12:05:17,712 [INFO] [official_00846] chunks=10 rules=14 facts=2 penalties=1
+2026-04-27 12:05:17,728 [INFO] [174/200] Running official_00038
+2026-04-27 12:05:17,728 [INFO] Question: người điều khiển xe mô tô mà tịch thu phương tiện đối với hành vi điều khiển loại xe sản xuất, lắp ráp trái quy định tham gia giao thông thì bị phạt thế nào?
+2026-04-27 12:06:06,900 [INFO] [official_00038] chunks=10 rules=16 facts=2 penalties=0
+2026-04-27 12:06:06,900 [INFO] [175/200] Running official_00369
+2026-04-27 12:06:06,900 [INFO] Question: người điều khiển phương tiện mà dừng xe, đỗ xe không sát mép đường phía bên phải theo chiều đi ở nơi đường có lề đường hẹp hoặc không có lề đường thì bị phạt bao nhiêu?
+2026-04-27 12:07:46,698 [INFO] [official_00369] chunks=10 rules=43 facts=2 penalties=1
+2026-04-27 12:07:46,698 [INFO] [176/200] Running official_00349
+2026-04-27 12:07:46,698 [INFO] Question: người điều khiển xe máy chuyên dùng mà người đi bộ, xe thô sơ đang qua đường tại nơi không có vạch kẻ đường cho người đi bộ thì bị phạt bao nhiêu?
+2026-04-27 12:08:49,136 [INFO] [official_00349] chunks=10 rules=25 facts=2 penalties=1
+2026-04-27 12:08:49,136 [INFO] [177/200] Running official_00723
+2026-04-27 12:08:49,137 [INFO] Question: người điều khiển phương tiện vừa điều khiển xe ô tô đẩy xe khác, vật khác, vừa sử dụng thẻ nhận dạng lái xe của lái xe khác để đăng nhập thông tin khi điều khiển xe tham gia kinh doanh vận tải hàng hóa thì bị xử phạt thế nào?
+2026-04-27 12:09:18,909 [INFO] [official_00723] chunks=10 rules=8 facts=2 penalties=1
+2026-04-27 12:09:18,909 [INFO] [178/200] Running official_00572
+2026-04-27 12:09:18,909 [INFO] Question: chủ phương tiện vừa đưa xe ô tô kinh doanh vận tải hành khách lắp thêm hoặc tháo bớt ghế, giường nằm hoặc có kích thước khoang chở hành lý (hầm xe) không đúng với thông số kỹ thuật được ghi trong giấy chứng nhận kiểm định an toàn kỹ thuật và bảo vệ môi trường của xe tham gia giao thông, vừa giao phương tiện hoặc để cho người làm công, người đại diện điều khiển phương tiện thực hiện hành vi vi phạm quy định tại điểm a khoản 10 Điều 21 của Nghị định này hoặc trực tiếp điều khiển phương tiện thực hiện hành vi vi phạm quy định tại điểm a khoản 10 Điều 21 của Nghị định này thì bị xử phạt thế nào?
+2026-04-27 12:10:08,558 [INFO] [official_00572] chunks=10 rules=9 facts=2 penalties=2
+2026-04-27 12:10:08,558 [INFO] [179/200] Running official_00261
+2026-04-27 12:10:08,559 [INFO] Question: người điều khiển phương tiện mà dừng xe không sát theo lề đường, vỉa hè phía bên phải theo chiều đi hoặc bánh xe gần nhất cách lề đường, vỉa hè quá 0,25 mét thì bị phạt thế nào?
+2026-04-27 12:11:17,233 [INFO] [official_00261] chunks=10 rules=24 facts=2 penalties=1
+2026-04-27 12:11:17,233 [INFO] [180/200] Running official_00446
+2026-04-27 12:11:17,233 [INFO] Question: người điều khiển phương tiện mà không giảm tốc độ và nhường đường cho xe đi đến từ bên phải tại nơi đường giao nhau không có báo hiệu đi theo vòng xuyến thì bị phạt bao nhiêu?
+2026-04-27 12:12:13,764 [INFO] [official_00446] chunks=10 rules=18 facts=2 penalties=1
+2026-04-27 12:12:13,764 [INFO] [181/200] Running official_01009
+2026-04-27 12:12:13,764 [INFO] Question: Một người mà điều khiển xe (kể cả rơ moóc và sơ mi rơ moóc) chở hàng vượt trọng tải (khối lượng hàng chuyên chở) cho phép tham gia giao thông được ghi trong giấy chứng nhận kiểm định an toàn kỹ thuật và bảo vệ môi trường của xe trên 150% thì bị phạt bao nhiêu?
+2026-04-27 12:12:58,702 [INFO] [official_01009] chunks=10 rules=11 facts=2 penalties=1
+2026-04-27 12:12:58,702 [INFO] [182/200] Running official_01154
+2026-04-27 12:12:58,702 [INFO] Question: Một người mà đưa phương tiện có chứng nhận đăng ký xe tạm thời, phương tiện có phạm vi hoạt động hạn chế tham gia giao thông quá thời hạn, tuyến đường, phạm vi cho phép thì bị phạt bao nhiêu?
+2026-04-27 12:13:28,001 [INFO] [official_01154] chunks=10 rules=8 facts=2 penalties=2
+2026-04-27 12:13:28,001 [INFO] [183/200] Running official_01174
+2026-04-27 12:13:28,001 [INFO] Question: Một người mà mang hóa chất độc hại trên xe chở khách thì bị phạt bao nhiêu?
+2026-04-27 12:14:10,746 [INFO] [official_01174] chunks=10 rules=16 facts=2 penalties=1
+2026-04-27 12:14:10,746 [INFO] [184/200] Running official_01112
+2026-04-27 12:14:10,746 [INFO] Question: Một người mà không chấp hành hiệu lệnh của đèn tín hiệu giao thông thì bị phạt bao nhiêu?
+2026-04-27 12:14:36,898 [INFO] [official_01112] chunks=10 rules=8 facts=2 penalties=1
+2026-04-27 12:14:36,899 [INFO] [185/200] Running official_00778
+2026-04-27 12:14:36,899 [INFO] Question: người điều khiển phương tiện mà điều khiển xe mà tổng trọng lượng (khối lượng toàn bộ) của xe hoặc tải trọng trục xe (bao gồm cả hàng hóa xếp trên xe, người được chở trên xe) vượt quá tải trọng cho phép của đường bộ trên 20% đến 50%, nhưng xe có giấy phép lưu hành còn giá trị thì có bị phạt không?
+2026-04-27 12:15:19,938 [INFO] [official_00778] chunks=10 rules=15 facts=2 penalties=1
+2026-04-27 12:15:19,938 [INFO] [186/200] Running official_00881
+2026-04-27 12:15:19,938 [INFO] Question: người điều khiển xe máy chuyên dùng mà trên cầu , gầm cầu vượt , song song với một xe khác đang dừng, đỗ, nhưng khu vực này được tổ chức giao thông cho phép thì có bị phạt không?
+2026-04-27 12:16:37,900 [INFO] [official_00881] chunks=10 rules=32 facts=2 penalties=1
+2026-04-27 12:16:37,900 [INFO] [187/200] Running official_00290
+2026-04-27 12:16:37,900 [INFO] Question: chủ phương tiện mà tự ý thay đổi màu sơn của xe không đúng với màu sơn ghi trong chứng nhận đăng ký xe thì bị phạt thế nào?
+2026-04-27 12:17:08,178 [ERROR] [official_00290] Error: Lỗi parse JSON từ LLM: Expecting ',' delimiter: line 4 column 112 (char 202)
+2026-04-27 12:17:08,178 [INFO] [188/200] Running official_00994
+2026-04-27 12:17:08,178 [INFO] Question: Một người mà để xe ở lòng đường, vỉa hè trái phép thì bị phạt bao nhiêu?
+2026-04-27 12:18:10,244 [INFO] [official_00994] chunks=10 rules=29 facts=2 penalties=1
+2026-04-27 12:18:10,244 [INFO] [189/200] Running official_00672
+2026-04-27 12:18:10,244 [INFO] Question: người điều khiển phương tiện vừa nhận, trả hàng trên đường cao tốc, vừa chuyển làn đường không đúng nơi cho phép khi chạy trên đường cao tốc thì bị xử phạt thế nào?
+2026-04-27 12:18:44,867 [INFO] [official_00672] chunks=10 rules=10 facts=3 penalties=1
+2026-04-27 12:18:44,867 [INFO] [190/200] Running official_01091
+2026-04-27 12:18:44,867 [INFO] Question: Một người mà sắp xếp, chằng buộc hành lý, hàng hóa không bảo đảm an toàn thì bị phạt bao nhiêu?
+2026-04-27 12:19:11,629 [INFO] [official_01091] chunks=10 rules=7 facts=2 penalties=1
+2026-04-27 12:19:11,629 [INFO] [191/200] Running official_00214
+2026-04-27 12:19:11,631 [INFO] Question: người điều khiển phương tiện mà vận chuyển hàng hóa, cung ứng dịch vụ không có giấy phép (đối với trường hợp phải có giấy phép) thì bị phạt thế nào?
+2026-04-27 12:20:06,028 [INFO] [official_00214] chunks=10 rules=18 facts=2 penalties=1
+2026-04-27 12:20:06,028 [INFO] [192/200] Running official_00279
+2026-04-27 12:20:06,028 [INFO] Question: người điều khiển phương tiện mà hành vi vi phạm quy định tại khoản 10 Điều này mà gây tai nạn giao thông thì bị phạt thế nào?
+2026-04-27 12:21:05,443 [INFO] [official_00279] chunks=10 rules=22 facts=2 penalties=1
+2026-04-27 12:21:05,443 [INFO] [193/200] Running official_00044
+2026-04-27 12:21:05,443 [INFO] Question: người điều khiển phương tiện mà điều khiển xe không đủ điều kiện để thu phí theo hình thức điện tử tự động không dừng (xe không gắn thẻ đầu cuối) đi vào làn đường dành riêng thu phí theo hình thức điện tử tự động không dừng tại các trạm thu phí thì bị phạt thế nào?
+2026-04-27 12:22:01,732 [INFO] [official_00044] chunks=10 rules=24 facts=2 penalties=1
+2026-04-27 12:22:01,732 [INFO] [194/200] Running official_00533
+2026-04-27 12:22:01,732 [INFO] Question: người điều khiển phương tiện mà lùi xe trên phần đường dành cho người đi bộ qua đường thì bị phạt bao nhiêu?
+2026-04-27 12:23:14,148 [INFO] [official_00533] chunks=10 rules=33 facts=2 penalties=1
+2026-04-27 12:23:14,148 [INFO] [195/200] Running official_00771
+2026-04-27 12:23:14,148 [INFO] Question: người điều khiển xe máy chuyên dùng mà điều khiển xe không có giấy chứng nhận hoặc tem kiểm định an toàn kỹ thuật và bảo vệ môi trường (đối với loại xe có quy định phải kiểm định, nhưng đây là xe đăng ký tạm thời thì có bị phạt không?
+2026-04-27 12:23:53,385 [INFO] [official_00771] chunks=10 rules=15 facts=2 penalties=1
+2026-04-27 12:23:53,385 [INFO] [196/200] Running official_00030
+2026-04-27 12:23:53,385 [INFO] Question: người điều khiển xe mô tô mà điều khiển xe thành nhóm từ 02 xe trở lên chạy quá tốc độ quy định thì bị phạt thế nào?
+2026-04-27 12:24:26,586 [INFO] [official_00030] chunks=10 rules=13 facts=2 penalties=1
+2026-04-27 12:24:26,586 [INFO] [197/200] Running official_00493
+2026-04-27 12:24:26,586 [INFO] Question: chủ phương tiện mà đưa xe cứu hộ giao thông đường bộ, xe cứu thương không lắp thiết bị ghi nhận hình ảnh người lái xe theo quy định hoặc có lắp thiết bị ghi nhận hình ảnh người lái xe nhưng không ghi, không lưu trữ được dữ liệu trên xe trong quá trình xe tham gia giao thông theo quy định hoặc làm sai lệch dữ liệu của thiết bị ghi nhận hình ảnh người lái xe lắp trên xe ô tô tham gia giao thông thì bị phạt bao nhiêu?
+2026-04-27 12:25:17,281 [INFO] [official_00493] chunks=10 rules=13 facts=2 penalties=2
+2026-04-27 12:25:17,281 [INFO] [198/200] Running official_00223
+2026-04-27 12:25:17,281 [INFO] Question: chủ phương tiện mà không làm thủ tục thu hồi chứng nhận đăng ký xe; biển số xe; giấy chứng nhận kiểm định an toàn kỹ thuật và bảo vệ môi trường theo quy định thì bị phạt thế nào?
+2026-04-27 12:25:39,600 [INFO] [official_00223] chunks=10 rules=4 facts=2 penalties=2
+2026-04-27 12:25:39,600 [INFO] [199/200] Running official_00455
+2026-04-27 12:25:39,600 [INFO] Question: người điều khiển phương tiện mà không có báo hiệu bằng đèn khẩn cấp khi dừng xe, đỗ xe trong trường hợp gặp sự cố kỹ thuật hoặc bất khả kháng khác buộc phải dừng xe, đỗ xe trên một phần làn đường xe chạy trên đường cao tốc thì bị phạt bao nhiêu?
+2026-04-27 12:26:53,912 [INFO] [official_00455] chunks=10 rules=27 facts=3 penalties=1
+2026-04-27 12:26:53,912 [INFO] [200/200] Running official_00372
+2026-04-27 12:26:53,912 [INFO] Question: chủ phương tiện mà sử dụng giấy chứng nhận kiểm định khí thải xe mô tô, xe gắn máy không do cơ quan có thẩm quyền cấp thì bị phạt bao nhiêu?
+2026-04-27 12:27:47,169 [INFO] [official_00372] chunks=10 rules=19 facts=2 penalties=2
+2026-04-27 12:27:48,011 [INFO] Saved results.json, results.jsonl, results.partial.json, summary.json
+2026-04-27 12:27:48,011 [INFO] Finished: success=186 error=14

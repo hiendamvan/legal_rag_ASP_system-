@@ -267,6 +267,7 @@ def run_asp_pipeline(query: str, top_k: int = 5) -> dict:
     Run the full ASP pipeline and return a structured result dict:
 
         query             — original query
+        retrieved_chunks  — list of retrieved Chroma chunks
         matched_rules     — list of matched ASP rule dicts
         llm_prompt        — prompt sent to the local LLM
         llm_raw           — raw text response from LLM
@@ -296,6 +297,7 @@ def run_asp_pipeline(query: str, top_k: int = 5) -> dict:
         log.warning("  [FAIL] Không tìm thấy ASP rule phù hợp")
         return {
             "query":             query,
+            "retrieved_chunks":  [],
             "matched_rules":     [],
             "llm_prompt":        "",
             "llm_raw":           "",
@@ -321,6 +323,7 @@ def run_asp_pipeline(query: str, top_k: int = 5) -> dict:
         log.error("  [FAIL] LLM trả về rỗng")
         return {
             "query":             query,
+            "retrieved_chunks":  chunks,
             "matched_rules":     matched_rules,
             "llm_prompt":        prompt,
             "llm_raw":           "",
@@ -341,6 +344,7 @@ def run_asp_pipeline(query: str, top_k: int = 5) -> dict:
         log.error(f"  LLM raw was: {repr(llm_raw[:500])}")
         return {
             "query":             query,
+            "retrieved_chunks":  chunks,
             "matched_rules":     matched_rules,
             "llm_prompt":        prompt,
             "llm_raw":           llm_raw,
@@ -370,6 +374,7 @@ def run_asp_pipeline(query: str, top_k: int = 5) -> dict:
 
     result = {
         "query":             query,
+        "retrieved_chunks":  chunks,
         "matched_rules":     matched_rules,
         "llm_prompt":        prompt,
         "llm_raw":           llm_raw,
