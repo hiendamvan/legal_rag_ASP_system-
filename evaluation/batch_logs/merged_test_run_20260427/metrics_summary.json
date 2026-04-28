@@ -1,0 +1,175 @@
+{
+  "overall": {
+    "sample_count": 200,
+    "error_count": 1,
+    "retriever": {
+      "hit@1": 0.598,
+      "hit@3": 0.8241,
+      "hit@5": 0.8693,
+      "hit@10": 0.9146,
+      "evaluated_samples": 199
+    },
+    "parser": {
+      "exact_match_accuracy": 0.25,
+      "fact_precision": 0.5981,
+      "fact_recall": 0.5476,
+      "fact_f1": 0.5718,
+      "tp": 253,
+      "fp": 170,
+      "fn": 209
+    },
+    "citation": {
+      "citation_presence_rate": 0.0,
+      "article_hit_accuracy": 0.0,
+      "reference_hit_accuracy": 0.0,
+      "citation_precision": 0.0,
+      "evaluated_samples": 200,
+      "predicted_citation_count": 0
+    }
+  },
+  "by_question_type": {
+    "complex_multi_hop": {
+      "sample_count": 37,
+      "error_count": 0,
+      "retriever": {
+        "hit@1": 0.7568,
+        "hit@3": 0.9459,
+        "hit@5": 0.9459,
+        "hit@10": 0.9459,
+        "evaluated_samples": 37
+      },
+      "parser": {
+        "exact_match_accuracy": 0.0,
+        "fact_precision": 0.7375,
+        "fact_recall": 0.472,
+        "fact_f1": 0.5756,
+        "tp": 59,
+        "fp": 21,
+        "fn": 66
+      },
+      "citation": {
+        "citation_presence_rate": 0.0,
+        "article_hit_accuracy": 0.0,
+        "reference_hit_accuracy": 0.0,
+        "citation_precision": 0.0,
+        "evaluated_samples": 37,
+        "predicted_citation_count": 0
+      }
+    },
+    "exception_handling": {
+      "sample_count": 29,
+      "error_count": 0,
+      "retriever": {
+        "hit@1": 0.6552,
+        "hit@3": 1.0,
+        "hit@5": 1.0,
+        "hit@10": 1.0,
+        "evaluated_samples": 29
+      },
+      "parser": {
+        "exact_match_accuracy": 0.0,
+        "fact_precision": 0.8136,
+        "fact_recall": 0.5275,
+        "fact_f1": 0.64,
+        "tp": 48,
+        "fp": 11,
+        "fn": 43
+      },
+      "citation": {
+        "citation_presence_rate": 0.0,
+        "article_hit_accuracy": 0.0,
+        "reference_hit_accuracy": 0.0,
+        "citation_precision": 0.0,
+        "evaluated_samples": 29,
+        "predicted_citation_count": 0
+      }
+    },
+    "insufficient_info": {
+      "sample_count": 42,
+      "error_count": 0,
+      "retriever": {
+        "hit@1": 0.4048,
+        "hit@3": 0.7381,
+        "hit@5": 0.7619,
+        "hit@10": 0.7857,
+        "evaluated_samples": 42
+      },
+      "parser": {
+        "exact_match_accuracy": 0.0,
+        "fact_precision": 0.172,
+        "fact_recall": 0.3265,
+        "fact_f1": 0.2254,
+        "tp": 16,
+        "fp": 77,
+        "fn": 33
+      },
+      "citation": {
+        "citation_presence_rate": 0.0,
+        "article_hit_accuracy": 0.0,
+        "reference_hit_accuracy": 0.0,
+        "citation_precision": 0.0,
+        "evaluated_samples": 42,
+        "predicted_citation_count": 0
+      }
+    },
+    "quantitative_context": {
+      "sample_count": 42,
+      "error_count": 0,
+      "retriever": {
+        "hit@1": 0.5476,
+        "hit@3": 0.7381,
+        "hit@5": 0.8333,
+        "hit@10": 0.9286,
+        "evaluated_samples": 42
+      },
+      "parser": {
+        "exact_match_accuracy": 0.5238,
+        "fact_precision": 0.6742,
+        "fact_recall": 0.6522,
+        "fact_f1": 0.663,
+        "tp": 60,
+        "fp": 29,
+        "fn": 32
+      },
+      "citation": {
+        "citation_presence_rate": 0.0,
+        "article_hit_accuracy": 0.0,
+        "reference_hit_accuracy": 0.0,
+        "citation_precision": 0.0,
+        "evaluated_samples": 42,
+        "predicted_citation_count": 0
+      }
+    },
+    "simple": {
+      "sample_count": 50,
+      "error_count": 0,
+      "retriever": {
+        "hit@1": 0.6531,
+        "hit@3": 0.7755,
+        "hit@5": 0.8571,
+        "hit@10": 0.9388,
+        "evaluated_samples": 49
+      },
+      "parser": {
+        "exact_match_accuracy": 0.56,
+        "fact_precision": 0.6863,
+        "fact_recall": 0.6667,
+        "fact_f1": 0.6763,
+        "tp": 70,
+        "fp": 32,
+        "fn": 35
+      },
+      "citation": {
+        "citation_presence_rate": 0.0,
+        "article_hit_accuracy": 0.0,
+        "reference_hit_accuracy": 0.0,
+        "citation_precision": 0.0,
+        "evaluated_samples": 50,
+        "predicted_citation_count": 0
+      }
+    }
+  },
+  "run_dir": "D:\\giao trinh dai hoc\\KÌ 8 KLTN\\legal_rag_ASP_system-\\evaluation\\batch_logs\\merged_test_run_20260427",
+  "results_path": "D:\\giao trinh dai hoc\\KÌ 8 KLTN\\legal_rag_ASP_system-\\evaluation\\batch_logs\\merged_test_run_20260427\\results.json",
+  "dataset_path": "D:\\giao trinh dai hoc\\KÌ 8 KLTN\\legal_rag_ASP_system-\\public_dataset\\test.json"
+}

@@ -21,6 +21,9 @@
             "transport_dangerous_goods_in_vehicle_without_required_labels_or_identification_symbols"
           ]
         }
+      ],
+      "rule_id": [
+        "d23_k3_1"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 4.000.000 đồng đến 6.000.000 đồng.",
@@ -426,6 +429,9 @@
             "operate_vehicle_outside_permitted_route"
           ]
         }
+      ],
+      "rule_id": [
+        "d28_k3_1"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 8.000.000 đồng đến 12.000.000 đồng.",
@@ -1001,6 +1007,9 @@
             "anti_glare_median_present"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k1_h_2"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -1483,6 +1492,10 @@
             "operate_without_valid_compulsory_liability_insurance"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k5_b_2",
+        "d18_k2_b"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 1.000.000 đồng đến 2.000.000 đồng; hành vi thứ hai bị phạt từ 200.000 đồng đến 300.000 đồng.",
@@ -1859,6 +1872,10 @@
             "listed_violation_causing_accident"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k3_d_1",
+        "d7_k10_b"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 600.000 đồng đến 800.000 đồng; hành vi thứ hai bị phạt từ 10.000.000 đồng đến 14.000.000 đồng.",
@@ -2370,6 +2387,9 @@
             "open_vehicle_door_without_authorization_while_moving"
           ]
         }
+      ],
+      "rule_id": [
+        "d33_k2_b_4"
       ]
     },
     "expected_text_answer": "Người ngồi trên xe sẽ bị phạt từ 1.000.000 đồng đến 2.000.000 đồng.",
@@ -2827,6 +2847,9 @@
             "put_vehicle_into_traffic_without_license_plate"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k12_b_ind"
       ]
     },
     "expected_text_answer": "Chủ phương tiện sẽ bị phạt từ 16.000.000 đồng đến 18.000.000 đồng.",
@@ -3262,6 +3285,9 @@
             "carry_passenger_without_helmet"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k2_i"
       ]
     },
     "expected_text_answer": "Người điều khiển xe mô tô sẽ bị phạt từ 400.000 đồng đến 600.000 đồng.",
@@ -3632,6 +3658,9 @@
             "improper_stop_park_u_turn_reverse_pass_overtake_turn_or_lane_change"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k8_a_3"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -4501,6 +4530,9 @@
             "vehicle_documents_not_translated_to_required_language"
           ]
         }
+      ],
+      "rule_id": [
+        "d37_k1_a"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -4748,6 +4780,9 @@
             "transport_goods_without_required_tie_down"
           ]
         }
+      ],
+      "rule_id": [
+        "d21_k8_dd_1"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 8.000.000 đồng đến 12.000.000 đồng.",
@@ -5034,6 +5069,9 @@
             "insult_threaten_obstruct_or_resist_public_official"
           ]
         }
+      ],
+      "rule_id": [
+        "d12_k14_a"
       ]
     },
     "expected_text_answer": "Cá nhân sẽ bị phạt từ 35.000.000 đồng đến 37.000.000 đồng.",
@@ -5084,6 +5122,9 @@
             "anti_glare_median_present"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k1_h_2"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -5552,6 +5593,9 @@
             "change_vehicle_paint_color_without_matching_registration"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k7_i_org"
       ]
     },
     "expected_text_answer": "Chủ phương tiện sẽ bị phạt từ 8.000.000 đồng đến 12.000.000 đồng.",

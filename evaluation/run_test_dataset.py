@@ -100,6 +100,115 @@ def load_dataset(input_file: Path) -> list[dict]:
     return data
 
 
+def unique_preserve_order(values: list[str]) -> list[str]:
+    seen = set()
+    unique_values = []
+    for value in values:
+        if not value or value in seen:
+            continue
+        seen.add(value)
+        unique_values.append(value)
+    return unique_values
+
+
+def infer_rule_ids_from_sample(sample: dict) -> list[str]:
+    expected_output = sample.get("output", {})
+    if not isinstance(expected_output, dict):
+        return []
+
+    facts = expected_output.get("facts", [])
+    if not isinstance(facts, list):
+        return []
+
+    subject_type = None
+    action_order = []
+    case_contexts = set()
+    case_exceptions = set()
+
+    for fact in facts:
+        if not isinstance(fact, dict):
+            continue
+        args = fact.get("args", [])
+        if not isinstance(args, list) or len(args) != 2:
+            continue
+
+        predicate = fact.get("predicate")
+        value = args[1]
+
+        if predicate == "case_subject_type":
+            subject_type = value
+        elif predicate == "case_action":
+            action_order.append(value)
+        elif predicate == "case_context":
+            case_contexts.add(value)
+        elif predicate == "case_exception":
+            case_exceptions.add(value)
+
+    retrieved_rules = sample.get("input", {}).get("retrieved_rules", [])
+    if not isinstance(retrieved_rules, list):
+        return []
+
+    inferred_rule_ids = []
+    for action in action_order:
+        candidates = []
+        for rule in retrieved_rules:
+            if not isinstance(rule, dict):
+                continue
+            if rule.get("action") != action:
+                continue
+
+            rule_subject = rule.get("subject")
+            if subject_type and rule_subject and rule_subject != subject_type:
+                continue
+
+            rule_context = set(rule.get("context") or [])
+            rule_exception = set(rule.get("exception") or rule.get("exception_ref") or [])
+            if rule_context and not rule_context.issubset(case_contexts):
+                continue
+            if rule_exception and not rule_exception.issubset(case_exceptions):
+                continue
+
+            specificity = len(rule_context) + len(rule_exception)
+            candidates.append((specificity, rule.get("rule_id")))
+
+        if not candidates:
+            continue
+
+        max_specificity = max(specificity for specificity, _ in candidates)
+        for specificity, rule_id in candidates:
+            if specificity == max_specificity and rule_id:
+                inferred_rule_ids.append(rule_id)
+
+    return unique_preserve_order(inferred_rule_ids)
+
+
+def build_expected_output(sample: dict, penalties: list[dict]) -> dict:
+    expected_output = ensure_serializable(sample.get("output", {}))
+    if not isinstance(expected_output, dict):
+        return {}
+
+    existing_rule_ids = expected_output.get("rule_id")
+    if isinstance(existing_rule_ids, list) and existing_rule_ids:
+        expected_output["rule_id"] = unique_preserve_order(existing_rule_ids)
+        return expected_output
+    if isinstance(existing_rule_ids, str) and existing_rule_ids:
+        expected_output["rule_id"] = [existing_rule_ids]
+        return expected_output
+
+    inferred_rule_ids = infer_rule_ids_from_sample(sample)
+    if inferred_rule_ids:
+        expected_output["rule_id"] = inferred_rule_ids
+        return expected_output
+
+    penalty_rule_ids = unique_preserve_order(
+        [penalty.get("rule_id") for penalty in penalties if isinstance(penalty, dict)]
+    )
+    if penalty_rule_ids:
+        expected_output["rule_id"] = penalty_rule_ids
+
+    return expected_output
+
+
 def build_record(sample: dict, result: dict) -> dict:
     predicted_answer = build_text_answer(result)
     penalties = extract_reasoning_results(result.get("reasoning_results", []))
@@ -109,7 +218,7 @@ def build_record(sample: dict, result: dict) -> dict:
         "question_type": sample.get("question_type"),
         "instruction": sample.get("instruction"),
         "question": sample.get("input", {}).get("question", ""),
-        "expected_output": sample.get("output", {}),
+        "expected_output": build_expected_output(sample, penalties),
         "expected_text_answer": sample.get("text_answer", ""),
         "retrieved_chunks": ensure_serializable(result.get("retrieved_chunks", [])),
         "matched_rules": ensure_serializable(result.get("matched_rules", [])),

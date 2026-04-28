@@ -1,0 +1,6 @@
+2026-04-28 15:35:18,101 [INFO] Base run: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\evaluation\batch_logs\test_run_20260427_100239
+2026-04-28 15:35:18,102 [INFO] Rerun: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\evaluation\batch_logs\test_run_20260427_151538
+2026-04-28 15:35:18,103 [INFO] Output directory: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\evaluation\batch_logs\merged_test_run_20260427
+2026-04-28 15:35:19,880 [INFO] Merged 200 records
+2026-04-28 15:35:19,880 [INFO] Replaced 14 records from rerun
+2026-04-28 15:35:19,880 [INFO] Final result: success=199 error=1

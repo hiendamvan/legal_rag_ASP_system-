@@ -21,6 +21,9 @@
             "organize_driver_training_without_training_license"
           ]
         }
+      ],
+      "rule_id": [
+        "d39_k6_org"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 30.000.000 đồng đến 40.000.000 đồng.",
@@ -450,6 +453,9 @@
             "operate_preschool_or_primary_school_transport_vehicle_without_age_appropriate_seats"
           ]
         }
+      ],
+      "rule_id": [
+        "d27_k1_b_2"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 1.000.000 đồng đến 2.000.000 đồng.",
@@ -870,6 +876,9 @@
             "valid_transport_permit"
           ]
         }
+      ],
+      "rule_id": [
+        "d34_k5_a"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -1331,6 +1340,9 @@
             "transport_dangerous_goods_in_vehicle_without_required_labels_or_identification_symbols"
           ]
         }
+      ],
+      "rule_id": [
+        "d23_k3_1"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 4.000.000 đồng đến 6.000.000 đồng.",
@@ -1713,6 +1725,9 @@
             "stay_in_luggage_compartment"
           ]
         }
+      ],
+      "rule_id": [
+        "d33_k2_b_3"
       ]
     },
     "expected_text_answer": "Người ngồi trên xe sẽ bị phạt từ 1.000.000 đồng đến 2.000.000 đồng.",
@@ -2085,6 +2100,9 @@
             "drive_with_bac_over_50_to_80mg_or_brac_over_025_to_04mg"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k9_a"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -2436,6 +2454,9 @@
             "carry_flammable_or_explosive_substances_on_passenger_vehicle"
           ]
         }
+      ],
+      "rule_id": [
+        "d33_k2_a_2"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 1.000.000 đồng đến 2.000.000 đồng.",
@@ -2783,6 +2804,9 @@
             "overtake_or_pass_improperly"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k3_d_1"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -3393,6 +3417,9 @@
             "operate_vehicle_outside_permitted_route"
           ]
         }
+      ],
+      "rule_id": [
+        "d28_k3_1"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 8.000.000 đồng đến 12.000.000 đồng.",
@@ -3938,6 +3965,10 @@
             "change_lane_without_signal"
           ]
         }
+      ],
+      "rule_id": [
+        "d26_k1_a_1",
+        "d6_k2_a_2"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 500.000 đồng đến 1.000.000 đồng; hành vi thứ hai bị phạt từ 600.000 đồng đến 800.000 đồng.",
@@ -4278,6 +4309,9 @@
             "disobey_road_signs_and_markings"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k1_a"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 400.000 đồng đến 600.000 đồng.",
@@ -4623,6 +4657,10 @@
             "install_windshield_or_window_glass_that_is_not_safety_glass"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k7_g_ind",
+        "d32_k2_a_org"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 4.000.000 đồng đến 6.000.000 đồng; hành vi thứ hai bị phạt từ 600.000 đồng đến 800.000 đồng.",
@@ -4935,6 +4973,10 @@
             "carry_container_with_illegally_cut_roof"
           ]
         }
+      ],
+      "rule_id": [
+        "d26_k4_a",
+        "d21_k8_d"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 3.000.000 đồng đến 4.000.000 đồng; hành vi thứ hai bị phạt từ 8.000.000 đồng đến 12.000.000 đồng.",
@@ -5344,6 +5386,9 @@
             "fail_to_store_or_incompletely_store_records_of_one_training_course"
           ]
         }
+      ],
+      "rule_id": [
+        "d39_k3_e"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -5773,6 +5818,9 @@
             "assign_unqualified_instructor_to_teach"
           ]
         }
+      ],
+      "rule_id": [
+        "d39_k3_a_2"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 5.000.000 đồng đến 10.000.000 đồng.",
@@ -6144,6 +6192,10 @@
             "overload_liquid_tanker_20_to_50_percent"
           ]
         }
+      ],
+      "rule_id": [
+        "d23_k3_1",
+        "d26_k1_a_2"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 4.000.000 đồng đến 6.000.000 đồng; hành vi thứ hai bị phạt từ 500.000 đồng đến 1.000.000 đồng.",
@@ -6613,6 +6665,10 @@
             "contract_transport_for_children_students_or_workers"
           ]
         }
+      ],
+      "rule_id": [
+        "d20_k5_l_3",
+        "d20_k5_m_4"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 1.000.000 đồng đến 2.000.000 đồng; hành vi thứ hai bị phạt từ 1.000.000 đồng đến 2.000.000 đồng.",
@@ -7029,6 +7085,9 @@
             "hand_over_car_or_specialized_vehicle_to_person_not_meeting_legal_conditions_to_drive"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k14_i_ind"
       ]
     },
     "expected_text_answer": "Chủ phương tiện sẽ bị phạt từ 28.000.000 đồng đến 30.000.000 đồng.",
@@ -7419,6 +7478,9 @@
             "forced_stop_in_tunnel"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k4_dd_4"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 2.000.000 đồng đến 3.000.000 đồng.",
@@ -8133,6 +8195,9 @@
             "overtake_when_prohibited"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k5_a_1"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -8620,6 +8685,9 @@
             "drive_without_registration_or_with_expired_registration"
           ]
         }
+      ],
+      "rule_id": [
+        "d16_k2_c"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 1.000.000 đồng đến 2.000.000 đồng.",
@@ -9036,6 +9104,9 @@
             "allow_or_commit_road_obstruction_or_unlicensed_smart_traffic_vehicle_violation_under_article34_clause5a"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k16_a_org"
       ]
     },
     "expected_text_answer": "Chủ phương tiện sẽ bị phạt từ 130.000.000 đồng đến 150.000.000 đồng.",
@@ -9419,6 +9490,9 @@
             "install_rear_facing_light"
           ]
         }
+      ],
+      "rule_id": [
+        "d14_k1_dd"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 400.000 đồng đến 600.000 đồng.",
@@ -9872,6 +9946,10 @@
             "allow_or_commit_transporting_flammable_goods_in_tunnel_or_exceeding_driving_time_under_articles20_21"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k16_c_ind",
+        "d32_k9_d_org"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 65.000.000 đồng đến 75.000.000 đồng; hành vi thứ hai bị phạt từ 8.000.000 đồng đến 12.000.000 đồng.",
@@ -10196,6 +10274,9 @@
             "lead_animals_or_carry_bulky_items_as_passenger"
           ]
         }
+      ],
+      "rule_id": [
+        "d12_k5_a_2"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -10602,6 +10683,9 @@
             "anti_glare_median_present"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k1_h_2"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -11054,6 +11138,9 @@
             "commercial_transport_operation"
           ]
         }
+      ],
+      "rule_id": [
+        "d18_k3_c"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 300.000 đồng đến 400.000 đồng.",
@@ -11407,6 +11494,9 @@
             "operate_freight_vehicle_without_journey_monitoring_device"
           ]
         }
+      ],
+      "rule_id": [
+        "d21_k5_c_1"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -11706,6 +11796,9 @@
             "improperly_secure_cargo_or_cause_danger_to_traffic"
           ]
         }
+      ],
+      "rule_id": [
+        "d36_k1_a"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 300.000 đồng đến 400.000 đồng.",
@@ -12071,6 +12164,10 @@
             "operate_without_valid_compulsory_liability_insurance"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k5_b_2",
+        "d18_k2_b"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 1.000.000 đồng đến 2.000.000 đồng; hành vi thứ hai bị phạt từ 200.000 đồng đến 300.000 đồng.",
@@ -12446,6 +12543,10 @@
             "low_power_motorbike"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k1_i",
+        "d18_k5_a_3"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 200.000 đồng đến 400.000 đồng; hành vi thứ hai bị phạt từ 2.000.000 đồng đến 4.000.000 đồng.",
@@ -12872,6 +12973,9 @@
             "cause_accident_by_entering_expressway_with_vehicle_below_minimum_design_speed"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k9_e"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 18.000.000 đồng đến 20.000.000 đồng.",
@@ -13409,6 +13513,9 @@
             "transfer_or_drop_off_passengers_or_commit_other_acts_to_evade_detection_of_overloading_or_overcapacity"
           ]
         }
+      ],
+      "rule_id": [
+        "d20_k6_c_3"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 3.000.000 đồng đến 5.000.000 đồng.",
@@ -13764,6 +13871,9 @@
             "transport_vehicles_machinery_equipment_or_cylindrical_goods_without_tie_down"
           ]
         }
+      ],
+      "rule_id": [
+        "d21_k10_a_1"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 18.000.000 đồng đến 22.000.000 đồng.",
@@ -14174,6 +14284,9 @@
             "valid_transport_permit"
           ]
         }
+      ],
+      "rule_id": [
+        "d34_k3_c_1"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -14577,6 +14690,9 @@
             "open_vehicle_door_unsafely_causing_accident"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k8_a_4"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 14.000.000 đồng đến 16.000.000 đồng.",
@@ -15147,6 +15263,10 @@
             "drive_too_slow_without_keeping_right_causing_obstruction"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k2_d_2",
+        "d7_k2_c"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 400.000 đồng đến 600.000 đồng; hành vi thứ hai bị phạt từ 400.000 đồng đến 600.000 đồng.",
@@ -15598,6 +15718,9 @@
             "keep_boarding_doors_open_while_vehicle_is_moving"
           ]
         }
+      ],
+      "rule_id": [
+        "d20_k3_a"
       ]
     },
     "expected_text_answer": "Người điều khiển xe chở khách sẽ bị phạt từ 600.000 đồng đến 800.000 đồng.",
@@ -16069,6 +16192,9 @@
             "exploit_accident_to_assault_threaten_incite_or_obstruct"
           ]
         }
+      ],
+      "rule_id": [
+        "d12_k6_b_individual"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -16446,6 +16572,10 @@
             "keep_boarding_doors_open_while_vehicle_is_moving"
           ]
         }
+      ],
+      "rule_id": [
+        "d20_k3_dd_2",
+        "d20_k3_a"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 600.000 đồng đến 800.000 đồng; hành vi thứ hai bị phạt từ 600.000 đồng đến 800.000 đồng.",
@@ -16829,6 +16959,9 @@
             "operate_without_road_traffic_legal_knowledge_certificate"
           ]
         }
+      ],
+      "rule_id": [
+        "d19_k2_7"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -17226,6 +17359,10 @@
             "listed_violation_causing_accident"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k3_d_1",
+        "d7_k10_b"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 600.000 đồng đến 800.000 đồng; hành vi thứ hai bị phạt từ 10.000.000 đồng đến 14.000.000 đồng.",
@@ -17714,6 +17851,9 @@
             "transport_wrong_cargo_type_under_transport_permit_for_oversized_or_overweight_cargo"
           ]
         }
+      ],
+      "rule_id": [
+        "d22_k3_d"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 13.000.000 đồng đến 15.000.000 đồng.",
@@ -18104,6 +18244,9 @@
             "open_vehicle_door_without_authorization_while_moving"
           ]
         }
+      ],
+      "rule_id": [
+        "d33_k2_b_4"
       ]
     },
     "expected_text_answer": "Người ngồi trên xe sẽ bị phạt từ 1.000.000 đồng đến 2.000.000 đồng.",
@@ -18545,6 +18688,9 @@
             "valid_transport_permit"
           ]
         }
+      ],
+      "rule_id": [
+        "d34_k3_c_2"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -18948,6 +19094,9 @@
             "speeding_over_35_kmh"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k7_a"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 12.000.000 đồng đến 14.000.000 đồng.",
@@ -19297,6 +19446,9 @@
             "valid_transport_permit"
           ]
         }
+      ],
+      "rule_id": [
+        "d34_k2"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -19654,6 +19806,9 @@
             "operate_tracked_vehicle_directly_on_road_without_required_road_protection_measures"
           ]
         }
+      ],
+      "rule_id": [
+        "d34_k3_b_3"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -19946,6 +20101,9 @@
             "fail_to_yield_to_priority_vehicle"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k6_g"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -20306,6 +20464,9 @@
             "at_crosswalk"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k5_b_1"
       ]
     },
     "expected_text_answer": "Người điều khiển xe mô tô sẽ bị phạt từ 1.000.000 đồng đến 2.000.000 đồng.",
@@ -20763,6 +20924,9 @@
             "change_vehicle_brand_or_paint_color_without_matching_registration"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k1_a_ind"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 200.000 đồng đến 300.000 đồng.",
@@ -21120,6 +21284,9 @@
             "allow_or_commit_overloading_cargo_or_exceeding_towed_mass_100_to_150_percent_under_article21_clause7"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k15_ind"
       ]
     },
     "expected_text_answer": "Chủ phương tiện sẽ bị phạt từ 30.000.000 đồng đến 40.000.000 đồng.",
@@ -21477,6 +21644,9 @@
             "allow_student_drive_without_wearing_badge"
           ]
         }
+      ],
+      "rule_id": [
+        "d39_k1_a_2"
       ]
     },
     "expected_text_answer": "Giáo viên dạy lái xe sẽ bị phạt từ 2.000.000 đồng đến 3.000.000 đồng.",
@@ -21919,6 +22089,9 @@
             "confiscate_vehicle_if_no_proof_of_origin_for_clause_2_c_dd"
           ]
         }
+      ],
+      "rule_id": [
+        "d16_k4_b"
       ]
     },
     "expected_text_answer": "Hành vi này có vi phạm nhưng câu hỏi chưa đủ dữ liệu để nêu mức phạt số học chính xác từ rule được chọn.",
@@ -22262,6 +22435,9 @@
             "allow_animal_to_pull_vehicle_without_driver"
           ]
         }
+      ],
+      "rule_id": [
+        "d11_k1_e"
       ]
     },
     "expected_text_answer": "Người điều khiển xe súc vật kéo sẽ bị phạt từ 150.000 đồng đến 250.000 đồng.",
@@ -22661,6 +22837,10 @@
             "stop_or_park_on_roadway_in_rural_area_with_shoulder"
           ]
         }
+      ],
+      "rule_id": [
+        "d9_k1_d",
+        "d9_k1_dd"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 100.000 đồng đến 200.000 đồng; hành vi thứ hai bị phạt từ 100.000 đồng đến 200.000 đồng.",
@@ -23325,6 +23505,9 @@
             "cause_accident_and_fail_to_stop_or_assist"
           ]
         }
+      ],
+      "rule_id": [
+        "d9_k4_a"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -23951,6 +24134,9 @@
             "fail_to_slow_or_stop_and_yield_from_branch_to_main_road"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k5_n_2"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 4.000.000 đồng đến 6.000.000 đồng.",
@@ -24387,6 +24573,9 @@
             "intra_provincial_bus"
           ]
         }
+      ],
+      "rule_id": [
+        "d20_k3_h"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -24712,6 +24901,9 @@
             "fail_to_report_immediately_after_causing_accident"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k8_5"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 16.000.000 đồng đến 18.000.000 đồng.",
@@ -25044,6 +25236,10 @@
             "drive_wrong_way_on_one_way_or_no_entry_road"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k9_i",
+        "d7_k7_a_1"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 8.000.000 đồng đến 10.000.000 đồng; hành vi thứ hai bị phạt từ 4.000.000 đồng đến 6.000.000 đồng.",
@@ -25488,6 +25684,9 @@
             "pick_up_or_drop_off_passengers_outside_contract_locations"
           ]
         }
+      ],
+      "rule_id": [
+        "d20_k5_g"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 1.000.000 đồng đến 2.000.000 đồng.",
@@ -25883,6 +26082,9 @@
             "drive_without_license_plate"
           ]
         }
+      ],
+      "rule_id": [
+        "d16_k1_a"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -26267,6 +26469,9 @@
             "valid_transport_permit"
           ]
         }
+      ],
+      "rule_id": [
+        "d34_k2"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -26638,6 +26843,9 @@
             "valid_transport_permit"
           ]
         }
+      ],
+      "rule_id": [
+        "d34_k3_c_2"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -27041,6 +27249,9 @@
             "speed_causing_accident"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k8_a_2"
       ]
     },
     "expected_text_answer": "Người điều khiển xe máy chuyên dùng sẽ bị phạt từ 14.000.000 đồng đến 16.000.000 đồng.",
@@ -27428,6 +27639,9 @@
             "confiscate_illegally_installed_priority_signal_device"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k12_a"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -27756,6 +27970,9 @@
             "after_technical_failure_or_force_majeure"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k6_b_3"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -28165,6 +28382,9 @@
             "use_handheld_phone_or_electronic_device_while_driving"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k4_dd_3"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -28442,6 +28662,9 @@
             "operate_ambulance_without_journey_monitoring_device"
           ]
         }
+      ],
+      "rule_id": [
+        "d30_k2_1"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -28833,6 +29056,9 @@
             "anti_glare_median_present"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k1_h_2"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -29308,6 +29534,9 @@
             "change_frame_engine_shape_size_or_characteristics_of_motorbike_without_authorization"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k8_b_ind"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 4.000.000 đồng đến 6.000.000 đồng.",
@@ -29632,6 +29861,9 @@
             "park_on_slope_without_wheel_chocks"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k2_a_6"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -30432,6 +30664,9 @@
             "drive_in_wrong_lane_or_carriageway"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k5_b_2"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -30915,6 +31150,10 @@
             "stop_suddenly"
           ]
         }
+      ],
+      "rule_id": [
+        "d9_k1_a_1",
+        "d9_k1_b_1"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 100.000 đồng đến 200.000 đồng; hành vi thứ hai bị phạt từ 100.000 đồng đến 200.000 đồng.",
@@ -31338,6 +31577,9 @@
             "valid_transport_permit"
           ]
         }
+      ],
+      "rule_id": [
+        "d34_k3_c_3"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -31748,6 +31990,9 @@
             "on_one_way_road"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k4_e_1"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 2.000.000 đồng đến 3.000.000 đồng.",
@@ -32475,6 +32720,9 @@
             "operate_vehicle_without_child_image_recording_and_left_behind_warning_devices"
           ]
         }
+      ],
+      "rule_id": [
+        "d27_k3_b_3"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 3.000.000 đồng đến 5.000.000 đồng.",
@@ -32917,6 +33165,9 @@
             "put_vehicle_into_traffic_without_license_plate"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k12_b_ind"
       ]
     },
     "expected_text_answer": "Chủ phương tiện sẽ bị phạt từ 16.000.000 đồng đến 18.000.000 đồng.",
@@ -33337,6 +33588,10 @@
             "forced_stop_on_expressway_travel_lane"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k8_3",
+        "d6_k7_c_4"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 16.000.000 đồng đến 18.000.000 đồng; hành vi thứ hai bị phạt từ 12.000.000 đồng đến 14.000.000 đồng.",
@@ -33760,6 +34015,9 @@
             "excluding_driver"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k3_i"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -34250,6 +34508,9 @@
             "in_road_tunnel"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k5_c_1"
       ]
     },
     "expected_text_answer": "Người điều khiển xe máy chuyên dùng sẽ bị phạt từ 2.000.000 đồng đến 3.000.000 đồng.",
@@ -34950,6 +35211,9 @@
             "overload_cargo_100_to_150_percent"
           ]
         }
+      ],
+      "rule_id": [
+        "d21_k7_a"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 7.000.000 đồng đến 8.000.000 đồng.",
@@ -35255,6 +35519,9 @@
             "carry_container_that_shifts_despite_using_locking_mechanism"
           ]
         }
+      ],
+      "rule_id": [
+        "d21_k10_b_2"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -35574,6 +35841,10 @@
             "fail_to_yield_or_obstruct_overtaking_or_priority_vehicle"
           ]
         }
+      ],
+      "rule_id": [
+        "d9_k4_a",
+        "d9_k2_d"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 400.000 đồng đến 600.000 đồng; hành vi thứ hai bị phạt từ 150.000 đồng đến 250.000 đồng.",
@@ -36023,6 +36294,10 @@
             "insufficient_classrooms"
           ]
         }
+      ],
+      "rule_id": [
+        "d39_k2_c",
+        "d39_k4_dd_1"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 3.000.000 đồng đến 5.000.000 đồng; hành vi thứ hai bị phạt từ 10.000.000 đồng đến 20.000.000 đồng.",
@@ -36400,6 +36675,9 @@
             "fail_to_complete_vehicle_registration_plate_or_inspection_certificate_withdrawal_procedures"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k7_b_ind"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 4.000.000 đồng đến 6.000.000 đồng.",
@@ -36679,6 +36957,9 @@
             "carry_passenger_without_helmet"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k2_i"
       ]
     },
     "expected_text_answer": "Người điều khiển xe mô tô sẽ bị phạt từ 400.000 đồng đến 600.000 đồng.",
@@ -37027,6 +37308,10 @@
             "carry_two_passengers"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k3_i_1",
+        "d7_k2_g"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 600.000 đồng đến 800.000 đồng; hành vi thứ hai bị phạt từ 400.000 đồng đến 600.000 đồng.",
@@ -37419,6 +37704,9 @@
             "disobey_road_signs_or_markings"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k1_a"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 400.000 đồng đến 600.000 đồng.",
@@ -37982,6 +38270,9 @@
             "operate_with_specialized_parts_installed_in_wrong_position"
           ]
         }
+      ],
+      "rule_id": [
+        "d16_k1_c_1"
       ]
     },
     "expected_text_answer": "Người điều khiển xe máy chuyên dùng sẽ bị phạt từ 800.000 đồng đến 1.000.000 đồng.",
@@ -38624,6 +38915,9 @@
             "international_fixed_route_transport_without_required_transport_order_or_passenger_list_or_with_unlisted_passengers"
           ]
         }
+      ],
+      "rule_id": [
+        "d20_k5_h"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -39024,6 +39318,9 @@
             "speed_over_limit_from_5_to_under_10_kmh"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k2_b"
       ]
     },
     "expected_text_answer": "Người điều khiển xe mô tô sẽ bị phạt từ 400.000 đồng đến 600.000 đồng.",
@@ -39449,6 +39746,9 @@
             "valid_transport_permit"
           ]
         }
+      ],
+      "rule_id": [
+        "d34_k3_c_3"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -39852,6 +40152,9 @@
             "drive_in_wrong_lane_or_wrong_side"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k6_dd_2"
       ]
     },
     "expected_text_answer": "Người điều khiển xe máy chuyên dùng sẽ bị phạt từ 3.000.000 đồng đến 5.000.000 đồng.",
@@ -40505,6 +40808,9 @@
             "turn_without_observation"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k3_c_1"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -41187,6 +41493,9 @@
             "organize_illegal_racing"
           ]
         }
+      ],
+      "rule_id": [
+        "d35_k2_ind"
       ]
     },
     "expected_text_answer": "Người thực hiện hành vi sẽ bị phạt từ 40.000.000 đồng đến 50.000.000 đồng.",
@@ -41583,6 +41892,9 @@
             "operate_road_rescue_vehicle_without_driver_image_recording_device"
           ]
         }
+      ],
+      "rule_id": [
+        "d29_k1_1"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 1.000.000 đồng đến 2.000.000 đồng.",
@@ -42071,6 +42383,10 @@
             "overtake_in_no_overtaking_zone"
           ]
         }
+      ],
+      "rule_id": [
+        "d36_k1_b_3",
+        "d6_k5_a_2"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 300.000 đồng đến 400.000 đồng; hành vi thứ hai bị phạt từ 4.000.000 đồng đến 6.000.000 đồng.",
@@ -42402,6 +42718,9 @@
             "violate_license_plate_or_vehicle_marking_regulations_for_car"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k9_e_org"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -42804,6 +43123,9 @@
             "stop_or_park_at_pickup_or_dropoff_point"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k2_b_5"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -43213,6 +43535,9 @@
             "race_on_road"
           ]
         }
+      ],
+      "rule_id": [
+        "d9_k3_a_2"
       ]
     },
     "expected_text_answer": "Người đi xe đạp sẽ bị phạt từ 300.000 đồng đến 400.000 đồng.",
@@ -43603,6 +43928,9 @@
             "put_motorbike_into_traffic_with_unauthorized_license_plate"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k8_h_3_ind"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 4.000.000 đồng đến 6.000.000 đồng.",
@@ -44026,6 +44354,9 @@
             "intra_provincial_bus"
           ]
         }
+      ],
+      "rule_id": [
+        "d20_k3_h"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -44358,6 +44689,10 @@
             "place_illegal_obstacle_on_road"
           ]
         }
+      ],
+      "rule_id": [
+        "d12_k9_individual",
+        "d12_k11_a_1"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 3.000.000 đồng đến 5.000.000 đồng; hành vi thứ hai bị phạt từ 6.000.000 đồng đến 8.000.000 đồng.",
@@ -44683,6 +45018,9 @@
             "fail_to_register_transfer_of_car_ownership"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k7_h_ind"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 4.000.000 đồng đến 6.000.000 đồng.",
@@ -45028,6 +45366,10 @@
             "allow_hammock_use_on_vehicle_while_moving"
           ]
         }
+      ],
+      "rule_id": [
+        "d20_k2",
+        "d20_k3_d"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 400.000 đồng đến 600.000 đồng; hành vi thứ hai bị phạt từ 600.000 đồng đến 800.000 đồng.",
@@ -45359,6 +45701,9 @@
             "while_vehicle_is_moving"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k13_3"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -46040,6 +46385,9 @@
             "fail_to_remove_dangerous_goods_symbol_when_no_longer_transporting_that_goods_type"
           ]
         }
+      ],
+      "rule_id": [
+        "d23_k1_2"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -46367,6 +46715,9 @@
             "on_narrow_road_slope_curve_or_no_u_turn_zone"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k4_d_2"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -47189,6 +47540,9 @@
             "improper_stop_park_u_turn_reverse_pass_overtake_turn_or_lane_change"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k8_a_3"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -48042,6 +48396,9 @@
             "operate_preschool_or_primary_school_transport_vehicle_without_age_appropriate_seat_belts"
           ]
         }
+      ],
+      "rule_id": [
+        "d27_k1_b_1"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 1.000.000 đồng đến 2.000.000 đồng.",
@@ -48471,6 +48828,9 @@
             "put_road_rescue_vehicle_or_ambulance_into_traffic_without_or_with_noncompliant_journey_monitoring_device"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k7_m_ind"
       ]
     },
     "expected_text_answer": "Chủ phương tiện sẽ bị phạt từ 4.000.000 đồng đến 6.000.000 đồng.",
@@ -48900,6 +49260,9 @@
             "traffic_organization_allows"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k2_b_3"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -49554,6 +49917,9 @@
             "operate_vehicle_outside_permitted_operating_area"
           ]
         }
+      ],
+      "rule_id": [
+        "d28_k3_3"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -49931,6 +50297,9 @@
             "use_training_vehicle_without_training_sign"
           ]
         }
+      ],
+      "rule_id": [
+        "d39_k3_b_3"
       ]
     },
     "expected_text_answer": "Cơ sở đào tạo lái xe sẽ bị phạt từ 5.000.000 đồng đến 10.000.000 đồng.",
@@ -50379,6 +50748,9 @@
             "transport_goods_or_waste_leaking_liquid_on_road"
           ]
         }
+      ],
+      "rule_id": [
+        "d17_k2_a_3"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -50665,6 +51037,9 @@
             "wrong_lane_or_carriageway_causing_accident"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k10_a_11"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 20.000.000 đồng đến 22.000.000 đồng.",
@@ -51395,6 +51770,9 @@
             "permitted_parking_location"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k2_b_3"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -52124,6 +52502,10 @@
             "on_no_entry_road"
           ]
         }
+      ],
+      "rule_id": [
+        "d21_k2_b_2",
+        "d6_k4_e_2"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 800.000 đồng đến 1.000.000 đồng; hành vi thứ hai bị phạt từ 2.000.000 đồng đến 3.000.000 đồng.",
@@ -52397,6 +52779,9 @@
             "on_road"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k13_1"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -52781,6 +53166,9 @@
             "valid_transport_permit"
           ]
         }
+      ],
+      "rule_id": [
+        "d34_k2"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -53152,6 +53540,9 @@
             "valid_transport_permit"
           ]
         }
+      ],
+      "rule_id": [
+        "d34_k3_c_3"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -53555,6 +53946,9 @@
             "threaten_insult_solicit_or_compete_for_passengers"
           ]
         }
+      ],
+      "rule_id": [
+        "d20_k6_c_1"
       ]
     },
     "expected_text_answer": "Người điều khiển xe chở khách sẽ bị phạt từ 3.000.000 đồng đến 5.000.000 đồng.",
@@ -53975,6 +54369,9 @@
             "transport_not_compliant_with_international_treaties"
           ]
         }
+      ],
+      "rule_id": [
+        "d37_k3_c"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 3.000.000 đồng đến 5.000.000 đồng.",
@@ -54441,6 +54838,10 @@
             "operate_vehicle_without_driver_image_recording_device"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k3_d_1",
+        "d27_k1_c_1"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 800.000 đồng đến 1.000.000 đồng; hành vi thứ hai bị phạt từ 1.000.000 đồng đến 2.000.000 đồng.",
@@ -54766,6 +55167,9 @@
             "hang_or_push_or_pull_other_objects_or_vehicles"
           ]
         }
+      ],
+      "rule_id": [
+        "d9_k2_c_1"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 150.000 đồng đến 250.000 đồng.",
@@ -55136,6 +55540,9 @@
             "vehicle_documents_not_translated_to_required_language"
           ]
         }
+      ],
+      "rule_id": [
+        "d37_k1_a"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -55360,6 +55767,9 @@
             "use_expired_international_transport_permit"
           ]
         }
+      ],
+      "rule_id": [
+        "d37_k3_b_2"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 3.000.000 đồng đến 5.000.000 đồng.",
@@ -55705,6 +56115,10 @@
             "fail_to_exchange_vehicle_registration_certificate_or_license_plate_for_car"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k3_c_org",
+        "d32_k7_c_ind"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 1.600.000 đồng đến 2.000.000 đồng; hành vi thứ hai bị phạt từ 4.000.000 đồng đến 6.000.000 đồng.",
@@ -56043,6 +56457,9 @@
             "valid_transport_permit"
           ]
         }
+      ],
+      "rule_id": [
+        "d34_k2"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -56407,6 +56824,9 @@
             "transport_live_animals_or_fresh_food_without_required_documents"
           ]
         }
+      ],
+      "rule_id": [
+        "d24_k1"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 1.000.000 đồng đến 2.000.000 đồng.",
@@ -56754,6 +57174,9 @@
             "valid_transport_permit"
           ]
         }
+      ],
+      "rule_id": [
+        "d34_k3_c_1"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -57157,6 +57580,9 @@
             "fixed_route_transport_without_or_without_carrying_transport_order_or_with_incomplete_or_unconfirmed_order"
           ]
         }
+      ],
+      "rule_id": [
+        "d20_k5_e"
       ]
     },
     "expected_text_answer": "Người điều khiển xe chở khách sẽ bị phạt từ 1.000.000 đồng đến 2.000.000 đồng.",
@@ -57570,6 +57996,9 @@
             "disobey_signs_or_markings"
           ]
         }
+      ],
+      "rule_id": [
+        "d9_k1_c"
       ]
     },
     "expected_text_answer": "Người đi xe đạp sẽ bị phạt từ 100.000 đồng đến 200.000 đồng.",
@@ -57930,6 +58359,9 @@
             "valid_transport_permit"
           ]
         }
+      ],
+      "rule_id": [
+        "d34_k3_c_2"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -58340,6 +58772,10 @@
             "use_skateboard_roller_skates_or_similar_on_roadway"
           ]
         }
+      ],
+      "rule_id": [
+        "d12_k8_individual",
+        "d12_k2_b_2"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 2.000.000 đồng đến 4.000.000 đồng; hành vi thứ hai bị phạt từ 200.000 đồng đến 250.000 đồng.",
@@ -58763,6 +59199,10 @@
             "put_vehicle_into_traffic_without_registration_or_with_expired_or_invalid_registration"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k7_g_ind",
+        "d32_k12_a_ind"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 4.000.000 đồng đến 6.000.000 đồng; hành vi thứ hai bị phạt từ 16.000.000 đồng đến 18.000.000 đồng.",
@@ -59081,6 +59521,9 @@
             "transport_oversized_or_overweight_cargo_without_required_dimension_warning_sign"
           ]
         }
+      ],
+      "rule_id": [
+        "d22_k1_a"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 2.000.000 đồng đến 3.000.000 đồng.",
@@ -59471,6 +59914,9 @@
             "fail_to_exchange_vehicle_registration_certificate_or_license_plate"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k3_b_ind"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 800.000 đồng đến 1.000.000 đồng.",
@@ -59802,6 +60248,9 @@
             "allow_or_commit_overloading_cargo_or_exceeding_towed_mass_30_to_50_percent_under_article21"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k11_b_org"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 20.000.000 đồng đến 24.000.000 đồng.",
@@ -60159,6 +60608,9 @@
             "transport_goods_without_required_tie_down"
           ]
         }
+      ],
+      "rule_id": [
+        "d21_k8_dd_1"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 8.000.000 đồng đến 12.000.000 đồng.",
@@ -60436,6 +60888,9 @@
             "anti_glare_median_present"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k3_b_2"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -61004,6 +61459,9 @@
             "occupying_part_of_roadway_or_stopping_in_prohibited_place"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k1_b_2"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 400.000 đồng đến 600.000 đồng.",
@@ -61620,6 +62078,9 @@
             "impose_illegal_procedural_requirements_in_vehicle_inspection"
           ]
         }
+      ],
+      "rule_id": [
+        "d40_k1_c"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -61952,6 +62413,10 @@
             "drive_with_medium_alcohol_concentration"
           ]
         }
+      ],
+      "rule_id": [
+        "d9_k2_a_2",
+        "d9_k3_d"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 150.000 đồng đến 250.000 đồng; hành vi thứ hai bị phạt từ 300.000 đồng đến 400.000 đồng.",
@@ -62335,6 +62800,9 @@
             "fail_to_slow_and_yield_to_vehicle_from_right_at_non_roundabout_intersection"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k6_d_1"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -62792,6 +63260,9 @@
             "put_vehicle_into_traffic_with_license_plate_not_matching_registration_or_unauthorized_plate"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k13_d_ind"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 20.000.000 đồng đến 26.000.000 đồng.",
@@ -63175,6 +63646,9 @@
             "fail_to_yield_to_oncoming_vehicle_on_narrow_slope_or_obstructed_road"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k5_c_2"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 4.000.000 đồng đến 6.000.000 đồng.",
@@ -63727,6 +64201,9 @@
             "contract_transport_for_children_students_or_workers"
           ]
         }
+      ],
+      "rule_id": [
+        "d20_k5_m_4"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -64086,6 +64563,9 @@
             "issue_vehicle_modification_certification_not_in_compliance"
           ]
         }
+      ],
+      "rule_id": [
+        "d40_k2_d"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 10.000.000 đồng đến 15.000.000 đồng.",
@@ -64417,6 +64897,9 @@
             "disobey_traffic_controller_instructions"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k7_b"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -64755,6 +65238,9 @@
             "cross_median_strip"
           ]
         }
+      ],
+      "rule_id": [
+        "d10_k1_a_2"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 150.000 đồng đến 250.000 đồng.",
@@ -65154,6 +65640,9 @@
             "valid_transport_permit"
           ]
         }
+      ],
+      "rule_id": [
+        "d34_k3_c_3"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -65557,6 +66046,9 @@
             "stop_where_no_stopping_or_parking_sign_present"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k2_dd_8"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 600.000 đồng đến 800.000 đồng.",
@@ -66408,6 +66900,10 @@
             "exploit_accident_to_assault_threaten_incite_or_obstruct"
           ]
         }
+      ],
+      "rule_id": [
+        "d12_k6_a_organization",
+        "d12_k6_b_organization"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 1.000.000 đồng đến 2.000.000 đồng; hành vi thứ hai bị phạt từ 1.000.000 đồng đến 2.000.000 đồng.",
@@ -66772,6 +67268,9 @@
             "insult_threaten_obstruct_or_resist_public_official"
           ]
         }
+      ],
+      "rule_id": [
+        "d12_k14_a"
       ]
     },
     "expected_text_answer": "Cá nhân sẽ bị phạt từ 35.000.000 đồng đến 37.000.000 đồng.",
@@ -66808,6 +67307,9 @@
             "put_motorbike_into_traffic_with_unauthorized_license_plate"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k8_h_3_org"
       ]
     },
     "expected_text_answer": "Chủ phương tiện sẽ bị phạt từ 8.000.000 đồng đến 12.000.000 đồng.",
@@ -67231,6 +67733,9 @@
             "excluding_driver"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k3_i"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -67721,6 +68226,9 @@
             "on_expressway"
           ]
         }
+      ],
+      "rule_id": [
+        "d11_k3"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 1.000.000 đồng đến 2.000.000 đồng.",
@@ -68136,6 +68644,9 @@
             "anti_glare_median_present"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k1_h_2"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -68574,6 +69085,9 @@
             "improper_u_turn_causing_accident"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k10_a_5"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -69201,6 +69715,10 @@
             "on_expressway"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k3_c_3",
+        "d6_k11_dd_2"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 800.000 đồng đến 1.000.000 đồng; hành vi thứ hai bị phạt từ 30.000.000 đồng đến 40.000.000 đồng.",
@@ -69815,6 +70333,10 @@
             "overtake_in_no_overtaking_zone"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k3_b_1",
+        "d6_k5_a_2"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 800.000 đồng đến 1.000.000 đồng; hành vi thứ hai bị phạt từ 4.000.000 đồng đến 6.000.000 đồng.",
@@ -70317,6 +70839,10 @@
             "insufficient_devices_to_monitor_theory_time_practical_time_or_distance"
           ]
         }
+      ],
+      "rule_id": [
+        "d39_k3_d_2",
+        "d39_k4_h_1"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 5.000.000 đồng đến 10.000.000 đồng; hành vi thứ hai bị phạt từ 10.000.000 đồng đến 20.000.000 đồng.",
@@ -70668,6 +71194,9 @@
             "use_umbrella_or_phone_while_driving"
           ]
         }
+      ],
+      "rule_id": [
+        "d9_k1_h_1"
       ]
     },
     "expected_text_answer": "Người đi xe đạp sẽ bị phạt từ 100.000 đồng đến 200.000 đồng.",
@@ -71061,6 +71590,10 @@
             "drive_with_noncompliant_steering_system"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k9_dd_3",
+        "d16_k1_b_2"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 18.000.000 đồng đến 20.000.000 đồng; hành vi thứ hai bị phạt từ 800.000 đồng đến 1.000.000 đồng.",
@@ -71561,6 +72094,10 @@
             "when_pedestrians_are_crossing"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k2_d_4",
+        "d6_k3_b_3"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 600.000 đồng đến 800.000 đồng; hành vi thứ hai bị phạt từ 800.000 đồng đến 1.000.000 đồng.",
@@ -72375,6 +72912,10 @@
             "stop_or_park_on_fixed_median"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k5_dd_2",
+        "d8_k2_a_4"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 2.000.000 đồng đến 3.000.000 đồng; hành vi thứ hai bị phạt từ 600.000 đồng đến 800.000 đồng.",
@@ -73023,6 +73564,9 @@
             "operate_tractor_truck_without_driver_image_recording_device"
           ]
         }
+      ],
+      "rule_id": [
+        "d21_k3_b_1"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 1.000.000 đồng đến 2.000.000 đồng.",
@@ -73485,6 +74029,9 @@
             "intra_provincial_bus"
           ]
         }
+      ],
+      "rule_id": [
+        "d20_k3_h"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -73810,6 +74357,9 @@
             "operate_road_rescue_vehicle_with_nonfunctional_journey_monitoring_device"
           ]
         }
+      ],
+      "rule_id": [
+        "d29_k3_2"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 3.000.000 đồng đến 5.000.000 đồng.",
@@ -74290,6 +74840,9 @@
             "valid_transport_permit"
           ]
         }
+      ],
+      "rule_id": [
+        "d34_k3_c_3"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -74693,6 +75246,9 @@
             "drive_illegally_manufactured_or_assembled_vehicle"
           ]
         }
+      ],
+      "rule_id": [
+        "d14_k4"
       ]
     },
     "expected_text_answer": "Người điều khiển xe mô tô có hành vi vi phạm theo quy định của điều luật được áp dụng.",
@@ -75121,6 +75677,9 @@
             "on_narrow_or_no_shoulder_road"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k2_d_2"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 600.000 đồng đến 800.000 đồng.",
@@ -75946,6 +76505,9 @@
             "at_unmarked_crossing"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k5_e_2"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 2.000.000 đồng đến 3.000.000 đồng.",
@@ -76507,6 +77069,10 @@
             "use_another_drivers_identification_card_for_login"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k3_h_2",
+        "d21_k3_a_2"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 800.000 đồng đến 1.000.000 đồng; hành vi thứ hai bị phạt từ 1.000.000 đồng đến 2.000.000 đồng.",
@@ -76839,6 +77405,10 @@
             "allow_or_commit_transporting_non_tied_vehicles_machinery_or_cylindrical_goods_under_article21_clause10"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k11_d_org",
+        "d32_k13_dd_ind"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 20.000.000 đồng đến 24.000.000 đồng; hành vi thứ hai bị phạt từ 20.000.000 đồng đến 26.000.000 đồng.",
@@ -77183,6 +77753,9 @@
             "stop_not_close_to_right_curb"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k2_dd_1"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 600.000 đồng đến 800.000 đồng.",
@@ -77724,6 +78297,9 @@
             "fail_to_slow_and_yield_to_right_at_non_roundabout_intersection"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k5_o_1"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 4.000.000 đồng đến 6.000.000 đồng.",
@@ -78174,6 +78750,9 @@
             "overload_cargo_over_150_percent"
           ]
         }
+      ],
+      "rule_id": [
+        "d21_k8_a"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -78531,6 +79110,9 @@
             "use_temporary_or_restricted_registration_beyond_allowed_time_route_or_scope"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k8_dd_2_ind"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -78855,6 +79437,9 @@
             "carry_toxic_chemicals_on_passenger_vehicle"
           ]
         }
+      ],
+      "rule_id": [
+        "d33_k2_a_1"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -79281,6 +79866,9 @@
             "run_red_light"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k7_c"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -79613,6 +80201,9 @@
             "valid_transport_permit"
           ]
         }
+      ],
+      "rule_id": [
+        "d34_k4_a"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -80036,6 +80627,9 @@
             "traffic_organization_allows"
           ]
         }
+      ],
+      "rule_id": [
+        "d8_k2_b_3"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -80697,6 +81291,9 @@
             "change_vehicle_paint_color_without_matching_registration"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k7_i_org"
       ]
     },
     "expected_text_answer": "Chủ phương tiện sẽ bị phạt từ 8.000.000 đồng đến 12.000.000 đồng.",
@@ -80966,6 +81563,9 @@
             "leave_vehicle_on_road_or_sidewalk_illegally"
           ]
         }
+      ],
+      "rule_id": [
+        "d9_k1_k_1"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -81589,6 +82189,10 @@
             "on_expressway"
           ]
         }
+      ],
+      "rule_id": [
+        "d21_k9",
+        "d6_k5_g_1"
       ]
     },
     "expected_text_answer": "Hành vi thứ nhất bị phạt từ 10.000.000 đồng đến 12.000.000 đồng; hành vi thứ hai bị phạt từ 4.000.000 đồng đến 6.000.000 đồng.",
@@ -81954,6 +82558,9 @@
             "arrange_or_secure_luggage_unsafely"
           ]
         }
+      ],
+      "rule_id": [
+        "d20_k3_dd_1"
       ]
     },
     "expected_text_answer": "Không đủ thông tin để xác định chính xác mức xử phạt vì chưa rõ loại chủ thể hoặc phương tiện áp dụng.",
@@ -82266,6 +82873,9 @@
             "transport_goods_or_provide_services_without_required_license"
           ]
         }
+      ],
+      "rule_id": [
+        "d21_k6_dd_1"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 5.000.000 đồng đến 7.000.000 đồng.",
@@ -82729,6 +83339,9 @@
             "cause_traffic_accident_by_noncompliant_transport_of_vehicles_machinery_or_containers"
           ]
         }
+      ],
+      "rule_id": [
+        "d21_k11_3"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 30.000.000 đồng đến 35.000.000 đồng.",
@@ -83251,6 +83864,9 @@
             "at_etc_toll_lane"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k4_a"
       ]
     },
     "expected_text_answer": "Người điều khiển phương tiện sẽ bị phạt từ 2.000.000 đồng đến 3.000.000 đồng.",
@@ -83797,6 +84413,9 @@
             "on_pedestrian_crossing"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k4_e_4"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 2.000.000 đồng đến 3.000.000 đồng.",
@@ -84496,6 +85115,9 @@
             "temporary_registered_vehicle"
           ]
         }
+      ],
+      "rule_id": [
+        "d16_k2_b"
       ]
     },
     "expected_text_answer": "Trường hợp này không bị xử phạt vì thuộc ngoại lệ theo quy định.",
@@ -84912,6 +85534,9 @@
             "ride_in_group_speeding"
           ]
         }
+      ],
+      "rule_id": [
+        "d7_k9_b"
       ]
     },
     "expected_text_answer": "Người điều khiển xe mô tô sẽ bị phạt từ 8.000.000 đồng đến 10.000.000 đồng.",
@@ -85304,6 +85929,9 @@
             "put_road_rescue_vehicle_or_ambulance_into_traffic_without_or_with_noncompliant_driver_image_device"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k7_n_ind"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 4.000.000 đồng đến 6.000.000 đồng.",
@@ -85700,6 +86328,9 @@
             "fail_to_complete_vehicle_registration_plate_or_inspection_certificate_withdrawal_procedures"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k7_b_org"
       ]
     },
     "expected_text_answer": "Chủ phương tiện sẽ bị phạt từ 8.000.000 đồng đến 12.000.000 đồng.",
@@ -85986,6 +86617,9 @@
             "forced_stop_on_expressway_travel_lane"
           ]
         }
+      ],
+      "rule_id": [
+        "d6_k7_c_3"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 12.000.000 đồng đến 14.000.000 đồng.",
@@ -86593,6 +87227,9 @@
             "use_unauthorized_motorbike_emissions_inspection_certificate"
           ]
         }
+      ],
+      "rule_id": [
+        "d32_k1_b_3_org"
       ]
     },
     "expected_text_answer": "Mức phạt áp dụng là từ 400.000 đồng đến 600.000 đồng.",

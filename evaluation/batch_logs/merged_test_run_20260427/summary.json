@@ -1,0 +1,29 @@
+{
+  "input_file": "D:\\giao trinh dai hoc\\KÌ 8 KLTN\\legal_rag_ASP_system-\\public_dataset\\test.json",
+  "output_dir": "D:\\giao trinh dai hoc\\KÌ 8 KLTN\\legal_rag_ASP_system-\\evaluation\\batch_logs\\merged_test_run_20260427",
+  "question_count": 200,
+  "error_count": 1,
+  "success_count": 199,
+  "top_k": 10,
+  "created_at": "2026-04-28T15:35:18",
+  "base_run_dir": "D:\\giao trinh dai hoc\\KÌ 8 KLTN\\legal_rag_ASP_system-\\evaluation\\batch_logs\\test_run_20260427_100239",
+  "rerun_dir": "D:\\giao trinh dai hoc\\KÌ 8 KLTN\\legal_rag_ASP_system-\\evaluation\\batch_logs\\test_run_20260427_151538",
+  "replaced_count": 14,
+  "replaced_ids": [
+    "official_00105",
+    "official_00517",
+    "official_00823",
+    "official_00714",
+    "official_00657",
+    "official_00026",
+    "official_00067",
+    "official_00147",
+    "official_01149",
+    "official_01051",
+    "official_00070",
+    "official_00098",
+    "official_00781",
+    "official_00290"
+  ],
+  "rerun_error_count": 1
+}
