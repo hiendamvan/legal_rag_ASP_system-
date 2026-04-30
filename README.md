@@ -15,7 +15,7 @@ legal_rag_ASP_system-/
 │   └── nghidinh_168_2024.doc(x)     # Văn bản luật gốc
 │
 ├── legal_knowlegde/
-│   ├── nd168_kb.lp              # Knowledge base ASP (Chương II)
+│   ├── dieu6.lp              # Knowledge base ASP (Chương II)
 │   ├── reasoning.lp                 # Luật suy luận clingo
 │   ├── case_fact.lp                 # Ví dụ case fact thủ công
 │   ├── run_clingo.py                # Chạy clingo độc lập
@@ -138,12 +138,12 @@ Câu hỏi
 ```
 Câu hỏi
   → embed → ChromaDB → top-k chunks
-  → match chunk metadata → ASP rules (nd168_kb.lp)
+  → match chunk metadata → ASP rules (dieu6.lp)
   → build prompt (câu hỏi + rules JSON)
   → call_llm() → hdv2709/qwen_finetune (localhost:8000)
   → parse JSON facts
   → facts_to_asp() → driver_type / did_action / has_context
-  → clingo (nd168_kb.lp + facts + reasoning.lp)
+  → clingo (dieu6.lp + facts + reasoning.lp)
   → result(rule_id, fine_min, fine_max)
 ```
 

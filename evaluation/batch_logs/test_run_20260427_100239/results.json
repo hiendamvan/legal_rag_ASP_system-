@@ -67280,10 +67280,10 @@
     "asp_facts": "",
     "reasoning_results": [],
     "penalties": [],
-    "predicted_text_answer": "Lỗi pipeline: Không tìm thấy ASP rule phù hợp với các điều khoản được retrieve.\nKiểm tra lại nd168_kb.lp hoặc tăng top_k.",
+    "predicted_text_answer": "Lỗi pipeline: Không tìm thấy ASP rule phù hợp với các điều khoản được retrieve.\nKiểm tra lại dieu6.lp hoặc tăng top_k.",
     "llm_raw": "",
     "llm_prompt": "",
-    "error": "Không tìm thấy ASP rule phù hợp với các điều khoản được retrieve.\nKiểm tra lại nd168_kb.lp hoặc tăng top_k."
+    "error": "Không tìm thấy ASP rule phù hợp với các điều khoản được retrieve.\nKiểm tra lại dieu6.lp hoặc tăng top_k."
   },
   {
     "id": "official_00003",

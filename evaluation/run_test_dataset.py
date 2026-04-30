@@ -50,6 +50,9 @@ def build_text_answer(result: dict) -> str:
     if result.get("error"):
         return f"Lỗi pipeline: {result['error']}"
 
+    if result.get("final_answer"):
+        return result["final_answer"]
+
     penalties = extract_reasoning_results(result.get("reasoning_results", []))
     if penalties:
         if len(penalties) == 1:
@@ -71,7 +74,7 @@ def build_text_answer(result: dict) -> str:
     if llm_raw:
         return llm_raw
 
-    return "Không xác định được vi phạm từ dữ liệu đầu vào."
+    return "Không đủ cơ sở pháp lí để trả lời"
 
 
 def setup_logger(log_file: Path) -> logging.Logger:
@@ -111,6 +114,28 @@ def unique_preserve_order(values: list[str]) -> list[str]:
     return unique_values
 
 
+def get_sample_question(sample: dict) -> str:
+    input_payload = sample.get("input", {})
+    if isinstance(input_payload, dict):
+        question = input_payload.get("question", "")
+        if isinstance(question, str) and question.strip():
+            return question.strip()
+
+    question = sample.get("question", "")
+    return question.strip() if isinstance(question, str) else ""
+
+
+def get_sample_retrieved_rules(sample: dict) -> list[dict]:
+    input_payload = sample.get("input", {})
+    if isinstance(input_payload, dict):
+        retrieved_rules = input_payload.get("retrieved_rules", [])
+        if isinstance(retrieved_rules, list):
+            return retrieved_rules
+
+    retrieved_rules = sample.get("retrieved_rule", [])
+    return retrieved_rules if isinstance(retrieved_rules, list) else []
+
+
 def infer_rule_ids_from_sample(sample: dict) -> list[str]:
     expected_output = sample.get("output", {})
     if not isinstance(expected_output, dict):
@@ -144,9 +169,7 @@ def infer_rule_ids_from_sample(sample: dict) -> list[str]:
         elif predicate == "case_exception":
             case_exceptions.add(value)
 
-    retrieved_rules = sample.get("input", {}).get("retrieved_rules", [])
-    if not isinstance(retrieved_rules, list):
-        return []
+    retrieved_rules = get_sample_retrieved_rules(sample)
 
     inferred_rule_ids = []
     for action in action_order:
@@ -175,6 +198,68 @@ def infer_rule_ids_from_sample(sample: dict) -> list[str]:
             continue
 
         max_specificity = max(specificity for specificity, _ in candidates)
+        for specificity, rule_id in candidates:
+            if specificity == max_specificity and rule_id:
+                inferred_rule_ids.append(rule_id)
+
+    return unique_preserve_order(inferred_rule_ids)
+
+
+def infer_rule_ids_from_facts_and_rules(facts: list, matched_rules: list) -> list[str]:
+    if not isinstance(facts, list) or not isinstance(matched_rules, list):
+        return []
+
+    subject_type = None
+    action_order = []
+    case_contexts = set()
+    case_exceptions = set()
+
+    for fact in facts:
+        if not isinstance(fact, dict):
+            continue
+        args = fact.get("args", [])
+        if not isinstance(args, list) or len(args) != 2:
+            continue
+
+        predicate = fact.get("predicate")
+        value = args[1]
+
+        if predicate == "case_subject_type":
+            subject_type = value
+        elif predicate == "case_action":
+            action_order.append(value)
+        elif predicate == "case_context":
+            case_contexts.add(value)
+        elif predicate == "case_exception":
+            case_exceptions.add(value)
+
+    inferred_rule_ids = []
+    for action in action_order:
+        candidates = []
+        for rule in matched_rules:
+            if not isinstance(rule, dict):
+                continue
+            if rule.get("action") != action:
+                continue
+
+            rule_subject = rule.get("subject")
+            if subject_type and rule_subject and rule_subject != subject_type:
+                continue
+
+            rule_context = set(rule.get("context") or [])
+            rule_exception = set(rule.get("exception") or rule.get("exception_ref") or [])
+            if rule_context and not rule_context.issubset(case_contexts):
+                continue
+            if rule_exception and not rule_exception.issubset(case_exceptions):
+                continue
+
+            specificity = len(rule_context) + len(rule_exception)
+            candidates.append((specificity, rule.get("rule_id")))
+
+        if not candidates:
+            continue
+
+        max_specificity = max(item[0] for item in candidates)
         for specificity, rule_id in candidates:
             if specificity == max_specificity and rule_id:
                 inferred_rule_ids.append(rule_id)
@@ -212,17 +297,20 @@ def build_expected_output(sample: dict, penalties: list[dict]) -> dict:
 def build_record(sample: dict, result: dict) -> dict:
     predicted_answer = build_text_answer(result)
     penalties = extract_reasoning_results(result.get("reasoning_results", []))
+    matched_rules = ensure_serializable(result.get("matched_rules", []))
+    facts_extracted = ensure_serializable(result.get("facts_json", []))
     return {
         "id": sample.get("id"),
         "level": sample.get("level"),
         "question_type": sample.get("question_type"),
         "instruction": sample.get("instruction"),
-        "question": sample.get("input", {}).get("question", ""),
+        "question": get_sample_question(sample),
         "expected_output": build_expected_output(sample, penalties),
         "expected_text_answer": sample.get("text_answer", ""),
         "retrieved_chunks": ensure_serializable(result.get("retrieved_chunks", [])),
-        "matched_rules": ensure_serializable(result.get("matched_rules", [])),
-        "facts_extracted": ensure_serializable(result.get("facts_json", [])),
+        "matched_rules": matched_rules,
+        "facts_extracted": facts_extracted,
+        "rule_id_extracted": infer_rule_ids_from_facts_and_rules(facts_extracted, matched_rules),
         "asp_facts": result.get("asp_facts", ""),
         "reasoning_results": result.get("reasoning_results", []),
         "penalties": penalties,
@@ -285,8 +373,8 @@ def main() -> None:
 
     dataset = load_dataset(input_file)
     if args.ids is not None:
-        id_set = set(args.ids)
-        dataset = [s for s in dataset if s.get("id") in id_set]
+        id_set = {str(value) for value in args.ids}
+        dataset = [s for s in dataset if str(s.get("id")) in id_set]
         logger.info("Filtered to %s questions by --ids", len(dataset))
     elif args.limit is not None:
         dataset = dataset[:args.limit]
@@ -301,10 +389,10 @@ def main() -> None:
         results_jsonl_path.unlink()
 
     for index, sample in enumerate(dataset, start=1):
-        question = sample.get("input", {}).get("question", "").strip()
+        question = get_sample_question(sample)
         sample_id = sample.get("id", f"sample_{index}")
         if not question:
-            logger.warning("[%s/%s] %s skipped: missing input.question", index, len(dataset), sample_id)
+            logger.warning("[%s/%s] %s skipped: missing question", index, len(dataset), sample_id)
             records.append(
                 {
                     "id": sample_id,
@@ -323,7 +411,7 @@ def main() -> None:
                     "predicted_text_answer": "",
                     "llm_raw": "",
                     "llm_prompt": "",
-                    "error": "Missing input.question",
+                    "error": "Missing question",
                 }
             )
             append_jsonl(results_jsonl_path, records[-1])

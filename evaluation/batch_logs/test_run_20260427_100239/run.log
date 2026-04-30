@@ -473,7 +473,7 @@
 2026-04-27 11:51:50,323 [INFO] [157/200] Running official_00098
 2026-04-27 11:51:50,323 [INFO] Question: cá nhân mà xúc phạm, đe dọa, cản trở, chống đối người thi hành công vụ về bảo đảm trật tự, an toàn giao thông đường bộ thì bị phạt thế nào?
 2026-04-27 11:51:51,420 [ERROR] [official_00098] Error: Không tìm thấy ASP rule phù hợp với các điều khoản được retrieve.
-Kiểm tra lại nd168_kb.lp hoặc tăng top_k.
+Kiểm tra lại dieu6.lp hoặc tăng top_k.
 2026-04-27 11:51:51,436 [INFO] [158/200] Running official_00003
 2026-04-27 11:51:51,436 [INFO] Question: chủ phương tiện mà hoặc gắn biển số không do cơ quan có thẩm quyền cấp tham gia giao thông thì bị phạt thế nào?
 2026-04-27 11:52:28,866 [INFO] [official_00003] chunks=10 rules=15 facts=2 penalties=1

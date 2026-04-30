@@ -40,6 +40,82 @@ def unique_preserve_order(values: list[str]) -> list[str]:
     return output
 
 
+def extract_rule_ids_from_related_rule(sample: dict) -> list[str]:
+    related_rule = sample.get("related_rule", [])
+    if not isinstance(related_rule, list):
+        return []
+
+    rule_ids = []
+    for item in related_rule:
+        if not isinstance(item, str):
+            continue
+        match = re.match(r"\s*rule\(([^)]+)\)\.", item)
+        if match:
+            rule_ids.append(match.group(1).strip())
+    return unique_preserve_order(rule_ids)
+
+
+def infer_rule_ids_from_facts_and_rules(facts, retrieved_rules) -> list[str]:
+    if not isinstance(facts, list) or not isinstance(retrieved_rules, list):
+        return []
+
+    subject_type = None
+    action_order = []
+    case_contexts = set()
+    case_exceptions = set()
+
+    for fact in facts:
+        if not isinstance(fact, dict):
+            continue
+        args = fact.get("args", [])
+        if not isinstance(args, list) or len(args) != 2:
+            continue
+        predicate = fact.get("predicate")
+        value = args[1]
+
+        if predicate == "case_subject_type":
+            subject_type = value
+        elif predicate == "case_action":
+            action_order.append(value)
+        elif predicate == "case_context":
+            case_contexts.add(value)
+        elif predicate == "case_exception":
+            case_exceptions.add(value)
+
+    inferred_rule_ids = []
+    for action in action_order:
+        candidates = []
+        for rule in retrieved_rules:
+            if not isinstance(rule, dict):
+                continue
+            if rule.get("action") != action:
+                continue
+
+            rule_subject = rule.get("subject")
+            if subject_type and rule_subject and rule_subject != subject_type:
+                continue
+
+            rule_context = set(rule.get("context") or [])
+            rule_exception = set(rule.get("exception") or rule.get("exception_ref") or [])
+            if rule_context and not rule_context.issubset(case_contexts):
+                continue
+            if rule_exception and not rule_exception.issubset(case_exceptions):
+                continue
+
+            specificity = len(rule_context) + len(rule_exception)
+            candidates.append((specificity, rule.get("rule_id")))
+
+        if not candidates:
+            continue
+
+        max_specificity = max(item[0] for item in candidates)
+        for specificity, rule_id in candidates:
+            if specificity == max_specificity and rule_id:
+                inferred_rule_ids.append(rule_id)
+
+    return unique_preserve_order(inferred_rule_ids)
+
+
 def normalize_point(value: str | None) -> str:
     if value is None:
         return ""
@@ -92,70 +168,24 @@ def normalize_fact_list(facts) -> set[tuple[str, tuple[str, ...]]]:
 def infer_rule_ids_from_sample(sample: dict) -> list[str]:
     expected_output = sample.get("output", {})
     if not isinstance(expected_output, dict):
-        return []
+        expected_output = {}
 
     facts = expected_output.get("facts", [])
     if not isinstance(facts, list):
-        return []
+        facts = []
 
-    subject_type = None
-    action_order = []
-    case_contexts = set()
-    case_exceptions = set()
-
-    for fact in facts:
-        if not isinstance(fact, dict):
-            continue
-        args = fact.get("args", [])
-        if not isinstance(args, list) or len(args) != 2:
-            continue
-        predicate = fact.get("predicate")
-        value = args[1]
-        if predicate == "case_subject_type":
-            subject_type = value
-        elif predicate == "case_action":
-            action_order.append(value)
-        elif predicate == "case_context":
-            case_contexts.add(value)
-        elif predicate == "case_exception":
-            case_exceptions.add(value)
-
-    retrieved_rules = sample.get("input", {}).get("retrieved_rules", [])
+    input_payload = sample.get("input", {})
+    retrieved_rules = input_payload.get("retrieved_rules", []) if isinstance(input_payload, dict) else []
     if not isinstance(retrieved_rules, list):
-        return []
+        retrieved_rules = []
+    if not retrieved_rules:
+        retrieved_rules = sample.get("retrieved_rule", []) if isinstance(sample.get("retrieved_rule", []), list) else []
 
-    inferred_rule_ids = []
-    for action in action_order:
-        candidates = []
-        for rule in retrieved_rules:
-            if not isinstance(rule, dict):
-                continue
-            if rule.get("action") != action:
-                continue
+    inferred_rule_ids = infer_rule_ids_from_facts_and_rules(facts, retrieved_rules)
+    if inferred_rule_ids:
+        return inferred_rule_ids
 
-            rule_subject = rule.get("subject")
-            if subject_type and rule_subject and rule_subject != subject_type:
-                continue
-
-            rule_context = set(rule.get("context") or [])
-            rule_exception = set(rule.get("exception") or rule.get("exception_ref") or [])
-            if rule_context and not rule_context.issubset(case_contexts):
-                continue
-            if rule_exception and not rule_exception.issubset(case_exceptions):
-                continue
-
-            specificity = len(rule_context) + len(rule_exception)
-            candidates.append((specificity, rule.get("rule_id")))
-
-        if not candidates:
-            continue
-
-        max_specificity = max(item[0] for item in candidates)
-        for specificity, rule_id in candidates:
-            if specificity == max_specificity and rule_id:
-                inferred_rule_ids.append(rule_id)
-
-    return unique_preserve_order(inferred_rule_ids)
+    return extract_rule_ids_from_related_rule(sample)
 
 
 def parse_rule_id_fallback(rule_id: str) -> tuple[int, int, str] | None:
@@ -175,7 +205,7 @@ def rule_id_to_reference(rule_id: str, rules: dict[str, dict]) -> tuple[int, int
     return parse_rule_id_fallback(rule_id)
 
 
-def get_rule_ids_from_record(record: dict, sample_by_id: dict[str, dict]) -> list[str]:
+def get_gold_rule_ids_from_record(record: dict, sample_by_id: dict[str, dict] | None = None) -> list[str]:
     expected_output = record.get("expected_output", {})
     if isinstance(expected_output, dict):
         rule_ids = expected_output.get("rule_id")
@@ -183,6 +213,9 @@ def get_rule_ids_from_record(record: dict, sample_by_id: dict[str, dict]) -> lis
             return unique_preserve_order([str(rule_id) for rule_id in rule_ids])
         if isinstance(rule_ids, str) and rule_ids:
             return [rule_ids]
+
+    if not sample_by_id:
+        return []
 
     sample = sample_by_id.get(str(record.get("id")))
     if not sample:
@@ -196,7 +229,26 @@ def get_rule_ids_from_record(record: dict, sample_by_id: dict[str, dict]) -> lis
         if isinstance(rule_ids, str) and rule_ids:
             return [rule_ids]
 
-    return infer_rule_ids_from_sample(sample)
+    inferred_rule_ids = infer_rule_ids_from_sample(sample)
+    if inferred_rule_ids:
+        return inferred_rule_ids
+
+    return extract_rule_ids_from_related_rule(sample)
+
+
+def get_predicted_rule_ids_from_record(record: dict) -> list[str]:
+    reasoning_results = record.get("reasoning_results", [])
+    if not isinstance(reasoning_results, list):
+        return []
+
+    predicted_rule_ids = []
+    for item in reasoning_results:
+        if not isinstance(item, str):
+            continue
+        match = re.match(r"\s*result\(([^,]+),", item)
+        if match:
+            predicted_rule_ids.append(match.group(1).strip())
+    return unique_preserve_order(predicted_rule_ids)
 
 
 def chunk_matches_reference(chunk_metadata: dict, reference: tuple[int, int, str]) -> bool:
@@ -300,7 +352,7 @@ def round_metrics(payload: dict) -> dict:
     return rounded
 
 
-def compute_metrics(records: list[dict], sample_by_id: dict[str, dict], rules: dict[str, dict], ks: list[int]) -> tuple[dict, list[dict]]:
+def compute_metrics(records: list[dict], sample_by_id: dict[str, dict] | None, rules: dict[str, dict], ks: list[int]) -> tuple[dict, list[dict]]:
     overall = {
         "sample_count": 0,
         "error_count": 0,
@@ -344,9 +396,27 @@ def compute_metrics(records: list[dict], sample_by_id: dict[str, dict], rules: d
         if record.get("error"):
             overall["error_count"] += 1
 
-        gold_rule_ids = get_rule_ids_from_record(record, sample_by_id)
+        gold_rule_ids = get_gold_rule_ids_from_record(record, sample_by_id)
+        predicted_rule_ids = get_predicted_rule_ids_from_record(record)
         gold_references = extract_gold_references(gold_rule_ids, rules)
         gold_articles = extract_gold_articles(gold_references)
+
+        gold_rule_set = set(gold_rule_ids)
+        predicted_rule_set = set(predicted_rule_ids)
+        parser_tp = len(gold_rule_set & predicted_rule_set)
+        parser_fp = len(predicted_rule_set - gold_rule_set)
+        parser_fn = len(gold_rule_set - predicted_rule_set)
+        parser_exact = gold_rule_set == predicted_rule_set
+
+        overall["parser_tp"] += parser_tp
+        overall["parser_fp"] += parser_fp
+        overall["parser_fn"] += parser_fn
+        counters["parser_tp"] += parser_tp
+        counters["parser_fp"] += parser_fp
+        counters["parser_fn"] += parser_fn
+        if parser_exact:
+            overall["parser_exact_match"] += 1
+            counters["parser_exact_match"] += 1
 
         retrieved_chunks = record.get("retrieved_chunks")
         retrieved_chunks = retrieved_chunks if isinstance(retrieved_chunks, list) else []
@@ -369,23 +439,6 @@ def compute_metrics(records: list[dict], sample_by_id: dict[str, dict], rules: d
         else:
             for k in ks:
                 hit_at_k[f"hit@{k}"] = False
-
-        gold_facts = normalize_fact_list(record.get("expected_output", {}).get("facts", []))
-        predicted_facts = normalize_fact_list(record.get("facts_extracted", []))
-        parser_tp = len(predicted_facts & gold_facts)
-        parser_fp = len(predicted_facts - gold_facts)
-        parser_fn = len(gold_facts - predicted_facts)
-        parser_exact = predicted_facts == gold_facts
-
-        overall["parser_tp"] += parser_tp
-        overall["parser_fp"] += parser_fp
-        overall["parser_fn"] += parser_fn
-        counters["parser_tp"] += parser_tp
-        counters["parser_fp"] += parser_fp
-        counters["parser_fn"] += parser_fn
-        if parser_exact:
-            overall["parser_exact_match"] += 1
-            counters["parser_exact_match"] += 1
 
         citations = extract_citations(str(record.get("predicted_text_answer") or ""))
         article_hit = bool(gold_articles and any(article == gold_article for article, _, _ in citations for gold_article in gold_articles))
@@ -413,6 +466,7 @@ def compute_metrics(records: list[dict], sample_by_id: dict[str, dict], rules: d
                 "id": record.get("id"),
                 "question_type": question_type,
                 "gold_rule_ids": gold_rule_ids,
+                "predicted_rule_ids": predicted_rule_ids,
                 "gold_references": [
                     {"article": article, "clause": clause, "point": point}
                     for article, clause, point in gold_references
@@ -457,9 +511,9 @@ def finalize_metric_block(counters: dict, ks: list[int]) -> dict:
         },
         "parser": {
             "exact_match_accuracy": safe_divide(counters["parser_exact_match"], counters["sample_count"]),
-            "fact_precision": parser_precision,
-            "fact_recall": parser_recall,
-            "fact_f1": parser_f1,
+            "precision": parser_precision,
+            "recall": parser_recall,
+            "f1": parser_f1,
             "tp": counters["parser_tp"],
             "fp": counters["parser_fp"],
             "fn": counters["parser_fn"],
@@ -493,19 +547,10 @@ def write_jsonl(file_path: Path, rows: list[dict]) -> None:
             file.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 
-def resolve_paths(args: argparse.Namespace) -> tuple[Path, Path, Path, Path]:
+def resolve_paths(args: argparse.Namespace) -> tuple[Path, Path, Path | None, Path]:
     run_dir = args.run_dir.resolve()
     results_path = (run_dir / "results.json").resolve()
-    summary_path = (run_dir / "summary.json").resolve()
-
-    if args.dataset:
-        dataset_path = args.dataset.resolve()
-    elif summary_path.exists():
-        summary = load_json(summary_path)
-        dataset_value = summary.get("input_file")
-        dataset_path = Path(dataset_value).resolve() if dataset_value else (PROJECT_ROOT / "public_dataset" / "test.json")
-    else:
-        dataset_path = (PROJECT_ROOT / "public_dataset" / "test.json").resolve()
+    dataset_path = args.dataset.resolve() if args.dataset else None
 
     output_path = args.output.resolve() if args.output else (run_dir / "metrics_summary.json").resolve()
     return run_dir, results_path, dataset_path, output_path
@@ -522,7 +567,7 @@ def parse_args() -> argparse.Namespace:
         "--dataset",
         type=Path,
         default=None,
-        help="Optional dataset path. Defaults to summary.json input_file or public_dataset/test.json",
+        help="Optional dataset path for fallback gold labels when results.json does not contain expected_output.rule_id.",
     )
     parser.add_argument(
         "--output",
@@ -553,19 +598,22 @@ def main() -> None:
     ks = sorted({k for k in args.ks if k > 0})
 
     records = load_json(results_path)
-    dataset = load_json(dataset_path)
     if not isinstance(records, list):
         raise ValueError(f"Expected a JSON array in {results_path}")
-    if not isinstance(dataset, list):
-        raise ValueError(f"Expected a JSON array in {dataset_path}")
 
-    sample_by_id = build_sample_index(dataset)
+    sample_by_id = None
+    if dataset_path is not None:
+        dataset = load_json(dataset_path)
+        if not isinstance(dataset, list):
+            raise ValueError(f"Expected a JSON array in {dataset_path}")
+        sample_by_id = build_sample_index(dataset)
+
     rules = load_rules()
 
     summary, details = compute_metrics(records, sample_by_id, rules, ks)
     summary["run_dir"] = str(run_dir)
     summary["results_path"] = str(results_path)
-    summary["dataset_path"] = str(dataset_path)
+    summary["dataset_path"] = str(dataset_path) if dataset_path is not None else None
 
     write_json(output_path, summary)
     write_jsonl(details_output, details)

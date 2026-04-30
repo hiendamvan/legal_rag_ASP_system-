@@ -218,6 +218,12 @@ with tab_asp:
             if "error" in result:
                 st.error(result["error"])
 
+            st.subheader("Rule IDs")
+            st.markdown("Rule IDs được trích xuất từ bước retrieve + match")
+            st.code(str(result.get("extracted_rule_ids", [])), language="python")
+            st.markdown("Rule IDs được áp dụng trong bước suy luận")
+            st.code(str(result.get("applied_rule_ids", [])), language="python")
+
             # ── Kết quả vi phạm ──
             st.subheader("Kết quả suy luận")
             if result["reasoning_results"]:
@@ -237,7 +243,7 @@ with tab_asp:
                     else:
                         st.code(atom)
             else:
-                st.info("Không xác định được vi phạm từ tình huống trên.")
+                st.info(result.get("final_answer") or "Không đủ cơ sở pháp lí để trả lời")
 
             # ── Debug info ──
             if show_debug:

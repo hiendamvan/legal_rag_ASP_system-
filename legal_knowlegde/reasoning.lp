@@ -6,9 +6,16 @@ action_match(R) :-
     action(R,A),
     did_action(_,A).
 
+exception_triggered(R) :-
+    exception(R,E),
+    exception_applies(_,E).
+
 matched(R) :-
     subject_match(R),
     action_match(R).
+
+blocked(R) :-
+    exception_triggered(R).
 
 violation(R) :-
     matched(R),

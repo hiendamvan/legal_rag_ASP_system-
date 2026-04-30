@@ -39,7 +39,7 @@
 2026-04-27 15:37:16,959 [INFO] [12/14] Running official_00098
 2026-04-27 15:37:16,959 [INFO] Question: cá nhân mà xúc phạm, đe dọa, cản trở, chống đối người thi hành công vụ về bảo đảm trật tự, an toàn giao thông đường bộ thì bị phạt thế nào?
 2026-04-27 15:37:19,257 [ERROR] [official_00098] Error: Không tìm thấy ASP rule phù hợp với các điều khoản được retrieve.
-Kiểm tra lại nd168_kb.lp hoặc tăng top_k.
+Kiểm tra lại dieu6.lp hoặc tăng top_k.
 2026-04-27 15:37:19,258 [INFO] [13/14] Running official_00781
 2026-04-27 15:37:19,258 [INFO] Question: người điều khiển xe mô tô mà sử dụng đèn chiếu xa khi gặp người đi bộ qua đường hoặc khi đi trên đoạn đường qua khu dân cư có hệ thống chiếu sáng đang hoạt động hoặc khi gặp xe đi ngược chiều hoặc khi chuyển hướng xe tại nơi đường giao nhau, nhưng đoạn đường có dải phân cách có khả năng chống chói thì có bị phạt không?
 2026-04-27 15:37:42,335 [INFO] [official_00781] chunks=10 rules=17 facts=2 penalties=1

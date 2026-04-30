@@ -1,12 +1,13 @@
 """
-asp_rule_loader.py — Parse nd168_kb.lp into a Python dict of rule objects,
+asp_rule_loader.py — Parse dieu6.lp into a Python dict of rule objects,
 and match retrieved chunk metadata to those rules.
 """
 
 import re
 from pathlib import Path
 
-_DEFAULT_LP = Path(__file__).parent / "nd168_kb.lp"
+_DEFAULT_LP = Path(__file__).parent / "dieu6.lp"
+_LIST_FACT_RE = re.compile(r'(context|exception)\((\w+),\s*\[(.*?)\]\)\.')
 
 
 # ---------------------------------------------------------------------------
@@ -71,6 +72,21 @@ def load_rules(lp_path: str | None = None) -> dict[str, dict]:
         m = re.fullmatch(r'context\((\w+),\s*(\w+)\)\.', line)
         if m and m.group(1) in rules:
             rules[m.group(1)]["context"].append(m.group(2))
+            continue
+
+        # context(id, [ctx1, ctx2]). / exception(id, [ex1, ex2]).
+        m = _LIST_FACT_RE.fullmatch(line)
+        if m and m.group(2) in rules:
+            predicate, rule_id, raw_items = m.groups()
+            target_key = "context" if predicate == "context" else "exception_ref"
+            items = [item.strip() for item in raw_items.split(",") if item.strip()]
+            rules[rule_id][target_key].extend(items)
+            continue
+
+        # exception(id, ex).
+        m = re.fullmatch(r'exception\((\w+),\s*(\w+)\)\.', line)
+        if m and m.group(1) in rules:
+            rules[m.group(1)]["exception_ref"].append(m.group(2))
             continue
 
         # exception_ref(id, art, clause, "point").
