@@ -137,9 +137,8 @@ def _empty_rule(rid: str) -> dict:
 # ---------------------------------------------------------------------------
 
 def _normalize_diem(diem: str) -> str:
-    """Map Vietnamese điểm letter to the point label used in the ASP file."""
-    # "đ" in Vietnamese → stored as "dd" in the .lp point field
-    return "dd" if diem == "đ" else diem.lower()
+    """Normalize Vietnamese điểm letters to match the point values stored in .lp."""
+    return diem.lower()
 
 
 def match_chunk_to_rules(chunk_meta: dict, all_rules: dict) -> list[dict]:

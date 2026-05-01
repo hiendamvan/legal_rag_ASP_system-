@@ -184,18 +184,32 @@ def _query_mentions_exception(query: str) -> bool:
     return any(cue in normalized_query for cue in exception_cues)
 
 
-def _strip_unmentioned_exception_facts(query: str, facts: list[dict]) -> list[dict]:
-    if _query_mentions_exception(query):
-        return facts
+def _strip_unsupported_exception_facts(matched_rules: list[dict], facts: list[dict]) -> list[dict]:
+    supported_exceptions = {
+        exception_ref
+        for rule in matched_rules
+        for exception_ref in (rule.get("exception_ref") or [])
+    }
+    if not supported_exceptions:
+        return [
+            fact for fact in facts
+            if not (
+                isinstance(fact, dict)
+                and fact.get("predicate") in {"case_exception", "exception_applies", "exception"}
+            )
+        ]
 
     filtered_facts: list[dict] = []
     for fact in facts:
         if not isinstance(fact, dict):
             filtered_facts.append(fact)
             continue
-        if fact.get("predicate") in {"case_exception", "exception_applies", "exception"}:
+        if fact.get("predicate") not in {"case_exception", "exception_applies", "exception"}:
+            filtered_facts.append(fact)
             continue
-        filtered_facts.append(fact)
+        args = fact.get("args") or []
+        if len(args) >= 2 and str(args[1]) in supported_exceptions:
+            filtered_facts.append(fact)
 
     return filtered_facts
 
@@ -214,6 +228,36 @@ def _extract_rule_ids_from_reasoning(reasoning_results: list[str]) -> list[str]:
             rule_ids.append(rule_id)
 
     return rule_ids
+
+
+def _extract_rule_ids_from_exception_match(matched_rules: list[dict], facts_json: list[dict]) -> list[str]:
+    case_exceptions = _extract_fact_values(facts_json, "case_exception", "exception_applies", "exception")
+    if not case_exceptions:
+        return []
+
+    case_actions = _extract_fact_values(facts_json, "case_action", "did_action", "action")
+    candidate_rules = matched_rules
+    if case_actions:
+        candidate_rules = [rule for rule in matched_rules if rule.get("action") in case_actions]
+
+    matched_rule_ids: list[str] = []
+    seen: set[str] = set()
+    for rule in candidate_rules:
+        rule_id = rule.get("rule_id")
+        if not rule_id or rule_id in seen:
+            continue
+        if any(exception_ref in case_exceptions for exception_ref in rule.get("exception_ref", [])):
+            seen.add(rule_id)
+            matched_rule_ids.append(rule_id)
+
+    return matched_rule_ids
+
+
+def _extract_applied_rule_ids(matched_rules: list[dict], facts_json: list[dict], reasoning_results: list[str]) -> list[str]:
+    rule_ids = _extract_rule_ids_from_reasoning(reasoning_results)
+    if rule_ids:
+        return rule_ids
+    return _extract_rule_ids_from_exception_match(matched_rules, facts_json)
 
 
 def _query_mentions_multiple_violations(query: str) -> bool:
@@ -390,6 +434,7 @@ def _build_multi_violation_example(query: str, rules: list[dict]) -> str:
 def _build_query_specific_prompt_guidance(query: str, rules: list[dict]) -> str:
     normalized_query = _normalize_text(query).replace("đ", "d")
     actions = {str(rule.get("action", "")) for rule in rules}
+    exception_refs = {exception for rule in rules for exception in (rule.get("exception_ref") or [])}
     guidance_lines: list[str] = []
     selected = _select_rules_for_subqueries(query, rules)
 
@@ -410,16 +455,59 @@ def _build_query_specific_prompt_guidance(query: str, rules: list[dict]) -> str:
                 "- Phải kiểm tra lần lượt từng mệnh đề đã tách ở trên và mỗi mệnh đề phải được bao phủ bởi ít nhất một case_action phù hợp."
             )
 
+    if (
+        "illegal_u_turn_at_restricted_location" in actions
+        and "traffic_controller_order" in exception_refs
+        and any(
+            cue in normalized_query
+            for cue in [
+                "theo hieu lenh",
+                "co hieu lenh",
+                "nguoi dieu khien giao thong",
+            ]
+        )
+    ):
+        guidance_lines.append(
+            "- Nếu câu hỏi nói việc quay đầu xe được thực hiện theo hiệu lệnh hoặc hướng dẫn của người điều khiển giao thông thì PHẢI xuất case_exception với giá trị traffic_controller_order."
+        )
+
+    if (
+        "illegal_u_turn_at_restricted_location" in actions
+        and "temporary_traffic_sign_instruction" in exception_refs
+        and any(cue in normalized_query for cue in ["bien bao tam thoi", "bien bao hieu tam thoi", "chi dan tam thoi"])
+    ):
+        guidance_lines.append(
+            "- Nếu câu hỏi nói việc quay đầu xe được phép theo biển báo hoặc chỉ dẫn tạm thời thì PHẢI xuất case_exception với giá trị temporary_traffic_sign_instruction."
+        )
+
     if not guidance_lines:
         return ""
     return "\n".join(guidance_lines) + "\n"
 
-def build_extraction_prompt(query: str, rules: list[dict]) -> str:
+
+def _build_retrieved_chunk_block(chunks: list[dict] | None) -> str:
+    if not chunks:
+        return ""
+
+    lines = ["Trích đoạn điều luật đã retrieve:"]
+    for chunk in chunks[:5]:
+        metadata = chunk.get("metadata", {})
+        label = metadata.get("breadcrumb") or metadata.get("dieu_title") or ""
+        body = metadata.get("diem_text") or chunk.get("text", "")
+        body = re.sub(r"\s+", " ", str(body)).strip()
+        if len(body) > 500:
+            body = body[:500].rstrip() + "..."
+        lines.append(f"- {label}: {body}")
+    return "\n".join(lines) + "\n\n"
+
+
+def build_extraction_prompt(query: str, rules: list[dict], chunks: list[dict] | None = None) -> str:
     prioritized_rules = _prioritize_rules_for_query(query, rules)
-    query_mentions_exception = _query_mentions_exception(query)
+    rules_have_exception = any(rule.get("exception_ref") for rule in prioritized_rules)
     multi_violation_example = _build_multi_violation_example(query, prioritized_rules)
     query_specific_guidance = _build_query_specific_prompt_guidance(query, prioritized_rules)
     subquery_coverage_block = _build_subquery_coverage_block(query, prioritized_rules)
+    retrieved_chunk_block = _build_retrieved_chunk_block(chunks)
     rules_json = json.dumps(
         [
             {
@@ -452,18 +540,19 @@ def build_extraction_prompt(query: str, rules: list[dict]) -> str:
     )
     ex_exception_line = (
         f'    {{"predicate": "case_exception", "args": ["user1", "{ex_exception[0]}"]}}\n'
-        if ex_exception and query_mentions_exception else ""
+        if ex_exception and rules_have_exception else ""
     )
     exception_instruction = (
-        "Trong câu hỏi này có nhắc đến ngoại lệ hoặc trường hợp miễn trừ, chỉ khi thật sự khớp mới được xuất case_exception.\n"
-        if query_mentions_exception else
-        "Trong câu hỏi này KHÔNG có nhắc đến ngoại lệ hoặc trường hợp miễn trừ, vì vậy TUYỆT ĐỐI không được xuất bất kỳ fact case_exception nào.\n"
+        "Nếu tình huống trong câu hỏi khớp với hoàn cảnh ngoại lệ được mô tả trong trích đoạn điều luật đã retrieve hoặc trong trường exception của rule thì PHẢI xuất case_exception tương ứng, kể cả khi câu hỏi không dùng các từ như 'ngoại lệ', 'trừ', hay 'không bị phạt'. Nếu không khớp thì KHÔNG được xuất case_exception.\n"
+        if rules_have_exception else
+        "Không có exception nào trong các rule đã match, vì vậy TUYỆT ĐỐI không được xuất bất kỳ fact case_exception nào.\n"
     )
 
     return (
         "Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.\n\n"
         f"Câu hỏi:\n{query}\n\n"
         f"Các rule liên quan:\n{rules_json}\n\n"
+        f"{retrieved_chunk_block}"
         f"{subquery_coverage_block}"
         "Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:\n"
         "{\n"
@@ -772,7 +861,7 @@ def run_asp_pipeline(query: str, top_k: int = 5) -> dict:
 
     # 2. Build prompt
     log.info("[STEP 2] Building LLM extraction prompt ...")
-    prompt = build_extraction_prompt(query, matched_rules)
+    prompt = build_extraction_prompt(query, matched_rules, chunks)
     log.debug(f"  PROMPT:\n{'-'*40}\n{prompt}\n{'-'*40}")
 
     # 3. Call local LLM
@@ -800,9 +889,9 @@ def run_asp_pipeline(query: str, top_k: int = 5) -> dict:
     log.info("[STEP 4] Parsing JSON facts from LLM output ...")
     try:
         facts_json = parse_llm_facts(llm_raw)
-        filtered_facts_json = _strip_unmentioned_exception_facts(query, facts_json)
+        filtered_facts_json = _strip_unsupported_exception_facts(matched_rules, facts_json)
         if len(filtered_facts_json) != len(facts_json):
-            log.info("  → removed case_exception facts because the query does not mention an exception")
+            log.info("  → removed unsupported case_exception facts that do not match any retrieved rule exception")
         facts_json = filtered_facts_json
         log.info(f"  → {len(facts_json)} facts parsed")
         log.debug(f"  FACTS JSON: {json.dumps(facts_json, ensure_ascii=False)}")
@@ -848,7 +937,7 @@ def run_asp_pipeline(query: str, top_k: int = 5) -> dict:
         "retrieved_chunks":  chunks,
         "matched_rules":     matched_rules,
         "extracted_rule_ids": [rule["rule_id"] for rule in matched_rules],
-        "applied_rule_ids":   _extract_rule_ids_from_reasoning(reasoning_results),
+        "applied_rule_ids":   _extract_applied_rule_ids(matched_rules, facts_json, reasoning_results),
         "llm_prompt":        prompt,
         "llm_raw":           llm_raw,
         "facts_json":        facts_json,
