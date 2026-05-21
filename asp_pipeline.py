@@ -103,26 +103,140 @@ def _extract_question_tail(query: str) -> str:
     return "bị phạt thế nào?"
 
 
+def _extract_json_object_with_key(text: str, required_key: str) -> dict | None:
+    """Return the first parsed JSON object that contains required_key."""
+    if not text:
+        return None
+
+    cleaned = text.strip()
+
+    fenced = re.search(r'```(?:json)?\s*([\s\S]+?)\s*```', cleaned)
+    if fenced:
+        cleaned = fenced.group(1).strip()
+
+    # Try whole payload first.
+    try:
+        obj = json.loads(cleaned)
+        if isinstance(obj, dict) and required_key in obj:
+            return obj
+    except Exception:
+        pass
+
+    # Fallback: scan balanced-brace JSON objects and parse each.
+    for candidate in _extract_json_candidates(cleaned):
+        try:
+            obj = json.loads(candidate)
+            if isinstance(obj, dict) and required_key in obj:
+                return obj
+        except Exception:
+            continue
+
+    return None
+
+
+def _decompose_query_with_llm(query: str) -> list[str]:
+    """
+    Ask local LLM to split a multi-violation query into self-contained sub-queries.
+    Returns [] on any failure so caller can fallback to rule-based decomposition.
+    """
+    prompt = (
+        "Tách câu hỏi pháp lý tiếng Việt thành các mệnh đề vi phạm độc lập. "
+        "Chỉ trả về JSON duy nhất theo schema sau:\n"
+        "{\n"
+        '  "sub_queries": ["...", "..."]\n'
+        "}\n\n"
+        "Quy tắc:\n"
+        "1. Mỗi phần tử phải là một câu hỏi đầy đủ nghĩa, có thể dùng trực tiếp để retrieve rule.\n"
+        "2. Giữ đúng chủ thể (ví dụ: người điều khiển xe máy), không đổi loại phương tiện.\n"
+        "3. Mỗi hành vi vi phạm tách thành một câu riêng.\n"
+        "4. Không thêm giải thích, không thêm key khác, không markdown.\n\n"
+        "Ví dụ 1:\n"
+        "Input: Người điều khiển xe máy không bật đèn ban đêm và chạy quá tốc độ 10 km/h bị phạt thế nào?\n"
+        "Output:\n"
+        "{\n"
+        '  "sub_queries": [\n'
+        '    "Người điều khiển xe máy không bật đèn ban đêm bị phạt thế nào?",\n'
+        '    "Người điều khiển xe máy chạy quá tốc độ 10 km/h bị phạt thế nào?"\n'
+        "  ]\n"
+        "}\n\n"
+        "Ví dụ 2:\n"
+        "Input: Người lái xe máy không nhường đường và vượt đèn đỏ gây tai nạn thì bị xử lý ra sao?\n"
+        "Output:\n"
+        "{\n"
+        '  "sub_queries": [\n'
+        '    "Người lái xe máy không nhường đường gây tai nạn thì bị xử lý ra sao?",\n'
+        '    "Người lái xe máy vượt đèn đỏ gây tai nạn thì bị xử lý ra sao?"\n'
+        "  ]\n"
+        "}\n\n"
+        f"Câu gốc: {query}"
+    )
+
+    try:
+        raw = call_llm(prompt)
+    except Exception:
+        return []
+
+    parsed = _extract_json_object_with_key(raw or "", "sub_queries")
+    if not parsed:
+        return []
+
+    values = parsed.get("sub_queries")
+    if not isinstance(values, list):
+        return []
+
+    normalized: list[str] = []
+    seen: set[str] = set()
+    for item in values:
+        if not isinstance(item, str):
+            continue
+        candidate = re.sub(r"\s+", " ", item).strip(" ,")
+        if not candidate:
+            continue
+        if candidate not in seen:
+            seen.add(candidate)
+            normalized.append(candidate)
+
+    return normalized
+
+
 def decompose_query(query: str) -> list[str]:
     compact_query = re.sub(r"\s+", " ", query).strip()
     if not _query_mentions_multiple_violations(compact_query):
         return [compact_query]
 
-    segments = re.split(r"\s*,?\s*(?:vừa|đồng thời|cùng lúc|kèm theo)\s+", compact_query, flags=re.IGNORECASE)
-    if len(segments) < 3:
+    llm_sub_queries = _decompose_query_with_llm(compact_query)
+    if llm_sub_queries:
+        merged = [compact_query]
+        seen = {compact_query}
+        for sub_query in llm_sub_queries:
+            if sub_query not in seen:
+                seen.add(sub_query)
+                merged.append(sub_query)
+        if len(merged) >= 2:
+            return merged
+
+    segments = re.split(
+        r"\s*,?\s*(?:vừa|đồng thời|cùng lúc|kèm theo|và)\s+",
+        compact_query,
+        flags=re.IGNORECASE,
+    )
+    segments = [segment.strip(" ,") for segment in segments if segment.strip(" ,")]
+    if len(segments) < 2:
         return [compact_query]
 
-    subject_prefix = segments[0].strip(" ,")
-    raw_clauses = segments[1:]
     question_tail = _extract_question_tail(compact_query)
 
     sub_queries = [compact_query]
     seen: set[str] = {compact_query}
-    for clause in raw_clauses:
+    for clause in segments:
         cleaned_clause = _strip_question_tail(clause)
         if not cleaned_clause:
             continue
-        sub_query = f"{subject_prefix} {cleaned_clause} {question_tail}".strip()
+        normalized_clause = _normalize_text(cleaned_clause).replace("đ", "d")
+        if any(token in normalized_clause for token in ["bi phat", "xu ly", "rule nao"]):
+            sub_query = cleaned_clause
+        else:
+            sub_query = f"{cleaned_clause} {question_tail}".strip()
         sub_query = re.sub(r"\s+", " ", sub_query)
         if sub_query not in seen:
             seen.add(sub_query)
@@ -140,20 +254,28 @@ def retrieve_and_match(query: str, top_k: int = 10) -> tuple[list[dict], list[di
     matched_rules: list[dict] = []
 
     for sub_query in decomposed_queries:
-        for chunk in retrieve(sub_query, top_k):
+        sub_query_chunks = retrieve(sub_query, top_k)
+
+        for chunk in sub_query_chunks:
             meta = chunk["metadata"]
             chunk_key = (meta.get("breadcrumb", ""), chunk["text"])
             existing = chunk_map.get(chunk_key)
             if existing is None or chunk["score"] > existing["score"]:
                 chunk_map[chunk_key] = chunk
 
-    chunks = sorted(chunk_map.values(), key=lambda item: item["score"], reverse=True)
+        if not sub_query_chunks:
+            continue
 
-    for chunk in chunks:
-        for rule in match_chunk_to_rules(chunk["metadata"], all_rules):
+        # Ground rule matching to the strongest retrieved chunk for each sub-query.
+        # This keeps single-violation questions from inheriting unrelated rules from lower-ranked chunks,
+        # while multi-violation questions still get one focused chunk per sub-query.
+        top_chunk = sub_query_chunks[0]
+        for rule in match_chunk_to_rules(top_chunk["metadata"], all_rules):
             if rule["rule_id"] not in seen:
                 seen.add(rule["rule_id"])
                 matched_rules.append(rule)
+
+    chunks = sorted(chunk_map.values(), key=lambda item: item["score"], reverse=True)
 
     return chunks, matched_rules
 
@@ -164,6 +286,167 @@ def _normalize_text(text: str) -> str:
     normalized = unicodedata.normalize("NFD", text.lower())
     normalized = "".join(ch for ch in normalized if unicodedata.category(ch) != "Mn")
     return re.sub(r"\s+", " ", normalized).strip()
+
+
+# Ordered: most specific first so that "xe máy ba bánh" matches three_wheel before motorbike.
+_SUBJECT_KEYWORD_MAP: list[tuple[list[str], str]] = [
+    (["xe may ba banh", "moto ba banh"],              "three_wheel_motorbike"),
+    (["xe may hai banh"],                              "two_wheel_motorbike"),
+    (["xe dap dien", "xe dap may"],                  "electric_bicycle"),
+    (["xe dap"],                                       "bicycle"),
+    (["xe xich lo"],                                   "cyclo"),
+    (["xe tho so khac", "xe tho so"],                "rudimentary_vehicle"),
+    (["phuong tien khong dong co", "phuong tien tho so"], "non_motorized_vehicle"),
+    (["xe may", "xe mo to", "moto", "xe gan may"],     "motorbike"),
+    (["xe o to", "xe bon cho", "xe con", "o to"],       "car"),
+    (["xe bon banh", "xe bon-banh"],                   "four_wheeled_motor_vehicle"),
+    (["nguoi di bo"],                                  "pedestrian"),
+    (["hanh khach", "nguoi ngoi tren xe"],             "passenger"),
+    (["xe uu tien"],                                   "priority_vehicle"),
+]
+
+_DETECTABLE_SUBJECT_TYPES = {subject_type for _, subject_type in _SUBJECT_KEYWORD_MAP}
+_SUBJECT_PARENT_MAP: dict[str, str] = {
+    "electric_bicycle": "bicycle",
+    "bicycle": "non_motorized_vehicle",
+    "cyclo": "rudimentary_vehicle",
+    "rudimentary_vehicle": "non_motorized_vehicle",
+}
+
+
+def _subject_matches_rule_subject(actual_subject: str, rule_subject: str) -> bool:
+    """Return True when the extracted/query subject is equal to or narrower than the rule subject."""
+    current = actual_subject
+    while current:
+        if current == rule_subject:
+            return True
+        current = _SUBJECT_PARENT_MAP.get(current, "")
+    return False
+
+
+def _detect_subject_type_from_query(query: str) -> str | None:
+    """Return the KB subject type string when the query explicitly names a vehicle/person type."""
+    normalized = _normalize_text(query).replace("\u0111", "d")
+    for keywords, subject_type in _SUBJECT_KEYWORD_MAP:
+        if any(kw in normalized for kw in keywords):
+            return subject_type
+    return None
+
+
+def _override_subject_type_from_query(query: str, facts: list[dict]) -> list[dict]:
+    """If query explicitly names a vehicle type, overwrite every case_subject_type fact with it."""
+    detected = _detect_subject_type_from_query(query)
+    if not detected:
+        return facts
+
+    result: list[dict] = []
+    for fact in facts:
+        if (
+            isinstance(fact, dict)
+            and fact.get("predicate") in {"case_subject_type", "driver_type", "subject_type"}
+        ):
+            corrected = dict(fact)
+            args = list(fact.get("args") or [])
+            if len(args) >= 2:
+                args[1] = detected
+            elif len(args) == 1:
+                args.append(detected)
+            else:
+                args = ["user1", detected]
+            corrected["args"] = args
+            result.append(corrected)
+        else:
+            result.append(fact)
+    return result
+
+
+def _extract_subject_for_entity(facts: list[dict], entity: str) -> str | None:
+    for fact in facts:
+        if not isinstance(fact, dict):
+            continue
+        if fact.get("predicate") not in {"case_subject_type", "driver_type", "subject_type"}:
+            continue
+        args = fact.get("args") or []
+        if len(args) >= 2 and str(args[0]) == entity:
+            return str(args[1])
+    return None
+
+
+def _enforce_subject_action_pairs_from_matched_rules(
+    query: str,
+    facts: list[dict],
+    matched_rules: list[dict],
+) -> tuple[list[dict], list[dict]]:
+    """
+    Ensure each extracted action belongs to a rule that has the same extracted subject.
+
+    Returns (corrected_facts, corrections), where each correction includes:
+      - entity
+      - subject
+      - old_action
+      - new_action
+      - rule_id
+    """
+    corrected_facts: list[dict] = []
+    corrections: list[dict] = []
+
+    for fact in facts:
+        if not isinstance(fact, dict):
+            corrected_facts.append(fact)
+            continue
+
+        if fact.get("predicate") not in {"case_action", "did_action", "action"}:
+            corrected_facts.append(fact)
+            continue
+
+        args = list(fact.get("args") or [])
+        if len(args) < 2:
+            corrected_facts.append(fact)
+            continue
+
+        entity = str(args[0])
+        extracted_action = str(args[1])
+        extracted_subject = _extract_subject_for_entity(facts, entity)
+
+        # Only enforce when we can identify subject for this entity.
+        if not extracted_subject:
+            corrected_facts.append(fact)
+            continue
+
+        subject_rules = [
+            rule for rule in matched_rules
+            if _subject_matches_rule_subject(extracted_subject, str(rule.get("subject") or ""))
+        ]
+        if not subject_rules:
+            corrected_facts.append(fact)
+            continue
+
+        if any(str(rule.get("action") or "") == extracted_action for rule in subject_rules):
+            corrected_facts.append(fact)
+            continue
+
+        # Pick the best action among rules of the same subject.
+        best_rule = max(
+            subject_rules,
+            key=lambda rule: _score_rule_for_query(query, rule),
+        )
+        corrected = dict(fact)
+        corrected_args = list(args)
+        corrected_args[1] = str(best_rule.get("action") or extracted_action)
+        corrected["args"] = corrected_args
+        corrected_facts.append(corrected)
+
+        corrections.append(
+            {
+                "entity": entity,
+                "subject": extracted_subject,
+                "old_action": extracted_action,
+                "new_action": corrected_args[1],
+                "rule_id": str(best_rule.get("rule_id") or ""),
+            }
+        )
+
+    return corrected_facts, corrections
 
 
 def _query_mentions_exception(query: str) -> bool:
@@ -180,14 +463,26 @@ def _query_mentions_exception(query: str) -> bool:
         "duoc phep",
         "uu tien",
         "khan cap",
+        "cap cuu",
     ]
     return any(cue in normalized_query for cue in exception_cues)
 
 
-def _strip_unsupported_exception_facts(matched_rules: list[dict], facts: list[dict]) -> list[dict]:
+def _strip_unsupported_exception_facts(
+    matched_rules: list[dict],
+    facts: list[dict],
+    allowed_rule_ids: set[str] | None = None,
+) -> list[dict]:
+    effective_rules = matched_rules
+    if allowed_rule_ids:
+        effective_rules = [
+            rule for rule in matched_rules
+            if str(rule.get("rule_id") or "") in allowed_rule_ids
+        ]
+
     supported_exceptions = {
         exception_ref
-        for rule in matched_rules
+        for rule in effective_rules
         for exception_ref in (rule.get("exception_ref") or [])
     }
     if not supported_exceptions:
@@ -214,6 +509,61 @@ def _strip_unsupported_exception_facts(matched_rules: list[dict], facts: list[di
     return filtered_facts
 
 
+def _strip_action_facts_not_in_selected_rules(
+    matched_rules: list[dict],
+    facts: list[dict],
+    allowed_rule_ids: set[str] | None = None,
+) -> list[dict]:
+    """Keep action facts grounded to the LLM-selected rule ids when they are available."""
+    if not allowed_rule_ids:
+        return facts
+
+    effective_rules = [
+        rule for rule in matched_rules
+        if str(rule.get("rule_id") or "") in allowed_rule_ids
+    ]
+    if not effective_rules:
+        return facts
+
+    allowed_actions = {
+        str(rule.get("action") or "")
+        for rule in effective_rules
+        if rule.get("action")
+    }
+    if not allowed_actions:
+        return facts
+
+    filtered_facts: list[dict] = []
+    for fact in facts:
+        if not isinstance(fact, dict):
+            filtered_facts.append(fact)
+            continue
+
+        if fact.get("predicate") not in {"case_action", "did_action", "action"}:
+            filtered_facts.append(fact)
+            continue
+
+        args = fact.get("args") or []
+        if len(args) >= 2 and str(args[1]) in allowed_actions:
+            filtered_facts.append(fact)
+
+    return filtered_facts
+
+
+def _strip_exception_facts_if_not_mentioned_in_query(query: str, facts: list[dict]) -> list[dict]:
+    """Remove exception facts if query does not explicitly mention exception/exemption/priority/emergency."""
+    if _query_mentions_exception(query):
+        return facts
+    
+    return [
+        fact for fact in facts
+        if not (
+            isinstance(fact, dict)
+            and fact.get("predicate") in {"case_exception", "exception_applies", "exception"}
+        )
+    ]
+
+
 def _extract_rule_ids_from_reasoning(reasoning_results: list[str]) -> list[str]:
     rule_ids: list[str] = []
     seen: set[str] = set()
@@ -228,6 +578,110 @@ def _extract_rule_ids_from_reasoning(reasoning_results: list[str]) -> list[str]:
             rule_ids.append(rule_id)
 
     return rule_ids
+
+
+def _parse_result_atom(atom: str) -> tuple[str, int, int] | None:
+    match = re.match(r"result\(([^,]+),(\d+),(\d+)\)", atom)
+    if not match:
+        return None
+    return match.group(1), int(match.group(2)), int(match.group(3))
+
+
+def _rule_parent_id(rule_id: str) -> str:
+    """Collapse sub-rules like d7_k1_i_1, d7_k1_i_2 into d7_k1_i."""
+    return re.sub(r"_\d+$", "", rule_id)
+
+
+def _context_overlap_score(rule: dict, facts_json: list[dict]) -> int:
+    case_contexts = _extract_fact_values(facts_json, "case_context", "has_context", "context")
+    if not case_contexts:
+        return 0
+
+    rule_contexts = {
+        str(context_value)
+        for context_value in (rule.get("context") or [])
+        if context_value
+    }
+    return len(rule_contexts & case_contexts)
+
+
+def _select_best_rule_atom_for_parent(
+    query: str,
+    atoms: list[str],
+    matched_rules_by_id: dict[str, dict],
+    facts_json: list[dict],
+) -> str:
+    if len(atoms) == 1:
+        return atoms[0]
+
+    best_atom = atoms[0]
+    best_context_overlap = -1
+    best_score = -1
+    best_text_len = -1
+
+    for atom in atoms:
+        parsed = _parse_result_atom(atom)
+        if not parsed:
+            continue
+        rule_id = parsed[0]
+        rule = matched_rules_by_id.get(rule_id)
+        if not rule:
+            continue
+        context_overlap = _context_overlap_score(rule, facts_json)
+        overlap, rule_text_len = _score_rule_for_query(query, rule)
+        if (context_overlap, overlap, rule_text_len) > (best_context_overlap, best_score, best_text_len):
+            best_context_overlap = context_overlap
+            best_score = overlap
+            best_text_len = rule_text_len
+            best_atom = atom
+
+    return best_atom
+
+
+def _deduplicate_sub_rules_within_same_point(
+    query: str,
+    matched_rules: list[dict],
+    facts_json: list[dict],
+    reasoning_results: list[str],
+) -> list[str]:
+    """Keep at most one applied sub-rule for each point parent (e.g., d7_k1_i_1 vs d7_k1_i_2)."""
+    if len(reasoning_results) <= 1:
+        return reasoning_results
+
+    matched_rules_by_id = {
+        str(rule.get("rule_id")): rule
+        for rule in matched_rules
+        if isinstance(rule, dict) and rule.get("rule_id")
+    }
+
+    grouped_atoms: dict[str, list[str]] = {}
+    ordered_parents: list[str] = []
+
+    for atom in reasoning_results:
+        parsed = _parse_result_atom(atom)
+        if not parsed:
+            # Keep non-result atoms as unique groups by raw atom text.
+            parent_key = f"__raw__:{atom}"
+        else:
+            rule_id = parsed[0]
+            if re.search(r"_\d+$", rule_id):
+                parent_key = _rule_parent_id(rule_id)
+            else:
+                parent_key = f"__rule__:{rule_id}"
+
+        if parent_key not in grouped_atoms:
+            grouped_atoms[parent_key] = []
+            ordered_parents.append(parent_key)
+        grouped_atoms[parent_key].append(atom)
+
+    filtered_results: list[str] = []
+    for parent_key in ordered_parents:
+        atoms = grouped_atoms[parent_key]
+        filtered_results.append(
+            _select_best_rule_atom_for_parent(query, atoms, matched_rules_by_id, facts_json)
+        )
+
+    return filtered_results
 
 
 def _extract_rule_ids_from_exception_match(matched_rules: list[dict], facts_json: list[dict]) -> list[str]:
@@ -299,13 +753,29 @@ def _score_rule_for_query(query: str, rule: dict) -> tuple[int, int]:
         (["den tin hieu", "tin hieu giao thong"], ["traffic light"], 12),
         (["di nguoc chieu", "nguoc chieu"], ["opposite direction"], 12),
         (["dung dien thoai", "thiet bi dien tu"], ["phone", "electronic device"], 12),
+        (["khong chap hanh yeu cau kiem tra", "yeu cau kiem tra", "kiem tra ve nong do con"], ["refuse_alcohol_test"], 18),
+        (["kiem tra ve chat ma tuy", "kiem tra ve chat kich thich", "chat ma tuy", "chat kich thich"], ["refuse_test", "drug", "stimulant"], 18),
         (["that day an toan", "day dai an toan"], ["seatbelt"], 12),
+        (["vuot xe", "can vuot", "hieu lenh vuot"], ["overtake", "no_signal", "not_maintain_signal"], 12),
+        (["bat den", "den chieu sang", "khong bat den", "khong su dung den", "thieu den"], ["no_light", "no light", "lighting"], 15),
+        (["qua toc do", "chay qua toc", "toc do quy dinh", "vuot toc do"], ["speeding", "speed"], 12),
     ]
     for query_phrases, action_keywords, bonus in action_cue_map:
         if any(phrase in normalized_query for phrase in query_phrases) and any(
             keyword in normalized_action for keyword in action_keywords
         ):
             overlap += bonus
+
+    # Vehicle-type bonus: strongly prefer rules whose subject matches the subject named in the query.
+    rule_subject = str(rule.get("subject", "") or "")
+    detected_subject = _detect_subject_type_from_query(query)
+    if detected_subject:
+        if rule_subject == detected_subject:
+            overlap += 20
+        elif _subject_matches_rule_subject(detected_subject, rule_subject):
+            overlap += 10
+        elif rule_subject in _DETECTABLE_SUBJECT_TYPES:
+            overlap -= 12
 
     return overlap, len(normalized_rule_text)
 
@@ -456,6 +926,28 @@ def _build_query_specific_prompt_guidance(query: str, rules: list[dict]) -> str:
             )
 
     if (
+        any(cue in normalized_query for cue in ["vuot xe", "can vuot", "hieu lenh vuot", "khong bao truoc khi vuot"])
+        and any(a in actions for a in ["overtake", "no_signal", "not_maintain_signal", "overtake_right"])
+    ):
+        overtake_actions = sorted(
+            a for a in actions
+            if a in {"overtake", "no_signal", "not_maintain_signal", "overtake_right"}
+        )
+        guidance_lines.append(
+            "- Câu hỏi liên quan đến vượt xe. Giá trị action HỢP LỆ duy nhất từ các rule trên là: "
+            + ", ".join(f'"{a}"' for a in overtake_actions)
+            + ". TUYỆT ĐỐI không được tự tạo action name khác."
+        )
+
+    if (
+        any(cue in normalized_query for cue in ["bat den", "den chieu sang", "khong su dung den", "thieu den", "khong bat den"])
+        and "no_light" in actions
+    ):
+        guidance_lines.append(
+            '- Câu hỏi liên quan đến đèn chiếu sáng. Giá trị action PHẢI là "no_light". TUYỆT ĐỐI không được tự tạo action name khác.'
+        )
+
+    if (
         "illegal_u_turn_at_restricted_location" in actions
         and "traffic_controller_order" in exception_refs
         and any(
@@ -480,6 +972,36 @@ def _build_query_specific_prompt_guidance(query: str, rules: list[dict]) -> str:
             "- Nếu câu hỏi nói việc quay đầu xe được phép theo biển báo hoặc chỉ dẫn tạm thời thì PHẢI xuất case_exception với giá trị temporary_traffic_sign_instruction."
         )
 
+    # Subject-type guidance: when query explicitly names a vehicle type and the matched
+    # rules contain subjects for both that type AND other types, tell the LLM exactly
+    # which subject value to use so it doesn't copy from the wrong example rule.
+    detected_subject = _detect_subject_type_from_query(query)
+    if detected_subject:
+        rule_subjects = {str(rule.get("subject", "")) for rule in rules}
+        if detected_subject in rule_subjects:
+            # Build human-readable hint for what the query mentions
+            subject_hint_map = {
+                "motorbike":                "xe máy / xe mô tô",
+                "three_wheel_motorbike":    "xe máy ba bánh",
+                "two_wheel_motorbike":      "xe máy hai bánh",
+                "electric_bicycle":         "xe đạp điện / xe đạp máy",
+                "bicycle":                  "xe đạp",
+                "cyclo":                    "xe xích lô",
+                "rudimentary_vehicle":      "xe thô sơ",
+                "non_motorized_vehicle":    "phương tiện không động cơ / phương tiện thô sơ",
+                "car":                      "ô tô",
+                "four_wheeled_motor_vehicle": "xe bốn bánh",
+                "pedestrian":               "người đi bộ",
+                "passenger":               "hành khách",
+                "priority_vehicle":         "xe ưu tiên",
+            }
+            vn_hint = subject_hint_map.get(detected_subject, detected_subject)
+            guidance_lines.append(
+                f"- Câu hỏi đề cập đến '{vn_hint}', vì vậy PHẢI chọn "
+                f'case_subject_type = "{detected_subject}". '
+                f"KHÔNG được chọn bất kỳ subject type nào khác."
+            )
+
     if not guidance_lines:
         return ""
     return "\n".join(guidance_lines) + "\n"
@@ -501,6 +1023,31 @@ def _build_retrieved_chunk_block(chunks: list[dict] | None) -> str:
     return "\n".join(lines) + "\n\n"
 
 
+def _build_subject_action_pair_block(rules: list[dict]) -> str:
+    if not rules:
+        return ""
+
+    lines = [
+        "Cặp subject-action hợp lệ (phải lấy cùng một rule, không ghép chéo):"
+    ]
+    seen: set[tuple[str, str, str]] = set()
+    for rule in rules:
+        rule_id = str(rule.get("rule_id") or "")
+        subject = str(rule.get("subject") or "")
+        action = str(rule.get("action") or "")
+        if not rule_id or not subject or not action:
+            continue
+        key = (rule_id, subject, action)
+        if key in seen:
+            continue
+        seen.add(key)
+        lines.append(f'- {rule_id}: subject="{subject}", action="{action}"')
+
+    if len(lines) == 1:
+        return ""
+    return "\n".join(lines) + "\n\n"
+
+
 def build_extraction_prompt(query: str, rules: list[dict], chunks: list[dict] | None = None) -> str:
     prioritized_rules = _prioritize_rules_for_query(query, rules)
     rules_have_exception = any(rule.get("exception_ref") for rule in prioritized_rules)
@@ -508,6 +1055,7 @@ def build_extraction_prompt(query: str, rules: list[dict], chunks: list[dict] | 
     query_specific_guidance = _build_query_specific_prompt_guidance(query, prioritized_rules)
     subquery_coverage_block = _build_subquery_coverage_block(query, prioritized_rules)
     retrieved_chunk_block = _build_retrieved_chunk_block(chunks)
+    subject_action_pair_block = _build_subject_action_pair_block(prioritized_rules)
     rules_json = json.dumps(
         [
             {
@@ -523,27 +1071,8 @@ def build_extraction_prompt(query: str, rules: list[dict], chunks: list[dict] | 
         indent=1,
     )
 
-    # Prefer a context-bearing rule for the example and only include
-    # exception facts when the user explicitly asks about an exception case.
-    ex = (
-        next((rule for rule in prioritized_rules if rule.get("context")), None)
-        or next((rule for rule in prioritized_rules if rule.get("exception_ref")), None)
-        or (prioritized_rules[0] if prioritized_rules else {})
-    )
-    ex_subject = ex.get("subject", "pedestrian")
-    ex_action  = ex.get("action",  "cross_road_at_improper_location")
-    ex_ctx     = ex.get("context", [])
-    ex_exception = ex.get("exception_ref", [])
-    ex_ctx_line = (
-        f'    {{"predicate": "case_context", "args": ["user1", "{ex_ctx[0]}"]}}\n'
-        if ex_ctx else ""
-    )
-    ex_exception_line = (
-        f'    {{"predicate": "case_exception", "args": ["user1", "{ex_exception[0]}"]}}\n'
-        if ex_exception and rules_have_exception else ""
-    )
     exception_instruction = (
-        "Nếu tình huống trong câu hỏi khớp với hoàn cảnh ngoại lệ được mô tả trong trích đoạn điều luật đã retrieve hoặc trong trường exception của rule thì PHẢI xuất case_exception tương ứng, kể cả khi câu hỏi không dùng các từ như 'ngoại lệ', 'trừ', hay 'không bị phạt'. Nếu không khớp thì KHÔNG được xuất case_exception.\n"
+        "Chỉ sau khi đã chốt matched_rule_ids ở BƯỚC 1, mới được xét exception của CHÍNH các rule_id đó. Nếu câu hỏi khớp ngoại lệ của rule_id đã match thì xuất case_exception tương ứng; nếu không khớp thì KHÔNG được xuất case_exception.\n"
         if rules_have_exception else
         "Không có exception nào trong các rule đã match, vì vậy TUYỆT ĐỐI không được xuất bất kỳ fact case_exception nào.\n"
     )
@@ -553,31 +1082,69 @@ def build_extraction_prompt(query: str, rules: list[dict], chunks: list[dict] | 
         f"Câu hỏi:\n{query}\n\n"
         f"Các rule liên quan:\n{rules_json}\n\n"
         f"{retrieved_chunk_block}"
+        f"{subject_action_pair_block}"
         f"{subquery_coverage_block}"
         "Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:\n"
         "{\n"
+        '  "matched_rule_ids": ["..."],\n'
         '  "facts": [\n'
-        f'    {{"predicate": "case_subject_type", "args": ["user1", "{ex_subject}"]}},\n'
-        + f'    {{"predicate": "case_action",       "args": ["user1", "{ex_action}"]}}'
-        + (f',\n{ex_ctx_line.rstrip()}' if ex_ctx_line else '')
-        + (f',\n{ex_exception_line.rstrip()}' if ex_exception_line else '\n')
-        + "  ]\n"
+        '    {"predicate": "case_subject_type", "args": ["user1", "..."]},\n'
+        '    {"predicate": "case_action",       "args": ["user1", "..."]},\n'
+        '    {"predicate": "case_exception",       "args": ["user1", "..."]} \n'
+        "  ]\n"
         "}\n\n"
         "Quy tắc BẮT BUỘC:\n"
         '1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"\n'
         '2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]\n'
         '3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"\n'
-        "4. Lấy giá trị subject/action/context NGUYÊN VĂN từ các rule trên\n"
-        "5. Nếu câu hỏi nêu rõ tình huống, điều kiện hoặc hoàn cảnh của rule thì PHẢI thêm case_context tương ứng\n"
-        "6. Chỉ được xuất case_exception khi chính câu hỏi người dùng nhắc rõ đến ngoại lệ, trường hợp được miễn trừ, hoặc cụm từ loại trừ như 'trừ', 'ngoại lệ', 'không bị phạt', 'xe ưu tiên', 'khẩn cấp'\n"
-        "7. Việc rule có trường exception KHÔNG đồng nghĩa phải xuất case_exception\n"
-        "8. Nếu câu hỏi nêu nhiều hành vi vi phạm thì PHẢI xuất đủ nhiều case_action, mỗi hành vi là một fact riêng\n"
-        "9. Không được bỏ sót hành vi chỉ vì các hành vi cùng áp dụng cho một chủ thể\n"
+        "4. BƯỚC 1: Xác định matched_rule_ids dựa trên danh sách Cặp subject-action hợp lệ; mỗi rule_id được chọn khi và chỉ khi subject + action của rule đó thực sự khớp mệnh đề trong câu hỏi\n"
+        "5. BƯỚC 1.1: TUYỆT ĐỐI không ghép chéo subject của rule này với action của rule khác\n"
+        "6. BƯỚC 1.2: Nếu câu hỏi có nhiều hành vi thì matched_rule_ids PHẢI chứa đủ rule_id cho từng hành vi\n"
+        "7. BƯỚC 2: facts PHẢI nhất quán với matched_rule_ids đã chọn; chỉ dùng subject/action/context lấy NGUYÊN VĂN từ các rule_id đó\n"
+        "8. Sau khi chọn được subject và action, nếu câu hỏi chứa context giống với context của action đã chọn thì PHẢI thêm case_context tương ứng\n"
+        "9. Việc rule có trường exception KHÔNG đồng nghĩa phải xuất case_exception\n"
         f"10. {exception_instruction}"
+        "11. Nếu xuất case_exception thì giá trị exception PHẢI thuộc exception_ref của ÍT NHẤT MỘT rule_id trong matched_rule_ids\n"
         f"{query_specific_guidance}"
-        "11. Chỉ xuất duy nhất JSON object, không thêm gì khác\n\n"
+        "12. Chỉ xuất duy nhất JSON object, không thêm gì khác\n\n"
         f"{multi_violation_example}"
     )
+
+
+def _extract_llm_matched_rule_ids(llm_output: str) -> list[str]:
+    text = llm_output.strip()
+    text = re.sub(r'<think>[\s\S]*?</think>', '', text).strip()
+
+    fenced = re.search(r'```(?:json)?\s*([\s\S]+?)\s*```', text)
+    if fenced:
+        text = fenced.group(1).strip()
+
+    candidates = _extract_json_candidates(text)
+    candidates.append(text)
+
+    for candidate in candidates:
+        try:
+            data = json.loads(candidate)
+        except Exception:
+            continue
+        if not isinstance(data, dict):
+            continue
+
+        rule_ids = data.get("matched_rule_ids")
+        if not isinstance(rule_ids, list):
+            continue
+
+        normalized: list[str] = []
+        seen: set[str] = set()
+        for rule_id in rule_ids:
+            value = str(rule_id).strip()
+            if not value or value in seen:
+                continue
+            seen.add(value)
+            normalized.append(value)
+        return normalized
+
+    return []
 
 
 # ── Step 3: Parse LLM JSON output ───────────────────────────────────────────
@@ -770,10 +1337,65 @@ def _build_final_answer(matched_rules: list[dict], facts_json: list[dict], reaso
 
 # ── Step 5: Run clingo ───────────────────────────────────────────────────────
 
-def run_asp_reasoning(asp_facts: str) -> list[str]:
+def _escape_asp_string(value: str) -> str:
+    return value.replace("\\", "\\\\").replace('"', '\\"')
+
+
+def _build_matched_rules_lp(matched_rules: list[dict]) -> str:
+    lines: list[str] = []
+
+    for rule in matched_rules:
+        rule_id = str(rule.get("rule_id") or "").strip()
+        if not rule_id:
+            continue
+
+        lines.append(f"rule({rule_id}).")
+
+        article = rule.get("article")
+        if isinstance(article, int) and article > 0:
+            lines.append(f"article({rule_id}, {article}).")
+
+        clause = rule.get("clause")
+        if isinstance(clause, int) and clause > 0:
+            lines.append(f"clause({rule_id}, {clause}).")
+
+        point = str(rule.get("point") or "").strip()
+        if point:
+            lines.append(f'point({rule_id}, "{_escape_asp_string(point)}").')
+
+        subject = str(rule.get("subject") or "").strip()
+        if subject:
+            lines.append(f"subject({rule_id}, {subject}).")
+
+        action = str(rule.get("action") or "").strip()
+        if action:
+            lines.append(f"action({rule_id}, {action}).")
+
+        for context_value in rule.get("context") or []:
+            context_atom = str(context_value).strip()
+            if context_atom:
+                lines.append(f"context({rule_id}, {context_atom}).")
+
+        for exception_ref in rule.get("exception_ref") or []:
+            exception_atom = str(exception_ref).strip()
+            if exception_atom:
+                lines.append(f"exception({rule_id}, {exception_atom}).")
+
+        fine_min = rule.get("fine_min")
+        if isinstance(fine_min, int) and fine_min > 0:
+            lines.append(f"fine_min({rule_id}, {fine_min}).")
+
+        fine_max = rule.get("fine_max")
+        if isinstance(fine_max, int) and fine_max > 0:
+            lines.append(f"fine_max({rule_id}, {fine_max}).")
+
+    return "\n".join(lines)
+
+def run_asp_reasoning(asp_facts: str, matched_rules: list[dict]) -> list[str]:
     """
-    Load KB + reasoning rules as text strings (via ctl.add) to avoid Unicode
-    path issues on Windows, then add generated facts and run clingo.
+    Load only the retrieved+matched ASP rules plus reasoning rules as text
+    strings (via ctl.add) to avoid Unicode path issues on Windows, then add
+    generated facts and run clingo.
     """
     try:
         import clingo
@@ -784,11 +1406,13 @@ def run_asp_reasoning(asp_facts: str) -> list[str]:
 
     ctl = clingo.Control()
 
-    # Read file contents and add as strings — never pass Unicode paths to clingo
-    for lp_path in [_KB_LP, _REASONING_LP]:
-        content = Path(lp_path).read_text(encoding="utf-8")
-        content = _normalize_legacy_list_facts(content)
-        ctl.add("base", [], content)
+    matched_rules_lp = _build_matched_rules_lp(matched_rules)
+    if matched_rules_lp:
+        ctl.add("base", [], matched_rules_lp)
+
+    reasoning_content = Path(_REASONING_LP).read_text(encoding="utf-8")
+    reasoning_content = _normalize_legacy_list_facts(reasoning_content)
+    ctl.add("base", [], reasoning_content)
 
     ctl.add("base", [], asp_facts)
 
@@ -888,11 +1512,62 @@ def run_asp_pipeline(query: str, top_k: int = 5) -> dict:
     # 4. Parse facts
     log.info("[STEP 4] Parsing JSON facts from LLM output ...")
     try:
+        llm_selected_rule_ids = _extract_llm_matched_rule_ids(llm_raw)
+        if llm_selected_rule_ids:
+            log.info(f"  → LLM matched_rule_ids: {llm_selected_rule_ids}")
+
         facts_json = parse_llm_facts(llm_raw)
-        filtered_facts_json = _strip_unsupported_exception_facts(matched_rules, facts_json)
+        corrected_facts_json = _override_subject_type_from_query(query, facts_json)
+        corrected_subjects = [
+            f.get("args", [None, None])[1]
+            for f in corrected_facts_json
+            if isinstance(f, dict) and f.get("predicate") in {"case_subject_type", "driver_type", "subject_type"}
+        ]
+        original_subjects = [
+            f.get("args", [None, None])[1]
+            for f in facts_json
+            if isinstance(f, dict) and f.get("predicate") in {"case_subject_type", "driver_type", "subject_type"}
+        ]
+        if corrected_subjects != original_subjects:
+            log.info(f"  → corrected subject_type from {original_subjects} to {corrected_subjects} based on query keywords")
+        facts_json = corrected_facts_json
+
+        coerced_pair_facts_json, pair_corrections = _enforce_subject_action_pairs_from_matched_rules(query, facts_json, matched_rules)
+        if pair_corrections:
+            for correction in pair_corrections:
+                log.info(
+                    "  → corrected action for entity=%s subject=%s: %s -> %s (rule=%s)",
+                    correction["entity"],
+                    correction["subject"],
+                    correction["old_action"],
+                    correction["new_action"],
+                    correction["rule_id"],
+                )
+        facts_json = coerced_pair_facts_json
+
+        selected_rule_grounded_facts_json = _strip_action_facts_not_in_selected_rules(
+            matched_rules,
+            facts_json,
+            set(llm_selected_rule_ids) if llm_selected_rule_ids else None,
+        )
+        if len(selected_rule_grounded_facts_json) != len(facts_json):
+            log.info("  → removed case_action facts that are outside LLM-selected matched_rule_ids")
+        facts_json = selected_rule_grounded_facts_json
+
+        filtered_facts_json = _strip_unsupported_exception_facts(
+            matched_rules,
+            facts_json,
+            set(llm_selected_rule_ids) if llm_selected_rule_ids else None,
+        )
         if len(filtered_facts_json) != len(facts_json):
-            log.info("  → removed unsupported case_exception facts that do not match any retrieved rule exception")
+            log.info("  → removed unsupported case_exception facts that do not match exceptions of selected rules")
         facts_json = filtered_facts_json
+
+        grounded_facts_json = _strip_exception_facts_if_not_mentioned_in_query(query, facts_json)
+        if len(grounded_facts_json) != len(facts_json):
+            log.info("  → removed case_exception facts because query does not mention exception/exemption/priority")
+        facts_json = grounded_facts_json
+
         log.info(f"  → {len(facts_json)} facts parsed")
         log.debug(f"  FACTS JSON: {json.dumps(facts_json, ensure_ascii=False)}")
     except (json.JSONDecodeError, ValueError) as e:
@@ -921,7 +1596,14 @@ def run_asp_pipeline(query: str, top_k: int = 5) -> dict:
     # 6. Run clingo
     log.info("[STEP 6] Running clingo reasoning ...")
     try:
-        reasoning_results = run_asp_reasoning(asp_facts)
+        reasoning_results = run_asp_reasoning(asp_facts, matched_rules)
+        deduped_reasoning_results = _deduplicate_sub_rules_within_same_point(query, matched_rules, facts_json, reasoning_results)
+        if len(deduped_reasoning_results) != len(reasoning_results):
+            log.info("  → removed duplicated sub-rules within the same legal point")
+            removed = sorted(set(reasoning_results) - set(deduped_reasoning_results))
+            for atom in removed:
+                log.debug(f"    removed: {atom}")
+        reasoning_results = deduped_reasoning_results
         error = None
         log.info(f"  → {len(reasoning_results)} result atoms")
         for atom in reasoning_results:
@@ -936,7 +1618,7 @@ def run_asp_pipeline(query: str, top_k: int = 5) -> dict:
         "decomposed_queries": decomposed_queries,
         "retrieved_chunks":  chunks,
         "matched_rules":     matched_rules,
-        "extracted_rule_ids": [rule["rule_id"] for rule in matched_rules],
+        "extracted_rule_ids": llm_selected_rule_ids or [rule["rule_id"] for rule in matched_rules],
         "applied_rule_ids":   _extract_applied_rule_ids(matched_rules, facts_json, reasoning_results),
         "llm_prompt":        prompt,
         "llm_raw":           llm_raw,

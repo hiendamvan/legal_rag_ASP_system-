@@ -8,3 +8,4 @@ data/
 .claude/
 legal_knowledge/dieu6.lp
 evaluation/batch_logs/
+.vendor/
