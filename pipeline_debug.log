@@ -89422,3 +89422,948 @@ did_action(case1, chase_each_other_on_road).
 10:12:39 [DEBUG]     result(d9_k3_a_1,300000,400000)
 10:12:39 [INFO] [DONE] Pipeline hoàn thành
 10:12:39 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+10:30:20 [INFO] ============================================================
+10:30:20 [INFO] QUERY: Người đi xe máy vượt đèn đỏ bị xử phạt thế nào
+10:30:20 [INFO] top_k=5
+10:30:20 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+10:34:23 [INFO]   → 5 chunks retrieved
+10:34:23 [DEBUG]     chunk: dieu=7 khoan=4 diem=c score=0.5343  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+10:34:23 [DEBUG]     chunk: dieu=7 khoan=1 diem=a score=0.5158  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+10:34:23 [DEBUG]     chunk: dieu=7 khoan=7 diem=c score=0.5145  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+10:34:23 [DEBUG]     chunk: dieu=7 khoan=3 diem=đ score=0.5124  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+10:34:23 [DEBUG]     chunk: dieu=7 khoan=1 diem=h score=0.5064  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+10:34:23 [INFO]   → 2 ASP rules matched
+10:34:23 [DEBUG]     rule: d7_k4_c_1                  subject=motorbike             action=overtake
+10:34:23 [DEBUG]     rule: d7_k4_c_2                  subject=motorbike             action=overtake
+10:34:23 [INFO] [STEP 2] Building LLM extraction prompt ...
+10:34:23 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+Người đi xe máy vượt đèn đỏ bị xử phạt thế nào
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d7_k4_c_2",
+  "subject": "motorbike",
+  "action": "overtake",
+  "context": [
+   "no_overtaking_sign"
+  ],
+  "exception": [
+   "d7_k3_dd"
+  ]
+ },
+ {
+  "rule_id": "d7_k4_c_1",
+  "subject": "motorbike",
+  "action": "overtake",
+  "context": [
+   "not_allowed"
+  ],
+  "exception": [
+   "d7_k3_dd"
+  ]
+ }
+]
+
+Trích đoạn điều luật đã retrieve:
+- Mục 1 > Điều 7 > Khoản 4 > Điểm c): Vượt xe trong những trường hợp không được vượt, vượt xe tại đoạn đường có biển báo hiệu có nội dung cấm vượt đối với loại phương tiện đang điều khiển, trừ các hành vi vi phạm quy định tại điểm đ khoản 3 Điều này;
+- Mục 1 > Điều 7 > Khoản 1 > Điểm a): Không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường, trừ các hành vi vi phạm quy định tại điểm b, điểm d, điểm e khoản 2; điểm a, điểm c, điểm d, điểm h khoản 3; điểm a, điểm b, điểm c, điểm d khoản 4; điểm b, điểm d khoản 6; điểm a, điểm b, điểm c khoản 7; điểm a khoản 8; điểm b khoản 9; điểm a khoản 10 Điều này;
+- Mục 1 > Điều 7 > Khoản 7 > Điểm c): Không chấp hành hiệu lệnh của đèn tín hiệu giao thông;
+- Mục 1 > Điều 7 > Khoản 3 > Điểm đ): Vượt bên phải trong trường hợp không được phép;
+- Mục 1 > Điều 7 > Khoản 1 > Điểm h): Tránh xe không đúng quy định; sử dụng đèn chiếu xa khi gặp người đi bộ qua đường hoặc khi đi trên đoạn đường qua khu dân cư có hệ thống chiếu sáng đang hoạt động hoặc khi gặp xe đi ngược chiều (trừ trường hợp dải phân cách có khả năng chống chói) hoặc khi chuyển hướng xe tại nơi đường giao nhau; không nhường đường cho xe đi ngược chiều theo quy định tại nơi đường hẹp, đường dốc, nơi có chướng ngại vật;
+
+Cặp subject-action hợp lệ (phải lấy cùng một rule, không ghép chéo):
+- d7_k4_c_2: subject="motorbike", action="overtake"
+- d7_k4_c_1: subject="motorbike", action="overtake"
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "matched_rule_ids": ["..."],
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "..."]},
+    {"predicate": "case_action",       "args": ["user1", "..."]},
+    {"predicate": "case_exception",       "args": ["user1", "..."]} 
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. BƯỚC 1: Xác định matched_rule_ids dựa trên danh sách Cặp subject-action hợp lệ; mỗi rule_id được chọn khi và chỉ khi subject + action của rule đó thực sự khớp mệnh đề trong câu hỏi
+5. BƯỚC 1.1: TUYỆT ĐỐI không ghép chéo subject của rule này với action của rule khác
+6. BƯỚC 1.2: Nếu câu hỏi có nhiều hành vi thì matched_rule_ids PHẢI chứa đủ rule_id cho từng hành vi
+7. BƯỚC 2: facts PHẢI nhất quán với matched_rule_ids đã chọn; chỉ dùng subject/action/context lấy NGUYÊN VĂN từ các rule_id đó
+8. Sau khi chọn được subject và action, nếu câu hỏi chứa context giống với context của action đã chọn thì PHẢI thêm case_context tương ứng
+9. Việc rule có trường exception KHÔNG đồng nghĩa phải xuất case_exception
+10. Chỉ sau khi đã chốt matched_rule_ids ở BƯỚC 1, mới được xét exception của CHÍNH các rule_id đó. Nếu câu hỏi khớp ngoại lệ của rule_id đã match thì xuất case_exception tương ứng; nếu không khớp thì KHÔNG được xuất case_exception.
+11. Nếu xuất case_exception thì giá trị exception PHẢI thuộc exception_ref của ÍT NHẤT MỘT rule_id trong matched_rule_ids
+- Câu hỏi đề cập đến 'xe máy / xe mô tô', vì vậy PHẢI chọn case_subject_type = "motorbike". KHÔNG được chọn bất kỳ subject type nào khác.
+12. Chỉ xuất duy nhất JSON object, không thêm gì khác
+
+
+----------------------------------------
+10:34:23 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+10:35:14 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"matched_rule_ids": ["d7_k4_c_2", "d7_k4_c_1"], "facts": [{"predicate": "case_subject_type", "args": ["user1", "motorbike"]}, {"predicate": "case_action", "args": ["user1", "overtake"]}]}
+----------------------------------------
+10:35:14 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+10:35:14 [INFO]   → LLM matched_rule_ids: ['d7_k4_c_2', 'd7_k4_c_1']
+10:35:14 [INFO]   → 2 facts parsed
+10:35:14 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "motorbike"]}, {"predicate": "case_action", "args": ["user1", "overtake"]}]
+10:35:14 [INFO] [STEP 5] Converting facts to ASP predicates ...
+10:35:14 [DEBUG]   ASP FACTS:
+driver_type(case1, motorbike).
+did_action(case1, overtake).
+10:35:14 [INFO] [STEP 6] Running clingo reasoning ...
+10:35:15 [INFO]   → removed duplicated sub-rules within the same legal point
+10:35:15 [DEBUG]     removed: result(d7_k4_c_1,800000,1000000)
+10:35:15 [INFO]   → 1 result atoms
+10:35:15 [DEBUG]     result(d7_k4_c_2,800000,1000000)
+10:35:15 [INFO] [DONE] Pipeline hoàn thành
+10:35:15 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+10:43:52 [INFO] ============================================================
+10:43:52 [INFO] QUERY: Người điều khiển ô tô không có tín hiệu khi ra vào vị trí dừng xe, đỗ xe thì có vi phạm không?
+10:43:52 [INFO] top_k=5
+10:43:52 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+10:44:01 [INFO]   → 5 chunks retrieved
+10:44:01 [DEBUG]     chunk: dieu=6 khoan=1 diem=b score=0.5165  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+10:44:01 [DEBUG]     chunk: dieu=6 khoan=1 diem=c score=0.4852  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+10:44:01 [DEBUG]     chunk: dieu=6 khoan=7 diem=c score=0.4483  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+10:44:01 [DEBUG]     chunk: dieu=6 khoan=3 diem=e score=0.4323  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+10:44:01 [DEBUG]     chunk: dieu=6 khoan=4 diem=b score=0.4215  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+10:44:01 [INFO]   → 1 ASP rules matched
+10:44:01 [DEBUG]     rule: d6_k1_b                    subject=car                   action=no_signal_when_entering_or_leaving_stop
+10:44:01 [INFO] [STEP 2] Building LLM extraction prompt ...
+10:44:01 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+Người điều khiển ô tô không có tín hiệu khi ra vào vị trí dừng xe, đỗ xe thì có vi phạm không?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d6_k1_b",
+  "subject": "car",
+  "action": "no_signal_when_entering_or_leaving_stop",
+  "context": []
+ }
+]
+
+Trích đoạn điều luật đã retrieve:
+- Mục 1 > Điều 6 > Khoản 1 > Điểm b): Khi ra, vào vị trí dừng xe, đỗ xe không có tín hiệu báo cho người điều khiển phương tiện khác biết;
+- Mục 1 > Điều 6 > Khoản 1 > Điểm c): Không báo hiệu bằng đèn khẩn cấp hoặc không đặt biển cảnh báo “Chú ý xe đỗ” theo quy định trong trường hợp gặp sự cố kỹ thuật (hoặc bất khả kháng khác) buộc phải đỗ xe chiếm một phần đường xe chạy hoặc tại nơi không được phép đỗ xe, trừ hành vi vi phạm quy định tại điểm c khoản 7 Điều này;
+- Mục 1 > Điều 6 > Khoản 7 > Điểm c): Dừng xe, đỗ xe trên đường cao tốc không đúng nơi quy định; không có báo hiệu bằng đèn khẩn cấp khi gặp sự cố kỹ thuật hoặc bất khả kháng khác buộc phải dừng xe, đỗ xe ở làn dừng xe khẩn cấp trên đường cao tốc; không có báo hiệu bằng đèn khẩn cấp, không đặt biển cảnh báo “Chú ý xe đỗ” (hoặc đèn cảnh báo) về phía sau xe khoảng cách tối thiểu 150 mét khi dừng xe, đỗ xe trong trường hợp gặp sự cố kỹ thuật hoặc bất khả kháng khác buộc phải dừng xe, đỗ xe trên một phần làn đường xe chạy trên đường cao
+- Mục 1 > Điều 6 > Khoản 3 > Điểm e): Đỗ xe không sát theo lề đường, vỉa hè phía bên phải theo chiều đi hoặc bánh xe gần nhất cách lề đường, vỉa hè quá 0,25 mét; đỗ xe trên đường dành riêng cho xe buýt; đỗ xe trên miệng cống thoát nước, miệng hầm của đường điện thoại, điện cao thế, chỗ dành riêng cho xe chữa cháy lấy nước; đỗ, để xe ở vỉa hè trái quy định của pháp luật; đỗ xe nơi có biển “Cấm đỗ xe” hoặc biển “Cấm dừng xe và đỗ xe”, trừ hành vi vi phạm quy định tại điểm đ khoản 4, điểm c khoản 7 Điều này;
+- Mục 1 > Điều 6 > Khoản 4 > Điểm b): Dừng xe, đỗ xe tại vị trí: bên trái đường một chiều hoặc bên trái (theo hướng lưu thông) của đường đôi; trên đoạn đường cong hoặc gần đầu dốc nơi tầm nhìn bị che khuất; trên cầu (trừ trường hợp tổ chức giao thông cho phép), gầm cầu vượt (trừ những nơi cho phép dừng xe, đỗ xe), song song với một xe khác đang dừng, đỗ, trừ hành vi vi phạm quy định tại điểm c khoản 7 Điều này;
+
+Cặp subject-action hợp lệ (phải lấy cùng một rule, không ghép chéo):
+- d6_k1_b: subject="car", action="no_signal_when_entering_or_leaving_stop"
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "matched_rule_ids": ["..."],
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "..."]},
+    {"predicate": "case_action",       "args": ["user1", "..."]},
+    {"predicate": "case_exception",       "args": ["user1", "..."]} 
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. BƯỚC 1: Xác định matched_rule_ids dựa trên danh sách Cặp subject-action hợp lệ; mỗi rule_id được chọn khi và chỉ khi subject + action của rule đó thực sự khớp mệnh đề trong câu hỏi
+5. BƯỚC 1.1: TUYỆT ĐỐI không ghép chéo subject của rule này với action của rule khác
+6. BƯỚC 1.2: Nếu câu hỏi có nhiều hành vi thì matched_rule_ids PHẢI chứa đủ rule_id cho từng hành vi
+7. BƯỚC 2: facts PHẢI nhất quán với matched_rule_ids đã chọn; chỉ dùng subject/action/context lấy NGUYÊN VĂN từ các rule_id đó
+8. Sau khi chọn được subject và action, nếu câu hỏi chứa context giống với context của action đã chọn thì PHẢI thêm case_context tương ứng
+9. Việc rule có trường exception KHÔNG đồng nghĩa phải xuất case_exception
+10. Không có exception nào trong các rule đã match, vì vậy TUYỆT ĐỐI không được xuất bất kỳ fact case_exception nào.
+11. Nếu xuất case_exception thì giá trị exception PHẢI thuộc exception_ref của ÍT NHẤT MỘT rule_id trong matched_rule_ids
+- Câu hỏi đề cập đến 'ô tô', vì vậy PHẢI chọn case_subject_type = "car". KHÔNG được chọn bất kỳ subject type nào khác.
+12. Chỉ xuất duy nhất JSON object, không thêm gì khác
+
+
+----------------------------------------
+10:44:01 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+10:45:26 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"matched_rule_ids": ["d6_k1_b"], "facts": [{"predicate": "case_subject_type", "args": ["user1", "car"]}, {"predicate": "case_action", "args": ["user1", "no_signal_when_entering_or_leaving_stop"]}]}
+</think>
+
+{"matched_rule_ids": ["d6_k1_b"], "facts": [{"predicate": "case_subject_type", "args": ["user1", "car"]}, {"predicate": "case_action", "args": ["user1", "no_signal_when_entering_or_leaving_stop"]}]}.
+----------------------------------------
+10:45:26 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+10:45:26 [INFO]   → LLM matched_rule_ids: ['d6_k1_b']
+10:45:26 [INFO]   → 2 facts parsed
+10:45:26 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "car"]}, {"predicate": "case_action", "args": ["user1", "no_signal_when_entering_or_leaving_stop"]}]
+10:45:26 [INFO] [STEP 5] Converting facts to ASP predicates ...
+10:45:26 [DEBUG]   ASP FACTS:
+driver_type(case1, car).
+did_action(case1, no_signal_when_entering_or_leaving_stop).
+10:45:26 [INFO] [STEP 6] Running clingo reasoning ...
+10:45:26 [INFO]   → 1 result atoms
+10:45:26 [DEBUG]     result(d6_k1_b,400000,600000)
+10:45:26 [INFO] [DONE] Pipeline hoàn thành
+10:45:26 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+10:59:14 [INFO] ============================================================
+10:59:14 [INFO] QUERY: Người lái xe ô tô lùi xe không đảm bảo an toàn, gây tai nạn bị phạt thế nào
+10:59:14 [INFO] top_k=5
+10:59:14 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+10:59:15 [INFO]   → 5 chunks retrieved
+10:59:15 [DEBUG]     chunk: dieu=6 khoan=8 diem= score=0.5182  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+10:59:15 [DEBUG]     chunk: dieu=6 khoan=13 diem= score=0.5157  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+10:59:15 [DEBUG]     chunk: dieu=6 khoan=10 diem=a score=0.5078  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+10:59:15 [DEBUG]     chunk: dieu=6 khoan=10 diem=b score=0.5002  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+10:59:15 [DEBUG]     chunk: dieu=6 khoan=4 diem=e score=0.4977  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+10:59:15 [INFO]   → 1 ASP rules matched
+10:59:15 [DEBUG]     rule: d6_k8                      subject=car                   action=causing_accident_and_leaving_or_not_helping_victim
+10:59:15 [INFO] [STEP 2] Building LLM extraction prompt ...
+10:59:15 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+Người lái xe ô tô lùi xe không đảm bảo an toàn, gây tai nạn bị phạt thế nào
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d6_k8",
+  "subject": "car",
+  "action": "causing_accident_and_leaving_or_not_helping_victim",
+  "context": [
+   "traffic_accident"
+  ]
+ }
+]
+
+Trích đoạn điều luật đã retrieve:
+- Mục 1 > Điều 6 > Khoản 8: Phạt tiền từ 16.000.000 đồng đến 18.000.000 đồng đối với người điều khiển xe thực hiện hành vi vi phạm gây tai nạn giao thông không dừng ngay phương tiện, không giữ nguyên hiện trường, không trợ giúp người bị nạn, không ở lại hiện trường hoặc không đến trình báo ngay với cơ quan công an, Ủy ban nhân dân nơi gần nhất.
+- Mục 1 > Điều 6 > Khoản 13: Phạt tiền từ 50.000.000 đồng đến 70.000.000 đồng đối với người điều khiển xe thực hiện hành vi vi phạm quy định tại khoản 12 Điều này mà gây tai nạn giao thông.
+- Mục 1 > Điều 6 > Khoản 10 > Điểm a): Điều khiển xe không quan sát, giảm tốc độ hoặc dừng lại để bảo đảm an toàn theo quy định mà gây tai nạn giao thông; điều khiển xe chạy quá tốc độ quy định gây tai nạn giao thông; dừng xe, đỗ xe, quay đầu xe, lùi xe, tránh xe, vượt xe, chuyển hướng, chuyển làn đường không đúng quy định gây tai nạn giao thông; không đi đúng phần đường, làn đường, không giữ khoảng cách an toàn giữa hai xe theo quy định gây tai nạn giao thông hoặc đi vào đường có biển báo hiệu có nội dung cấm đi vào đối với loại phư
+- Mục 1 > Điều 6 > Khoản 10 > Điểm b): Vi phạm quy định tại một trong các điểm, khoản sau của Điều này mà gây tai nạn giao thông: điểm a, điểm b, điểm c, điểm d, điểm đ khoản 1; điểm c khoản 2; điểm b, điểm g, điểm h, điểm n, điểm o, điểm p, khoản 3; điểm a, điểm c, điểm d khoản 4; điểm c, điểm d, điểm e, điểm h, điểm n, điểm o, điểm q khoản 5; điểm b khoản 7; điểm b, điểm c, điểm d khoản 9 Điều này.
+- Mục 1 > Điều 6 > Khoản 4 > Điểm e): Lùi xe ở đường một chiều, đường có biển “Cấm đi ngược chiều”, khu vực cấm dừng, trên phần đường dành cho người đi bộ qua đường, nơi đường bộ giao nhau, nơi đường bộ giao nhau cùng mức với đường sắt, nơi tầm nhìn bị che khuất; lùi xe không quan sát hai bên, phía sau xe hoặc không có tín hiệu lùi xe, trừ hành vi vi phạm quy định tại điểm đ khoản 11 Điều này;
+
+Cặp subject-action hợp lệ (phải lấy cùng một rule, không ghép chéo):
+- d6_k8: subject="car", action="causing_accident_and_leaving_or_not_helping_victim"
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "matched_rule_ids": ["..."],
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "..."]},
+    {"predicate": "case_action",       "args": ["user1", "..."]},
+    {"predicate": "case_exception",       "args": ["user1", "..."]} 
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. BƯỚC 1: Xác định matched_rule_ids dựa trên danh sách Cặp subject-action hợp lệ; mỗi rule_id được chọn khi và chỉ khi subject + action của rule đó thực sự khớp mệnh đề trong câu hỏi
+5. BƯỚC 1.1: TUYỆT ĐỐI không ghép chéo subject của rule này với action của rule khác
+6. BƯỚC 1.2: Nếu câu hỏi có nhiều hành vi thì matched_rule_ids PHẢI chứa đủ rule_id cho từng hành vi
+7. BƯỚC 2: facts PHẢI nhất quán với matched_rule_ids đã chọn; chỉ dùng subject/action/context lấy NGUYÊN VĂN từ các rule_id đó
+8. Sau khi chọn được subject và action, nếu câu hỏi chứa context giống với context của action đã chọn thì PHẢI thêm case_context tương ứng
+9. Việc rule có trường exception KHÔNG đồng nghĩa phải xuất case_exception
+10. Không có exception nào trong các rule đã match, vì vậy TUYỆT ĐỐI không được xuất bất kỳ fact case_exception nào.
+11. Nếu xuất case_exception thì giá trị exception PHẢI thuộc exception_ref của ÍT NHẤT MỘT rule_id trong matched_rule_ids
+- Câu hỏi đề cập đến 'ô tô', vì vậy PHẢI chọn case_subject_type = "car". KHÔNG được chọn bất kỳ subject type nào khác.
+12. Chỉ xuất duy nhất JSON object, không thêm gì khác
+
+
+----------------------------------------
+10:59:15 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+11:00:16 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"matched_rule_ids": ["d6_k8"], "facts": [{"predicate": "case_subject_type", "args": ["user1", "car"]}, {"predicate": "case_action", "args": ["user1", "causing_accident_and_leaving_or_not_helping_victim"]}]}
+</think>
+
+{"matched_rule_ids": ["d6_k8"], "facts": [{"predicate": "case_subject_type", "args": ["user1", "car"]}, {"predicate": "case_action", "args": ["user1", "causing_accident_and_leaving_or_not_helping_victim"]}]}
+----------------------------------------
+11:00:16 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+11:00:16 [INFO]   → LLM matched_rule_ids: ['d6_k8']
+11:00:16 [INFO]   → 2 facts parsed
+11:00:16 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "car"]}, {"predicate": "case_action", "args": ["user1", "causing_accident_and_leaving_or_not_helping_victim"]}]
+11:00:16 [INFO] [STEP 5] Converting facts to ASP predicates ...
+11:00:16 [DEBUG]   ASP FACTS:
+driver_type(case1, car).
+did_action(case1, causing_accident_and_leaving_or_not_helping_victim).
+11:00:16 [INFO] [STEP 6] Running clingo reasoning ...
+11:00:16 [INFO]   → 1 result atoms
+11:00:16 [DEBUG]     result(d6_k8,16000000,18000000)
+11:00:16 [INFO] [DONE] Pipeline hoàn thành
+11:00:16 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+11:00:48 [INFO] ============================================================
+11:00:48 [INFO] QUERY: Ô tô đi ngược chiều trên đường một chiều thì bị phạt thế nào?
+11:00:48 [INFO] top_k=5
+11:00:48 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+11:00:49 [INFO]   → 5 chunks retrieved
+11:00:49 [DEBUG]     chunk: dieu=6 khoan=9 diem=d score=0.5307  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+11:00:49 [DEBUG]     chunk: dieu=6 khoan=5 diem=c score=0.5008  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+11:00:49 [DEBUG]     chunk: dieu=6 khoan=4 diem=e score=0.4909  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+11:00:49 [DEBUG]     chunk: dieu=6 khoan=3 diem=p score=0.4788  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+11:00:49 [DEBUG]     chunk: dieu=6 khoan=5 diem=b score=0.4775  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+11:00:49 [INFO]   → 1 ASP rules matched
+11:00:49 [DEBUG]     rule: d6_k9_d                    subject=car                   action=driving_opposite_direction
+11:00:49 [INFO] [STEP 2] Building LLM extraction prompt ...
+11:00:49 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+Ô tô đi ngược chiều trên đường một chiều thì bị phạt thế nào?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d6_k9_d",
+  "subject": "car",
+  "action": "driving_opposite_direction",
+  "context": [
+   "one_way_road_or_no_entry_road"
+  ],
+  "exception": [
+   "violation_d6_k11_dd",
+   "priority_vehicle_on_emergency_duty"
+  ]
+ }
+]
+
+Trích đoạn điều luật đã retrieve:
+- Mục 1 > Điều 6 > Khoản 9 > Điểm d): Đi ngược chiều của đường một chiều, đi ngược chiều trên đường có biển “Cấm đi ngược chiều”, trừ các hành vi vi phạm quy định tại điểm đ khoản 11 Điều này và các trường hợp xe ưu tiên đang đi làm nhiệm vụ khẩn cấp theo quy định.
+- Mục 1 > Điều 6 > Khoản 5 > Điểm c): Tránh xe đi ngược chiều không đúng quy định (trừ hành vi vi phạm sử dụng đèn chiếu xa khi tránh xe đi ngược chiều quy định tại điểm b khoản 3 Điều này); không nhường đường cho xe đi ngược chiều theo quy định tại nơi đường hẹp, đường dốc, nơi có chướng ngại vật;
+- Mục 1 > Điều 6 > Khoản 4 > Điểm e): Lùi xe ở đường một chiều, đường có biển “Cấm đi ngược chiều”, khu vực cấm dừng, trên phần đường dành cho người đi bộ qua đường, nơi đường bộ giao nhau, nơi đường bộ giao nhau cùng mức với đường sắt, nơi tầm nhìn bị che khuất; lùi xe không quan sát hai bên, phía sau xe hoặc không có tín hiệu lùi xe, trừ hành vi vi phạm quy định tại điểm đ khoản 11 Điều này;
+- Mục 1 > Điều 6 > Khoản 3 > Điểm p): Điều khiển xe chạy tốc độ thấp hơn các xe khác đi cùng chiều mà không đi về làn đường bên phải chiều đi của mình, trừ trường hợp các xe khác đi cùng chiều chạy quá tốc độ quy định.
+- Mục 1 > Điều 6 > Khoản 5 > Điểm b): Điều khiển xe không đi bên phải theo chiều đi của mình; đi không đúng phần đường hoặc làn đường quy định (làn cùng chiều hoặc làn ngược chiều) trừ hành vi quy định tại điểm a khoản 4 Điều này; điều khiển xe đi qua dải phân cách cố định ở giữa hai phần đường xe chạy;
+
+Cặp subject-action hợp lệ (phải lấy cùng một rule, không ghép chéo):
+- d6_k9_d: subject="car", action="driving_opposite_direction"
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "matched_rule_ids": ["..."],
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "..."]},
+    {"predicate": "case_action",       "args": ["user1", "..."]},
+    {"predicate": "case_exception",       "args": ["user1", "..."]} 
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. BƯỚC 1: Xác định matched_rule_ids dựa trên danh sách Cặp subject-action hợp lệ; mỗi rule_id được chọn khi và chỉ khi subject + action của rule đó thực sự khớp mệnh đề trong câu hỏi
+5. BƯỚC 1.1: TUYỆT ĐỐI không ghép chéo subject của rule này với action của rule khác
+6. BƯỚC 1.2: Nếu câu hỏi có nhiều hành vi thì matched_rule_ids PHẢI chứa đủ rule_id cho từng hành vi
+7. BƯỚC 2: facts PHẢI nhất quán với matched_rule_ids đã chọn; chỉ dùng subject/action/context lấy NGUYÊN VĂN từ các rule_id đó
+8. Sau khi chọn được subject và action, nếu câu hỏi chứa context giống với context của action đã chọn thì PHẢI thêm case_context tương ứng
+9. Việc rule có trường exception KHÔNG đồng nghĩa phải xuất case_exception
+10. Chỉ sau khi đã chốt matched_rule_ids ở BƯỚC 1, mới được xét exception của CHÍNH các rule_id đó. Nếu câu hỏi khớp ngoại lệ của rule_id đã match thì xuất case_exception tương ứng; nếu không khớp thì KHÔNG được xuất case_exception.
+11. Nếu xuất case_exception thì giá trị exception PHẢI thuộc exception_ref của ÍT NHẤT MỘT rule_id trong matched_rule_ids
+- Câu hỏi đề cập đến 'ô tô', vì vậy PHẢI chọn case_subject_type = "car". KHÔNG được chọn bất kỳ subject type nào khác.
+12. Chỉ xuất duy nhất JSON object, không thêm gì khác
+
+
+----------------------------------------
+11:00:49 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+11:01:37 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"matched_rule_ids": ["d6_k9_d"], "facts": [{"predicate": "case_subject_type", "args": ["user1", "car"]}, {"predicate": "case_action", "args": ["user1", "driving_opposite_direction"]}, {"predicate": "case_context", "args": ["user1", "one_way_road_or_no_entry_road"]}]}
+----------------------------------------
+11:01:37 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+11:01:37 [INFO]   → LLM matched_rule_ids: ['d6_k9_d']
+11:01:37 [INFO]   → 3 facts parsed
+11:01:37 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "car"]}, {"predicate": "case_action", "args": ["user1", "driving_opposite_direction"]}, {"predicate": "case_context", "args": ["user1", "one_way_road_or_no_entry_road"]}]
+11:01:37 [INFO] [STEP 5] Converting facts to ASP predicates ...
+11:01:37 [DEBUG]   ASP FACTS:
+driver_type(case1, car).
+did_action(case1, driving_opposite_direction).
+has_context(case1, one_way_road_or_no_entry_road).
+11:01:37 [INFO] [STEP 6] Running clingo reasoning ...
+11:01:37 [INFO]   → 1 result atoms
+11:01:37 [DEBUG]     result(d6_k9_d,18000000,20000000)
+11:01:37 [INFO] [DONE] Pipeline hoàn thành
+11:01:37 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+11:08:05 [INFO] ============================================================
+11:08:05 [INFO] QUERY: Xe ưu tiên đang làm nhiệm vụ khẩn cấp sử dụng còi lúc 23 giờ trong khu dân cư thì có bị phạt lỗi dùng còi ban đêm không?
+11:08:05 [INFO] top_k=5
+11:08:05 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+11:08:08 [INFO]   → 1 chunks retrieved
+11:08:08 [DEBUG]     chunk: dieu=7 khoan=3 diem=l score=0.3930  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+11:08:08 [INFO]   → 3 ASP rules matched
+11:08:08 [DEBUG]     rule: d7_k3_l_1                  subject=priority_vehicle      action=install_or_use_priority_signal_device
+11:08:08 [DEBUG]     rule: d7_k3_l_2                  subject=priority_vehicle      action=use_priority_signal_device
+11:08:08 [DEBUG]     rule: d7_k3_l_3                  subject=priority_vehicle      action=use_priority_signal_device
+11:08:08 [INFO] [STEP 2] Building LLM extraction prompt ...
+11:08:08 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+Xe ưu tiên đang làm nhiệm vụ khẩn cấp sử dụng còi lúc 23 giờ trong khu dân cư thì có bị phạt lỗi dùng còi ban đêm không?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d7_k3_l_3",
+  "subject": "priority_vehicle",
+  "action": "use_priority_signal_device",
+  "context": [
+   "expired_license"
+  ]
+ },
+ {
+  "rule_id": "d7_k3_l_2",
+  "subject": "priority_vehicle",
+  "action": "use_priority_signal_device",
+  "context": [
+   "no_license"
+  ]
+ },
+ {
+  "rule_id": "d7_k3_l_1",
+  "subject": "priority_vehicle",
+  "action": "install_or_use_priority_signal_device",
+  "context": [
+   "improper"
+  ]
+ }
+]
+
+Trích đoạn điều luật đã retrieve:
+- Mục 1 > Điều 7 > Khoản 3 > Điểm l): Xe được quyền ưu tiên lắp đặt, sử dụng thiết bị phát tín hiệu ưu tiên không đúng quy định hoặc sử dụng thiết bị phát tín hiệu ưu tiên mà không có giấy phép của cơ quan có thẩm quyền cấp hoặc có giấy phép của cơ quan có thẩm quyền cấp nhưng không còn giá trị sử dụng theo quy định.
+
+Cặp subject-action hợp lệ (phải lấy cùng một rule, không ghép chéo):
+- d7_k3_l_3: subject="priority_vehicle", action="use_priority_signal_device"
+- d7_k3_l_2: subject="priority_vehicle", action="use_priority_signal_device"
+- d7_k3_l_1: subject="priority_vehicle", action="install_or_use_priority_signal_device"
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "matched_rule_ids": ["..."],
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "..."]},
+    {"predicate": "case_action",       "args": ["user1", "..."]},
+    {"predicate": "case_exception",       "args": ["user1", "..."]} 
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. BƯỚC 1: Xác định matched_rule_ids dựa trên danh sách Cặp subject-action hợp lệ; mỗi rule_id được chọn khi và chỉ khi subject + action của rule đó thực sự khớp mệnh đề trong câu hỏi
+5. BƯỚC 1.1: TUYỆT ĐỐI không ghép chéo subject của rule này với action của rule khác
+6. BƯỚC 1.2: Nếu câu hỏi có nhiều hành vi thì matched_rule_ids PHẢI chứa đủ rule_id cho từng hành vi
+7. BƯỚC 2: facts PHẢI nhất quán với matched_rule_ids đã chọn; chỉ dùng subject/action/context lấy NGUYÊN VĂN từ các rule_id đó
+8. Sau khi chọn được subject và action, nếu câu hỏi chứa context giống với context của action đã chọn thì PHẢI thêm case_context tương ứng
+9. Việc rule có trường exception KHÔNG đồng nghĩa phải xuất case_exception
+10. Không có exception nào trong các rule đã match, vì vậy TUYỆT ĐỐI không được xuất bất kỳ fact case_exception nào.
+11. Nếu xuất case_exception thì giá trị exception PHẢI thuộc exception_ref của ÍT NHẤT MỘT rule_id trong matched_rule_ids
+- Câu hỏi đề cập đến 'xe ưu tiên', vì vậy PHẢI chọn case_subject_type = "priority_vehicle". KHÔNG được chọn bất kỳ subject type nào khác.
+12. Chỉ xuất duy nhất JSON object, không thêm gì khác
+
+
+----------------------------------------
+11:08:08 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+11:08:59 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"matched_rule_ids": ["d7_k3_l_3", "d7_k3_l_2", "d7_k3_l_1"], "facts": [{"predicate": "case_subject_type", "args": ["user1", "priority_vehicle"]}, {"predicate": "case_action", "args": ["user1", "use_priority_signal_device"]}, {"predicate": "case_context", "args": ["user1", "no_license"]}]}
+----------------------------------------
+11:08:59 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+11:08:59 [INFO]   → LLM matched_rule_ids: ['d7_k3_l_3', 'd7_k3_l_2', 'd7_k3_l_1']
+11:08:59 [INFO]   → 3 facts parsed
+11:08:59 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "priority_vehicle"]}, {"predicate": "case_action", "args": ["user1", "use_priority_signal_device"]}, {"predicate": "case_context", "args": ["user1", "no_license"]}]
+11:08:59 [INFO] [STEP 5] Converting facts to ASP predicates ...
+11:08:59 [DEBUG]   ASP FACTS:
+driver_type(case1, priority_vehicle).
+did_action(case1, use_priority_signal_device).
+has_context(case1, no_license).
+11:08:59 [INFO] [STEP 6] Running clingo reasoning ...
+11:08:59 [INFO]   → removed duplicated sub-rules within the same legal point
+11:08:59 [DEBUG]     removed: result(d7_k3_l_3,600000,800000)
+11:08:59 [INFO]   → 1 result atoms
+11:08:59 [DEBUG]     result(d7_k3_l_2,600000,800000)
+11:08:59 [INFO] [DONE] Pipeline hoàn thành
+11:08:59 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+11:10:22 [INFO] ============================================================
+11:10:22 [INFO] QUERY: Xe ưu tiên làm nhiệm vụ khẩn cấp quay đầu trên cao tốc có bị phạt không
+11:10:22 [INFO] top_k=5
+11:10:22 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+11:10:22 [INFO]   → 5 chunks retrieved
+11:10:22 [DEBUG]     chunk: dieu=6 khoan=11 diem=đ score=0.4870  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+11:10:22 [DEBUG]     chunk: dieu=6 khoan=6 diem=b score=0.4797  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+11:10:22 [DEBUG]     chunk: dieu=6 khoan=7 diem=c score=0.4618  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+11:10:22 [DEBUG]     chunk: dieu=6 khoan=9 diem=d score=0.4511  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+11:10:22 [DEBUG]     chunk: dieu=6 khoan=4 diem=h score=0.4364  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+11:10:22 [INFO]   → 1 ASP rules matched
+11:10:22 [DEBUG]     rule: d6_k11_dd                  subject=car                   action=driving_opposite_reversing_or_u_turn_on_highway
+11:10:22 [INFO] [STEP 2] Building LLM extraction prompt ...
+11:10:23 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+Xe ưu tiên làm nhiệm vụ khẩn cấp quay đầu trên cao tốc có bị phạt không
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d6_k11_dd",
+  "subject": "car",
+  "action": "driving_opposite_reversing_or_u_turn_on_highway",
+  "context": [
+   "highway"
+  ],
+  "exception": [
+   "priority_vehicle_on_emergency_duty"
+  ]
+ }
+]
+
+Trích đoạn điều luật đã retrieve:
+- Mục 1 > Điều 6 > Khoản 11 > Điểm đ): Điều khiển xe đi ngược chiều trên đường cao tốc, lùi xe trên đường cao tốc, quay đầu xe trên đường cao tốc, trừ các xe ưu tiên đang đi làm nhiệm vụ khẩn cấp theo quy định.
+- Mục 1 > Điều 6 > Khoản 6 > Điểm b): Không nhường đường hoặc gây cản trở xe được quyền ưu tiên đang phát tín hiệu ưu tiên đi làm nhiệm vụ;
+- Mục 1 > Điều 6 > Khoản 7 > Điểm c): Dừng xe, đỗ xe trên đường cao tốc không đúng nơi quy định; không có báo hiệu bằng đèn khẩn cấp khi gặp sự cố kỹ thuật hoặc bất khả kháng khác buộc phải dừng xe, đỗ xe ở làn dừng xe khẩn cấp trên đường cao tốc; không có báo hiệu bằng đèn khẩn cấp, không đặt biển cảnh báo “Chú ý xe đỗ” (hoặc đèn cảnh báo) về phía sau xe khoảng cách tối thiểu 150 mét khi dừng xe, đỗ xe trong trường hợp gặp sự cố kỹ thuật hoặc bất khả kháng khác buộc phải dừng xe, đỗ xe trên một phần làn đường xe chạy trên đường cao
+- Mục 1 > Điều 6 > Khoản 9 > Điểm d): Đi ngược chiều của đường một chiều, đi ngược chiều trên đường có biển “Cấm đi ngược chiều”, trừ các hành vi vi phạm quy định tại điểm đ khoản 11 Điều này và các trường hợp xe ưu tiên đang đi làm nhiệm vụ khẩn cấp theo quy định.
+- Mục 1 > Điều 6 > Khoản 4 > Điểm h): Xe được quyền ưu tiên lắp đặt, sử dụng thiết bị phát tín hiệu ưu tiên không đúng quy định hoặc sử dụng thiết bị phát tín hiệu ưu tiên mà không có giấy phép của cơ quan có thẩm quyền cấp hoặc có giấy phép của cơ quan có thẩm quyền cấp nhưng không còn giá trị sử dụng theo quy định;
+
+Cặp subject-action hợp lệ (phải lấy cùng một rule, không ghép chéo):
+- d6_k11_dd: subject="car", action="driving_opposite_reversing_or_u_turn_on_highway"
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "matched_rule_ids": ["..."],
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "..."]},
+    {"predicate": "case_action",       "args": ["user1", "..."]},
+    {"predicate": "case_exception",       "args": ["user1", "..."]} 
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. BƯỚC 1: Xác định matched_rule_ids dựa trên danh sách Cặp subject-action hợp lệ; mỗi rule_id được chọn khi và chỉ khi subject + action của rule đó thực sự khớp mệnh đề trong câu hỏi
+5. BƯỚC 1.1: TUYỆT ĐỐI không ghép chéo subject của rule này với action của rule khác
+6. BƯỚC 1.2: Nếu câu hỏi có nhiều hành vi thì matched_rule_ids PHẢI chứa đủ rule_id cho từng hành vi
+7. BƯỚC 2: facts PHẢI nhất quán với matched_rule_ids đã chọn; chỉ dùng subject/action/context lấy NGUYÊN VĂN từ các rule_id đó
+8. Sau khi chọn được subject và action, nếu câu hỏi chứa context giống với context của action đã chọn thì PHẢI thêm case_context tương ứng
+9. Việc rule có trường exception KHÔNG đồng nghĩa phải xuất case_exception
+10. Chỉ sau khi đã chốt matched_rule_ids ở BƯỚC 1, mới được xét exception của CHÍNH các rule_id đó. Nếu câu hỏi khớp ngoại lệ của rule_id đã match thì xuất case_exception tương ứng; nếu không khớp thì KHÔNG được xuất case_exception.
+11. Nếu xuất case_exception thì giá trị exception PHẢI thuộc exception_ref của ÍT NHẤT MỘT rule_id trong matched_rule_ids
+- Câu hỏi đề cập đến 'ô tô', vì vậy PHẢI chọn case_subject_type = "car". KHÔNG được chọn bất kỳ subject type nào khác.
+12. Chỉ xuất duy nhất JSON object, không thêm gì khác
+
+
+----------------------------------------
+11:10:23 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+11:11:10 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"matched_rule_ids": ["d6_k11_dd"], "facts": [{"predicate": "case_subject_type", "args": ["user1", "car"]}, {"predicate": "case_action", "args": ["user1", "driving_opposite_reversing_or_u_turn_on_highway"]}]}
+----------------------------------------
+11:11:10 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+11:11:10 [INFO]   → LLM matched_rule_ids: ['d6_k11_dd']
+11:11:10 [INFO]   -> added case_exception priority_vehicle_on_emergency_duty from rule-based post-processing
+11:11:10 [INFO]   → 3 facts parsed
+11:11:10 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "car"]}, {"predicate": "case_action", "args": ["user1", "driving_opposite_reversing_or_u_turn_on_highway"]}, {"predicate": "case_exception", "args": ["user1", "priority_vehicle_on_emergency_duty"]}]
+11:11:10 [INFO] [STEP 5] Converting facts to ASP predicates ...
+11:11:10 [DEBUG]   ASP FACTS:
+driver_type(case1, car).
+did_action(case1, driving_opposite_reversing_or_u_turn_on_highway).
+exception_applies(case1, priority_vehicle_on_emergency_duty).
+11:11:10 [INFO] [STEP 6] Running clingo reasoning ...
+11:11:10 [INFO]   → 0 result atoms
+11:11:10 [INFO] [DONE] Pipeline hoàn thành
+11:11:10 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+11:11:32 [INFO] ============================================================
+11:11:32 [INFO] QUERY: Trẻ em dưới 6 tuổi không đội mũ ngồi trên xe máy có vi phạm không?
+11:11:32 [INFO] top_k=5
+11:11:32 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+11:11:33 [INFO]   → 3 chunks retrieved
+11:11:33 [DEBUG]     chunk: dieu=7 khoan=2 diem=i score=0.4967  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+11:11:33 [DEBUG]     chunk: dieu=7 khoan=2 diem=h score=0.4118  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+11:11:33 [DEBUG]     chunk: dieu=7 khoan=2 diem=g score=0.3910  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+11:11:33 [INFO]   → 2 ASP rules matched
+11:11:33 [DEBUG]     rule: d7_k2_i_1                  subject=motorbike             action=carry_passenger
+11:11:33 [DEBUG]     rule: d7_k2_i_2                  subject=motorbike             action=carry_passenger
+11:11:33 [INFO] [STEP 2] Building LLM extraction prompt ...
+11:11:33 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+Trẻ em dưới 6 tuổi không đội mũ ngồi trên xe máy có vi phạm không?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d7_k2_i_2",
+  "subject": "motorbike",
+  "action": "carry_passenger",
+  "context": [
+   "passenger_improper_helmet"
+  ],
+  "exception": [
+   "emergency_patient_transport",
+   "child_under_6",
+   "escorting_law_violator"
+  ]
+ },
+ {
+  "rule_id": "d7_k2_i_1",
+  "subject": "motorbike",
+  "action": "carry_passenger",
+  "context": [
+   "passenger_no_helmet"
+  ],
+  "exception": [
+   "emergency_patient_transport",
+   "child_under_6",
+   "escorting_law_violator"
+  ]
+ }
+]
+
+Trích đoạn điều luật đã retrieve:
+- Mục 1 > Điều 7 > Khoản 2 > Điểm i): Chở người ngồi trên xe không đội “mũ bảo hiểm cho người đi mô tô, xe máy” hoặc đội “mũ bảo hiểm cho người đi mô tô, xe máy” không cài quai đúng quy cách, trừ trường hợp chở người bệnh đi cấp cứu, trẻ em dưới 06 tuổi, áp giải người có hành vi vi phạm pháp luật;
+- Mục 1 > Điều 7 > Khoản 2 > Điểm h): Không đội “mũ bảo hiểm cho người đi mô tô, xe máy” hoặc đội “mũ bảo hiểm cho người đi mô tô, xe máy” không cài quai đúng quy cách khi điều khiển xe tham gia giao thông trên đường bộ;
+- Mục 1 > Điều 7 > Khoản 2 > Điểm g): Chở theo 02 người trên xe, trừ trường hợp chở người bệnh đi cấp cứu, trẻ em dưới 12 tuổi, người già yếu hoặc người khuyết tật, áp giải người có hành vi vi phạm pháp luật;
+
+Cặp subject-action hợp lệ (phải lấy cùng một rule, không ghép chéo):
+- d7_k2_i_2: subject="motorbike", action="carry_passenger"
+- d7_k2_i_1: subject="motorbike", action="carry_passenger"
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "matched_rule_ids": ["..."],
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "..."]},
+    {"predicate": "case_action",       "args": ["user1", "..."]},
+    {"predicate": "case_exception",       "args": ["user1", "..."]} 
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. BƯỚC 1: Xác định matched_rule_ids dựa trên danh sách Cặp subject-action hợp lệ; mỗi rule_id được chọn khi và chỉ khi subject + action của rule đó thực sự khớp mệnh đề trong câu hỏi
+5. BƯỚC 1.1: TUYỆT ĐỐI không ghép chéo subject của rule này với action của rule khác
+6. BƯỚC 1.2: Nếu câu hỏi có nhiều hành vi thì matched_rule_ids PHẢI chứa đủ rule_id cho từng hành vi
+7. BƯỚC 2: facts PHẢI nhất quán với matched_rule_ids đã chọn; chỉ dùng subject/action/context lấy NGUYÊN VĂN từ các rule_id đó
+8. Sau khi chọn được subject và action, nếu câu hỏi chứa context giống với context của action đã chọn thì PHẢI thêm case_context tương ứng
+9. Việc rule có trường exception KHÔNG đồng nghĩa phải xuất case_exception
+10. Chỉ sau khi đã chốt matched_rule_ids ở BƯỚC 1, mới được xét exception của CHÍNH các rule_id đó. Nếu câu hỏi khớp ngoại lệ của rule_id đã match thì xuất case_exception tương ứng; nếu không khớp thì KHÔNG được xuất case_exception.
+11. Nếu xuất case_exception thì giá trị exception PHẢI thuộc exception_ref của ÍT NHẤT MỘT rule_id trong matched_rule_ids
+- Câu hỏi đề cập đến 'xe máy / xe mô tô', vì vậy PHẢI chọn case_subject_type = "motorbike". KHÔNG được chọn bất kỳ subject type nào khác.
+12. Chỉ xuất duy nhất JSON object, không thêm gì khác
+
+
+----------------------------------------
+11:11:33 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+11:12:34 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"matched_rule_ids": ["d7_k2_i_1", "d7_k2_i_2"], "facts": [{"predicate": "case_subject_type", "args": ["user1", "motorbike"]}, {"predicate": "case_action", "args": ["user1", "carry_passenger"]}, {"predicate": "case_context", "args": ["user1", "passenger_no_helmet"]}]}
+----------------------------------------
+11:12:34 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+11:12:34 [INFO]   → LLM matched_rule_ids: ['d7_k2_i_1', 'd7_k2_i_2']
+11:12:34 [INFO]   → 3 facts parsed
+11:12:34 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "motorbike"]}, {"predicate": "case_action", "args": ["user1", "carry_passenger"]}, {"predicate": "case_context", "args": ["user1", "passenger_no_helmet"]}]
+11:12:34 [INFO] [STEP 5] Converting facts to ASP predicates ...
+11:12:34 [DEBUG]   ASP FACTS:
+driver_type(case1, motorbike).
+did_action(case1, carry_passenger).
+has_context(case1, passenger_no_helmet).
+11:12:34 [INFO] [STEP 6] Running clingo reasoning ...
+11:12:34 [INFO]   → removed duplicated sub-rules within the same legal point
+11:12:34 [DEBUG]     removed: result(d7_k2_i_2,400000,600000)
+11:12:34 [INFO]   → 1 result atoms
+11:12:34 [DEBUG]     result(d7_k2_i_1,400000,600000)
+11:12:34 [INFO] [DONE] Pipeline hoàn thành
+11:12:34 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+11:14:01 [INFO] ============================================================
+11:14:01 [INFO] QUERY: Người điều khiển xe máy chở 2 người nhưng chở người bệnh đi cấp cứu có vi phạm không?
+11:14:01 [INFO] top_k=5
+11:14:01 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+11:14:02 [INFO]   → 2 chunks retrieved
+11:14:02 [DEBUG]     chunk: dieu=7 khoan=2 diem=g score=0.4739  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+11:14:02 [DEBUG]     chunk: dieu=7 khoan=2 diem=i score=0.3966  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+11:14:02 [INFO]   → 1 ASP rules matched
+11:14:02 [DEBUG]     rule: d7_k2_g                    subject=motorbike             action=carry_passengers
+11:14:02 [INFO] [STEP 2] Building LLM extraction prompt ...
+11:14:02 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+Người điều khiển xe máy chở 2 người nhưng chở người bệnh đi cấp cứu có vi phạm không?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d7_k2_g",
+  "subject": "motorbike",
+  "action": "carry_passengers",
+  "context": [
+   "two_passengers"
+  ],
+  "exception": [
+   "emergency_patient_transport",
+   "child_under_12",
+   "elderly_person",
+   "disabled_person",
+   "escorting_law_violator"
+  ]
+ }
+]
+
+Trích đoạn điều luật đã retrieve:
+- Mục 1 > Điều 7 > Khoản 2 > Điểm g): Chở theo 02 người trên xe, trừ trường hợp chở người bệnh đi cấp cứu, trẻ em dưới 12 tuổi, người già yếu hoặc người khuyết tật, áp giải người có hành vi vi phạm pháp luật;
+- Mục 1 > Điều 7 > Khoản 2 > Điểm i): Chở người ngồi trên xe không đội “mũ bảo hiểm cho người đi mô tô, xe máy” hoặc đội “mũ bảo hiểm cho người đi mô tô, xe máy” không cài quai đúng quy cách, trừ trường hợp chở người bệnh đi cấp cứu, trẻ em dưới 06 tuổi, áp giải người có hành vi vi phạm pháp luật;
+
+Cặp subject-action hợp lệ (phải lấy cùng một rule, không ghép chéo):
+- d7_k2_g: subject="motorbike", action="carry_passengers"
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "matched_rule_ids": ["..."],
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "..."]},
+    {"predicate": "case_action",       "args": ["user1", "..."]},
+    {"predicate": "case_exception",       "args": ["user1", "..."]} 
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. BƯỚC 1: Xác định matched_rule_ids dựa trên danh sách Cặp subject-action hợp lệ; mỗi rule_id được chọn khi và chỉ khi subject + action của rule đó thực sự khớp mệnh đề trong câu hỏi
+5. BƯỚC 1.1: TUYỆT ĐỐI không ghép chéo subject của rule này với action của rule khác
+6. BƯỚC 1.2: Nếu câu hỏi có nhiều hành vi thì matched_rule_ids PHẢI chứa đủ rule_id cho từng hành vi
+7. BƯỚC 2: facts PHẢI nhất quán với matched_rule_ids đã chọn; chỉ dùng subject/action/context lấy NGUYÊN VĂN từ các rule_id đó
+8. Sau khi chọn được subject và action, nếu câu hỏi chứa context giống với context của action đã chọn thì PHẢI thêm case_context tương ứng
+9. Việc rule có trường exception KHÔNG đồng nghĩa phải xuất case_exception
+10. Chỉ sau khi đã chốt matched_rule_ids ở BƯỚC 1, mới được xét exception của CHÍNH các rule_id đó. Nếu câu hỏi khớp ngoại lệ của rule_id đã match thì xuất case_exception tương ứng; nếu không khớp thì KHÔNG được xuất case_exception.
+11. Nếu xuất case_exception thì giá trị exception PHẢI thuộc exception_ref của ÍT NHẤT MỘT rule_id trong matched_rule_ids
+- Câu hỏi đề cập đến 'xe máy / xe mô tô', vì vậy PHẢI chọn case_subject_type = "motorbike". KHÔNG được chọn bất kỳ subject type nào khác.
+12. Chỉ xuất duy nhất JSON object, không thêm gì khác
+
+
+----------------------------------------
+11:14:02 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+11:14:41 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"matched_rule_ids": ["d7_k2_g"], "facts": [{"predicate": "case_subject_type", "args": ["user1", "motorbike"]}, {"predicate": "case_action", "args": ["user1", "carry_passengers"]}, {"predicate": "case_exception", "args": ["user1", "emergency_patient_transport"]}]}
+----------------------------------------
+11:14:41 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+11:14:41 [INFO]   → LLM matched_rule_ids: ['d7_k2_g']
+11:14:41 [INFO]   → 3 facts parsed
+11:14:41 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "motorbike"]}, {"predicate": "case_action", "args": ["user1", "carry_passengers"]}, {"predicate": "case_exception", "args": ["user1", "emergency_patient_transport"]}]
+11:14:41 [INFO] [STEP 5] Converting facts to ASP predicates ...
+11:14:41 [DEBUG]   ASP FACTS:
+driver_type(case1, motorbike).
+did_action(case1, carry_passengers).
+exception_applies(case1, emergency_patient_transport).
+11:14:41 [INFO] [STEP 6] Running clingo reasoning ...
+11:14:41 [INFO]   → 0 result atoms
+11:14:41 [INFO] [DONE] Pipeline hoàn thành
+11:14:41 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+11:48:58 [INFO] ============================================================
+11:48:58 [INFO] QUERY: Người điều khiển xe máy chở 2 người nhưng chở người bệnh đi cấp cứu có vi phạm không?
+11:48:58 [INFO] top_k=5
+11:48:58 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+11:49:10 [INFO]   → 2 chunks retrieved
+11:49:10 [DEBUG]     chunk: dieu=7 khoan=2 diem=g score=0.4739  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+11:49:10 [DEBUG]     chunk: dieu=7 khoan=2 diem=i score=0.3966  Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển
+11:49:10 [INFO]   → 1 ASP rules matched
+11:49:10 [DEBUG]     rule: d7_k2_g                    subject=motorbike             action=carry_passengers
+11:49:10 [INFO] [STEP 2] Building LLM extraction prompt ...
+11:49:10 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+Người điều khiển xe máy chở 2 người nhưng chở người bệnh đi cấp cứu có vi phạm không?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d7_k2_g",
+  "subject": "motorbike",
+  "action": "carry_passengers",
+  "context": [
+   "two_passengers"
+  ],
+  "exception": [
+   "emergency_patient_transport",
+   "child_under_12",
+   "elderly_person",
+   "disabled_person",
+   "escorting_law_violator"
+  ]
+ }
+]
+
+Trích đoạn điều luật đã retrieve:
+- Mục 1 > Điều 7 > Khoản 2 > Điểm g): Chở theo 02 người trên xe, trừ trường hợp chở người bệnh đi cấp cứu, trẻ em dưới 12 tuổi, người già yếu hoặc người khuyết tật, áp giải người có hành vi vi phạm pháp luật;
+- Mục 1 > Điều 7 > Khoản 2 > Điểm i): Chở người ngồi trên xe không đội “mũ bảo hiểm cho người đi mô tô, xe máy” hoặc đội “mũ bảo hiểm cho người đi mô tô, xe máy” không cài quai đúng quy cách, trừ trường hợp chở người bệnh đi cấp cứu, trẻ em dưới 06 tuổi, áp giải người có hành vi vi phạm pháp luật;
+
+Cặp subject-action hợp lệ (phải lấy cùng một rule, không ghép chéo):
+- d7_k2_g: subject="motorbike", action="carry_passengers"
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "matched_rule_ids": ["..."],
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "..."]},
+    {"predicate": "case_action",       "args": ["user1", "..."]},
+    {"predicate": "case_exception",       "args": ["user1", "..."]} 
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. BƯỚC 1: Xác định matched_rule_ids dựa trên danh sách Cặp subject-action hợp lệ; mỗi rule_id được chọn khi và chỉ khi subject + action của rule đó thực sự khớp mệnh đề trong câu hỏi
+5. BƯỚC 1.1: TUYỆT ĐỐI không ghép chéo subject của rule này với action của rule khác
+6. BƯỚC 1.2: Nếu câu hỏi có nhiều hành vi thì matched_rule_ids PHẢI chứa đủ rule_id cho từng hành vi
+7. BƯỚC 2: facts PHẢI nhất quán với matched_rule_ids đã chọn; chỉ dùng subject/action/context lấy NGUYÊN VĂN từ các rule_id đó
+8. Sau khi chọn được subject và action, nếu câu hỏi chứa context giống với context của action đã chọn thì PHẢI thêm case_context tương ứng
+9. Việc rule có trường exception KHÔNG đồng nghĩa phải xuất case_exception
+10. Chỉ sau khi đã chốt matched_rule_ids ở BƯỚC 1, mới được xét exception của CHÍNH các rule_id đó. Nếu câu hỏi khớp ngoại lệ của rule_id đã match thì xuất case_exception tương ứng; nếu không khớp thì KHÔNG được xuất case_exception.
+11. Nếu xuất case_exception thì giá trị exception PHẢI thuộc exception_ref của ÍT NHẤT MỘT rule_id trong matched_rule_ids
+- Câu hỏi đề cập đến 'xe máy / xe mô tô', vì vậy PHẢI chọn case_subject_type = "motorbike". KHÔNG được chọn bất kỳ subject type nào khác.
+12. Chỉ xuất duy nhất JSON object, không thêm gì khác
+
+
+----------------------------------------
+11:49:10 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+11:49:38 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"matched_rule_ids": ["d7_k2_g"], "facts": [{"predicate": "case_subject_type", "args": ["user1", "motorbike"]}, {"predicate": "case_action", "args": ["user1", "carry_passengers"]}, {"predicate": "case_exception", "args": ["user1", "emergency_patient_transport"]}]}
+</think>
+
+{"matched_rule_ids": ["d7_k2_g"], "facts": [{"predicate": "case_subject_type", "args": ["user1", "motorbike"]}, {"predicate": "case_action", "args": ["user1", "carry_passengers"]}, {"predicate": "case_exception", "args": ["user1", "emergency_patient_transport"]}]}
+----------------------------------------
+11:49:38 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+11:49:38 [INFO]   → LLM matched_rule_ids: ['d7_k2_g']
+11:49:38 [INFO]   → 3 facts parsed
+11:49:38 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "motorbike"]}, {"predicate": "case_action", "args": ["user1", "carry_passengers"]}, {"predicate": "case_exception", "args": ["user1", "emergency_patient_transport"]}]
+11:49:38 [INFO] [STEP 5] Converting facts to ASP predicates ...
+11:49:38 [DEBUG]   ASP FACTS:
+driver_type(case1, motorbike).
+did_action(case1, carry_passengers).
+exception_applies(case1, emergency_patient_transport).
+11:49:38 [INFO] [STEP 6] Running clingo reasoning ...
+11:49:38 [INFO]   → 0 result atoms
+11:49:38 [INFO] [DONE] Pipeline hoàn thành
+11:49:38 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log
+11:56:56 [INFO] ============================================================
+11:56:56 [INFO] QUERY: Ô tô đi ngược chiều trên đường một chiều thì bị phạt thế nào?
+11:56:56 [INFO] top_k=5
+11:56:56 [INFO] [STEP 1] Retrieving chunks + matching ASP rules ...
+11:56:57 [INFO]   → 5 chunks retrieved
+11:56:57 [DEBUG]     chunk: dieu=6 khoan=9 diem=d score=0.5307  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+11:56:57 [DEBUG]     chunk: dieu=6 khoan=5 diem=c score=0.5008  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+11:56:57 [DEBUG]     chunk: dieu=6 khoan=4 diem=e score=0.4909  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+11:56:57 [DEBUG]     chunk: dieu=6 khoan=3 diem=p score=0.4788  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+11:56:57 [DEBUG]     chunk: dieu=6 khoan=5 diem=b score=0.4775  Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều kh
+11:56:57 [INFO]   → 1 ASP rules matched
+11:56:57 [DEBUG]     rule: d6_k9_d                    subject=car                   action=driving_opposite_direction
+11:56:57 [INFO] [STEP 2] Building LLM extraction prompt ...
+11:56:57 [DEBUG]   PROMPT:
+----------------------------------------
+Bạn là hệ thống trích xuất legal case facts. Chỉ trả về JSON, không giải thích.
+
+Câu hỏi:
+Ô tô đi ngược chiều trên đường một chiều thì bị phạt thế nào?
+
+Các rule liên quan:
+[
+ {
+  "rule_id": "d6_k9_d",
+  "subject": "car",
+  "action": "driving_opposite_direction",
+  "context": [
+   "one_way_road_or_no_entry_road"
+  ],
+  "exception": [
+   "violation_d6_k11_dd",
+   "priority_vehicle_on_emergency_duty"
+  ]
+ }
+]
+
+Trích đoạn điều luật đã retrieve:
+- Mục 1 > Điều 6 > Khoản 9 > Điểm d): Đi ngược chiều của đường một chiều, đi ngược chiều trên đường có biển “Cấm đi ngược chiều”, trừ các hành vi vi phạm quy định tại điểm đ khoản 11 Điều này và các trường hợp xe ưu tiên đang đi làm nhiệm vụ khẩn cấp theo quy định.
+- Mục 1 > Điều 6 > Khoản 5 > Điểm c): Tránh xe đi ngược chiều không đúng quy định (trừ hành vi vi phạm sử dụng đèn chiếu xa khi tránh xe đi ngược chiều quy định tại điểm b khoản 3 Điều này); không nhường đường cho xe đi ngược chiều theo quy định tại nơi đường hẹp, đường dốc, nơi có chướng ngại vật;
+- Mục 1 > Điều 6 > Khoản 4 > Điểm e): Lùi xe ở đường một chiều, đường có biển “Cấm đi ngược chiều”, khu vực cấm dừng, trên phần đường dành cho người đi bộ qua đường, nơi đường bộ giao nhau, nơi đường bộ giao nhau cùng mức với đường sắt, nơi tầm nhìn bị che khuất; lùi xe không quan sát hai bên, phía sau xe hoặc không có tín hiệu lùi xe, trừ hành vi vi phạm quy định tại điểm đ khoản 11 Điều này;
+- Mục 1 > Điều 6 > Khoản 3 > Điểm p): Điều khiển xe chạy tốc độ thấp hơn các xe khác đi cùng chiều mà không đi về làn đường bên phải chiều đi của mình, trừ trường hợp các xe khác đi cùng chiều chạy quá tốc độ quy định.
+- Mục 1 > Điều 6 > Khoản 5 > Điểm b): Điều khiển xe không đi bên phải theo chiều đi của mình; đi không đúng phần đường hoặc làn đường quy định (làn cùng chiều hoặc làn ngược chiều) trừ hành vi quy định tại điểm a khoản 4 Điều này; điều khiển xe đi qua dải phân cách cố định ở giữa hai phần đường xe chạy;
+
+Cặp subject-action hợp lệ (phải lấy cùng một rule, không ghép chéo):
+- d6_k9_d: subject="car", action="driving_opposite_direction"
+
+Yêu cầu output — chỉ JSON object duy nhất, KHÔNG có text ngoài JSON:
+{
+  "matched_rule_ids": ["..."],
+  "facts": [
+    {"predicate": "case_subject_type", "args": ["user1", "..."]},
+    {"predicate": "case_action",       "args": ["user1", "..."]},
+    {"predicate": "case_exception",       "args": ["user1", "..."]} 
+  ]
+}
+
+Quy tắc BẮT BUỘC:
+1. Mỗi fact PHẢI có đúng 2 key: "predicate" và "args"
+2. "args" PHẢI là mảng 2 phần tử: ["user1", "<giá trị>"]
+3. TUYỆT ĐỐI không dùng key "value", "answer", "question", "type"
+4. BƯỚC 1: Xác định matched_rule_ids dựa trên danh sách Cặp subject-action hợp lệ; mỗi rule_id được chọn khi và chỉ khi subject + action của rule đó thực sự khớp mệnh đề trong câu hỏi
+5. BƯỚC 1.1: TUYỆT ĐỐI không ghép chéo subject của rule này với action của rule khác
+6. BƯỚC 1.2: Nếu câu hỏi có nhiều hành vi thì matched_rule_ids PHẢI chứa đủ rule_id cho từng hành vi
+7. BƯỚC 2: facts PHẢI nhất quán với matched_rule_ids đã chọn; chỉ dùng subject/action/context lấy NGUYÊN VĂN từ các rule_id đó
+8. Sau khi chọn được subject và action, nếu câu hỏi chứa context giống với context của action đã chọn thì PHẢI thêm case_context tương ứng
+9. Việc rule có trường exception KHÔNG đồng nghĩa phải xuất case_exception
+10. Chỉ sau khi đã chốt matched_rule_ids ở BƯỚC 1, mới được xét exception của CHÍNH các rule_id đó. Nếu câu hỏi khớp ngoại lệ của rule_id đã match thì xuất case_exception tương ứng; nếu không khớp thì KHÔNG được xuất case_exception.
+11. Nếu xuất case_exception thì giá trị exception PHẢI thuộc exception_ref của ÍT NHẤT MỘT rule_id trong matched_rule_ids
+- Câu hỏi đề cập đến 'ô tô', vì vậy PHẢI chọn case_subject_type = "car". KHÔNG được chọn bất kỳ subject type nào khác.
+12. Chỉ xuất duy nhất JSON object, không thêm gì khác
+
+
+----------------------------------------
+11:56:57 [INFO] [STEP 3] Calling local LLM (localhost:8000) ...
+11:57:17 [DEBUG]   LLM RAW OUTPUT:
+----------------------------------------
+{"matched_rule_ids": ["d6_k9_d"], "facts": [{"predicate": "case_subject_type", "args": ["user1", "car"]}, {"predicate": "case_action", "args": ["user1", "driving_opposite_direction"]}, {"predicate": "case_context", "args": ["user1", "one_way_road_or_no_entry_road"]}]}
+----------------------------------------
+11:57:17 [INFO] [STEP 4] Parsing JSON facts from LLM output ...
+11:57:17 [INFO]   → LLM matched_rule_ids: ['d6_k9_d']
+11:57:17 [INFO]   → 3 facts parsed
+11:57:17 [DEBUG]   FACTS JSON: [{"predicate": "case_subject_type", "args": ["user1", "car"]}, {"predicate": "case_action", "args": ["user1", "driving_opposite_direction"]}, {"predicate": "case_context", "args": ["user1", "one_way_road_or_no_entry_road"]}]
+11:57:17 [INFO] [STEP 5] Converting facts to ASP predicates ...
+11:57:17 [DEBUG]   ASP FACTS:
+driver_type(case1, car).
+did_action(case1, driving_opposite_direction).
+has_context(case1, one_way_road_or_no_entry_road).
+11:57:17 [INFO] [STEP 6] Running clingo reasoning ...
+11:57:17 [INFO]   → 1 result atoms
+11:57:17 [DEBUG]     result(d6_k9_d,18000000,20000000)
+11:57:17 [INFO] [DONE] Pipeline hoàn thành
+11:57:17 [INFO] Log file: D:\giao trinh dai hoc\KÌ 8 KLTN\legal_rag_ASP_system-\pipeline_debug.log

@@ -1382,6 +1382,124 @@ def _build_final_answer(matched_rules: list[dict], facts_json: list[dict], reaso
     return _INSUFFICIENT_INFO_MESSAGE
 
 
+_EXCEPTION_LABELS = {
+    "emergency_patient_transport": "chở người bệnh đi cấp cứu",
+    "child_under_12": "chở trẻ em dưới 12 tuổi",
+    "elderly_person": "chở người già yếu",
+    "disabled_person": "chở người khuyết tật",
+    "escorting_law_violator": "áp giải người có hành vi vi phạm pháp luật",
+    "priority_vehicle_on_duty": "xe ưu tiên đang làm nhiệm vụ",
+    "priority_vehicle_on_emergency_duty": "xe ưu tiên làm nhiệm vụ khẩn cấp",
+}
+
+
+def _format_vnd(amount: int) -> str:
+    return f"{amount:,}đ"
+
+
+def _format_fine_range(fine_min: int, fine_max: int) -> str:
+    if fine_min > 0 and fine_max > 0:
+        return f"{_format_vnd(fine_min)} - {_format_vnd(fine_max)}"
+    if fine_min > 0:
+        return f"từ {_format_vnd(fine_min)}"
+    if fine_max > 0:
+        return f"đến {_format_vnd(fine_max)}"
+    return "chưa có metadata mức phạt"
+
+
+def _format_rule_citation(rule: dict) -> str:
+    article = rule.get("article")
+    clause = rule.get("clause")
+    point = str(rule.get("point") or "").strip()
+
+    parts: list[str] = []
+    if point:
+        parts.append(f"điểm {point}")
+    if isinstance(clause, int) and clause > 0:
+        parts.append(f"khoản {clause}")
+    if isinstance(article, int) and article > 0:
+        parts.append(f"Điều {article}")
+
+    return " ".join(parts) if parts else str(rule.get("rule_id") or "")
+
+
+def _format_rule_basis(rule: dict, fine_min: int | None = None, fine_max: int | None = None) -> str:
+    rule_id = str(rule.get("rule_id") or "").strip()
+    citation = _format_rule_citation(rule)
+    min_value = fine_min if fine_min is not None else int(rule.get("fine_min") or 0)
+    max_value = fine_max if fine_max is not None else int(rule.get("fine_max") or 0)
+    fine_text = _format_fine_range(min_value, max_value)
+    return f"{citation} (rule {rule_id}, khung phạt: {fine_text})"
+
+
+def _format_rule_text(rule: dict) -> str:
+    text = str(rule.get("original_vi_text") or "").strip()
+    return text or "không có nội dung gốc trong metadata"
+
+
+def _format_exception_values(exception_values: set[str]) -> str:
+    if not exception_values:
+        return "trường hợp ngoại lệ"
+    labels = [_EXCEPTION_LABELS.get(value, value.replace("_", " ")) for value in sorted(exception_values)]
+    return ", ".join(labels)
+
+
+def _find_exception_rules(matched_rules: list[dict], facts_json: list[dict]) -> list[dict]:
+    case_exceptions = _extract_fact_values(facts_json, "case_exception", "exception_applies", "exception")
+    if not case_exceptions:
+        return []
+
+    case_actions = _extract_fact_values(facts_json, "case_action", "did_action", "action")
+    candidate_rules = matched_rules
+    if case_actions:
+        candidate_rules = [rule for rule in matched_rules if rule.get("action") in case_actions]
+
+    return [
+        rule
+        for rule in candidate_rules
+        if any(exception_ref in case_exceptions for exception_ref in rule.get("exception_ref", []))
+    ]
+
+
+def _build_complete_answer(matched_rules: list[dict], facts_json: list[dict], reasoning_results: list[str]) -> str:
+    rules_by_id = {
+        str(rule.get("rule_id")): rule
+        for rule in matched_rules
+        if isinstance(rule, dict) and rule.get("rule_id")
+    }
+
+    violation_lines: list[str] = []
+    for atom in reasoning_results:
+        parsed = _parse_result_atom(atom)
+        if not parsed:
+            continue
+        rule_id, fine_min, fine_max = parsed
+        rule = rules_by_id.get(rule_id, {"rule_id": rule_id})
+        violation_lines.append(
+            "Căn cứ "
+            f"{_format_rule_basis(rule, fine_min, fine_max)}, nội dung quy định: "
+            f"\"{_format_rule_text(rule)}\". "
+            f"Do đó tình huống này có vi phạm; mức phạt áp dụng là {_format_fine_range(fine_min, fine_max)}."
+        )
+
+    if violation_lines:
+        return "\n\n".join(violation_lines)
+
+    exception_rules = _find_exception_rules(matched_rules, facts_json)
+    if exception_rules:
+        case_exceptions = _extract_fact_values(facts_json, "case_exception", "exception_applies", "exception")
+        exception_text = _format_exception_values(case_exceptions)
+        return "\n\n".join(
+            "Căn cứ "
+            f"{_format_rule_basis(rule)}, nội dung quy định: "
+            f"\"{_format_rule_text(rule)}\". "
+            f"Tình huống thuộc ngoại lệ {exception_text}, nên không bị xử phạt theo rule này."
+            for rule in exception_rules
+        )
+
+    return _INSUFFICIENT_INFO_MESSAGE
+
+
 # ── Step 5: Run clingo ───────────────────────────────────────────────────────
 
 def _escape_asp_string(value: str) -> str:
@@ -1527,6 +1645,7 @@ def run_asp_pipeline(query: str, top_k: int = 5) -> dict:
             "asp_facts":         "",
             "reasoning_results": [],
             "final_answer":      _INSUFFICIENT_INFO_MESSAGE,
+            "complete_answer":   _INSUFFICIENT_INFO_MESSAGE,
             "answer_status":     "insufficient_info",
         }
 
@@ -1681,6 +1800,7 @@ def run_asp_pipeline(query: str, top_k: int = 5) -> dict:
         "facts_json":        facts_json,
         "asp_facts":         asp_facts,
         "reasoning_results": reasoning_results,
+        "complete_answer":   _build_complete_answer(matched_rules, facts_json, reasoning_results),
     }
     final_answer = _build_final_answer(matched_rules, facts_json, reasoning_results)
     if final_answer:

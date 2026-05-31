@@ -245,6 +245,11 @@ with tab_asp:
             else:
                 st.info(result.get("final_answer") or "Không đủ cơ sở pháp lí để trả lời")
 
+            complete_answer = result.get("complete_answer")
+            if complete_answer:
+                st.subheader("Câu trả lời hoàn chỉnh")
+                st.info(complete_answer)
+
             # ── Debug info ──
             if show_debug:
                 with st.expander("ASP Rules được match"):
