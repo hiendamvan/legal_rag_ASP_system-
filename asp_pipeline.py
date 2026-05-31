@@ -564,6 +564,53 @@ def _strip_exception_facts_if_not_mentioned_in_query(query: str, facts: list[dic
     ]
 
 
+def _query_mentions_priority_vehicle_emergency(query: str) -> bool:
+    normalized_query = _normalize_text(query)
+    priority_cues = ["xe uu tien", "uu tien"]
+    emergency_cues = ["khan cap", "lam nhiem vu", "dang di lam nhiem vu", "cap cuu"]
+    return (
+        any(cue in normalized_query for cue in priority_cues)
+        or any(cue in normalized_query for cue in emergency_cues)
+    )
+
+
+def _append_priority_vehicle_emergency_exception(
+    query: str,
+    matched_rules: list[dict],
+    facts: list[dict],
+    allowed_rule_ids: set[str] | None = None,
+) -> tuple[list[dict], bool]:
+    exception_ref = "priority_vehicle_on_emergency_duty"
+    if not _query_mentions_priority_vehicle_emergency(query):
+        return facts, False
+
+    effective_rules = matched_rules
+    if allowed_rule_ids:
+        effective_rules = [
+            rule for rule in matched_rules
+            if str(rule.get("rule_id") or "") in allowed_rule_ids
+        ]
+
+    if not any(exception_ref in (rule.get("exception_ref") or []) for rule in effective_rules):
+        return facts, False
+
+    for fact in facts:
+        if not isinstance(fact, dict):
+            continue
+        if fact.get("predicate") not in {"case_exception", "exception_applies", "exception"}:
+            continue
+        args = fact.get("args") or []
+        if len(args) >= 2 and str(args[1]) == exception_ref:
+            return facts, False
+
+    return facts + [
+        {
+            "predicate": "case_exception",
+            "args": ["user1", exception_ref],
+        }
+    ], True
+
+
 def _extract_rule_ids_from_reasoning(reasoning_results: list[str]) -> list[str]:
     rule_ids: list[str] = []
     seen: set[str] = set()
@@ -1567,6 +1614,15 @@ def run_asp_pipeline(query: str, top_k: int = 5) -> dict:
         if len(grounded_facts_json) != len(facts_json):
             log.info("  → removed case_exception facts because query does not mention exception/exemption/priority")
         facts_json = grounded_facts_json
+
+        facts_json, added_priority_emergency_exception = _append_priority_vehicle_emergency_exception(
+            query,
+            matched_rules,
+            facts_json,
+            set(llm_selected_rule_ids) if llm_selected_rule_ids else None,
+        )
+        if added_priority_emergency_exception:
+            log.info("  -> added case_exception priority_vehicle_on_emergency_duty from rule-based post-processing")
 
         log.info(f"  → {len(facts_json)} facts parsed")
         log.debug(f"  FACTS JSON: {json.dumps(facts_json, ensure_ascii=False)}")
